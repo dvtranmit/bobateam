@@ -334,63 +334,13 @@ module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 
 endmodule
 
-
-//////////////////////////////////////////////////////////////////////////////
-//																									 //
-//										TIMER MODULE											 //
-//																									 //
-//////////////////////////////////////////////////////////////////////////////
-
-module timer(
-    input clk,
-    input start_timer,
-    input one_hz_enable,
-    input [3:0] timer_value,
-    output expired,
-    );
-
-// States
-reg [1:0] IDLE 		= 2'd00;		// Await start_timer
-reg [1:0] COUNTING 	= 2'd01;		// Countdown from timer_value (until expired)
-reg [1:0] EXPIRED 	= 2'd02;		// Expired pulse lasts one clock cycle
-
-// State machine variables
-reg [3:0] state = IDLE;
-reg [3:0] counter = 4'b0000;
-
-always @(posedge clock) begin
-    if (state == IDLE) begin                                     
-        state <= (start_timer) ? COUNTING : IDLE;
-        counter <= (start_timer) ? timer_value : 4'b0;
-    end else if (state == COUNTING) begin
-        state <= (counter == 0) ? EXPIRED : COUNTING;
-        counter <= (one_hz_enable) ? counter - 1: 
-							(start_timer) ? timer_value : counter;
-    end else if (state == EXPIRED) begin
-        state <= IDLE;
-        counter <= 4'b0000;
-    end
-end
-
-assign expired = (state == EXPIRED);
-endmodule
-
-//////////////////////////////////////////////////////////////////////////////
-//																									 //
-//										DEBOUNCE MODULE										 //
-//																									 //
-//////////////////////////////////////////////////////////////////////////////
-
-module debounce()
-endmodule
-
 //////////////////////////////////////////////////////////////////////////////
 //																									 //
 //										DIVIDER MODULE										 	 //
 //																									 //
 //////////////////////////////////////////////////////////////////////////////
 
-module Divider (	input clk,
+module divider (	input clk,
 						input start_timer,
 						output one_hz_enable );
 
@@ -400,7 +350,7 @@ parameter DELAY = 32'd27000000;
 reg [31:0] counter = 32'd0;
 reg enable = 1'b0;
 
-always @(posedge clock) begin
+always @(posedge clk) begin
     if (start_timer) begin                  // divider reset
         counter <= 32'd0;
         enable <= 1'b0;
@@ -419,11 +369,209 @@ endmodule
 
 //////////////////////////////////////////////////////////////////////////////
 //																									 //
+//										TIMER MODULE											 //
+//																									 //
+//////////////////////////////////////////////////////////////////////////////
+
+module timer( 	input clk, start_timer, one_hz_enable,
+					input [3:0] timer_value,
+					output expired );
+
+// States
+parameter [1:0] IDLE 		= 2'd0;		// Await start_timer
+parameter [1:0] COUNTING 	= 2'd1;		// Countdown from timer_value (until expired)
+parameter [1:0] EXPIRED 	= 2'd2;		// Expired pulse lasts one clock cycle
+
+// State machine variables
+reg [3:0] state = IDLE;
+reg [3:0] counter = 4'b0;
+
+always @(posedge clk) begin
+    if (state == IDLE) begin                                     
+        state <= (start_timer) ? COUNTING : IDLE;
+        counter <= (start_timer) ? timer_value : 4'b0;
+    end else if (state == COUNTING) begin
+        state <= (counter == 0) ? EXPIRED : COUNTING;
+        counter <= (one_hz_enable) ? counter - 1: 
+							(start_timer) ? timer_value : counter;
+    end else if (state == EXPIRED) begin
+        state <= IDLE;
+        counter <= 4'b0;
+    end
+end
+
+assign expired = (state == EXPIRED);
+endmodule
+
+//////////////////////////////////////////////////////////////////////////////
+//																									 //
+//									  SYNCHRONIZE MODULE										 //
+//																									 //
+//////////////////////////////////////////////////////////////////////////////
+
+module synchronize #(parameter NSYNC = 2)  // number of sync flops.  must be >= 2
+                   (input clk,in,
+                    output reg out);
+
+  reg [NSYNC-2:0] sync;
+
+  always @ (posedge clk)
+  begin
+    {out,sync} <= {sync[NSYNC-2:0],in};
+  end
+endmodule
+
+//////////////////////////////////////////////////////////////////////////////
+//																									 //
+//										DEBOUNCE MODULE										 //
+//																									 //
+//////////////////////////////////////////////////////////////////////////////
+
+module debounce #(parameter DELAY=270000)   // .01 sec with a 27Mhz clock
+	        (input reset, clk, noisy,
+	         output reg clean);
+
+   reg [18:0] count;
+   reg new;
+   wire synced;
+   synchronize sync1(.clk(clk), .in(noisy), .out(synced));
+
+   always @(posedge clk) begin
+		if (reset) begin
+			count <= 0;
+			new <= synced;
+			clean <= synced;
+		end else if (synced != new) begin
+			new <= synced;
+			count <= 0;
+		end else if (count == DELAY)
+			clean <= new;
+		else
+			count <= count+1;
+	end
+endmodule
+
+//////////////////////////////////////////////////////////////////////////////
+//																									 //
 //								  INTERPRET INPUT MODULE									 //
 //																									 //
 //////////////////////////////////////////////////////////////////////////////
 
-module debounce()
+module interpret_input(	input clk,
+								input upleft, up, upright, 
+								input left, right, 
+								input downleft, down, downright,
+								input start,
+								input reset,
+								input mole_location,
+								output misstep,
+								output whacked);
+
+
+reg [7:0] location = 8'b0;
+
+// Temporary variables for output
+reg temp_whacked = 1'b0;
+reg temp_misstep = 1'b0;
+ 
+always@(posedge clk) begin
+	if ({upleft, up, upright, left, right, downleft, down, downright} == location)
+		temp_whacked <= 1'b1;
+	else if ({upleft, up, upright, left, right, downleft, down, downright} !== 8'b0)
+		temp_misstep <= 1'b1;
+	else begin
+		temp_whacked <= 1'b0;
+		temp_misstep <= 1'b0;
+	end
+end
+
+// Convert location to one hot representation
+always@(*) begin
+	case(mole_location)
+		3'd0: location = 8'b00000001;
+		3'd1: location = 8'b00000010;
+		3'd2: location = 8'b00000100;
+		3'd3: location = 8'b00001000;
+		3'd4: location = 8'b00010000;
+		3'd5: location = 8'b00100000;
+		3'd6: location = 8'b01000000;
+		3'd7: location = 8'b10000000;
+		default: location = 8'b0;
+	endcase
+end
+
+assign misstep = temp_misstep;
+assign whacked = temp_whacked;
+endmodule
+
+//////////////////////////////////////////////////////////////////////////////
+//																									 //
+//								    MOLE TIMING MODULE									 	 //
+//																									 //
+//////////////////////////////////////////////////////////////////////////////
+
+module mole(	input clk, reset,
+					input one_hz_enable, // delete this when we can check address
+					output request_mole );
+
+// Current implementation is just a really long alternating signal
+// Future implemention should either pop a mole up at specific memory addresses
+// or at pre-programmed times
+
+/* Memory address popup pseudocode
+	
+	initialize array of popup times
+	initialize array index variable
+	always @ posedge clk
+		check time against current array value
+			increment index if match
+		increment time
+*/
+ 
+// States
+parameter COUNTING 	= 1'b1;		// Countdown from timer_value (until expired)
+parameter MOLE			= 1'b0;		// mole pulse lasts one clock cycle
+
+// State machine variables
+reg state = COUNTING;
+reg [3:0] counter = 4'd5;
+
+always @(posedge clk) begin
+	if (reset) begin
+		state <= COUNTING;
+		counter <= 4'd5;
+	end else if (state == COUNTING) begin
+		state <= (counter == 0) ? MOLE : COUNTING;
+		counter <= (one_hz_enable) ? counter - 1: counter;
+	end else if (state == MOLE) begin
+		state <= COUNTING;
+		counter <= 4'd5;
+	end
+end
+
+assign request_mole = (state == MOLE);
+endmodule
+
+
+
+//////////////////////////////////////////////////////////////////////////////
+//																									 //
+//							  RANDOM NUMBER GENERATOR MODULE								 //
+//																									 //
+//////////////////////////////////////////////////////////////////////////////
+module rng(	input clk, reset,
+				output [2:0] r );
+
+reg [2:0] temp_r = 3'b001;
+
+always @ (posedge clk) begin
+	if (reset)
+		temp_r <= 3'b001;
+	else
+		temp_r <= {temp_r[1:0], temp_r[2]^temp_r[0]};
+end
+
+assign r = temp_r;
 endmodule
 
 
@@ -434,60 +582,52 @@ endmodule
 //////////////////////////////////////////////////////////////////////////////
 
 module gameState(input clk,
-						input upleft, up, upright, 
-						input left, right, 
-						input downleft, down, downright,
+						input misstep, whacked,
 						input start,
 						input reset,
+						input request_mole,
+						input expired,
 						// Future input: record
 						output start_timer,
-						output [3:0] state,
+						output [3:0] timer_value,
+						output [3:0] display_state,
 						output [2:0] mole_location,
-						output reg [1:0] lives,
-						output reg [7:0] score
+						output [1:0] lives,
+						output [7:0] score
 						);
 						
 // States
-reg [3:0] IDLE 					= 4'd00;		// Check if user has pressed start
-reg [3:0] GAME_START_DELAY 	= 4'd01;		// Delay until user stands on center
-reg [3:0] GAME_ONGOING			= 4'd02;		// Check lives & Address from Music
-reg [3:0] REQUEST_MOLE			= 4'd03;		// Request a mole to be displayed (pulse)
-reg [3:0] MOLE_COUNTDOWN		= 4'd04;		// Mole displayed until stomped/expired 
-reg [3:0] MOLE_MISSED			= 4'd05;		// Lives counter decremented (pulse)
-reg [3:0] MOLE_WHACKED			= 4'd06;		// Score counter incremented (pulse)
-reg [3:0] SAFE_STEP_DELAY		= 4'd07;		// Prevent repeated lives decrement
-reg [3:0] GAME_OVER				= 4'd08;		// Display Game Over Screen
+reg [3:0] IDLE 					= 4'd0;		// Check if user has pressed start
+reg [3:0] GAME_START_DELAY 	= 4'd1;		// Delay until user stands on center
+reg [3:0] GAME_ONGOING			= 4'd2;		// Check lives & Address from Music
+reg [3:0] REQUEST_MOLE			= 4'd3;		// Request a mole to be displayed (pulse)
+reg [3:0] MOLE_COUNTDOWN		= 4'd4;		// Mole displayed until stomped/expired 
+reg [3:0] MOLE_MISSED			= 4'd5;		// Lives counter decremented (pulse)
+reg [3:0] MOLE_WHACKED			= 4'd6;		// Score counter incremented (pulse)
+reg [3:0] SAFE_STEP_DELAY		= 4'd7;		// Prevent repeated lives decrement
+reg [3:0] GAME_OVER				= 4'd8;		// Display Game Over Screen
 
 // State machine variables
 reg [3:0] state = 4'b0;
 reg [3:0] next_state = 4'b0;
 
 // Counters
-lives = 2'd3;	// If zero --> Dead --> Game Over
-score = 8'd0;
+reg [1:0] temp_lives = 2'd3;	// If zero --> Dead --> Game Over
+reg [7:0] temp_score = 8'd0;
 
 // Do a thing each relevant state
 always @(posedge clk) begin
 	if (reset)
 		state <= 4'b0;
-	if (state == GAME_START_DELAY)
-		
 	state <= next_state;
 end
-
-// to-do:
-//		debounce
-//		mole signal
-// 	misstep signal
-//		mole_location
-// 	LSFRS for RNG
 
 // State machine
 always @(*) begin
 	case(state)
 		IDLE : next_state = (start) ? GAME_START_DELAY : IDLE;
 		GAME_START_DELAY: next_state = (expired) ? GAME_ONGOING : GAME_START_DELAY;
-		GAME_ONGOING : next_state = (lives == 0) ? GAME_OVER : (mole) ? REQUEST_MOLE : GAME_ONGOING;
+		GAME_ONGOING : next_state = (lives == 0) ? GAME_OVER : (request_mole) ? REQUEST_MOLE : GAME_ONGOING;
 		REQUEST_MOLE : next_state = MOLE_COUNTDOWN;
 		MOLE_COUNTDOWN : next_state = (expired || misstep) ? MOLE_MISSED : (whacked) ? MOLE_WHACKED : MOLE_COUNTDOWN;
 		MOLE_MISSED : next_state = SAFE_STEP_DELAY;
@@ -498,6 +638,15 @@ always @(*) begin
 	endcase
 end
 
-assign start_timer = (state == IDLE && next_state == GAME_START_DELAY
+
+wire [2:0] location;
+rng loc(clk, reset, location);
+
+assign start_timer = (state == IDLE && next_state == GAME_START_DELAY);
+assign timer_value = 4'd2;
+assign display_state = state;
+assign mole_location = location;
+assign lives = temp_lives;
+assign score = temp_score;
 
 endmodule
