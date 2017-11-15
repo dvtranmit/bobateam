@@ -1,7 +1,7 @@
 Release 10.1.03 - par K.39 (lin64)
 Copyright (c) 1995-2008 Xilinx, Inc.  All rights reserved.
 
-Tue Nov 14 23:38:32 2017
+Wed Nov 15 14:05:14 2017
 
 
 INFO: The IO information is provided in three file formats as part of the Place and Route (PAR) process.  These formats are:
@@ -434,7 +434,7 @@ Pinout by Pin Number:
 |C13       |user1<15>           |IOB      |IO_L70N_1             |INPUT    |LVTTL*     |1             |          |         |           |NONE     |       |LOCATED   |         |NO         |NONE            |
 |C14       |                    |         |VCCO_1                |         |           |1             |          |         |           |         |3.30   |          |         |           |                |
 |C15       |clock2              |IOB      |IO_L96P_1/GCLK2S      |INPUT    |LVTTL*     |1             |          |         |           |NONE     |       |LOCATED   |         |NO         |NONE            |
-|C16       |                    |DIFFS    |IO_L96N_1/GCLK3P      |UNUSED   |           |1             |          |         |           |         |       |          |         |           |                |
+|C16       |clock_27mhz         |IOB      |IO_L96N_1/GCLK3P      |INPUT    |LVTTL*     |1             |          |         |           |NONE     |       |LOCATED   |         |NO         |NONE            |
 |C17       |                    |DIFFM    |IO_L78P_0             |UNUSED   |           |0             |          |         |           |         |       |          |         |           |                |
 |C18       |                    |         |VCCO_0                |         |           |0             |          |         |           |         |3.30   |          |         |           |                |
 |C19       |user4<16>           |IOB      |IO_L78N_0             |INPUT    |LVTTL*     |0             |          |         |           |NONE     |       |LOCATED   |         |NO         |NONE            |

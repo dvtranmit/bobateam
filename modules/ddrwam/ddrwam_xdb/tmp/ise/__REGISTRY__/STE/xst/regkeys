@@ -1,5 +1,5 @@
 CommandLine
-/afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/bin/lin64/unwrapped/xst -ise /afs/athena.mit.edu/user/d/v/dvtran/Documents/6.111/finalproject/bobateam/modules/ddrwam/ddrwam.ise -intstyle ise -ifn debounce.xst -ofn debounce.stx -finalclean 1
+/afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/bin/lin64/unwrapped/xst -ise /afs/athena.mit.edu/user/d/v/dvtran/Documents/6.111/finalproject/bobateam/modules/ddrwam/ddrwam.ise -intstyle ise -ifn /afs/athena.mit.edu/user/d/v/dvtran/Documents/6.111/finalproject/bobateam/modules/ddrwam/labkit.xst -ofn /afs/athena.mit.edu/user/d/v/dvtran/Documents/6.111/finalproject/bobateam/modules/ddrwam/labkit.syr -finalclean 1
 s
 FormatString
 xst [-ifn <InputFile>] [-ofn <OutputFile>] [-ise <iseProjectFile>] [--quiet] [-intstyle <Style>] [--deb <DebugLevel>] [--finalclean <Clean>] [--PcubeFlow] [--globOptFlow] [--XstNtrc]
