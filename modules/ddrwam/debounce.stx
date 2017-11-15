@@ -1,0 +1,41 @@
+Release 10.1.03 - xst K.39 (lin64)
+Copyright (c) 1995-2008 Xilinx, Inc.  All rights reserved.
+--> 
+Parameter TMPDIR set to ./xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.02 secs
+ 
+--> 
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling verilog file "labkit.v" in library work
+Module <labkit> compiled
+Module <divider> compiled
+Module <timer> compiled
+Module <synchronize> compiled
+Module <debounce> compiled
+Module <interpret_input> compiled
+Module <mole> compiled
+Module <rng> compiled
+Module <gameState> compiled
+No errors in compilation
+Analysis of file <"debounce.prj"> succeeded.
+ 
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.05 secs
+ 
+--> 
+
+
+Total memory usage is 284176 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :    0 (   0 filtered)
+Number of infos    :    0 (   0 filtered)
+

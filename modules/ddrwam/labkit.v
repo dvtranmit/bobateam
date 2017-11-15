@@ -324,14 +324,34 @@ module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 	         .A0(1'b1), .A1(1'b1), .A2(1'b1), .A3(1'b1));
   defparam reset_sr.INIT = 16'hFFFF;
 
-  ////////////////////////////////////////////////////////////////////////////
-  // 
-  // Control the leds with the switches
-  // 
-  assign led = ~switch;
-  //
-  ////////////////////////////////////////////////////////////////////////////
 
+///////////////////////////////////////////
+//				  DEBOUNCE INPUTS				  //
+///////////////////////////////////////////
+
+	wire upleft;//, up, upright, left, right, downleft, down, downright;
+	debounce db_ul(.clk(clk_27mhz), .reset(reset), .noisy(button3), .clean(upleft));
+	//debounce db_ur(.clk(clk_27mhz), .reset(reset), .noisy(button2), .clean(upright));
+	//debounce db_dl(.clk(clk_27mhz), .reset(reset), .noisy(button1), .clean(downleft));
+	//debounce db_dr(.clk(clk_27mhz), .reset(reset), .noisy(button0), .clean(downright));
+	//debounce db_u(.clk(clk_27mhz), .reset(reset), .noisy(button_up), .clean(up));
+	//debounce db_d(.clk(clk_27mhz), .reset(reset), .noisy(button_down), .clean(down));
+	//debounce db_l(.clk(clk_27mhz), .reset(reset), .noisy(button_left), .clean(left));
+	//debounce db_r(.clk(clk_27mhz), .reset(reset), .noisy(button_right), .clean(right));
+
+///////////////////////////////////////////
+//			INITIALIZE & CONNECT GAME		  //
+///////////////////////////////////////////
+	
+	wire one_hz_enable;
+	divider one_hz_div(.clk(clk_27mhz), .reset(button_enter), .one_hz_enable(one_hz_enable));
+
+	reg toggler = 1'b0;
+	always@(posedge one_hz_enable) begin
+		toggler <= ~toggler;
+	end
+	
+	assign led = {switch[3:0], toggler, upleft, button3, switch[7]};
 endmodule
 
 //////////////////////////////////////////////////////////////////////////////
@@ -340,27 +360,26 @@ endmodule
 //																									 //
 //////////////////////////////////////////////////////////////////////////////
 
-module divider (	input clk,
-						input start_timer,
+module divider (	input clk, reset,
 						output one_hz_enable );
 
-// Implemented similar to debounce
+// Implemented similarly to debounce
 parameter DELAY = 32'd27000000;
    
 reg [31:0] counter = 32'd0;
 reg enable = 1'b0;
 
 always @(posedge clk) begin
-    if (start_timer) begin                  // divider reset
+    if (reset) begin                  		 // divider reset
         counter <= 32'd0;
         enable <= 1'b0;
     end else if (enable) begin              // enable pulse off
-        enable <= 1'b0;
         counter <= counter + 1;
+        enable <= 1'b0;
     end else if (counter == DELAY) begin    // enable pulse on
-        enable <= 1'b1;
         counter <= 32'd0;
-    end else                                // increment counter
+        enable <= 1'b1;
+    end else                                 // increment counter
         counter <= counter + 1;
 end
 
@@ -428,7 +447,7 @@ endmodule
 //////////////////////////////////////////////////////////////////////////////
 
 module debounce #(parameter DELAY=270000)   // .01 sec with a 27Mhz clock
-	        (input reset, clk, noisy,
+	        (input clk, reset, noisy,
 	         output reg clean);
 
    reg [18:0] count;

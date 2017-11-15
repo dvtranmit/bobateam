@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- IMPORTANT: This is an internal file that has been generated
+     by the Xilinx ISE software.  Any direct editing or
+     changes made to this file may result in unpredictable
+     behavior or data corruption.  It is strongly advised that
+     users do not edit the contents of this file. -->
+<DeviceUsageSummary rev="24">
+<DesignStatistics TimeStamp="Tue Nov 14 23:38:43 2017"><group name="NetStatistics">
+<item name="NumNets_Active" rev="24">
+<attrib name="value" value="910"/></item>
+<item name="NumNets_Gnd" rev="24">
+<attrib name="value" value="1"/></item>
+<item name="NumNets_Vcc" rev="24">
+<attrib name="value" value="1"/></item>
+<item name="NumNodesOfType_Active_DOUBLE" rev="24">
+<attrib name="value" value="8"/></item>
+<item name="NumNodesOfType_Active_DUMMYBANK" rev="24">
+<attrib name="value" value="4"/></item>
+<item name="NumNodesOfType_Active_DUMMYESC" rev="24">
+<attrib name="value" value="6"/></item>
+<item name="NumNodesOfType_Active_HUNIHEX" rev="24">
+<attrib name="value" value="25"/></item>
+<item name="NumNodesOfType_Active_INPUT" rev="24">
+<attrib name="value" value="6"/></item>
+<item name="NumNodesOfType_Active_IOBOUTPUT" rev="24">
+<attrib name="value" value="6"/></item>
+<item name="NumNodesOfType_Gnd_DUMMYBANK" rev="24">
+<attrib name="value" value="198"/></item>
+<item name="NumNodesOfType_Gnd_INPUT" rev="24">
+<attrib name="value" value="198"/></item>
+<item name="NumNodesOfType_Gnd_OMUX" rev="24">
+<attrib name="value" value="128"/></item>
+<item name="NumNodesOfType_Gnd_OUTPUT" rev="24">
+<attrib name="value" value="91"/></item>
+<item name="NumNodesOfType_Vcc_INPUT" rev="24">
+<attrib name="value" value="36"/></item>
+<item name="NumNodesOfType_Vcc_VCCOUT" rev="24">
+<attrib name="value" value="29"/></item>
+</group>
+<group name="MiscellaneousStatistics">
+<item name="AGG_BONDED_IO" rev="23">
+<attrib name="value" value="575"/></item>
+<item name="AGG_IO" rev="23">
+<attrib name="value" value="575"/></item>
+<item name="NUM_BONDED_IOB" rev="23">
+<attrib name="value" value="575"/></item>
+</group>
+</DesignStatistics>
+<DeviceUsage TimeStamp="Tue Nov 14 23:38:43 2017"><group name="SiteSummary">
+<item name="IOB" rev="24">
+<attrib name="total" value="1000000"/><attrib name="used" value="575"/></item>
+<item name="IOB_INBUF" rev="24">
+<attrib name="total" value="1000000"/><attrib name="used" value="335"/></item>
+<item name="IOB_OUTBUF" rev="24">
+<attrib name="total" value="1000000"/><attrib name="used" value="240"/></item>
+<item name="IOB_PAD" rev="24">
+<attrib name="total" value="1000000"/><attrib name="used" value="575"/></item>
+</group>
+</DeviceUsage>
+<ReportConfigData TimeStamp="Tue Nov 14 23:38:43 2017"><group name="IOB_PAD">
+<item name="DRIVEATTRBOX" rev="24">
+<attrib name="12" value="140"/></item>
+<item name="IOATTRBOX" rev="24">
+<attrib name="LVTTL" value="400"/><attrib name="LVDCI_33" value="175"/></item>
+<item name="PULL" rev="24">
+<attrib name="PULLUP" value="1"/></item>
+<item name="SLEW" rev="24">
+<attrib name="SLOW" value="140"/></item>
+</group>
+</ReportConfigData>
+<ReportPinData TimeStamp="Tue Nov 14 23:38:43 2017"><group name="IOB_OUTBUF">
+<item name="IN" rev="24">
+<attrib name="value" value="240"/></item>
+<item name="OUT" rev="24">
+<attrib name="value" value="240"/></item>
+</group>
+<group name="IOB_INBUF">
+<item name="IN" rev="24">
+<attrib name="value" value="335"/></item>
+<item name="OUT" rev="24">
+<attrib name="value" value="335"/></item>
+</group>
+<group name="IOB_PAD">
+<item name="PAD" rev="24">
+<attrib name="value" value="575"/></item>
+</group>
+<group name="IOB">
+<item name="I" rev="24">
+<attrib name="value" value="335"/></item>
+<item name="O1" rev="24">
+<attrib name="value" value="240"/></item>
+<item name="PAD" rev="24">
+<attrib name="value" value="575"/></item>
+</group>
+</ReportPinData>
+<CmdHistory>
+</CmdHistory>
+</DeviceUsageSummary>

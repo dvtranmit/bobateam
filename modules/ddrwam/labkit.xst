@@ -1,16 +1,16 @@
 set -tmpdir "/afs/athena.mit.edu/user/d/v/dvtran/Documents/6.111/finalproject/bobateam/modules/ddrwam/xst/projnav.tmp"
 set -xsthdpdir "/afs/athena.mit.edu/user/d/v/dvtran/Documents/6.111/finalproject/bobateam/modules/ddrwam/xst"
 run
--ifn gameState.prj
+-ifn labkit.prj
 -ifmt mixed
--ofn gameState
+-ofn labkit
 -ofmt NGC
 -p xc2v6000-4-bf957
--top gameState
+-top labkit
 -opt_mode Speed
 -opt_level 1
 -iuc NO
--lso gameState.lso
+-lso labkit.lso
 -keep_hierarchy NO
 -netlist_hierarchy as_optimized
 -rtlview Yes
