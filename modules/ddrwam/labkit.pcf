@@ -1,39 +1,8 @@
 //! **************************************************************************
-// Written by: Map K.39 on Wed Nov 15 14:04:48 2017
+// Written by: Map K.39 on Wed Nov 15 19:48:53 2017
 //! **************************************************************************
 
 SCHEMATIC START;
-COMP "user4<1>" LOCATE = SITE "G18" LEVEL 1;
-COMP "user3<5>" LOCATE = SITE "B10" LEVEL 1;
-COMP "user4<24>" LOCATE = SITE "B20" LEVEL 1;
-COMP "user4<16>" LOCATE = SITE "C19" LEVEL 1;
-COMP "user4<2>" LOCATE = SITE "F16" LEVEL 1;
-COMP "user3<6>" LOCATE = SITE "B11" LEVEL 1;
-COMP "user4<25>" LOCATE = SITE "B21" LEVEL 1;
-COMP "user4<17>" LOCATE = SITE "C20" LEVEL 1;
-COMP "user4<3>" LOCATE = SITE "F18" LEVEL 1;
-COMP "user3<7>" LOCATE = SITE "B12" LEVEL 1;
-COMP "user4<26>" LOCATE = SITE "B22" LEVEL 1;
-COMP "user4<18>" LOCATE = SITE "C21" LEVEL 1;
-COMP "user4<4>" LOCATE = SITE "F20" LEVEL 1;
-COMP "user3<8>" LOCATE = SITE "D6" LEVEL 1;
-COMP "user4<27>" LOCATE = SITE "B23" LEVEL 1;
-COMP "user4<19>" LOCATE = SITE "C22" LEVEL 1;
-COMP "user4<5>" LOCATE = SITE "G21" LEVEL 1;
-COMP "user3<9>" LOCATE = SITE "D7" LEVEL 1;
-COMP "user4<28>" LOCATE = SITE "A25" LEVEL 1;
-COMP "user4<6>" LOCATE = SITE "G23" LEVEL 1;
-COMP "user4<29>" LOCATE = SITE "A26" LEVEL 1;
-COMP "user4<7>" LOCATE = SITE "H23" LEVEL 1;
-COMP "tv_in_hff" LOCATE = SITE "AH23" LEVEL 1;
-COMP "tv_in_line_clock1" LOCATE = SITE "AD16" LEVEL 1;
-COMP "user4<8>" LOCATE = SITE "B18" LEVEL 1;
-COMP "tv_in_line_clock2" LOCATE = SITE "AD17" LEVEL 1;
-COMP "user4<9>" LOCATE = SITE "B19" LEVEL 1;
-COMP "ram0_adv_ld" LOCATE = SITE "V26" LEVEL 1;
-COMP "clock_feedback_out" LOCATE = SITE "AL28" LEVEL 1;
-NET "clock_27mhz_BUFGP/IBUFG" BEL "clock_27mhz_BUFGP/BUFG.GCLKMUX"
-        USELOCALCONNECT;
 COMP "tv_out_i2c_clock" LOCATE = SITE "J27" LEVEL 1;
 COMP "tv_in_iso" LOCATE = SITE "AJ27" LEVEL 1;
 COMP "audio_reset_b" LOCATE = SITE "AE18" LEVEL 1;
@@ -222,8 +191,8 @@ COMP "button2" LOCATE = SITE "AD11" LEVEL 1;
 COMP "button3" LOCATE = SITE "AB12" LEVEL 1;
 COMP "switch<0>" LOCATE = SITE "AK26" LEVEL 1;
 COMP "switch<1>" LOCATE = SITE "AL26" LEVEL 1;
-COMP "tv_out_subcar_reset" LOCATE = SITE "K27" LEVEL 1;
 COMP "switch<2>" LOCATE = SITE "AK25" LEVEL 1;
+COMP "tv_out_subcar_reset" LOCATE = SITE "K27" LEVEL 1;
 COMP "analyzer4_clock" LOCATE = SITE "AD9" LEVEL 1;
 COMP "switch<3>" LOCATE = SITE "AC21" LEVEL 1;
 COMP "switch<4>" LOCATE = SITE "AB20" LEVEL 1;
@@ -581,5 +550,36 @@ COMP "user2<9>" LOCATE = SITE "A19" LEVEL 1;
 COMP "user4<31>" LOCATE = SITE "A28" LEVEL 1;
 COMP "user4<23>" LOCATE = SITE "E25" LEVEL 1;
 COMP "user4<15>" LOCATE = SITE "G24" LEVEL 1;
+COMP "user4<1>" LOCATE = SITE "G18" LEVEL 1;
+COMP "user3<5>" LOCATE = SITE "B10" LEVEL 1;
+COMP "user4<24>" LOCATE = SITE "B20" LEVEL 1;
+COMP "user4<16>" LOCATE = SITE "C19" LEVEL 1;
+COMP "user4<2>" LOCATE = SITE "F16" LEVEL 1;
+COMP "user3<6>" LOCATE = SITE "B11" LEVEL 1;
+COMP "user4<25>" LOCATE = SITE "B21" LEVEL 1;
+COMP "user4<17>" LOCATE = SITE "C20" LEVEL 1;
+COMP "user4<3>" LOCATE = SITE "F18" LEVEL 1;
+COMP "user3<7>" LOCATE = SITE "B12" LEVEL 1;
+COMP "user4<26>" LOCATE = SITE "B22" LEVEL 1;
+COMP "user4<18>" LOCATE = SITE "C21" LEVEL 1;
+COMP "user4<4>" LOCATE = SITE "F20" LEVEL 1;
+COMP "user3<8>" LOCATE = SITE "D6" LEVEL 1;
+COMP "user4<27>" LOCATE = SITE "B23" LEVEL 1;
+COMP "user4<19>" LOCATE = SITE "C22" LEVEL 1;
+COMP "user4<5>" LOCATE = SITE "G21" LEVEL 1;
+COMP "user3<9>" LOCATE = SITE "D7" LEVEL 1;
+COMP "user4<28>" LOCATE = SITE "A25" LEVEL 1;
+COMP "user4<6>" LOCATE = SITE "G23" LEVEL 1;
+COMP "user4<29>" LOCATE = SITE "A26" LEVEL 1;
+COMP "user4<7>" LOCATE = SITE "H23" LEVEL 1;
+COMP "tv_in_hff" LOCATE = SITE "AH23" LEVEL 1;
+COMP "tv_in_line_clock1" LOCATE = SITE "AD16" LEVEL 1;
+COMP "user4<8>" LOCATE = SITE "B18" LEVEL 1;
+COMP "tv_in_line_clock2" LOCATE = SITE "AD17" LEVEL 1;
+COMP "user4<9>" LOCATE = SITE "B19" LEVEL 1;
+COMP "ram0_adv_ld" LOCATE = SITE "V26" LEVEL 1;
+COMP "clock_feedback_out" LOCATE = SITE "AL28" LEVEL 1;
+NET "clock_27mhz_BUFGP/IBUFG" BEL "clock_27mhz_BUFGP/BUFG.GCLKMUX"
+        USELOCALCONNECT;
 SCHEMATIC END;
 

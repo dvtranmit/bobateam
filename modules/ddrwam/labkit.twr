@@ -37,10 +37,15 @@ Setup/Hold to clock clock_27mhz
             |  Setup to  |  Hold to   |                  | Clock  |
 Source      | clk (edge) | clk (edge) |Internal Clock(s) | Phase  |
 ------------+------------+------------+------------------+--------+
-button2     |    0.437(R)|   -0.165(R)|clock_27mhz_BUFGP |   0.000|
-button3     |    0.453(R)|   -0.181(R)|clock_27mhz_BUFGP |   0.000|
-button_enter|    0.187(R)|    0.085(R)|clock_27mhz_BUFGP |   0.000|
-button_up   |    0.177(R)|    0.095(R)|clock_27mhz_BUFGP |   0.000|
+button0     |    0.892(R)|   -0.343(R)|clock_27mhz_BUFGP |   0.000|
+button1     |    1.261(R)|   -0.712(R)|clock_27mhz_BUFGP |   0.000|
+button2     |    1.150(R)|   -0.601(R)|clock_27mhz_BUFGP |   0.000|
+button3     |    1.626(R)|   -1.077(R)|clock_27mhz_BUFGP |   0.000|
+button_down |    0.859(R)|   -0.310(R)|clock_27mhz_BUFGP |   0.000|
+button_enter|   -0.035(R)|    0.307(R)|clock_27mhz_BUFGP |   0.000|
+button_left |    1.326(R)|   -0.777(R)|clock_27mhz_BUFGP |   0.000|
+button_right|    1.247(R)|   -0.698(R)|clock_27mhz_BUFGP |   0.000|
+button_up   |    1.748(R)|   -1.199(R)|clock_27mhz_BUFGP |   0.000|
 ------------+------------+------------+------------------+--------+
 
 Clock clock_27mhz to Pad
@@ -48,10 +53,7 @@ Clock clock_27mhz to Pad
             | clk (edge) |                  | Clock  |
 Destination |   to PAD   |Internal Clock(s) | Phase  |
 ------------+------------+------------------+--------+
-disp_clock  |   12.057(R)|clock_27mhz_BUFGP |   0.000|
-led<0>      |   13.215(R)|clock_27mhz_BUFGP |   0.000|
-led<1>      |   12.530(R)|clock_27mhz_BUFGP |   0.000|
-led<2>      |   12.829(R)|clock_27mhz_BUFGP |   0.000|
+disp_clock  |    9.998(R)|clock_27mhz_BUFGP |   0.000|
 ------------+------------+------------------+--------+
 
 Clock to Setup on destination clock clock_27mhz
@@ -59,28 +61,32 @@ Clock to Setup on destination clock clock_27mhz
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-clock_27mhz    |    6.885|         |         |         |
+clock_27mhz    |    6.102|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 Pad to Pad
 ---------------+---------------+---------+
 Source Pad     |Destination Pad|  Delay  |
 ---------------+---------------+---------+
-switch<0>      |led<4>         |    7.354|
-switch<1>      |led<5>         |    7.383|
-switch<2>      |led<6>         |    7.830|
-switch<3>      |led<7>         |    7.995|
+button0        |led<0>         |   10.016|
+button1        |led<2>         |   10.308|
+button2        |led<5>         |    9.092|
+button3        |led<7>         |    8.700|
+button_down    |led<1>         |   10.111|
+button_left    |led<4>         |    9.912|
+button_right   |led<3>         |    9.979|
+button_up      |led<6>         |    8.983|
 ---------------+---------------+---------+
 
 
-Analysis completed Wed Nov 15 14:05:17 2017 
+Analysis completed Wed Nov 15 19:49:22 2017 
 --------------------------------------------------------------------------------
 
 Trace Settings:
 -------------------------
 Trace Settings 
 
-Peak Memory Usage: 342 MB
+Peak Memory Usage: 353 MB
 
 
 

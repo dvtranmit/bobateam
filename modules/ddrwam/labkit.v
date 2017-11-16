@@ -339,21 +339,94 @@ module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 	debounce db_l(.clk(clock_27mhz), .reset(reset), .noisy(button_left), .clean(left));
 	debounce db_r(.clk(clock_27mhz), .reset(reset), .noisy(button_right), .clean(right));
 	debounce db_e(.clk(clock_27mhz), .reset(reset), .noisy(button_enter), .clean(enter));
+	
+	wire start;
+	debounce db_st(.clk(clock_27mhz), .reset(reset), .noisy(switch[7]), .clean(start));
 
 ///////////////////////////////////////////
 //			INITIALIZE & CONNECT GAME		  //
 ///////////////////////////////////////////
+
+	/* Available Modules
+		gameState
+		interpretInput
+		mole
+		debounce
+		divider
+		display_string
+		rng
+		interpret_input
+	*/
 	
+	// Pulse every hz for human time domain timing
 	wire one_hz_enable;
 	divider one_hz_div(.clk(clock_27mhz), .reset(enter), .one_hz_enable(one_hz_enable));
 
-	reg toggler = 1'b1;
-	always@(posedge one_hz_enable) begin
-		toggler <= ~toggler;
-	end
+	// timer for delays
+	wire expired;
+	wire [3:0] displayed_counter;
+	timer game_start_delay(.clk(clock_27mhz), .start_timer(enter), .one_hz_enable(one_hz_enable),
+									.timer_value(4'b10), .expired(expired),
+									.displayed_counter(displayed_counter));
+	
+	// Generate random locations (a number 0-7)
+	wire [2:0] mole_location;
+	random mole(.clk(one_hz_enable), .reset(enter), .r(mole_location));
 
+	// Send misstep and whacked signals for game logic
+	wire misstep;
+	wire whacked;
+	interpret_input step_signals( .clk(clock_27mhz), .upleft(upleft),
+												.up(up), .upright(upright),
+												.left(left), .right(right),
+												.downleft(downleft), .down(down),
+												.downright(downright), .reset(enter),
+												.mole_location(mole_location),
+												.misstep(misstep), .whacked(whacked));
+	
+///////////////////////////////////////////
+//						DEBUGGING		  			//
+///////////////////////////////////////////
+
+	// Blink w/ 2s period
+	// Calculate displays
+	reg toggler = 1'b1;
+	reg [15:0] step_location;
+	reg [7:0] feedback;
+	reg [15:0] displayed_mole_location;
+	always@(posedge clock_27mhz) begin
+		toggler <= (one_hz_enable) ? ~toggler : toggler;
+		case({upleft, up, upright, left, right, downleft, down, downright})
+			8'b10000000: step_location <= "UL";
+			8'b01000000: step_location <= "U ";
+			8'b00100000: step_location <= "UR";
+			8'b00010000: step_location <= "L ";
+			8'b00001000: step_location <= "R ";
+			8'b00000100: step_location <= "DL";
+			8'b00000010: step_location <= "D ";
+			8'b00000001: step_location <= "DR";
+			default: step_location <= "??";
+		endcase
+		case(mole_location)
+			3'd0: displayed_mole_location <= "UL";
+			3'd1: displayed_mole_location <= "U ";
+			3'd2: displayed_mole_location <= "UR";
+			3'd3: displayed_mole_location <= "L ";
+			3'd4: displayed_mole_location <= "R ";
+			3'd5: displayed_mole_location <= "DL";
+			3'd6: displayed_mole_location <= "D ";
+			3'd7: displayed_mole_location <= "DR";
+			default: displayed_mole_location <= "??";
+		endcase
+		case({whacked, misstep})
+			2'b01: feedback <= "X";
+			2'b10: feedback <= "$";
+			default: feedback <= "?";
+		endcase
+	end	
+	
 	// Display letter toggler value
-	wire [127:0] string = {120'd0, "A"};
+	wire [127:0] string = {feedback, "MOLE:", displayed_mole_location, " ", "STEP:", step_location};
 	display_string debug_display(.reset(reset), .clock_27mhz(clock_27mhz),
 											.string_data(string),
 											.disp_blank(disp_blank),
@@ -363,7 +436,7 @@ module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 											.disp_ce_b(disp_ce_b),
 											.disp_reset_b(disp_reset_b));
 
-	assign led = {switch[3:0], toggler, upleft, up, upright};
+	assign led = {button3, button_up, button2, button_left, button_right, button1, button_down, button0};
 endmodule
 
 //////////////////////////////////////////////////////////////////////////////
@@ -376,7 +449,7 @@ module divider (	input clk, reset,
 						output one_hz_enable );
 
 // Implemented similarly to debounce
-parameter DELAY = 32'd27000000;
+parameter DELAY = 32'd54000000;
    
 reg [31:0] counter = 32'd0;
 reg enable = 1'b0;
@@ -406,7 +479,8 @@ endmodule
 
 module timer( 	input clk, start_timer, one_hz_enable,
 					input [3:0] timer_value,
-					output expired );
+					output expired,
+					output [3:0] displayed_counter );
 
 // States
 parameter [1:0] IDLE 		= 2'd0;		// Await start_timer
@@ -432,6 +506,7 @@ always @(posedge clk) begin
 end
 
 assign expired = (state == EXPIRED);
+assign displayed_counter = counter;
 endmodule
 
 //////////////////////////////////////////////////////////////////////////////
@@ -487,6 +562,26 @@ endmodule
 
 //////////////////////////////////////////////////////////////////////////////
 //																									 //
+//							  RANDOM NUMBER GENERATOR MODULE								 //
+//																									 //
+//////////////////////////////////////////////////////////////////////////////
+module random(	input clk, reset,
+				output [2:0] r );
+
+reg [3:0] temp_r = 4'b0001;
+
+always @ (posedge clk) begin
+	if (reset)
+		temp_r <= 4'b0001;
+	else
+		temp_r <= {temp_r[2:0], temp_r[3]^temp_r[2]};
+end
+
+assign r = temp_r[2:0];
+endmodule
+
+//////////////////////////////////////////////////////////////////////////////
+//																									 //
 //								  INTERPRET INPUT MODULE									 //
 //																									 //
 //////////////////////////////////////////////////////////////////////////////
@@ -495,9 +590,8 @@ module interpret_input(	input clk,
 								input upleft, up, upright, 
 								input left, right, 
 								input downleft, down, downright,
-								input start,
 								input reset,
-								input mole_location,
+								input [2:0] mole_location,
 								output misstep,
 								output whacked);
 
@@ -511,7 +605,7 @@ reg temp_misstep = 1'b0;
 always@(posedge clk) begin
 	if ({upleft, up, upright, left, right, downleft, down, downright} == location)
 		temp_whacked <= 1'b1;
-	else if ({upleft, up, upright, left, right, downleft, down, downright} !== 8'b0)
+	else if ({upleft, up, upright, left, right, downleft, down, downright} !== 8'd0)
 		temp_misstep <= 1'b1;
 	else begin
 		temp_whacked <= 1'b0;
@@ -522,14 +616,14 @@ end
 // Convert location to one hot representation
 always@(*) begin
 	case(mole_location)
-		3'd0: location = 8'b00000001;
-		3'd1: location = 8'b00000010;
-		3'd2: location = 8'b00000100;
-		3'd3: location = 8'b00001000;
-		3'd4: location = 8'b00010000;
-		3'd5: location = 8'b00100000;
-		3'd6: location = 8'b01000000;
-		3'd7: location = 8'b10000000;
+		3'd0: location = 8'b10000000;
+		3'd1: location = 8'b01000000;
+		3'd2: location = 8'b00100000;
+		3'd3: location = 8'b00010000;
+		3'd4: location = 8'b00001000;
+		3'd5: location = 8'b00000100;
+		3'd6: location = 8'b00000010;
+		3'd7: location = 8'b00000001;
 		default: location = 8'b0;
 	endcase
 end
@@ -584,28 +678,6 @@ always @(posedge clk) begin
 end
 
 assign request_mole = (state == MOLE);
-endmodule
-
-
-
-//////////////////////////////////////////////////////////////////////////////
-//																									 //
-//							  RANDOM NUMBER GENERATOR MODULE								 //
-//																									 //
-//////////////////////////////////////////////////////////////////////////////
-module rng(	input clk, reset,
-				output [2:0] r );
-
-reg [2:0] temp_r = 3'b001;
-
-always @ (posedge clk) begin
-	if (reset)
-		temp_r <= 3'b001;
-	else
-		temp_r <= {temp_r[1:0], temp_r[2]^temp_r[0]};
-end
-
-assign r = temp_r;
 endmodule
 
 
