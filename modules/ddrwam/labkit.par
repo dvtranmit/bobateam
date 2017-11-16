@@ -1,7 +1,7 @@
 Release 10.1.03 par K.39 (lin64)
 Copyright (c) 1995-2008 Xilinx, Inc.  All rights reserved.
 
-eecs-digital-33::  Wed Nov 15 19:49:01 2017
+eecs-digital-33::  Thu Nov 16 15:44:23 2017
 
 par -w -intstyle ise -ol std -t 1 labkit_map.ncd labkit.ncd labkit.pcf 
 
@@ -34,7 +34,7 @@ Device Utilization Summary:
    Number of External IOBs                 576 out of 684    84%
       Number of LOCed IOBs                 576 out of 576   100%
 
-   Number of SLICEs                        515 out of 33792   1%
+   Number of SLICEs                        585 out of 33792   1%
 
 
 Overall effort level (-ol):   Standard 
@@ -136,7 +136,6 @@ WARNING:Par:288 - The signal switch<4>_IBUF has no load.  PAR will not attempt t
 WARNING:Par:288 - The signal switch<5>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal switch<6>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal daughtercard<10>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal switch<7>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal clock_feedback_in_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal daughtercard<11>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal daughtercard<20>_IBUF has no load.  PAR will not attempt to route this signal.
@@ -372,50 +371,50 @@ WARNING:Par:288 - The signal user4<9>_IBUF has no load.  PAR will not attempt to
 Starting Placer
 
 Phase 1.1
-Phase 1.1 (Checksum:14b67fb) REAL time: 1 secs 
+Phase 1.1 (Checksum:14c9c48) REAL time: 1 secs 
 
 Phase 2.7
-Phase 2.7 (Checksum:14b67fb) REAL time: 1 secs 
+Phase 2.7 (Checksum:14c9c48) REAL time: 1 secs 
 
 Phase 3.31
-Phase 3.31 (Checksum:14b67fb) REAL time: 1 secs 
+Phase 3.31 (Checksum:14c9c48) REAL time: 1 secs 
 
 Phase 4.2
 
 ......
-Phase 4.2 (Checksum:14c8187) REAL time: 1 secs 
+Phase 4.2 (Checksum:14db5d4) REAL time: 2 secs 
 
 Phase 5.30
-Phase 5.30 (Checksum:14c8187) REAL time: 1 secs 
+Phase 5.30 (Checksum:14db5d4) REAL time: 2 secs 
 
 Phase 6.3
-Phase 6.3 (Checksum:14c8187) REAL time: 1 secs 
+Phase 6.3 (Checksum:14db5d4) REAL time: 2 secs 
 
 Phase 7.5
-Phase 7.5 (Checksum:14c8187) REAL time: 1 secs 
+Phase 7.5 (Checksum:14db5d4) REAL time: 2 secs 
 
 Phase 8.8
-.......
+........
 ...
-.............
+......................
+......
 .........
-.........
-Phase 8.8 (Checksum:290f7ce) REAL time: 4 secs 
+Phase 8.8 (Checksum:2d9cdb8) REAL time: 4 secs 
 
 Phase 9.5
-Phase 9.5 (Checksum:290f7ce) REAL time: 4 secs 
+Phase 9.5 (Checksum:2d9cdb8) REAL time: 4 secs 
 
 Phase 10.18
-Phase 10.18 (Checksum:292d575) REAL time: 5 secs 
+Phase 10.18 (Checksum:2da25f0) REAL time: 5 secs 
 
 Phase 11.5
-Phase 11.5 (Checksum:292d575) REAL time: 5 secs 
+Phase 11.5 (Checksum:2da25f0) REAL time: 5 secs 
 
 Phase 12.27
-Phase 12.27 (Checksum:292d575) REAL time: 5 secs 
+Phase 12.27 (Checksum:2da25f0) REAL time: 5 secs 
 
 Phase 13.24
-Phase 13.24 (Checksum:292d575) REAL time: 5 secs 
+Phase 13.24 (Checksum:2da25f0) REAL time: 5 secs 
 
 REAL time consumed by placer: 5 secs 
 CPU  time consumed by placer: 5 secs 
@@ -427,33 +426,29 @@ Total CPU time to Placer completion: 5 secs
 
 Starting Router
 
-Phase 1: 3564 unrouted;       REAL time: 10 secs 
+Phase 1: 4286 unrouted;       REAL time: 10 secs 
 
-Phase 2: 3008 unrouted;       REAL time: 11 secs 
+Phase 2: 3705 unrouted;       REAL time: 12 secs 
 
-Phase 3: 723 unrouted;       REAL time: 11 secs 
+Phase 3: 947 unrouted;       REAL time: 12 secs 
 
-Phase 4: 723 unrouted; (51773)      REAL time: 11 secs 
+Phase 4: 947 unrouted; (116092)      REAL time: 12 secs 
 
-Phase 5: 752 unrouted; (0)      REAL time: 11 secs 
+Phase 5: 981 unrouted; (0)      REAL time: 12 secs 
 
-Phase 6: 0 unrouted; (70)      REAL time: 11 secs 
+Phase 6: 0 unrouted; (0)      REAL time: 12 secs 
 
-Phase 7: 0 unrouted; (70)      REAL time: 12 secs 
+Phase 7: 0 unrouted; (0)      REAL time: 13 secs 
 
-Phase 8: 0 unrouted; (70)      REAL time: 12 secs 
+Phase 8: 0 unrouted; (0)      REAL time: 13 secs 
 
-Phase 9: 0 unrouted; (50)      REAL time: 12 secs 
+Phase 9: 0 unrouted; (0)      REAL time: 13 secs 
 
-Phase 10: 0 unrouted; (50)      REAL time: 12 secs 
-
-Phase 11: 0 unrouted; (50)      REAL time: 12 secs 
-
-Phase 12: 0 unrouted; (50)      REAL time: 12 secs 
+Phase 10: 0 unrouted; (0)      REAL time: 13 secs 
 
 
-Total REAL time to Router completion: 12 secs 
-Total CPU time to Router completion: 12 secs 
+Total REAL time to Router completion: 13 secs 
+Total CPU time to Router completion: 13 secs 
 
 Partition Implementation Status
 -------------------------------
@@ -471,11 +466,11 @@ Generating Clock Report
 +---------------------+--------------+------+------+------------+-------------+
 |        Clock Net    |   Resource   |Locked|Fanout|Net Skew(ns)|Max Delay(ns)|
 +---------------------+--------------+------+------+------------+-------------+
-|   clock_27mhz_BUFGP |     BUFGMUX3P| No   |  170 |  0.444     |  2.491      |
+|   clock_27mhz_BUFGP |     BUFGMUX3P| No   |  200 |  0.383     |  2.509      |
 +---------------------+--------------+------+------+------------+-------------+
-| debug_display/clock |     BUFGMUX4S| No   |   66 |  0.167     |  2.195      |
+| debug_display/clock |     BUFGMUX4S| No   |   66 |  0.230     |  2.258      |
 +---------------------+--------------+------+------+------------+-------------+
-|   one_hz_div/enable |         Local|      |    4 |  0.000     |  1.612      |
+|   one_hz_div/enable |         Local|      |   10 |  0.000     |  1.916      |
 +---------------------+--------------+------+------+------------+-------------+
 
 * Net Skew is the difference between the minimum and maximum routing
@@ -494,14 +489,14 @@ Asterisk (*) preceding a constraint indicates it was not met.
   Constraint                                |  Check  | Worst Case |  Best Case | Timing |   Timing   
                                             |         |    Slack   | Achievable | Errors |    Score   
 ------------------------------------------------------------------------------------------------------
-  Autotimespec constraint for clock net clo | SETUP   |         N/A|     6.102ns|     N/A|           0
-  ck_27mhz_BUFGP                            | HOLD    |     1.391ns|            |       0|           0
+  Autotimespec constraint for clock net clo | SETUP   |         N/A|     6.353ns|     N/A|           0
+  ck_27mhz_BUFGP                            | HOLD    |     1.362ns|            |       0|           0
 ------------------------------------------------------------------------------------------------------
-  Autotimespec constraint for clock net deb | SETUP   |         N/A|     9.404ns|     N/A|           0
-  ug_display/clock                          | HOLD    |     1.330ns|            |       0|           0
+  Autotimespec constraint for clock net deb | SETUP   |         N/A|    10.800ns|     N/A|           0
+  ug_display/clock                          | HOLD    |     1.344ns|            |       0|           0
 ------------------------------------------------------------------------------------------------------
-  Autotimespec constraint for clock net one | SETUP   |         N/A|     1.967ns|     N/A|           0
-  _hz_div/enable                            | HOLD    |     1.411ns|            |       0|           0
+  Autotimespec constraint for clock net one | SETUP   |         N/A|     1.947ns|     N/A|           0
+  _hz_div/enable                            | HOLD    |     1.413ns|            |       0|           0
 ------------------------------------------------------------------------------------------------------
 
 
@@ -514,18 +509,18 @@ Generating Pad Report.
 
 All signals are completely routed.
 
-WARNING:Par:283 - There are 326 loadless signals in this design. This design will cause Bitgen to issue DRC warnings.
+WARNING:Par:283 - There are 325 loadless signals in this design. This design will cause Bitgen to issue DRC warnings.
 
-Total REAL time to PAR completion: 18 secs 
-Total CPU time to PAR completion: 15 secs 
+Total REAL time to PAR completion: 19 secs 
+Total CPU time to PAR completion: 16 secs 
 
-Peak Memory Usage:  601 MB
+Peak Memory Usage:  617 MB
 
 Placement: Completed - No errors found.
 Routing: Completed - No errors found.
 
 Number of error messages: 0
-Number of warning messages: 328
+Number of warning messages: 327
 Number of info messages: 2
 
 Writing design to file labkit.ncd

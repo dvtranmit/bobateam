@@ -365,17 +365,20 @@ module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 	// timer for delays
 	wire expired;
 	wire [3:0] displayed_counter;
-	timer game_start_delay(.clk(clock_27mhz), .start_timer(enter), .one_hz_enable(one_hz_enable),
-									.timer_value(4'b10), .expired(expired),
+	wire start_timer;
+	wire [3:0] timer_value;
+	timer game_start_delay(.clk(clock_27mhz), .start_timer(start_timer), .one_hz_enable(one_hz_enable),
+									.timer_value(timer_value), .expired(expired),
 									.displayed_counter(displayed_counter));
 	
 	// Generate random locations (a number 0-7)
-	wire [2:0] mole_location;
-	random mole(.clk(one_hz_enable), .reset(enter), .r(mole_location));
+	wire [2:0] random_mole_location;
+	random moleloc(.clk(one_hz_enable), .reset(enter), .r(random_mole_location));
 
 	// Send misstep and whacked signals for game logic
 	wire misstep;
 	wire whacked;
+	wire [2:0] mole_location;
 	interpret_input step_signals( .clk(clock_27mhz), .upleft(upleft),
 												.up(up), .upright(upright),
 												.left(left), .right(right),
@@ -383,7 +386,23 @@ module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 												.downright(downright), .reset(enter),
 												.mole_location(mole_location),
 												.misstep(misstep), .whacked(whacked));
-	
+
+	wire request_mole;
+	mole getmole(.clk(clock_27mhz), .reset(enter),
+						.one_hz_enable(one_hz_enable),
+						.request_mole(request_mole));
+
+	wire [3:0] display_state;
+	wire [1:0] lives;
+	wire [7:0] score;
+	gameState game(.clk(clock_27mhz), .misstep(misstep),
+						.whacked(whacked), .start(start),
+						.reset(enter), .request_mole(request_mole),
+						.expired(expired), .random_mole_location(random_mole_location),
+						.start_timer(start_timer), .timer_value(timer_value),
+						.display_state(display_state), .mole_location(mole_location), 
+						.lives(lives), .score(score));
+
 ///////////////////////////////////////////
 //						DEBUGGING		  			//
 ///////////////////////////////////////////
@@ -393,9 +412,12 @@ module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 	reg toggler = 1'b1;
 	reg [15:0] step_location;
 	reg [7:0] feedback;
+	reg [2:0] current_mole_location = 3'd0;
 	reg [15:0] displayed_mole_location;
+	reg [47:0] lives_display;
 	always@(posedge clock_27mhz) begin
-		toggler <= (one_hz_enable) ? ~toggler : toggler;
+		toggler <= (request_mole) ? ~toggler : toggler;
+		current_mole_location <= (request_mole) ? mole_location : current_mole_location;
 		case({upleft, up, upright, left, right, downleft, down, downright})
 			8'b10000000: step_location <= "UL";
 			8'b01000000: step_location <= "U ";
@@ -407,7 +429,7 @@ module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 			8'b00000001: step_location <= "DR";
 			default: step_location <= "??";
 		endcase
-		case(mole_location)
+		case(current_mole_location)
 			3'd0: displayed_mole_location <= "UL";
 			3'd1: displayed_mole_location <= "U ";
 			3'd2: displayed_mole_location <= "UR";
@@ -423,10 +445,16 @@ module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 			2'b10: feedback <= "$";
 			default: feedback <= "?";
 		endcase
+		if (lives > 0)
+			lives_display <= {"LIVE:", 8'h30 + lives};
+		else if (lives == 0)
+			lives_display <= "URDEAD";
+		else
+			lives_display <= "??????";
 	end	
 	
 	// Display letter toggler value
-	wire [127:0] string = {feedback, "MOLE:", displayed_mole_location, " ", "STEP:", step_location};
+	wire [127:0] string = {displayed_mole_location, "SCORE:", 8'h30+score, " ", lives_display};
 	display_string debug_display(.reset(reset), .clock_27mhz(clock_27mhz),
 											.string_data(string),
 											.disp_blank(disp_blank),
@@ -436,7 +464,7 @@ module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 											.disp_ce_b(disp_ce_b),
 											.disp_reset_b(disp_reset_b));
 
-	assign led = {button3, button_up, button2, button_left, button_right, button1, button_down, button0};
+	assign led = {toggler, button_up, button2, button_left, button_right, button1, button_down, button0};
 endmodule
 
 //////////////////////////////////////////////////////////////////////////////
@@ -449,7 +477,7 @@ module divider (	input clk, reset,
 						output one_hz_enable );
 
 // Implemented similarly to debounce
-parameter DELAY = 32'd54000000;
+parameter DELAY = 32'd27000000;
    
 reg [31:0] counter = 32'd0;
 reg enable = 1'b0;
@@ -693,6 +721,7 @@ module gameState(input clk,
 						input reset,
 						input request_mole,
 						input expired,
+						input [2:0] random_mole_location,
 						// Future input: record
 						output start_timer,
 						output [3:0] timer_value,
@@ -723,8 +752,14 @@ reg [7:0] temp_score = 8'd0;
 
 // Do a thing each relevant state
 always @(posedge clk) begin
-	if (reset)
+	if (reset) begin
 		state <= 4'b0;
+		temp_lives <= 2'd3;
+		temp_score <= 8'd0;
+	end else if (state == MOLE_MISSED)
+		temp_lives <= temp_lives - 1;
+	else if (state == MOLE_WHACKED)
+		temp_score <= temp_score + 1;
 	state <= next_state;
 end
 
@@ -744,14 +779,10 @@ always @(*) begin
 	endcase
 end
 
-
-wire [2:0] location;
-rng loc(clk, reset, location);
-
-assign start_timer = (state == IDLE && next_state == GAME_START_DELAY);
-assign timer_value = 4'd2;
+assign start_timer = (state !== next_state);
+assign timer_value = 4'd3;
 assign display_state = state;
-assign mole_location = location;
+assign mole_location = random_mole_location;
 assign lives = temp_lives;
 assign score = temp_score;
 
