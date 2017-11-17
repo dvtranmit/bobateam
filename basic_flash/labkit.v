@@ -312,7 +312,7 @@ module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 	
 	//clock, reset, dots, writemode, wdata, dowrite, raddr, frdata, doread, busy,
 //	flash_data, flash_address, flash_ce_b, flash_oe_b, flash_we_b, flash_reset_b, flash_sts, flash_byte_b, fsmstate
-	parameter MAX_ADDRESS = 23'h020; //should be same as in test_fsm
+	parameter READ_MAX_ADDRESS = 23'h025; //should be same as in test_fsm, slighty higher for testing purposes
 	
 	wire flash_reset;
 	assign flash_reset = switch[0];
@@ -321,25 +321,31 @@ module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 	wire [639:0] dots;
 	reg writemode;
 	wire [15:0] wdata;
-	assign wdata = 16'h1235;
+	assign wdata = 16'h2;
 	reg dowrite;
-	reg [22:0] raddr = 0;
+	reg [22:0] raddr;
 	wire [15:0] frdata;
 	reg doread;
 	wire display_reset;
 	assign display_reset = switch[4];
-	reg [4:0] flashcounter;
-	reg lastsw7;
+	reg [5:0] flashcounter;
+	reg lastsw5;
 	wire writing;
 	assign writing = switch[6];
 	wire reading;
 	assign reading = switch[7];
 always @(posedge clock_27mhz) begin
+	lastsw5 <= switch[5];
+	if (!lastsw5 & switch[5]) begin
+		if (raddr >= READ_MAX_ADDRESS) begin
+			raddr <= 0;
+		end
+		else raddr <= raddr + 1;
+	end
 	if (switch[7] & switch[6]) begin
 		writemode <=1;
 		dowrite <= 0;
 		doread <= 0;
-		raddr <= 0; // initial read address = 0
 	end
 	else begin
 		if(busy==0) begin
@@ -376,13 +382,18 @@ end
 	assign led[7] = ~reading; //sw7
 	
 	wire [63:0] display_data;
-	flash_manager flash_flash(.clock(clock_27mhz), .reset(flash_reset), .dots(dots), .display_data(display_data),
+	assign display_data = {flash_data, raddr[15:0], wdata};
+	
+	flash_manager flash_flash(.clock(clock_27mhz), .reset(flash_reset), .dots(dots),
 										.writemode(writemode), .wdata(wdata), .dowrite(dowrite),
 										.raddr(raddr), .frdata(frdata), .doread(doread), .busy(busy), .fsmstate(fsmstate),
 										.flash_data(flash_data), .flash_address(flash_address), .flash_ce_b(flash_ce_b), .flash_oe_b(flash_oe_b),
 										.flash_we_b(flash_we_b), .flash_reset_b(flash_reset_b), .flash_sts(flash_sts), .flash_byte_b(flash_byte_b));
 
-	display dots_disp(.reset(display_reset), .clock_27mhz(clock_27mhz), .disp_rs(disp_rs), .disp_ce_b(disp_ce_b), .disp_blank(disp_blank),
-							 .disp_reset_b(disp_reset_b), .disp_data_out(disp_data_out), .disp_clock(disp_clock), .dots(dots));
-			    
+	//display dots_disp(.reset(display_reset), .clock_27mhz(clock_27mhz), .disp_rs(disp_rs), .disp_ce_b(disp_ce_b), .disp_blank(disp_blank),
+	//						 .disp_reset_b(disp_reset_b), .disp_data_out(disp_data_out), .disp_clock(disp_clock), .dots(dots));
+	
+	display_16hex disp(.reset(display_reset), .clock_27mhz(clock_27mhz), .data_in(display_data), 
+		.disp_rs(disp_rs), .disp_ce_b(disp_ce_b), .disp_blank(disp_blank),
+							 .disp_reset_b(disp_reset_b), .disp_data_out(disp_data_out), .disp_clock(disp_clock));
 endmodule

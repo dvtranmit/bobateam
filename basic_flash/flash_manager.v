@@ -1,5 +1,5 @@
 //manages all the stuff needed to read and write to the flash ROM
-module flash_manager(clock, reset, dots, writemode, wdata, dowrite, raddr, frdata, doread, busy, flash_data, flash_address, flash_ce_b, flash_oe_b, flash_we_b, flash_reset_b, flash_sts, flash_byte_b, fsmstate, display_data); 
+module flash_manager(clock, reset, dots, writemode, wdata, dowrite, raddr, frdata, doread, busy, flash_data, flash_address, flash_ce_b, flash_oe_b, flash_we_b, flash_reset_b, flash_sts, flash_byte_b, fsmstate); 
 	input reset, clock;			//clock and reset
 	output [639:0] dots;		//outputs to dot-matrix to help debug flash, not necessary
 	input writemode;			//if true then we're in write mode, else we're in read mode
@@ -12,8 +12,6 @@ module flash_manager(clock, reset, dots, writemode, wdata, dowrite, raddr, frdat
 	output busy;				//and an output to tell folks we're still working on the last thing
 	reg busy;
 	
-	output [63:0] display_data; //data to write through display_16hex, for debugging purposes
-
 	inout [15:0] flash_data;					//direct passthrough from labkit to low-level modules (flash_int and test_fsm)
     output [23:0] flash_address;
     output flash_ce_b, flash_oe_b, flash_we_b;
@@ -29,7 +27,7 @@ module flash_manager(clock, reset, dots, writemode, wdata, dowrite, raddr, frdat
 	reg [1:0] mode;
 	wire fsm_busy;
 	
-	reg[2:0] state = 3;					//210
+	reg[2:0] state = 2;					//210
 	
 	output[11:0] fsmstate;
 	wire [7:0] fsmstateinv;
