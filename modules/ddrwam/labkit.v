@@ -412,12 +412,10 @@ module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 	reg toggler = 1'b1;
 	reg [15:0] step_location;
 	reg [7:0] feedback;
-	reg [2:0] current_mole_location = 3'd0;
 	reg [15:0] displayed_mole_location;
 	reg [47:0] lives_display;
 	always@(posedge clock_27mhz) begin
 		toggler <= (request_mole) ? ~toggler : toggler;
-		current_mole_location <= (request_mole) ? mole_location : current_mole_location;
 		case({upleft, up, upright, left, right, downleft, down, downright})
 			8'b10000000: step_location <= "UL";
 			8'b01000000: step_location <= "U ";
@@ -429,7 +427,7 @@ module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 			8'b00000001: step_location <= "DR";
 			default: step_location <= "??";
 		endcase
-		case(current_mole_location)
+		case(mole_location)
 			3'd0: displayed_mole_location <= "UL";
 			3'd1: displayed_mole_location <= "U ";
 			3'd2: displayed_mole_location <= "UR";
@@ -454,7 +452,7 @@ module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 	end	
 	
 	// Display letter toggler value
-	wire [127:0] string = {displayed_mole_location, "SCORE:", 8'h30+score, " ", lives_display};
+	wire [127:0] string = {displayed_mole_location, "SCORE:", " ", 8'h30+score, lives_display};
 	display_string debug_display(.reset(reset), .clock_27mhz(clock_27mhz),
 											.string_data(string),
 											.disp_blank(disp_blank),
@@ -688,20 +686,23 @@ module mole(	input clk, reset,
 parameter COUNTING 	= 1'b1;		// Countdown from timer_value (until expired)
 parameter MOLE			= 1'b0;		// mole pulse lasts one clock cycle
 
+// Mole Parameters
+parameter MOLE_REQUEST_FREQUENCY = 4'd3;
+
 // State machine variables
 reg state = COUNTING;
-reg [3:0] counter = 4'd5;
+reg [3:0] counter = MOLE_REQUEST_FREQUENCY;
 
 always @(posedge clk) begin
 	if (reset) begin
 		state <= COUNTING;
-		counter <= 4'd5;
+		counter <= MOLE_REQUEST_FREQUENCY;
 	end else if (state == COUNTING) begin
 		state <= (counter == 0) ? MOLE : COUNTING;
 		counter <= (one_hz_enable) ? counter - 1: counter;
 	end else if (state == MOLE) begin
 		state <= COUNTING;
-		counter <= 4'd5;
+		counter <= MOLE_REQUEST_FREQUENCY;
 	end
 end
 
@@ -750,6 +751,8 @@ reg [3:0] next_state = 4'b0;
 reg [1:0] temp_lives = 2'd3;	// If zero --> Dead --> Game Over
 reg [7:0] temp_score = 8'd0;
 
+// Mole location
+reg [2:0] current_mole_location;
 // Do a thing each relevant state
 always @(posedge clk) begin
 	if (reset) begin
@@ -760,6 +763,8 @@ always @(posedge clk) begin
 		temp_lives <= temp_lives - 1;
 	else if (state == MOLE_WHACKED)
 		temp_score <= temp_score + 1;
+	else if (state == REQUEST_MOLE)
+		current_mole_location <= random_mole_location;
 	state <= next_state;
 end
 
@@ -780,9 +785,9 @@ always @(*) begin
 end
 
 assign start_timer = (state !== next_state);
-assign timer_value = 4'd3;
+assign timer_value = 4'd2; 	// Must be less than mole pop up rate
 assign display_state = state;
-assign mole_location = random_mole_location;
+assign mole_location = current_mole_location;
 assign lives = temp_lives;
 assign score = temp_score;
 

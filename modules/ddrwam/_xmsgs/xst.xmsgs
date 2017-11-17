@@ -5,13 +5,13 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
-<msg type="warning" file="Xst" num="1465" delta="unknown" >&quot;<arg fmt="%s" index="1">labkit.v</arg>&quot; line <arg fmt="%d" index="2">636</arg>: Exactly not equal expression will be synthesized as a not equal expression, simulation mismatch is possible. 
+<msg type="warning" file="Xst" num="1465" delta="unknown" >&quot;<arg fmt="%s" index="1">labkit.v</arg>&quot; line <arg fmt="%d" index="2">634</arg>: Exactly not equal expression will be synthesized as a not equal expression, simulation mismatch is possible. 
 </msg>
 
-<msg type="warning" file="Xst" num="863" delta="unknown" >&quot;<arg fmt="%s" index="1">labkit.v</arg>&quot; line <arg fmt="%d" index="2">722</arg>: Name conflict (<arg fmt="%s" index="3">&lt;REQUEST_MOLE&gt; and &lt;request_mole&gt;, renaming REQUEST_MOLE as request_mole_rnm0</arg>).
+<msg type="warning" file="Xst" num="863" delta="unknown" >&quot;<arg fmt="%s" index="1">labkit.v</arg>&quot; line <arg fmt="%d" index="2">723</arg>: Name conflict (<arg fmt="%s" index="3">&lt;REQUEST_MOLE&gt; and &lt;request_mole&gt;, renaming REQUEST_MOLE as request_mole_rnm0</arg>).
 </msg>
 
-<msg type="warning" file="Xst" num="1465" delta="unknown" >&quot;<arg fmt="%s" index="1">labkit.v</arg>&quot; line <arg fmt="%d" index="2">782</arg>: Exactly not equal expression will be synthesized as a not equal expression, simulation mismatch is possible. 
+<msg type="warning" file="Xst" num="1465" delta="unknown" >&quot;<arg fmt="%s" index="1">labkit.v</arg>&quot; line <arg fmt="%d" index="2">787</arg>: Exactly not equal expression will be synthesized as a not equal expression, simulation mismatch is possible. 
 </msg>
 
 <msg type="info" file="Xst" num="1433" delta="unknown" >Contents of array &lt;<arg fmt="%s" index="1">rdots</arg>&gt; may be accessed with an index that exceeds the array size. This could cause simulation mismatch.

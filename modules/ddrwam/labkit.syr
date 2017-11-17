@@ -5,14 +5,14 @@ Parameter TMPDIR set to /afs/athena.mit.edu/user/d/v/dvtran/Documents/6.111/fina
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.04 secs
+Total CPU time to Xst completion: 0.03 secs
  
 --> 
 Parameter xsthdpdir set to /afs/athena.mit.edu/user/d/v/dvtran/Documents/6.111/finalproject/bobateam/modules/ddrwam/xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.04 secs
+Total CPU time to Xst completion: 0.03 secs
  
 --> 
 Reading design: labkit.prj
@@ -148,6 +148,7 @@ Analyzing hierarchy for module <interpret_input> in library <work>.
 Analyzing hierarchy for module <mole> in library <work> with parameters.
 	COUNTING = "1"
 	MOLE = "0"
+	MOLE_REQUEST_FREQUENCY = "0011"
 
 Analyzing hierarchy for module <gameState> in library <work>.
 
@@ -188,17 +189,18 @@ Analyzing module <random> in library <work>.
 Module <random> is correct for synthesis.
  
 Analyzing module <interpret_input> in library <work>.
-WARNING:Xst:1465 - "labkit.v" line 636: Exactly not equal expression will be synthesized as a not equal expression, simulation mismatch is possible. 
+WARNING:Xst:1465 - "labkit.v" line 634: Exactly not equal expression will be synthesized as a not equal expression, simulation mismatch is possible. 
 Module <interpret_input> is correct for synthesis.
  
 Analyzing module <mole> in library <work>.
 	COUNTING = 1'b1
 	MOLE = 1'b0
+	MOLE_REQUEST_FREQUENCY = 4'b0011
 Module <mole> is correct for synthesis.
  
 Analyzing module <gameState> in library <work>.
-WARNING:Xst:863 - "labkit.v" line 722: Name conflict (<REQUEST_MOLE> and <request_mole>, renaming REQUEST_MOLE as request_mole_rnm0).
-WARNING:Xst:1465 - "labkit.v" line 782: Exactly not equal expression will be synthesized as a not equal expression, simulation mismatch is possible. 
+WARNING:Xst:863 - "labkit.v" line 723: Name conflict (<REQUEST_MOLE> and <request_mole>, renaming REQUEST_MOLE as request_mole_rnm0).
+WARNING:Xst:1465 - "labkit.v" line 787: Exactly not equal expression will be synthesized as a not equal expression, simulation mismatch is possible. 
 Module <gameState> is correct for synthesis.
  
 Analyzing module <display_string> in library <work>.
@@ -249,7 +251,7 @@ Synthesizing Unit <timer>.
     | Implementation     | LUT                                            |
     -----------------------------------------------------------------------
     Found 4-bit register for signal <counter>.
-    Found 4-bit subtractor for signal <counter$addsub0000> created at line 528.
+    Found 4-bit subtractor for signal <counter$addsub0000> created at line 526.
     Summary:
 	inferred   1 Finite State Machine(s).
 	inferred   4 D-type flip-flop(s).
@@ -260,7 +262,7 @@ Unit <timer> synthesized.
 Synthesizing Unit <random>.
     Related source file is "labkit.v".
     Found 4-bit register for signal <temp_r>.
-    Found 1-bit xor2 for signal <temp_r$xor0000> created at line 605.
+    Found 1-bit xor2 for signal <temp_r$xor0000> created at line 603.
     Summary:
 	inferred   4 D-type flip-flop(s).
 Unit <random> synthesized.
@@ -272,7 +274,7 @@ WARNING:Xst:647 - Input <reset> is never used. This port will be preserved and l
     Found 8x8-bit ROM for signal <location>.
     Found 1-bit register for signal <temp_misstep>.
     Found 1-bit register for signal <temp_whacked>.
-    Found 8-bit comparator equal for signal <temp_whacked$cmp_eq0000> created at line 634.
+    Found 8-bit comparator equal for signal <temp_whacked$cmp_eq0000> created at line 632.
     Summary:
 	inferred   1 ROM(s).
 	inferred   2 D-type flip-flop(s).
@@ -283,7 +285,7 @@ Unit <interpret_input> synthesized.
 Synthesizing Unit <mole>.
     Related source file is "labkit.v".
     Found 4-bit register for signal <counter>.
-    Found 4-bit subtractor for signal <counter$addsub0000> created at line 701.
+    Found 4-bit subtractor for signal <counter$addsub0000> created at line 702.
     Found 1-bit register for signal <state>.
     Summary:
 	inferred   5 D-type flip-flop(s).
@@ -314,11 +316,13 @@ WARNING:Xst:653 - Signal <GAME_ONGOING> is used but never assigned. This sourcel
     | Implementation     | LUT                                            |
     -----------------------------------------------------------------------
     Found 4-bit comparator not equal for signal <start_timer>.
+    Found 3-bit register for signal <current_mole_location>.
     Found 2-bit down counter for signal <temp_lives>.
     Found 8-bit up counter for signal <temp_score>.
     Summary:
 	inferred   1 Finite State Machine(s).
 	inferred   2 Counter(s).
+	inferred   3 D-type flip-flop(s).
 	inferred   1 Comparator(s).
 Unit <gameState> synthesized.
 
@@ -343,7 +347,7 @@ Unit <ascii2dots> synthesized.
 Synthesizing Unit <debounce>.
     Related source file is "labkit.v".
     Found 20-bit up counter for signal <count>.
-    Found 1-bit xor2 for signal <count$xor0000> created at line 579.
+    Found 1-bit xor2 for signal <count$xor0000> created at line 577.
     Found 1-bit register for signal <new>.
     Found 1-bit register for signal <temp_clean>.
     Summary:
@@ -371,15 +375,15 @@ Synthesizing Unit <display_string>.
     Found 1-bit register for signal <disp_data_out>.
     Found 1-bit register for signal <disp_rs>.
     Found 1-bit register for signal <disp_reset_b>.
-    Found 1-bit 40-to-1 multiplexer for signal <$varindex0000> created at line 958.
+    Found 1-bit 40-to-1 multiplexer for signal <$varindex0000> created at line 963.
     Found 8-bit 16-to-1 multiplexer for signal <ascii>.
     Found 4-bit register for signal <char_index>.
-    Found 4-bit subtractor for signal <char_index$addsub0000> created at line 964.
+    Found 4-bit subtractor for signal <char_index$addsub0000> created at line 969.
     Found 1-bit register for signal <clock>.
     Found 32-bit register for signal <control>.
     Found 5-bit up counter for signal <count>.
     Found 10-bit register for signal <dot_index>.
-    Found 10-bit addsub for signal <dot_index$share0000> created at line 891.
+    Found 10-bit addsub for signal <dot_index$share0000> created at line 896.
     Found 40-bit register for signal <rdots>.
     Found 8-bit down counter for signal <reset_count>.
     Summary:
@@ -697,18 +701,17 @@ WARNING:Xst:646 - Signal <step_location> is assigned but never used. This unconn
 WARNING:Xst:646 - Signal <feedback> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <displayed_counter> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <display_state> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-    Found 8x16-bit ROM for signal <displayed_mole_location$mux0000> created at line 432.
-    Found 3-bit register for signal <current_mole_location>.
+    Found 8x16-bit ROM for signal <displayed_mole_location$mux0000> created at line 430.
     Found 16-bit register for signal <displayed_mole_location>.
     Found 48-bit register for signal <lives_display>.
-    Found 6-bit adder for signal <lives_display$add0000> created at line 449.
-    Found 2-bit comparator greater for signal <lives_display$cmp_gt0000> created at line 448.
+    Found 6-bit adder for signal <lives_display$add0000> created at line 447.
+    Found 2-bit comparator greater for signal <lives_display$cmp_gt0000> created at line 446.
     Found 48-bit 4-to-1 multiplexer for signal <lives_display$mux0000>.
-    Found 8-bit adder for signal <string$add0000> created at line 457.
+    Found 8-bit adder for signal <string$add0000> created at line 455.
     Found 1-bit register for signal <toggler>.
     Summary:
 	inferred   1 ROM(s).
-	inferred  68 D-type flip-flop(s).
+	inferred  65 D-type flip-flop(s).
 	inferred   2 Adder/Subtractor(s).
 	inferred   1 Comparator(s).
 	inferred  48 Multiplexer(s).
@@ -890,7 +893,7 @@ WARNING:Xst:1710 - FF/Latch <debug_display/rdots_1> (without init value) has a c
 Mapping all equations...
 Building and optimizing final netlist ...
 Found area constraint ratio of 100 (+ 5) on block labkit, actual ratio is 1.
-FlipFlop debug_display/char_index_0 has been replicated 2 time(s)
+FlipFlop debug_display/char_index_0 has been replicated 1 time(s)
 FlipFlop debug_display/char_index_1 has been replicated 2 time(s)
 FlipFlop debug_display/char_index_2 has been replicated 1 time(s)
 
@@ -914,8 +917,8 @@ Unit <labkit> processed.
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 390
- Flip-Flops                                            : 390
+# Registers                                            : 388
+ Flip-Flops                                            : 388
 # Shift Registers                                      : 11
  2-bit shift register                                  : 7
  7-bit shift register                                  : 4
@@ -947,33 +950,33 @@ Design Statistics
 # IOs                              : 576
 
 Cell Usage :
-# BELS                             : 1703
+# BELS                             : 1698
 #      GND                         : 1
 #      INV                         : 37
 #      LUT1                        : 235
 #      LUT2                        : 54
 #      LUT2_D                      : 3
 #      LUT2_L                      : 10
-#      LUT3                        : 150
-#      LUT3_D                      : 10
+#      LUT3                        : 160
+#      LUT3_D                      : 8
 #      LUT3_L                      : 11
-#      LUT4                        : 435
-#      LUT4_D                      : 33
-#      LUT4_L                      : 57
+#      LUT4                        : 422
+#      LUT4_D                      : 29
+#      LUT4_L                      : 60
 #      MUXCY                       : 293
-#      MUXF5                       : 110
+#      MUXF5                       : 111
 #      MUXF6                       : 12
 #      MUXF7                       : 2
 #      MUXF8                       : 1
 #      VCC                         : 1
 #      XORCY                       : 248
-# FlipFlops/Latches                : 411
-#      FD                          : 34
-#      FDE                         : 75
-#      FDR                         : 56
+# FlipFlops/Latches                : 409
+#      FD                          : 36
+#      FDE                         : 74
+#      FDR                         : 55
 #      FDRE                        : 216
 #      FDRS                        : 10
-#      FDS                         : 5
+#      FDS                         : 3
 #      FDSE                        : 15
 # Shift Registers                  : 12
 #      SRL16                       : 8
@@ -991,10 +994,10 @@ Device utilization summary:
 
 Selected Device : 2v6000bf957-4 
 
- Number of Slices:                      545  out of  33792     1%  
- Number of Slice Flip Flops:            411  out of  67584     0%  
- Number of 4 input LUTs:               1047  out of  67584     1%  
-    Number used as logic:              1035
+ Number of Slices:                      541  out of  33792     1%  
+ Number of Slice Flip Flops:            409  out of  67584     0%  
+ Number of 4 input LUTs:               1041  out of  67584     1%  
+    Number used as logic:              1029
     Number used as Shift registers:      12
  Number of IOs:                         576
  Number of bonded IOBs:                 251  out of    684    36%  
@@ -1021,9 +1024,9 @@ Clock Information:
 -----------------------------------+------------------------+-------+
 Clock Signal                       | Clock buffer(FF name)  | Load  |
 -----------------------------------+------------------------+-------+
-clock_27mhz                        | BUFGP                  | 338   |
+clock_27mhz                        | BUFGP                  | 337   |
 one_hz_div/enable                  | NONE(moleloc/temp_r_3) | 4     |
-debug_display/clock1               | BUFG                   | 81    |
+debug_display/clock1               | BUFG                   | 80    |
 -----------------------------------+------------------------+-------+
 INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
 
@@ -1035,7 +1038,7 @@ Timing Summary:
 ---------------
 Speed Grade: -4
 
-   Minimum period: 10.831ns (Maximum Frequency: 92.325MHz)
+   Minimum period: 10.951ns (Maximum Frequency: 91.316MHz)
    Minimum input arrival time before clock: 2.194ns
    Maximum output required time after clock: 6.771ns
    Maximum combinational path delay: 5.887ns
@@ -1046,36 +1049,37 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clock_27mhz'
-  Clock period: 8.193ns (frequency: 122.063MHz)
-  Total number of paths / destination ports: 9710 / 839
+  Clock period: 7.866ns (frequency: 127.137MHz)
+  Total number of paths / destination ports: 9620 / 835
 -------------------------------------------------------------------------
-Delay:               8.193ns (Levels of Logic = 5)
+Delay:               7.866ns (Levels of Logic = 6)
   Source:            game_start_delay/state_FFd1 (FF)
-  Destination:       game_start_delay/counter_1 (FF)
+  Destination:       game_start_delay/counter_3 (FF)
   Source Clock:      clock_27mhz rising
   Destination Clock: clock_27mhz rising
 
-  Data Path: game_start_delay/state_FFd1 to game_start_delay/counter_1
+  Data Path: game_start_delay/state_FFd1 to game_start_delay/counter_3
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDR:C->Q             15   0.568   1.274  game_start_delay/state_FFd1 (game_start_delay/state_FFd1)
-     LUT2:I0->O            1   0.439   0.557  game/state_FFd6-In_SW0 (N41)
+     FDR:C->Q             12   0.568   1.139  game_start_delay/state_FFd1 (game_start_delay/state_FFd1)
+     LUT2:I1->O            1   0.439   0.557  game/state_FFd6-In_SW0 (N61)
      LUT4:I3->O            2   0.439   0.987  game/state_FFd6-In (game/state_cmp_eq0002)
-     LUT2:I0->O            1   0.439   0.552  game/start_timer10 (game/start_timer10)
-     LUT4:I2->O            6   0.439   1.079  game/start_timer71 (start_timer)
-     LUT4:I0->O            2   0.439   0.702  game_start_delay/counter_mux0000<0>11 (game_start_delay/N5)
-     FDS:S                     0.280          game_start_delay/counter_1
+     LUT2:I0->O            1   0.439   0.557  game/start_timer21_SW0 (N504)
+     LUT4:I3->O            5   0.439   1.055  game/start_timer70 (start_timer)
+     LUT4:I0->O            1   0.439   0.000  game_start_delay/counter_mux0000<3>_F (N664)
+     MUXF5:I0->O           1   0.436   0.000  game_start_delay/counter_mux0000<3> (game_start_delay/counter_mux0000<3>)
+     FD:D                      0.370          game_start_delay/counter_3
     ----------------------------------------
-    Total                      8.193ns (3.043ns logic, 5.149ns route)
-                                       (37.1% logic, 62.9% route)
+    Total                      7.866ns (3.569ns logic, 4.296ns route)
+                                       (45.4% logic, 54.6% route)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'one_hz_div/enable'
-  Clock period: 2.432ns (frequency: 411.100MHz)
+  Clock period: 2.386ns (frequency: 419.024MHz)
   Total number of paths / destination ports: 5 / 4
 -------------------------------------------------------------------------
-Delay:               2.432ns (Levels of Logic = 1)
+Delay:               2.386ns (Levels of Logic = 1)
   Source:            moleloc/temp_r_2 (FF)
   Destination:       moleloc/temp_r_3 (FF)
   Source Clock:      one_hz_div/enable rising
@@ -1085,42 +1089,42 @@ Delay:               2.432ns (Levels of Logic = 1)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FD:C->Q               5   0.568   1.056  moleloc/temp_r_2 (moleloc/temp_r_2)
+     FD:C->Q               3   0.568   1.010  moleloc/temp_r_2 (moleloc/temp_r_2)
      LUT2:I0->O            1   0.439   0.000  moleloc/temp_r<2>1 (moleloc/temp_r<2>1)
      FD:D                      0.370          moleloc/temp_r_3
     ----------------------------------------
-    Total                      2.432ns (1.377ns logic, 1.056ns route)
-                                       (56.6% logic, 43.4% route)
+    Total                      2.386ns (1.377ns logic, 1.010ns route)
+                                       (57.7% logic, 42.3% route)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'debug_display/clock1'
-  Clock period: 10.831ns (frequency: 92.325MHz)
-  Total number of paths / destination ports: 17510 / 108
+  Clock period: 10.951ns (frequency: 91.316MHz)
+  Total number of paths / destination ports: 17408 / 107
 -------------------------------------------------------------------------
-Delay:               10.831ns (Levels of Logic = 9)
+Delay:               10.951ns (Levels of Logic = 9)
   Source:            debug_display/char_index_0_1 (FF)
-  Destination:       debug_display/rdots_20 (FF)
+  Destination:       debug_display/rdots_27 (FF)
   Source Clock:      debug_display/clock1 rising
   Destination Clock: debug_display/clock1 rising
 
-  Data Path: debug_display/char_index_0_1 to debug_display/rdots_20
+  Data Path: debug_display/char_index_0_1 to debug_display/rdots_27
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDE:C->Q             16   0.568   1.208  debug_display/char_index_0_1 (debug_display/char_index_0_1)
-     LUT2:I1->O            1   0.439   0.000  debug_display/Mmux_ascii_7_f5_01 (debug_display/Mmux_ascii_7_f5_0)
-     MUXF5:I1->O           1   0.436   0.000  debug_display/Mmux_ascii_7_f5_0 (debug_display/Mmux_ascii_7_f51)
-     MUXF6:I0->O          47   0.447   1.160  debug_display/Mmux_ascii_5_f6_0 (debug_display/Mmux_ascii_5_f61)
-     LUT3:I2->O           78   0.439   1.492  debug_display/char_index<3>11 (debug_display/ascii<1>)
-     LUT4:I0->O            1   0.439   0.803  debug_display/a2d/Mrom_char_dots_mux000096 (debug_display/a2d/Mrom_char_dots_mux000096)
-     LUT4:I0->O            1   0.439   0.726  debug_display/a2d/Mrom_char_dots_mux0000961_7 (debug_display/a2d/Mrom_char_dots_mux0000961_7)
-     LUT3:I1->O            1   0.439   0.000  debug_display/rdots_mux0000<20>60_G (N527)
-     MUXF5:I1->O           1   0.436   0.551  debug_display/rdots_mux0000<20>60 (debug_display/rdots_mux0000<20>60)
-     LUT4:I2->O            1   0.439   0.000  debug_display/rdots_mux0000<20>86 (debug_display/rdots_mux0000<20>)
-     FDE:D                     0.370          debug_display/rdots_20
+     FDE:C->Q             18   0.568   1.231  debug_display/char_index_0_1 (debug_display/char_index_0_1)
+     LUT2:I1->O            1   0.439   0.000  debug_display/Mmux_ascii_7_f5_21 (debug_display/Mmux_ascii_7_f5_2)
+     MUXF5:I0->O           1   0.436   0.000  debug_display/Mmux_ascii_7_f5_2 (debug_display/Mmux_ascii_7_f53)
+     MUXF6:I0->O          39   0.447   1.140  debug_display/Mmux_ascii_5_f6_2 (debug_display/Mmux_ascii_5_f63)
+     LUT3_D:I2->O         82   0.439   1.502  debug_display/char_index<3>31 (debug_display/ascii<3>)
+     LUT4:I0->O            2   0.439   0.910  debug_display/a2d/Mrom_char_dots_mux00009831 (debug_display/a2d/Mrom_char_dots_mux0000133)
+     LUT4:I1->O            1   0.439   0.726  debug_display/a2d/Mrom_char_dots_mux00001361_8 (debug_display/a2d/Mrom_char_dots_mux00001361_8)
+     LUT3:I1->O            1   0.439   0.000  debug_display/rdots_mux0000<27>89_G (N524)
+     MUXF5:I1->O           1   0.436   0.551  debug_display/rdots_mux0000<27>89 (debug_display/rdots_mux0000<27>89)
+     LUT4:I2->O            1   0.439   0.000  debug_display/rdots_mux0000<27>119 (debug_display/rdots_mux0000<27>)
+     FDE:D                     0.370          debug_display/rdots_27
     ----------------------------------------
-    Total                     10.831ns (4.891ns logic, 5.940ns route)
-                                       (45.2% logic, 54.8% route)
+    Total                     10.951ns (4.891ns logic, 6.060ns route)
+                                       (44.7% logic, 55.3% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'clock_27mhz'
@@ -1202,12 +1206,12 @@ Delay:               5.887ns (Levels of Logic = 2)
 
 
 Total REAL time to Xst completion: 12.00 secs
-Total CPU time to Xst completion: 12.44 secs
+Total CPU time to Xst completion: 11.96 secs
  
 --> 
 
 
-Total memory usage is 490936 kilobytes
+Total memory usage is 490368 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :  341 (   0 filtered)
