@@ -1,0 +1,91 @@
+m255
+K3
+13
+cModel Technology
+Z0 d/afs/athena.mit.edu/user/a/d/adhikara/Documents/6.111things/6.111 project/bobateam/flash_flash_flash
+T_opt
+Z1 V^i0;bTT]F>?ODAQgN]]Bc2
+Z2 04 12 4 work flashtesting fast 0
+Z3 04 4 4 work glbl fast 0
+Z4 =1-f44d304675f6-5a0c8717-5b4e-d1b
+Z5 o-quiet -auto_acc_if_foreign -work work -L xilinxcorelib_ver -L unisims_ver -L unimacro_ver
+Z6 OE;O;6.4a;39
+T_opt1
+Z7 VfcmTAW7W]bQ6N9lfZIPOd1
+R2
+R3
+Z8 =1-f44d304675f6-5a0ca4c3-a4e3c-1307
+R5
+R6
+T_opt2
+V3LfdJYImWQNeko7I1W^zM2
+R2
+R3
+Z9 =1-f44d304675f6-5a0ca556-48d5f-132e
+R5
+R6
+vflash_int
+Z10 IOCfoZBQ32KQ9VD=cS26D01
+Z11 V6a^<5:imWM?FCDgbWA_n;3
+Z12 w1510769148
+Z13 8flash_int.v
+Z14 Fflash_int.v
+L0 6
+Z15 OE;L;6.4a;39
+r1
+31
+Z16 o+acc -L mtiAvm -L mtiOvm -L mtiUPF
+Z17 !s100 W<E;kWSAWQ=]d:K]ZoUQe2
+!s85 0
+vflash_manager
+Z18 IfLLeziW3zkm34ILlI^ff42
+Z19 V0cec=UiZ3FhTDF13dobE?3
+Z20 w1510771594
+Z21 8flash_manager.v
+Z22 Fflash_manager.v
+L0 2
+R15
+r1
+31
+R16
+Z23 !s100 Ook13_fXLANAe]cYmeRcA2
+!s85 0
+vflashtesting
+Z24 ISJ5n_:`nBMWNV<ECjZ41c0
+Z25 V=IhojWOJ[P5>jmk5aVIgS1
+Z26 w1510778118
+Z27 8flashtesting.v
+Z28 Fflashtesting.v
+L0 25
+R15
+r1
+31
+R16
+Z29 !s100 g:K;WU8T<iK?9>90:jBE;3
+!s85 0
+vglbl
+Z30 IB;@1jEXmEfQXL`;Kf0IBZ3
+Z31 VnN]4Gon>inod6>M^M2[SV1
+Z32 w1202685744
+Z33 8/afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/verilog/src/glbl.v
+Z34 F/afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/verilog/src/glbl.v
+L0 5
+R15
+r1
+31
+R16
+Z35 !s100 T?5S;>bN`@zG_25]R_4A33
+!s85 0
+vtest_fsm
+Z36 IlDQfM2hbQbVA=D@M1fTjI2
+Z37 V_JEa:fB8coZ0DWeH0YSbM3
+Z38 w1510772605
+Z39 8test_fsm.v
+Z40 Ftest_fsm.v
+L0 24
+R15
+r1
+31
+R16
+Z41 !s100 P`SkG=__5`UU`m[^4WL5D0
+!s85 0

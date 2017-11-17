@@ -1,5 +1,5 @@
 verilog work "test_fsm.v"
 verilog work "flash_int.v"
 verilog work "flash_manager.v"
-verilog work "../display.v"
+verilog work "display_16hex.v"
 verilog work "labkit.v"

@@ -27,11 +27,11 @@ module flash_manager(clock, reset, dots, writemode, wdata, dowrite, raddr, frdat
 	reg [1:0] mode;
 	wire fsm_busy;
 	
-	reg[2:0] state = 2;					//210
+	reg[2:0] state=2;					//210
 	
 	output[11:0] fsmstate;
 	wire [7:0] fsmstateinv;
-	assign fsmstate = {state,flash_busy,fsm_busy,fsmstateinv[4:0],mode};	//for debugging only
+	assign fsmstate = {address};	//for debugging only
 	
 										//this guy takes care of /some/ of flash's tantrums
 	flash_int flash(reset, clock, op, address, fwdata, frdata, flash_busy, flash_data, flash_address, flash_ce_b, flash_oe_b, flash_we_b, flash_reset_b, flash_sts, flash_byte_b);

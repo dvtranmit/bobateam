@@ -1,3 +1,7 @@
+`define FLASHOP_IDLE  2'b00
+`define FLASHOP_READ  2'b01
+`define FLASHOP_WRITE 2'b10
+
 //flash interface
 module flash_int(reset, clock, op, address, wdata, rdata, busy, flash_data,
 		 flash_address, flash_ce_b, flash_oe_b, flash_we_b,

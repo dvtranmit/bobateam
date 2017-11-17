@@ -1,0 +1,61 @@
+# //  ModelSim SE 6.4a Aug 28 2008 Linux 4.2.0-42-generic
+# //
+# //  Copyright 1991-2008 Mentor Graphics Corporation
+# //              All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND 
+# //  PROPRIETARY INFORMATION WHICH IS THE PROPERTY
+# //  OF MENTOR GRAPHICS CORPORATION OR ITS LICENSORS
+# //  AND IS SUBJECT TO LICENSE TERMS.
+# //
+# do {flashtesting.fdo} 
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module test_fsm
+# 
+# Top level modules:
+# 	test_fsm
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module flash_int
+# 
+# Top level modules:
+# 	flash_int
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module flash_manager
+# 
+# Top level modules:
+# 	flash_manager
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module flashtesting
+# 
+# Top level modules:
+# 	flashtesting
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	glbl
+# vsim -L xilinxcorelib_ver -L unisims_ver -L unimacro_ver -lib work -t 1ps flashtesting glbl 
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: adhikara  Hostname: eecs-digital-32  ProcessID: 4871
+#           Attempting to use alternate WLF file "./wlftmD0bOn".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftmD0bOn
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftmD0bOn
+# Design is being optimized due to module recompilation...
+# Loading work.flashtesting(fast)
+# Loading work.flash_manager(fast)
+# ** Warning: (vsim-3009) [TSCALE] - Module 'flash_manager' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /flashtesting/uut
+# Loading work.flash_int(fast)
+# ** Warning: (vsim-3009) [TSCALE] - Module 'flash_int' does not have a `timescale directive in effect, but previous modules do.
+#         Regioquit
+lashtesting/uut/flash
+# Loading work.test_fsm(fast)
+# ** Warning: (vsim-3009) [TSCALE] - Module 'test_fsm' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /flashtesting/uut/fsm
+# Loading work.glbl(fast)
+# .main_pane.mdi.interior.cs.vm.paneset.cli_0.wf.clip.cs.pw.wf
+# .main_pane.workspace.interior.cs.nb.canvas.notebook.cs.page2.cs
+# .main_pane.signals.interior.cs

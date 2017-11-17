@@ -677,23 +677,24 @@ module lab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
    wire filter;
    debounce sw0(.reset(reset),.clock(clock_27mhz),.noisy(switch[0]),.clean(filter));
 
+
+	wire display_reset;
+	debounce up_btn(.reset(reset),.clock(clock_27mhz),.noisy(button_right),.clean(display_reset));
    // light up LEDs when recording, show volume during playback.
    // led is active low
    //assign led = playback ? ~{filter,2'b00, volume} : ~{filter,7'hFF};
 	//wire [23:0] address;
-	wire [639:0] dots;
+	
+	wire [63:0] display_data;
    // record module
    recorder r(.clock(clock_27mhz), .reset(reset), .ready(ready),
               .playback(playback), .filter(filter),
               .from_ac97_data(from_ac97_data),.to_ac97_data(to_ac97_data),
-				  .current_address(flash_address),.flash_ce_b(flash_ce_b),.flash_oe_b(flash_oe_b), .flash_we_b(flash_we_b),
-				  .flash_reset_b(flash_reset_b),.flash_byte_b(flash_byte_b), .flash_sts(flash_sts),
-				  .dots(dots), .led(led), .switch(switch));
-				  
-	// display
-	
+				  .flash_address(flash_address),.flash_ce_b(flash_ce_b),.flash_oe_b(flash_oe_b), .flash_we_b(flash_we_b),
+				  .flash_reset_b(flash_reset_b),.flash_byte_b(flash_byte_b), .flash_sts(flash_sts), .flash_data(flash_data),
+				   .led(led), .switch(switch), .display_data(display_data));
 	//display things
-	display ds1(.reset(1'b0), .clock_27mhz(clock_27mhz), .dots(dots),
+	display_16hex ds1(.reset(!display_reset), .clock_27mhz(clock_27mhz), .data_in(display_data),
 	   .disp_blank(disp_blank), .disp_clock(disp_clock),.disp_rs(disp_rs), .disp_ce_b(disp_ce_b),
            .disp_reset_b(disp_reset_b), .disp_data_out(disp_data_out));
 			  
@@ -722,52 +723,107 @@ module recorder(
   input wire ready,                // 1 when AC97 data is available
   input wire filter,               // 1 when using low-pass filter
   input wire [7:0] from_ac97_data, // 8-bit PCM data from mic
-  output wire [23:0] current_address, 
+  output wire [23:0] flash_address, 
   output wire flash_ce_b,
   output wire flash_oe_b,
   output wire flash_we_b,
   output wire flash_reset_b,
   output wire flash_byte_b,
+  output wire [15:0] flash_data,
   input wire flash_sts,
   input wire [7:0]switch,
   output [639:0] dots,
-  output [7:0]led,
+  output wire [7:0] led,
+  output [63:0] display_data,
   output reg [7:0] to_ac97_data    // 8-bit PCM data to headphone
   
 );  
-
-	wire [23:0]read_address= 24'h11111;
-	wire flash_busy;
-	wire [15:0]flash_write_data;
-	reg flash_reset; //=switch[0];
-	wire writemode;
-	assign writemode = switch[1];
-	wire write;
-	wire read;
-	wire [15:0]read_data;
-	assign write = switch[2];
-	assign read = switch[3];
-	assign flash_write_data = 8'h20;
-	//if value is 1 then led is off
-	assign led[0] = flash_busy; //leds on when low
-	assign led[1] = flash_reset;
-	assign led[2] = flash_sts;
-	assign led[3] = switch[0];
+	parameter MAX_ADDRESS = 23'h020;
+	reg [22:0]raddr;
+	initial raddr = 0;
+	reg [15:0]wdata;
+	wire [15:0]frdata;
+	wire busy;
+	wire [11:0] fsmstate;
+	reg writemode = 0;
+	reg dowrite;
+	reg doread;
+	wire flash_reset; 
 	
-	reg switch_delay;
+	wire writing;
+	wire reading;
+	assign reading = switch[6];
+	assign writing = switch[5];
+	assign flash_reset = switch[0];
+	reg [17:0] counter;
+	reg [4:0] flashwritecount;
 	always @(posedge clock) begin
-		switch_delay <= switch[0];
-		flash_reset <= (switch[0] & !switch_delay);
+		if(switch[1] & switch[2] & switch[3]) begin
+			writemode <=1;
+			dowrite <= 0;
+			doread <= 0;
+			wdata <= 0;
+			raddr <= 0;
+		end
+		else begin
+			if(busy==0) begin
+				if(writing) begin //switch 5 for writing
+					flashwritecount <= flashwritecount +1; //2^5 cycles b/w writes
+					writemode <=1;
+					doread <= 0;
+					if(flashwritecount ==0) begin
+						dowrite <= 1;
+						wdata <= 16'h1234;
+					end
+					else dowrite <= 0;
+				end
+				if(reading) begin
+					writemode <=0;
+					doread <= 1;
+					if(raddr == MAX_ADDRESS) begin
+						raddr <= 0;
+					end
+					else begin
+						if (counter >= 100000) begin
+							raddr <= raddr +1;
+							counter <= 0;
+						end
+						else counter <= counter +1;
+					end 
+				end
+			end
+			else begin
+				if(writing) begin
+					dowrite<=0; 
+					flashwritecount <= 1;
+				end
+				
+			end
+		end
+	
 	end
 	
+	assign led[7] = ~writing; //write with switch 5
+	assign led[6] = ~reading; //read with switch 6
+	assign led[5] = ~busy;
+	assign led[4] = ~writemode;
+	assign led[3] = ~doread;
+	assign led[2] = ~dowrite;
+	assign led[1] = ~switch[0];
+	assign led[0] = ~switch[0];
+	
+	
 	flash_manager flash(.flash_ce_b(flash_ce_b), .flash_oe_b(flash_oe_b), .flash_we_b(flash_we_b),
-								.flash_reset_b(flash_reset_b), .flash_sts(flash_sts), .flash_byte_b(flash_byte_b),
+								.flash_reset_b(flash_reset_b), .flash_sts(flash_sts), .flash_byte_b(flash_byte_b), .flash_data(flash_data),
 								.clock(clock), .reset(flash_reset), .writemode(writemode),
-								.wdata(flash_write_data), .dowrite(write),
-								.raddr(read_address), .frdata(read_data),.doread(read),
-								.busy(flash_busy),.flash_address(current_address),.dots(dots)); 
-
+								.wdata(wdata), .dowrite(dowrite),
+								.raddr(raddr), .frdata(frdata),.doread(doread),
+								.busy(busy),.flash_address(flash_address), .fsmstate(fsmstate)); 
+	assign display_data = {fsmstate[7:0],raddr[15:0],frdata,wdata}; //flash_address shifted by 1 bit
+								
 endmodule
+
+
 
 ///////////////////////////////////////////////////////////////////////////////
 //

@@ -1,0 +1,27 @@
+library verilog;
+use verilog.vl_types.all;
+entity test_fsm is
+    generic(
+        MODE_IDLE       : integer := 0;
+        MODE_INIT       : integer := 1;
+        MODE_WRITE      : integer := 2;
+        MODE_READ       : integer := 3;
+        MAX_ADDRESS     : integer := 32;
+        HOME            : integer := 18
+    );
+    port(
+        reset           : in     vl_logic;
+        clock           : in     vl_logic;
+        fop             : out    vl_logic_vector(1 downto 0);
+        faddress        : out    vl_logic_vector(22 downto 0);
+        fwdata          : out    vl_logic_vector(15 downto 0);
+        frdata          : in     vl_logic_vector(15 downto 0);
+        fbusy           : in     vl_logic;
+        dots            : out    vl_logic_vector(639 downto 0);
+        mode            : in     vl_logic_vector(1 downto 0);
+        busy            : out    vl_logic;
+        datain          : in     vl_logic_vector(15 downto 0);
+        addrin          : in     vl_logic_vector(22 downto 0);
+        state           : out    vl_logic_vector(7 downto 0)
+    );
+end test_fsm;

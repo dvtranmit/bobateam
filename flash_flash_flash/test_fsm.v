@@ -36,7 +36,7 @@ module test_fsm (reset, clock, fop, faddress, fwdata, frdata, fbusy, dots, mode,
    output state;
 
    reg [1:0] fop;
-   reg [22:0] faddress;
+   reg [22:0] faddress = 0;
    reg [15:0] fwdata;
    reg [639:0] dots;
    reg busy;
@@ -56,7 +56,7 @@ module test_fsm (reset, clock, fop, faddress, fwdata, frdata, fbusy, dots, mode,
    parameter MODE_WRITE = 2;
    parameter MODE_READ	= 3;
 
-   parameter MAX_ADDRESS = 23'h030000;
+   parameter MAX_ADDRESS = 23'h020;//23'h030000;
 
    parameter HOME = 8'h12;
 
