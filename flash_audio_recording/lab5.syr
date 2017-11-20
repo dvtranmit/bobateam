@@ -5,14 +5,14 @@ Parameter TMPDIR set to /afs/athena.mit.edu/user/a/d/adhikara/Documents/6.111thi
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.03 secs
+Total CPU time to Xst completion: 0.02 secs
  
 --> 
 Parameter xsthdpdir set to /afs/athena.mit.edu/user/a/d/adhikara/Documents/6.111things/6.111 project/bobateam/flash_audio_recording/xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.03 secs
+Total CPU time to Xst completion: 0.02 secs
  
 --> 
 Reading design: lab5.prj
@@ -142,7 +142,7 @@ Analyzing hierarchy for module <debounce> in library <work>.
 Analyzing hierarchy for module <lab5audio> in library <work>.
 
 Analyzing hierarchy for module <recorder> in library <work> with parameters.
-	MAX_READ_ADDRESS = "00000000000000000100101"
+	MAX_READ_ADDRESS = "00011110000000000000101"
 
 Analyzing hierarchy for module <ac97> in library <work>.
 
@@ -172,7 +172,7 @@ Analyzing hierarchy for module <flash_int> in library <work> with parameters.
 
 Analyzing hierarchy for module <test_fsm> in library <work> with parameters.
 	HOME = "00010010"
-	MAX_ADDRESS = "00000000000000000100000"
+	MAX_ADDRESS = "00010010000000000000101"
 	MODE_IDLE = "00000000000000000000000000000000"
 	MODE_INIT = "00000000000000000000000000000001"
 	MODE_READ = "00000000000000000000000000000011"
@@ -218,7 +218,7 @@ Module <ac97commands> is correct for synthesis.
     Set user-defined property "INIT =  0000" for signal <state>.
     Set user-defined property "INIT =  0" for signal <command>.
 Analyzing module <recorder> in library <work>.
-	MAX_READ_ADDRESS = 23'b00000000000000000100101
+	MAX_READ_ADDRESS = 23'b00011110000000000000101
 Module <recorder> is correct for synthesis.
  
 Analyzing module <flash_manager> in library <work>.
@@ -243,7 +243,7 @@ Module <flash_int> is correct for synthesis.
  
 Analyzing module <test_fsm> in library <work>.
 	HOME = 8'b00010010
-	MAX_ADDRESS = 23'b00000000000000000100000
+	MAX_ADDRESS = 23'b00010010000000000000101
 	MODE_IDLE = 32'sb00000000000000000000000000000000
 	MODE_INIT = 32'sb00000000000000000000000000000001
 	MODE_READ = 32'sb00000000000000000000000000000011
@@ -482,26 +482,24 @@ Synthesizing Unit <recorder>.
     Related source file is "lab5.v".
 WARNING:Xst:647 - Input <playback> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <disp_data_in> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:1305 - Output <to_ac97_data> is never assigned. Tied to value 00000000.
-WARNING:Xst:647 - Input <from_ac97_data> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:647 - Input <ready> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <switch<4>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:1305 - Output <led> is never assigned. Tied to value 00000000.
+WARNING:Xst:646 - Signal <read_incr> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <last_read_incr> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <fsmstate> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <frdata> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <frdata<15:8>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <dots> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+    Found 8-bit register for signal <to_ac97_data>.
     Found 1-bit register for signal <doread>.
     Found 1-bit register for signal <dowrite>.
     Found 6-bit register for signal <flash_write_counter>.
-    Found 6-bit adder for signal <flash_write_counter$addsub0000> created at line 814.
-    Found 1-bit register for signal <last_read_incr>.
+    Found 6-bit adder for signal <flash_write_counter$addsub0000> created at line 830.
     Found 23-bit up counter for signal <raddr>.
-    Found 23-bit comparator greatequal for signal <raddr$cmp_ge0000> created at line 796.
-    Found 16-bit up counter for signal <wdata>.
+    Found 23-bit comparator greatequal for signal <raddr$cmp_ge0000> created at line 839.
+    Found 16-bit register for signal <wdata>.
     Found 1-bit register for signal <writemode>.
     Summary:
-	inferred   2 Counter(s).
-	inferred  10 D-type flip-flop(s).
+	inferred   1 Counter(s).
+	inferred  33 D-type flip-flop(s).
 	inferred   1 Adder/Subtractor(s).
 	inferred   1 Comparator(s).
 Unit <recorder> synthesized.
@@ -819,9 +817,8 @@ Macro Statistics
  5-bit adder                                           : 1
  6-bit adder                                           : 1
  9-bit adder                                           : 3
-# Counters                                             : 17
+# Counters                                             : 16
  10-bit up counter                                     : 1
- 16-bit up counter                                     : 1
  19-bit up counter                                     : 9
  23-bit up counter                                     : 1
  4-bit up counter                                      : 1
@@ -829,11 +826,11 @@ Macro Statistics
  6-bit up counter                                      : 1
  8-bit down counter                                    : 1
  8-bit up counter                                      : 1
-# Registers                                            : 69
- 1-bit register                                        : 42
+# Registers                                            : 70
+ 1-bit register                                        : 41
  10-bit register                                       : 2
  13-bit register                                       : 1
- 16-bit register                                       : 4
+ 16-bit register                                       : 5
  2-bit register                                        : 3
  20-bit register                                       : 6
  23-bit register                                       : 1
@@ -844,7 +841,7 @@ Macro Statistics
  6-bit register                                        : 1
  64-bit register                                       : 1
  7-bit register                                        : 1
- 8-bit register                                        : 2
+ 8-bit register                                        : 3
 # Comparators                                          : 21
  23-bit comparator greatequal                          : 1
  6-bit comparator less                                 : 1
@@ -997,15 +994,27 @@ WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <fsm/state_5> (witho
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <fsm/state_6> (without init value) has a constant value of 0 in block <flash_manager>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <fsm/state_7> (without init value) has a constant value of 0 in block <flash_manager>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <flash/flash_address_0> (without init value) has a constant value of 0 in block <flash_manager>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <l_right_data_11> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <l_right_data_12> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <l_right_data_13> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <l_right_data_14> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <l_right_data_15> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <l_right_data_16> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <l_right_data_17> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <l_right_data_18> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <l_right_data_19> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <wdata_8> has a constant value of 0 in block <recorder>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <wdata_9> has a constant value of 0 in block <recorder>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <wdata_10> has a constant value of 0 in block <recorder>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <wdata_11> has a constant value of 0 in block <recorder>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <wdata_12> has a constant value of 0 in block <recorder>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <wdata_13> has a constant value of 0 in block <recorder>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <wdata_14> has a constant value of 0 in block <recorder>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <wdata_15> has a constant value of 0 in block <recorder>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <fsm/fwdata_11> (without init value) has a constant value of 0 in block <flash_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <fsm/fwdata_12> (without init value) has a constant value of 0 in block <flash_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <fsm/fwdata_13> (without init value) has a constant value of 0 in block <flash_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <fsm/fwdata_14> (without init value) has a constant value of 0 in block <flash_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <fsm/fwdata_15> (without init value) has a constant value of 0 in block <flash_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <data_8> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <data_9> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <data_10> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <data_11> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <data_12> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <data_13> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <data_14> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <data_15> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <data_48> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <data_49> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <data_50> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
@@ -1022,31 +1031,43 @@ WARNING:Xst:1710 - FF/Latch <data_60> (without init value) has a constant value 
 WARNING:Xst:1710 - FF/Latch <data_61> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <data_62> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <data_63> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <out_data_0> (without init value) has a constant value of 0 in block <a>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <out_data_1> (without init value) has a constant value of 0 in block <a>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <out_data_2> (without init value) has a constant value of 0 in block <a>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <out_data_3> (without init value) has a constant value of 0 in block <a>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <out_data_4> (without init value) has a constant value of 0 in block <a>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <out_data_5> (without init value) has a constant value of 0 in block <a>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <out_data_6> (without init value) has a constant value of 0 in block <a>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <out_data_7> (without init value) has a constant value of 0 in block <a>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <l_cmd_addr_12> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <l_cmd_addr_18> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <l_cmd_data_9> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <l_cmd_data_11> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <l_cmd_data_17> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <l_cmd_data_18> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <l_right_data_0> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <l_right_data_1> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <l_right_data_2> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <l_right_data_3> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <l_right_data_4> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <l_right_data_5> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <l_right_data_6> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <l_right_data_7> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <l_right_data_8> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <l_right_data_9> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <l_right_data_11> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <l_right_data_10> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <l_right_data_9> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <l_right_data_8> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <l_right_data_7> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <l_right_data_6> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <l_right_data_5> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <l_right_data_4> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <l_right_data_3> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <l_right_data_2> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <l_right_data_1> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <l_right_data_0> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <l_cmd_data_18> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <l_cmd_data_17> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <l_cmd_data_11> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <l_cmd_data_9> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <l_cmd_addr_18> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <l_cmd_addr_12> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <fsm/fwdata_10> (without init value) has a constant value of 0 in block <flash_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <fsm/fwdata_9> (without init value) has a constant value of 0 in block <flash_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <fsm/fwdata_8> (without init value) has a constant value of 0 in block <flash_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <fsm/data_to_store_15> (without init value) has a constant value of 0 in block <flash_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <fsm/data_to_store_14> (without init value) has a constant value of 0 in block <flash_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <fsm/data_to_store_13> (without init value) has a constant value of 0 in block <flash_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <fsm/data_to_store_12> (without init value) has a constant value of 0 in block <flash_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <fsm/data_to_store_11> (without init value) has a constant value of 0 in block <flash_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <fsm/data_to_store_10> (without init value) has a constant value of 0 in block <flash_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <fsm/data_to_store_9> (without init value) has a constant value of 0 in block <flash_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <fsm/data_to_store_8> (without init value) has a constant value of 0 in block <flash_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <flash/flash_wdata_15> (without init value) has a constant value of 0 in block <flash_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <flash/flash_wdata_14> (without init value) has a constant value of 0 in block <flash_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <flash/flash_wdata_13> (without init value) has a constant value of 0 in block <flash_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <flash/flash_wdata_12> (without init value) has a constant value of 0 in block <flash_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <flash/flash_wdata_11> (without init value) has a constant value of 0 in block <flash_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <flash/flash_wdata_10> (without init value) has a constant value of 0 in block <flash_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <flash/flash_wdata_9> (without init value) has a constant value of 0 in block <flash_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <flash/flash_wdata_8> (without init value) has a constant value of 0 in block <flash_flash>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:2677 - Node <right_in_data_0> of sequential type is unconnected in block <ac97>.
 WARNING:Xst:2677 - Node <right_in_data_1> of sequential type is unconnected in block <ac97>.
 WARNING:Xst:2677 - Node <right_in_data_2> of sequential type is unconnected in block <ac97>.
@@ -1067,6 +1088,7 @@ WARNING:Xst:2677 - Node <right_in_data_16> of sequential type is unconnected in 
 WARNING:Xst:2677 - Node <right_in_data_17> of sequential type is unconnected in block <ac97>.
 WARNING:Xst:2677 - Node <right_in_data_18> of sequential type is unconnected in block <ac97>.
 WARNING:Xst:2677 - Node <right_in_data_19> of sequential type is unconnected in block <ac97>.
+WARNING:Xst:2677 - Node <clean> of sequential type is unconnected in block <sw7>.
 WARNING:Xst:2677 - Node <fsm/status_0> of sequential type is unconnected in block <flash_flash>.
 WARNING:Xst:2677 - Node <fsm/status_1> of sequential type is unconnected in block <flash_flash>.
 WARNING:Xst:2677 - Node <fsm/status_2> of sequential type is unconnected in block <flash_flash>.
@@ -1093,9 +1115,8 @@ Macro Statistics
  4-bit subtractor                                      : 1
  5-bit adder                                           : 4
  6-bit adder                                           : 1
-# Counters                                             : 17
+# Counters                                             : 16
  10-bit up counter                                     : 1
- 16-bit up counter                                     : 1
  19-bit up counter                                     : 9
  23-bit up counter                                     : 1
  4-bit up counter                                      : 1
@@ -1103,8 +1124,8 @@ Macro Statistics
  6-bit up counter                                      : 1
  8-bit down counter                                    : 1
  8-bit up counter                                      : 1
-# Registers                                            : 439
- Flip-Flops                                            : 439
+# Registers                                            : 454
+ Flip-Flops                                            : 454
 # Comparators                                          : 21
  23-bit comparator greatequal                          : 1
  6-bit comparator less                                 : 1
@@ -1125,33 +1146,53 @@ Macro Statistics
 *                         Low Level Synthesis                           *
 =========================================================================
 INFO:Xst:2261 - The FF/Latch <l_right_data_0> in Unit <ac97> is equivalent to the following 11 FFs/Latches, which will be removed : <l_right_data_1> <l_right_data_2> <l_right_data_3> <l_right_data_4> <l_right_data_5> <l_right_data_6> <l_right_data_7> <l_right_data_8> <l_right_data_9> <l_right_data_10> <l_right_data_11> 
+INFO:Xst:2261 - The FF/Latch <fsm/data_to_store_8> in Unit <flash_manager> is equivalent to the following 7 FFs/Latches, which will be removed : <fsm/data_to_store_9> <fsm/data_to_store_10> <fsm/data_to_store_11> <fsm/data_to_store_12> <fsm/data_to_store_13> <fsm/data_to_store_14> <fsm/data_to_store_15> 
 WARNING:Xst:1710 - FF/Latch <l_right_data_0> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_48> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_49> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_50> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_51> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_52> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_53> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_54> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_55> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_56> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_57> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_58> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_59> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_60> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_61> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <data_63> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_62> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_63> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_61> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_60> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_59> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_58> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_57> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_56> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_55> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_54> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_53> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_52> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_51> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_50> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_49> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_48> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_15> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_14> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_13> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_12> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_11> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_10> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_9> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_8> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <fsm/fwdata_15> (without init value) has a constant value of 0 in block <flash_manager>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <fsm/fwdata_14> (without init value) has a constant value of 0 in block <flash_manager>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <fsm/fwdata_13> (without init value) has a constant value of 0 in block <flash_manager>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <fsm/fwdata_12> (without init value) has a constant value of 0 in block <flash_manager>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <fsm/fwdata_11> (without init value) has a constant value of 0 in block <flash_manager>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <fsm/fwdata_10> (without init value) has a constant value of 0 in block <flash_manager>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <fsm/fwdata_9> (without init value) has a constant value of 0 in block <flash_manager>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <fsm/fwdata_8> (without init value) has a constant value of 0 in block <flash_manager>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <fsm/data_to_store_8> (without init value) has a constant value of 0 in block <flash_manager>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <flash/flash_wdata_8> (without init value) has a constant value of 0 in block <flash_manager>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <flash/flash_wdata_9> (without init value) has a constant value of 0 in block <flash_manager>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <flash/flash_wdata_10> (without init value) has a constant value of 0 in block <flash_manager>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <flash/flash_wdata_11> (without init value) has a constant value of 0 in block <flash_manager>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <flash/flash_wdata_12> (without init value) has a constant value of 0 in block <flash_manager>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <flash/flash_wdata_13> (without init value) has a constant value of 0 in block <flash_manager>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <flash/flash_wdata_14> (without init value) has a constant value of 0 in block <flash_manager>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <flash/flash_wdata_15> (without init value) has a constant value of 0 in block <flash_manager>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:2677 - Node <sw7/clean> of sequential type is unconnected in block <recorder>.
+WARNING:Xst:2677 - Node <sw7/new> of sequential type is unconnected in block <recorder>.
 INFO:Xst:2697 - Unit <flash_manager> : the RAMs <fsm/Mrom_nib2char_4_nib2char>, <fsm/Mrom_nib2char_1_nib2char> are packed into the single block RAM <fsm/Mrom_nib2char_4_nib2char1>
 INFO:Xst:2697 - Unit <flash_manager> : the RAMs <fsm/Mrom_nib2char_3_nib2char>, <fsm/Mrom_nib2char_2_nib2char> are packed into the single block RAM <fsm/Mrom_nib2char_3_nib2char1>
-WARNING:Xst:1710 - FF/Latch <a/out_data_7> (without init value) has a constant value of 0 in block <lab5>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <a/out_data_6> (without init value) has a constant value of 0 in block <lab5>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <a/out_data_5> (without init value) has a constant value of 0 in block <lab5>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <a/out_data_4> (without init value) has a constant value of 0 in block <lab5>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <a/out_data_3> (without init value) has a constant value of 0 in block <lab5>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <a/out_data_2> (without init value) has a constant value of 0 in block <lab5>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <a/out_data_1> (without init value) has a constant value of 0 in block <lab5>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <a/out_data_0> (without init value) has a constant value of 0 in block <lab5>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:2677 - Node <r/flash_flash/fsm/status_0> of sequential type is unconnected in block <lab5>.
 WARNING:Xst:2677 - Node <r/flash_flash/fsm/status_1> of sequential type is unconnected in block <lab5>.
 WARNING:Xst:2677 - Node <r/flash_flash/fsm/status_2> of sequential type is unconnected in block <lab5>.
@@ -1174,15 +1215,7 @@ Optimizing unit <ac97> ...
 Optimizing unit <ac97commands> ...
 
 Optimizing unit <display_16hex> ...
-WARNING:Xst:1710 - FF/Latch <a/ac97/l_right_data_19> (without init value) has a constant value of 0 in block <lab5>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <a/ac97/l_right_data_18> (without init value) has a constant value of 0 in block <lab5>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <a/ac97/l_right_data_17> (without init value) has a constant value of 0 in block <lab5>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <a/ac97/l_right_data_16> (without init value) has a constant value of 0 in block <lab5>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <a/ac97/l_right_data_15> (without init value) has a constant value of 0 in block <lab5>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <a/ac97/l_right_data_14> (without init value) has a constant value of 0 in block <lab5>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <a/ac97/l_right_data_13> (without init value) has a constant value of 0 in block <lab5>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <a/ac97/l_right_data_12> (without init value) has a constant value of 0 in block <lab5>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <a/ac97/l_cmd_data_18> (without init value) has a constant value of 0 in block <lab5>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <a/ac97/l_cmd_data_18> (without init value) has a constant value of 0 in block <lab5>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <a/ac97/l_cmd_data_17> (without init value) has a constant value of 0 in block <lab5>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <a/ac97/l_cmd_data_11> (without init value) has a constant value of 0 in block <lab5>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <a/ac97/l_cmd_data_9> (without init value) has a constant value of 0 in block <lab5>. This FF/Latch will be trimmed during the optimization process.
@@ -1216,8 +1249,8 @@ INFO:Xst:2261 - The FF/Latch <a/ac97/l_cmd_data_13> in Unit <lab5> is equivalent
 INFO:Xst:2261 - The FF/Latch <a/ac97/l_cmd_data_14> in Unit <lab5> is equivalent to the following FF/Latch, which will be removed : <a/ac97/l_cmd_data_6> 
 INFO:Xst:2261 - The FF/Latch <a/ac97/l_cmd_data_16> in Unit <lab5> is equivalent to the following FF/Latch, which will be removed : <a/ac97/l_cmd_data_8> 
 Found area constraint ratio of 100 (+ 5) on block lab5, actual ratio is 1.
-FlipFlop r/disp/char_index_0 has been replicated 2 time(s)
-FlipFlop r/disp/char_index_1 has been replicated 1 time(s)
+FlipFlop a/ac97/bit_count_3 has been replicated 1 time(s)
+FlipFlop r/disp/char_index_0 has been replicated 1 time(s)
 
 Final Macro Processing ...
 
@@ -1230,8 +1263,8 @@ Unit <lab5> processed.
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 594
- Flip-Flops                                            : 594
+# Registers                                            : 555
+ Flip-Flops                                            : 555
 # Shift Registers                                      : 2
  13-bit shift register                                 : 1
  2-bit shift register                                  : 1
@@ -1263,31 +1296,31 @@ Design Statistics
 # IOs                              : 576
 
 Cell Usage :
-# BELS                             : 1708
+# BELS                             : 1549
 #      GND                         : 1
-#      INV                         : 41
-#      LUT1                        : 240
-#      LUT2                        : 69
+#      INV                         : 44
+#      LUT1                        : 206
+#      LUT2                        : 61
 #      LUT2_D                      : 1
-#      LUT2_L                      : 3
-#      LUT3                        : 221
-#      LUT3_D                      : 18
-#      LUT3_L                      : 9
-#      LUT4                        : 385
-#      LUT4_D                      : 31
-#      LUT4_L                      : 53
-#      MUXCY                       : 305
-#      MUXF5                       : 59
-#      MUXF6                       : 10
+#      LUT2_L                      : 1
+#      LUT3                        : 223
+#      LUT3_D                      : 13
+#      LUT3_L                      : 7
+#      LUT4                        : 350
+#      LUT4_D                      : 28
+#      LUT4_L                      : 62
+#      MUXCY                       : 266
+#      MUXF5                       : 51
+#      MUXF6                       : 8
 #      MUXF7                       : 2
 #      VCC                         : 1
-#      XORCY                       : 259
-# FlipFlops/Latches                : 596
+#      XORCY                       : 224
+# FlipFlops/Latches                : 557
 #      FD                          : 18
-#      FDE                         : 278
+#      FDE                         : 258
 #      FDE_1                       : 8
 #      FDR                         : 18
-#      FDRE                        : 250
+#      FDRE                        : 231
 #      FDRS                        : 9
 #      FDS                         : 7
 #      FDSE                        : 8
@@ -1297,8 +1330,8 @@ Cell Usage :
 # Clock Buffers                    : 2
 #      BUFG                        : 1
 #      BUFGP                       : 1
-# IO Buffers                       : 268
-#      IBUF                        : 12
+# IO Buffers                       : 267
+#      IBUF                        : 11
 #      IOBUF                       : 16
 #      OBUF                        : 240
 =========================================================================
@@ -1308,13 +1341,13 @@ Device utilization summary:
 
 Selected Device : 2v6000bf957-4 
 
- Number of Slices:                      568  out of  33792     1%  
- Number of Slice Flip Flops:            596  out of  67584     0%  
- Number of 4 input LUTs:               1074  out of  67584     1%  
-    Number used as logic:              1071
+ Number of Slices:                      528  out of  33792     1%  
+ Number of Slice Flip Flops:            557  out of  67584     0%  
+ Number of 4 input LUTs:                999  out of  67584     1%  
+    Number used as logic:               996
     Number used as Shift registers:       3
  Number of IOs:                         576
- Number of bonded IOBs:                 269  out of    684    39%  
+ Number of bonded IOBs:                 268  out of    684    39%  
  Number of GCLKs:                         2  out of     16    12%  
 
 ---------------------------
@@ -1338,8 +1371,8 @@ Clock Information:
 -----------------------------------+------------------------+-------+
 Clock Signal                       | Clock buffer(FF name)  | Load  |
 -----------------------------------+------------------------+-------+
-clock_27mhz                        | BUFGP                  | 543   |
-ac97_bit_clock                     | IBUF+BUFG              | 56    |
+clock_27mhz                        | BUFGP                  | 495   |
+ac97_bit_clock                     | IBUF+BUFG              | 65    |
 -----------------------------------+------------------------+-------+
 
 Asynchronous Control Signals Information:
@@ -1350,8 +1383,8 @@ Timing Summary:
 ---------------
 Speed Grade: -4
 
-   Minimum period: 11.622ns (Maximum Frequency: 86.044MHz)
-   Minimum input arrival time before clock: 3.990ns
+   Minimum period: 10.809ns (Maximum Frequency: 92.515MHz)
+   Minimum input arrival time before clock: 3.997ns
    Maximum output required time after clock: 8.030ns
    Maximum combinational path delay: 5.887ns
 
@@ -1361,10 +1394,10 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clock_27mhz'
-  Clock period: 11.622ns (frequency: 86.044MHz)
-  Total number of paths / destination ports: 27322 / 1311
+  Clock period: 10.716ns (frequency: 93.320MHz)
+  Total number of paths / destination ports: 21027 / 1190
 -------------------------------------------------------------------------
-Delay:               11.622ns (Levels of Logic = 10)
+Delay:               10.716ns (Levels of Logic = 11)
   Source:            r/disp/char_index_0_1 (FF)
   Destination:       r/disp/disp_data_out (FF)
   Source Clock:      clock_27mhz rising
@@ -1374,51 +1407,52 @@ Delay:               11.622ns (Levels of Logic = 10)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDE:C->Q             16   0.568   1.035  r/disp/char_index_0_1 (r/disp/char_index_0_1)
-     LUT3:I2->O            4   0.439   0.955  r/disp/mux1_10 (r/disp/mux1_10)
-     LUT3_D:I1->O          2   0.439   0.735  r/disp/char_index<3>2_SW0 (N155)
-     LUT4_D:I2->O         13   0.439   0.989  r/disp/char_index<3>2 (r/disp/nibble<1>)
-     LUT4:I2->O            1   0.439   0.557  r/disp/Mmux__varindex0000_151_SW1 (N206)
-     LUT4:I3->O            1   0.439   0.000  r/disp/Mmux__varindex0000_151 (r/disp/Mmux__varindex0000_151)
-     MUXF5:I1->O           2   0.436   0.741  r/disp/Mmux__varindex0000_14_f5 (r/disp/Mmux__varindex0000_14_f5)
-     LUT4:I3->O            1   0.439   0.000  r/disp/disp_data_out_mux000038_F (N419)
-     MUXF5:I0->O           2   0.436   0.735  r/disp/disp_data_out_mux000038 (r/disp/disp_data_out_mux000038)
-     LUT4:I2->O            1   0.439   0.551  r/disp/disp_data_out_mux000083_SW1 (N268)
+     FDE:C->Q             18   0.568   1.057  r/disp/char_index_0_1 (r/disp/char_index_0_1)
+     LUT3:I2->O            1   0.439   0.000  r/disp/mux_9 (r/disp/mux_9)
+     MUXF5:I1->O           1   0.436   0.552  r/disp/mux_8_f5 (r/disp/mux_8_f5)
+     LUT3:I2->O            1   0.439   0.000  r/disp/mux_2_f5_F (N250)
+     MUXF5:I0->O          28   0.436   1.362  r/disp/mux_2_f5 (r/disp/nibble<0>1)
+     LUT4:I0->O            2   0.439   0.735  r/disp/Mrom_dots1311 (r/disp/Mrom_dots12)
+     LUT3:I2->O            1   0.439   0.000  r/disp/Mmux__varindex0000_16 (r/disp/Mmux__varindex0000_16)
+     MUXF5:I0->O           1   0.436   0.000  r/disp/Mmux__varindex0000_14_f5 (r/disp/Mmux__varindex0000_14_f5)
+     MUXF6:I0->O           1   0.447   0.551  r/disp/Mmux__varindex0000_12_f6 (r/disp/Mmux__varindex0000_12_f6)
+     LUT3:I2->O            1   0.439   0.558  r/disp/disp_data_out_mux000037 (r/disp/disp_data_out_mux000037)
+     LUT4_L:I3->LO         1   0.439   0.134  r/disp/disp_data_out_mux000083 (r/disp/disp_data_out_mux000083)
      LUT4:I2->O            1   0.439   0.000  r/disp/disp_data_out_mux0000128 (r/disp/disp_data_out_mux0000)
      FDE:D                     0.370          r/disp/disp_data_out
     ----------------------------------------
-    Total                     11.622ns (5.322ns logic, 6.300ns route)
-                                       (45.8% logic, 54.2% route)
+    Total                     10.716ns (5.766ns logic, 4.950ns route)
+                                       (53.8% logic, 46.2% route)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'ac97_bit_clock'
-  Clock period: 10.349ns (frequency: 96.628MHz)
-  Total number of paths / destination ports: 1543 / 87
+  Clock period: 10.809ns (frequency: 92.515MHz)
+  Total number of paths / destination ports: 1642 / 96
 -------------------------------------------------------------------------
-Delay:               5.174ns (Levels of Logic = 3)
-  Source:            a/ac97/bit_count_1 (FF)
+Delay:               5.405ns (Levels of Logic = 3)
+  Source:            a/ac97/bit_count_5 (FF)
   Destination:       a/ac97/Mshreg_left_in_data_12 (FF)
   Source Clock:      ac97_bit_clock rising
   Destination Clock: ac97_bit_clock falling
 
-  Data Path: a/ac97/bit_count_1 to a/ac97/Mshreg_left_in_data_12
+  Data Path: a/ac97/bit_count_5 to a/ac97/Mshreg_left_in_data_12
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FD:C->Q              12   0.568   1.217  a/ac97/bit_count_1 (a/ac97/bit_count_1)
-     LUT4:I0->O            1   0.439   0.551  a/ac97/left_in_data_and000027_SW0 (N308)
-     LUT4_L:I2->LO         1   0.439   0.134  a/ac97/left_in_data_and000027 (a/ac97/left_in_data_and000027)
-     LUT4:I2->O            9   0.439   0.862  a/ac97/left_in_data_and000048 (a/ac97/left_in_data_and0000)
+     FD:C->Q              14   0.568   1.263  a/ac97/bit_count_5 (a/ac97/bit_count_5)
+     LUT3_D:I0->O          2   0.439   0.735  a/ac97/l_left_data_not0001131 (a/ac97/N18)
+     LUT4_L:I2->LO         1   0.439   0.134  a/ac97/left_in_data_and000013 (a/ac97/left_in_data_and000013)
+     LUT3:I2->O            9   0.439   0.862  a/ac97/left_in_data_and000048 (a/ac97/left_in_data_and0000)
      SRL16E_1:CE               0.525          a/ac97/Mshreg_left_in_data_12
     ----------------------------------------
-    Total                      5.174ns (2.410ns logic, 2.764ns route)
-                                       (46.6% logic, 53.4% route)
+    Total                      5.405ns (2.410ns logic, 2.994ns route)
+                                       (44.6% logic, 55.4% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'clock_27mhz'
-  Total number of paths / destination ports: 253 / 252
+  Total number of paths / destination ports: 230 / 229
 -------------------------------------------------------------------------
-Offset:              3.990ns (Levels of Logic = 3)
+Offset:              3.997ns (Levels of Logic = 3)
   Source:            flash_sts (PAD)
   Destination:       r/flash_flash/flash/busy (FF)
   Destination Clock: clock_27mhz rising
@@ -1427,13 +1461,13 @@ Offset:              3.990ns (Levels of Logic = 3)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O             5   0.825   0.978  flash_sts_IBUF (flash_sts_IBUF)
-     LUT4:I1->O            1   0.439   0.551  r/flash_flash/flash/busy_not000138 (r/flash_flash/flash/busy_not000138)
-     LUT3:I2->O            1   0.439   0.517  r/flash_flash/flash/busy_not000177 (r/flash_flash/flash/busy_not0001)
+     IBUF:I->O             5   0.825   0.811  flash_sts_IBUF (flash_sts_IBUF)
+     LUT4:I3->O            1   0.439   0.725  r/flash_flash/flash/busy_not000177_SW0 (N280)
+     LUT3:I1->O            1   0.439   0.517  r/flash_flash/flash/busy_not000177 (r/flash_flash/flash/busy_not0001)
      FDSE:CE                   0.240          r/flash_flash/flash/busy
     ----------------------------------------
-    Total                      3.990ns (1.943ns logic, 2.047ns route)
-                                       (48.7% logic, 51.3% route)
+    Total                      3.997ns (1.943ns logic, 2.054ns route)
+                                       (48.6% logic, 51.4% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'ac97_bit_clock'
@@ -1456,7 +1490,7 @@ Offset:              2.194ns (Levels of Logic = 1)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'clock_27mhz'
-  Total number of paths / destination ports: 74 / 51
+  Total number of paths / destination ports: 82 / 67
 -------------------------------------------------------------------------
 Offset:              8.030ns (Levels of Logic = 3)
   Source:            r/disp/count_1 (FF)
@@ -1515,15 +1549,15 @@ Delay:               5.887ns (Levels of Logic = 2)
 =========================================================================
 
 
-Total REAL time to Xst completion: 12.00 secs
-Total CPU time to Xst completion: 10.91 secs
+Total REAL time to Xst completion: 10.00 secs
+Total CPU time to Xst completion: 9.62 secs
  
 --> 
 
 
-Total memory usage is 500048 kilobytes
+Total memory usage is 497020 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :  484 (   0 filtered)
-Number of infos    :   43 (   0 filtered)
+Number of warnings :  518 (   0 filtered)
+Number of infos    :   44 (   0 filtered)
 

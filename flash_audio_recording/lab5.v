@@ -741,7 +741,7 @@ module recorder(
   output reg [7:0] to_ac97_data    // 8-bit PCM data to headphone
 );  
 
-	parameter MAX_READ_ADDRESS = 23'h025; //max address you want to read
+	parameter MAX_READ_ADDRESS = 23'h0F0005; //23'h025; //max address you want to read
 														//to set max write address, change parameter MAX_ADDRESS in test_fsm.v
 														//should be same as in test_fsm, slighty higher right now for testing purposes
 														
@@ -756,7 +756,6 @@ module recorder(
 	wire [15:0] frdata; //data from flash reading
 	
 	reg [5:0] flash_write_counter; //wait 2^6 clock cycles between each write to flash
-	
 	wire [63:0]display_data; //data for display_16hex.v module
 	
 	wire display_reset; //to reset display_16hex.v module; switch0
@@ -770,6 +769,14 @@ module recorder(
 	
 	
 	assign display_data = {flash_data, raddr[15:0], wdata};
+	assign led[0] = ~flash_reset; //sw3
+	assign led[1] = ~writemode; 
+	assign led[2] = ~dowrite;
+	assign led[3] = ~doread;
+	assign led[4] = ~display_reset; //sw0
+	assign led[5] = ~busy;
+	assign led[6] = ~writing; //sw5
+	assign led[7] = ~reading; //sw6, sw7 for incrementing read address
 
    debounce sw0(.reset(reset),.clock(clock),.noisy(switch[0]),.clean(display_reset));
 	debounce sw1(.reset(reset),.clock(clock),.noisy(switch[1]),.clean(clean_sw1));
@@ -790,14 +797,15 @@ module recorder(
 							 .disp_reset_b(disp_reset_b), .disp_data_out(disp_data_out), .disp_clock(disp_clock));
 							 
 	always @(posedge clock) begin
-		last_read_incr <= read_incr;
-		if (!last_read_incr & read_incr) begin
-			//if there is a pulse (0 to 1) then increment the address flash reads from
-			if (raddr >= MAX_READ_ADDRESS) begin
-				raddr <= 0;
-			end
-			else raddr <= raddr + 1;
-		end
+		//last_read_incr <= read_incr;
+		//if (!last_read_incr & read_incr) begin
+		//	//if there is a pulse (0 to 1) then increment the address flash reads from
+		//	if (raddr >= MAX_READ_ADDRESS) begin
+		//		raddr <= 0;
+		//	end
+		//	else raddr <= raddr + 1;
+		//end
+		
 		if(clean_sw1 & clean_sw2) begin
 			//reset signals
 			writemode <= 1;
@@ -811,16 +819,28 @@ module recorder(
 				if (writing) begin
 					writemode <= 1;
 					doread <= 0;
-					flash_write_counter <= flash_write_counter + 1; //if reaches max value it can hold, will go back to 0 so no need to reset it
-					if (flash_write_counter == 0) begin
-						dowrite <= 1;
-						wdata <=  wdata + 1;
+					if (flash_write_counter  == 0) begin
+						//wait for enter button to be pressed before writing
+						if (ready) begin
+							dowrite <=1;
+							wdata <= from_ac97_data; //wdata + 1;
+							flash_write_counter <= flash_write_counter + 1;
+						end
+					end else begin
+						flash_write_counter <= flash_write_counter + 1; //if reaches max value it can hold, will go back to 0 so no need to reset it
 					end
 				end
 				
 				if (reading) begin
 					writemode <= 0;
 					doread <= 1;
+					if (ready) begin
+						to_ac97_data <= frdata[7:0];
+						if (raddr >= MAX_READ_ADDRESS) begin
+							raddr <= 0;
+						end
+						else raddr <= raddr + 1;
+					end
 				end
 			end
 			else begin
