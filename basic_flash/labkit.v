@@ -320,15 +320,14 @@ module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 	wire [11:0] fsmstate;
 	wire [639:0] dots;
 	reg writemode;
-	wire [15:0] wdata;
-	assign wdata = 16'h2;
+	reg [15:0] wdata = 16'h00;
 	reg dowrite;
 	reg [22:0] raddr;
 	wire [15:0] frdata;
 	reg doread;
 	wire display_reset;
 	assign display_reset = switch[4];
-	reg [5:0] flashcounter;
+	reg [5:0] flashcounter;//worked with 6 bits!! [5:0]
 	reg lastsw5;
 	wire writing;
 	assign writing = switch[6];
@@ -355,6 +354,7 @@ always @(posedge clock_27mhz) begin
 				flashcounter <= flashcounter + 1;
 				if (flashcounter == 0)begin
 					dowrite <= 1;
+					wdata <= wdata + 1;
 				end
 			end
 			if(reading) begin
@@ -370,6 +370,12 @@ always @(posedge clock_27mhz) begin
 		end
 	end
 end
+
+//to erase, use switch[0], and will need to reprogram after a while (wait for the blocks you want to be erased)
+//turn on and off switch[4] to turn on display
+//to read, reprogram and use switch7, use switch[5] to increment read address
+//to write, reprogram and use switch6
+//reprogram everytime for different tasks
 
 
 	assign led[0] = ~flash_reset; //sw0

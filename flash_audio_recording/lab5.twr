@@ -1,0 +1,189 @@
+--------------------------------------------------------------------------------
+Release 10.1.03 Trace  (lin64)
+Copyright (c) 1995-2008 Xilinx, Inc.  All rights reserved.
+
+/afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/bin/lin64/unwrapped/trce -ise
+/afs/athena.mit.edu/user/a/d/adhikara/Documents/6.111things/6.111 project/bobateam/flash_audio_recording/flash_audio_recording.ise
+-intstyle ise -v 3 -s 4 -xml lab5 lab5.ncd -o lab5.twr lab5.pcf -ucf labkit.ucf
+
+Design file:              lab5.ncd
+Physical constraint file: lab5.pcf
+Device,package,speed:     xc2v6000,bf957,-4 (PRODUCTION 1.121 2008-07-25, STEPPING level 0)
+Report level:             verbose report
+
+Environment Variable      Effect 
+--------------------      ------ 
+NONE                      No environment variables were set
+--------------------------------------------------------------------------------
+
+INFO:Timing:2698 - No timing constraints found, doing default enumeration.
+INFO:Timing:2752 - To get complete path coverage, use the unconstrained paths 
+   option. All paths that are not constrained will be reported in the 
+   unconstrained paths section(s) of the report.
+INFO:Timing:3339 - The clock-to-out numbers in this timing report are based on 
+   a 50 Ohm transmission line loading model.  For the details of this model, 
+   and for more information on accounting for different loading conditions, 
+   please see the device datasheet.
+
+
+
+Data Sheet report:
+-----------------
+All values displayed in nanoseconds (ns)
+
+Setup/Hold to clock ac97_bit_clock
+-------------+------------+------------+--------------------+--------+
+             |  Setup to  |  Hold to   |                    | Clock  |
+Source       | clk (edge) | clk (edge) |Internal Clock(s)   | Phase  |
+-------------+------------+------------+--------------------+--------+
+ac97_sdata_in|   -1.278(F)|    1.827(F)|analyzer1_clock_OBUF|   0.000|
+-------------+------------+------------+--------------------+--------+
+
+Setup/Hold to clock clock_27mhz
+--------------+------------+------------+------------------+--------+
+              |  Setup to  |  Hold to   |                  | Clock  |
+Source        | clk (edge) | clk (edge) |Internal Clock(s) | Phase  |
+--------------+------------+------------+------------------+--------+
+button_down   |    1.251(R)|    0.921(R)|clock_27mhz_BUFGP |   0.000|
+button_up     |    3.121(R)|    0.992(R)|clock_27mhz_BUFGP |   0.000|
+flash_data<0> |    0.262(R)|    0.062(R)|clock_27mhz_BUFGP |   0.000|
+flash_data<1> |    0.252(R)|    0.348(R)|clock_27mhz_BUFGP |   0.000|
+flash_data<2> |    1.070(R)|    0.607(R)|clock_27mhz_BUFGP |   0.000|
+flash_data<3> |    1.326(R)|    0.569(R)|clock_27mhz_BUFGP |   0.000|
+flash_data<4> |    0.255(R)|    0.269(R)|clock_27mhz_BUFGP |   0.000|
+flash_data<5> |    0.172(R)|    0.136(R)|clock_27mhz_BUFGP |   0.000|
+flash_data<6> |    0.904(R)|    0.252(R)|clock_27mhz_BUFGP |   0.000|
+flash_data<7> |    0.346(R)|    0.231(R)|clock_27mhz_BUFGP |   0.000|
+flash_data<8> |    0.960(R)|    0.086(R)|clock_27mhz_BUFGP |   0.000|
+flash_data<9> |    0.868(R)|    0.267(R)|clock_27mhz_BUFGP |   0.000|
+flash_data<10>|    0.700(R)|    0.432(R)|clock_27mhz_BUFGP |   0.000|
+flash_data<11>|    0.663(R)|    0.484(R)|clock_27mhz_BUFGP |   0.000|
+flash_data<12>|    0.781(R)|    0.164(R)|clock_27mhz_BUFGP |   0.000|
+flash_data<13>|    0.543(R)|   -0.187(R)|clock_27mhz_BUFGP |   0.000|
+flash_data<14>|    0.191(R)|    0.418(R)|clock_27mhz_BUFGP |   0.000|
+flash_data<15>|    0.987(R)|    0.820(R)|clock_27mhz_BUFGP |   0.000|
+flash_sts     |    2.725(R)|   -0.402(R)|clock_27mhz_BUFGP |   0.000|
+switch<0>     |    0.987(R)|    0.623(R)|clock_27mhz_BUFGP |   0.000|
+switch<1>     |    0.920(R)|    1.381(R)|clock_27mhz_BUFGP |   0.000|
+switch<2>     |    1.358(R)|    1.103(R)|clock_27mhz_BUFGP |   0.000|
+switch<3>     |   -0.295(R)|    1.950(R)|clock_27mhz_BUFGP |   0.000|
+switch<5>     |   -0.388(R)|    1.934(R)|clock_27mhz_BUFGP |   0.000|
+switch<6>     |    0.939(R)|    2.019(R)|clock_27mhz_BUFGP |   0.000|
+switch<7>     |    1.574(R)|    1.966(R)|clock_27mhz_BUFGP |   0.000|
+--------------+------------+------------+------------------+--------+
+
+Clock ac97_bit_clock to Pad
+------------------+------------+--------------------+--------+
+                  | clk (edge) |                    | Clock  |
+Destination       |   to PAD   |Internal Clock(s)   | Phase  |
+------------------+------------+--------------------+--------+
+ac97_sdata_out    |   13.888(R)|analyzer1_clock_OBUF|   0.000|
+ac97_synch        |   13.761(R)|analyzer1_clock_OBUF|   0.000|
+analyzer1_data<1> |   18.148(R)|analyzer1_clock_OBUF|   0.000|
+analyzer1_data<3> |   18.531(R)|analyzer1_clock_OBUF|   0.000|
+analyzer3_data<8> |   15.947(F)|analyzer1_clock_OBUF|   0.000|
+analyzer3_data<9> |   15.955(F)|analyzer1_clock_OBUF|   0.000|
+analyzer3_data<10>|   14.830(F)|analyzer1_clock_OBUF|   0.000|
+analyzer3_data<11>|   14.104(F)|analyzer1_clock_OBUF|   0.000|
+analyzer3_data<12>|   14.167(F)|analyzer1_clock_OBUF|   0.000|
+analyzer3_data<13>|   15.449(F)|analyzer1_clock_OBUF|   0.000|
+analyzer3_data<14>|   14.145(F)|analyzer1_clock_OBUF|   0.000|
+analyzer3_data<15>|   13.846(F)|analyzer1_clock_OBUF|   0.000|
+------------------+------------+--------------------+--------+
+
+Clock clock_27mhz to Pad
+-----------------+------------+------------------+--------+
+                 | clk (edge) |                  | Clock  |
+Destination      |   to PAD   |Internal Clock(s) | Phase  |
+-----------------+------------+------------------+--------+
+analyzer1_data<0>|   14.828(R)|clock_27mhz_BUFGP |   0.000|
+analyzer3_clock  |   15.420(R)|clock_27mhz_BUFGP |   0.000|
+audio_reset_b    |   11.835(R)|clock_27mhz_BUFGP |   0.000|
+disp_ce_b        |    7.798(R)|clock_27mhz_BUFGP |   0.000|
+disp_clock       |   10.019(R)|clock_27mhz_BUFGP |   0.000|
+disp_data_out    |    9.964(R)|clock_27mhz_BUFGP |   0.000|
+disp_reset_b     |    9.107(R)|clock_27mhz_BUFGP |   0.000|
+disp_rs          |    8.321(R)|clock_27mhz_BUFGP |   0.000|
+flash_address<1> |   10.693(R)|clock_27mhz_BUFGP |   0.000|
+flash_address<2> |    9.745(R)|clock_27mhz_BUFGP |   0.000|
+flash_address<3> |    9.480(R)|clock_27mhz_BUFGP |   0.000|
+flash_address<4> |    9.474(R)|clock_27mhz_BUFGP |   0.000|
+flash_address<5> |    9.517(R)|clock_27mhz_BUFGP |   0.000|
+flash_address<6> |    9.510(R)|clock_27mhz_BUFGP |   0.000|
+flash_address<7> |    9.898(R)|clock_27mhz_BUFGP |   0.000|
+flash_address<8> |    9.556(R)|clock_27mhz_BUFGP |   0.000|
+flash_address<9> |   10.509(R)|clock_27mhz_BUFGP |   0.000|
+flash_address<10>|    9.874(R)|clock_27mhz_BUFGP |   0.000|
+flash_address<11>|   11.009(R)|clock_27mhz_BUFGP |   0.000|
+flash_address<12>|    9.514(R)|clock_27mhz_BUFGP |   0.000|
+flash_address<13>|    9.502(R)|clock_27mhz_BUFGP |   0.000|
+flash_address<14>|    9.515(R)|clock_27mhz_BUFGP |   0.000|
+flash_address<15>|    9.571(R)|clock_27mhz_BUFGP |   0.000|
+flash_address<16>|    9.583(R)|clock_27mhz_BUFGP |   0.000|
+flash_address<17>|   10.174(R)|clock_27mhz_BUFGP |   0.000|
+flash_address<18>|    9.556(R)|clock_27mhz_BUFGP |   0.000|
+flash_address<19>|   10.251(R)|clock_27mhz_BUFGP |   0.000|
+flash_address<20>|   10.396(R)|clock_27mhz_BUFGP |   0.000|
+flash_address<21>|    9.709(R)|clock_27mhz_BUFGP |   0.000|
+flash_address<22>|   10.386(R)|clock_27mhz_BUFGP |   0.000|
+flash_address<23>|   10.332(R)|clock_27mhz_BUFGP |   0.000|
+flash_ce_b       |   11.247(R)|clock_27mhz_BUFGP |   0.000|
+flash_data<0>    |   10.065(R)|clock_27mhz_BUFGP |   0.000|
+flash_data<1>    |   10.969(R)|clock_27mhz_BUFGP |   0.000|
+flash_data<2>    |   10.356(R)|clock_27mhz_BUFGP |   0.000|
+flash_data<3>    |   10.360(R)|clock_27mhz_BUFGP |   0.000|
+flash_data<4>    |   10.353(R)|clock_27mhz_BUFGP |   0.000|
+flash_data<5>    |   10.352(R)|clock_27mhz_BUFGP |   0.000|
+flash_data<6>    |   10.990(R)|clock_27mhz_BUFGP |   0.000|
+flash_data<7>    |   10.991(R)|clock_27mhz_BUFGP |   0.000|
+flash_data<8>    |   10.070(R)|clock_27mhz_BUFGP |   0.000|
+flash_data<9>    |   11.890(R)|clock_27mhz_BUFGP |   0.000|
+flash_data<10>   |   10.531(R)|clock_27mhz_BUFGP |   0.000|
+flash_data<11>   |   10.537(R)|clock_27mhz_BUFGP |   0.000|
+flash_data<12>   |   10.078(R)|clock_27mhz_BUFGP |   0.000|
+flash_data<13>   |   10.848(R)|clock_27mhz_BUFGP |   0.000|
+flash_data<14>   |   10.660(R)|clock_27mhz_BUFGP |   0.000|
+flash_data<15>   |   11.916(R)|clock_27mhz_BUFGP |   0.000|
+flash_oe_b       |    9.745(R)|clock_27mhz_BUFGP |   0.000|
+flash_reset_b    |    8.117(R)|clock_27mhz_BUFGP |   0.000|
+flash_we_b       |    9.238(R)|clock_27mhz_BUFGP |   0.000|
+-----------------+------------+------------------+--------+
+
+Clock to Setup on destination clock ac97_bit_clock
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+ac97_bit_clock |    8.049|         |   13.610|    3.596|
+clock_27mhz    |    2.503|         |         |         |
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock clock_27mhz
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+ac97_bit_clock |    4.072|         |         |         |
+clock_27mhz    |   11.208|         |         |         |
+---------------+---------+---------+---------+---------+
+
+Pad to Pad
+---------------+-----------------+---------+
+Source Pad     |Destination Pad  |  Delay  |
+---------------+-----------------+---------+
+ac97_bit_clock |analyzer1_clock  |   17.015|
+ac97_sdata_in  |analyzer1_data<2>|   14.667|
+---------------+-----------------+---------+
+
+
+Analysis completed Sun Nov 19 19:43:24 2017 
+--------------------------------------------------------------------------------
+
+Trace Settings:
+-------------------------
+Trace Settings 
+
+Peak Memory Usage: 360 MB
+
+
+
