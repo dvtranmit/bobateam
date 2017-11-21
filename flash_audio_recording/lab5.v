@@ -709,12 +709,15 @@ module lab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
    assign analyzer3_data = {from_ac97_data, to_ac97_data};
 endmodule
 
+
 ///////////////////////////////////////////////////////////////////////////////
 //
 // Record/playback
 //
 ///////////////////////////////////////////////////////////////////////////////
-	
+
+
+//one that has sampling issues but works in terms of reading and writing to flash!	
 module recorder(
   input wire clock,	                // 27mhz system clock
   input wire reset,                 // 1 to reset to initial state
@@ -755,7 +758,7 @@ module recorder(
 	reg [22:0]raddr; //address for reading from flash
 	wire [15:0] frdata; //data from flash reading
 	
-	reg [5:0] flash_write_counter; //wait 2^6 clock cycles between each write to flash
+	reg [3:0] flash_write_counter; //waitsome clock cycles between each write to flash
 	wire [63:0]display_data; //data for display_16hex.v module
 	
 	wire display_reset; //to reset display_16hex.v module; switch0
@@ -765,8 +768,7 @@ module recorder(
 	wire read_incr; //to increment the read address (will be incrementing everytime this goes from 0 to 1); switch7
 	reg last_read_incr; //to store last read_incr value
 	wire clean_sw1; //debounced switch1
-	wire clean_sw2; //debounced switch2
-	
+	wire clean_sw2; //debounced switch2	
 	
 	assign display_data = {flash_data, raddr[15:0], wdata};
 	assign led[0] = ~flash_reset; //sw3
@@ -777,6 +779,8 @@ module recorder(
 	assign led[5] = ~busy;
 	assign led[6] = ~writing; //sw5
 	assign led[7] = ~reading; //sw6, sw7 for incrementing read address
+	
+	reg [2:0] ready_count; //take every 8 sample to write to flash
 
    debounce sw0(.reset(reset),.clock(clock),.noisy(switch[0]),.clean(display_reset));
 	debounce sw1(.reset(reset),.clock(clock),.noisy(switch[1]),.clean(clean_sw1));
@@ -797,20 +801,13 @@ module recorder(
 							 .disp_reset_b(disp_reset_b), .disp_data_out(disp_data_out), .disp_clock(disp_clock));
 							 
 	always @(posedge clock) begin
-		//last_read_incr <= read_incr;
-		//if (!last_read_incr & read_incr) begin
-		//	//if there is a pulse (0 to 1) then increment the address flash reads from
-		//	if (raddr >= MAX_READ_ADDRESS) begin
-		//		raddr <= 0;
-		//	end
-		//	else raddr <= raddr + 1;
-		//end
 		
 		if(clean_sw1 & clean_sw2) begin
 			//reset signals
 			writemode <= 1;
 			dowrite <= 0;
 			doread <= 0;
+			raddr <= 0;
 		end
 		else begin
 			//if not resetting signals then do things based on if flash is busy or not
@@ -819,15 +816,13 @@ module recorder(
 				if (writing) begin
 					writemode <= 1;
 					doread <= 0;
-					if (flash_write_counter  == 0) begin
-						//wait for enter button to be pressed before writing
-						if (ready) begin
+
+					if (ready) begin
+						ready_count <= ready_count + 1;
+						if (ready_count == 2) begin
 							dowrite <=1;
-							wdata <= from_ac97_data; //wdata + 1;
-							flash_write_counter <= flash_write_counter + 1;
+							wdata <= from_ac97_data;
 						end
-					end else begin
-						flash_write_counter <= flash_write_counter + 1; //if reaches max value it can hold, will go back to 0 so no need to reset it
 					end
 				end
 				
@@ -847,13 +842,13 @@ module recorder(
 				//if flash is busy
 				if (writing) begin
 					dowrite <= 0;
-					flash_write_counter <= 1;
 				end
 			end
 		end
 		
 	end
 endmodule
+
 
 ///////////////////////////////////////////////////////////////////////////////
 //

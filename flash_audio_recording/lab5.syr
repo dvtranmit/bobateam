@@ -5,14 +5,14 @@ Parameter TMPDIR set to /afs/athena.mit.edu/user/a/d/adhikara/Documents/6.111thi
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.02 secs
+Total CPU time to Xst completion: 0.03 secs
  
 --> 
 Parameter xsthdpdir set to /afs/athena.mit.edu/user/a/d/adhikara/Documents/6.111things/6.111 project/bobateam/flash_audio_recording/xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.02 secs
+Total CPU time to Xst completion: 0.03 secs
  
 --> 
 Reading design: lab5.prj
@@ -487,20 +487,19 @@ WARNING:Xst:646 - Signal <read_incr> is assigned but never used. This unconnecte
 WARNING:Xst:1780 - Signal <last_read_incr> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <fsmstate> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <frdata<15:8>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <flash_write_counter> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <dots> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
     Found 8-bit register for signal <to_ac97_data>.
     Found 1-bit register for signal <doread>.
     Found 1-bit register for signal <dowrite>.
-    Found 6-bit register for signal <flash_write_counter>.
-    Found 6-bit adder for signal <flash_write_counter$addsub0000> created at line 830.
     Found 23-bit up counter for signal <raddr>.
-    Found 23-bit comparator greatequal for signal <raddr$cmp_ge0000> created at line 839.
+    Found 23-bit comparator greatequal for signal <raddr$cmp_ge0000> created at line 834.
+    Found 3-bit up counter for signal <ready_count>.
     Found 16-bit register for signal <wdata>.
     Found 1-bit register for signal <writemode>.
     Summary:
-	inferred   1 Counter(s).
-	inferred  33 D-type flip-flop(s).
-	inferred   1 Adder/Subtractor(s).
+	inferred   2 Counter(s).
+	inferred  27 D-type flip-flop(s).
 	inferred   1 Comparator(s).
 Unit <recorder> synthesized.
 
@@ -809,24 +808,24 @@ HDL Synthesis Report
 Macro Statistics
 # ROMs                                                 : 11
  16x40-bit ROM                                         : 11
-# Adders/Subtractors                                   : 9
+# Adders/Subtractors                                   : 8
  10-bit adder                                          : 1
  10-bit addsub                                         : 1
  23-bit adder                                          : 1
  4-bit subtractor                                      : 1
  5-bit adder                                           : 1
- 6-bit adder                                           : 1
  9-bit adder                                           : 3
-# Counters                                             : 16
+# Counters                                             : 17
  10-bit up counter                                     : 1
  19-bit up counter                                     : 9
  23-bit up counter                                     : 1
+ 3-bit up counter                                      : 1
  4-bit up counter                                      : 1
  5-bit updown counter                                  : 1
  6-bit up counter                                      : 1
  8-bit down counter                                    : 1
  8-bit up counter                                      : 1
-# Registers                                            : 70
+# Registers                                            : 69
  1-bit register                                        : 41
  10-bit register                                       : 2
  13-bit register                                       : 1
@@ -838,7 +837,6 @@ Macro Statistics
  3-bit register                                        : 1
  32-bit register                                       : 1
  4-bit register                                        : 1
- 6-bit register                                        : 1
  64-bit register                                       : 1
  7-bit register                                        : 1
  8-bit register                                        : 3
@@ -1108,24 +1106,24 @@ Macro Statistics
  16x40-bit single-port block RAM                       : 4
 # ROMs                                                 : 7
  16x40-bit ROM                                         : 7
-# Adders/Subtractors                                   : 9
+# Adders/Subtractors                                   : 8
  10-bit adder                                          : 1
  10-bit addsub                                         : 1
  23-bit adder                                          : 1
  4-bit subtractor                                      : 1
  5-bit adder                                           : 4
- 6-bit adder                                           : 1
-# Counters                                             : 16
+# Counters                                             : 17
  10-bit up counter                                     : 1
  19-bit up counter                                     : 9
  23-bit up counter                                     : 1
+ 3-bit up counter                                      : 1
  4-bit up counter                                      : 1
  5-bit updown counter                                  : 1
  6-bit up counter                                      : 1
  8-bit down counter                                    : 1
  8-bit up counter                                      : 1
-# Registers                                            : 454
- Flip-Flops                                            : 454
+# Registers                                            : 448
+ Flip-Flops                                            : 448
 # Comparators                                          : 21
  23-bit comparator greatequal                          : 1
  6-bit comparator less                                 : 1
@@ -1263,8 +1261,8 @@ Unit <lab5> processed.
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 555
- Flip-Flops                                            : 555
+# Registers                                            : 552
+ Flip-Flops                                            : 552
 # Shift Registers                                      : 2
  13-bit shift register                                 : 1
  2-bit shift register                                  : 1
@@ -1296,28 +1294,28 @@ Design Statistics
 # IOs                              : 576
 
 Cell Usage :
-# BELS                             : 1549
+# BELS                             : 1540
 #      GND                         : 1
-#      INV                         : 44
+#      INV                         : 45
 #      LUT1                        : 206
-#      LUT2                        : 61
-#      LUT2_D                      : 1
-#      LUT2_L                      : 1
-#      LUT3                        : 223
-#      LUT3_D                      : 13
-#      LUT3_L                      : 7
-#      LUT4                        : 350
-#      LUT4_D                      : 28
-#      LUT4_L                      : 62
+#      LUT2                        : 62
+#      LUT2_D                      : 2
+#      LUT2_L                      : 2
+#      LUT3                        : 218
+#      LUT3_D                      : 12
+#      LUT3_L                      : 6
+#      LUT4                        : 344
+#      LUT4_D                      : 26
+#      LUT4_L                      : 64
 #      MUXCY                       : 266
 #      MUXF5                       : 51
 #      MUXF6                       : 8
 #      MUXF7                       : 2
 #      VCC                         : 1
 #      XORCY                       : 224
-# FlipFlops/Latches                : 557
+# FlipFlops/Latches                : 554
 #      FD                          : 18
-#      FDE                         : 258
+#      FDE                         : 255
 #      FDE_1                       : 8
 #      FDR                         : 18
 #      FDRE                        : 231
@@ -1341,10 +1339,10 @@ Device utilization summary:
 
 Selected Device : 2v6000bf957-4 
 
- Number of Slices:                      528  out of  33792     1%  
- Number of Slice Flip Flops:            557  out of  67584     0%  
- Number of 4 input LUTs:                999  out of  67584     1%  
-    Number used as logic:               996
+ Number of Slices:                      523  out of  33792     1%  
+ Number of Slice Flip Flops:            554  out of  67584     0%  
+ Number of 4 input LUTs:                990  out of  67584     1%  
+    Number used as logic:               987
     Number used as Shift registers:       3
  Number of IOs:                         576
  Number of bonded IOBs:                 268  out of    684    39%  
@@ -1371,7 +1369,7 @@ Clock Information:
 -----------------------------------+------------------------+-------+
 Clock Signal                       | Clock buffer(FF name)  | Load  |
 -----------------------------------+------------------------+-------+
-clock_27mhz                        | BUFGP                  | 495   |
+clock_27mhz                        | BUFGP                  | 492   |
 ac97_bit_clock                     | IBUF+BUFG              | 65    |
 -----------------------------------+------------------------+-------+
 
@@ -1395,7 +1393,7 @@ All values displayed in nanoseconds (ns)
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clock_27mhz'
   Clock period: 10.716ns (frequency: 93.320MHz)
-  Total number of paths / destination ports: 21027 / 1190
+  Total number of paths / destination ports: 20421 / 1184
 -------------------------------------------------------------------------
 Delay:               10.716ns (Levels of Logic = 11)
   Source:            r/disp/char_index_0_1 (FF)
@@ -1410,7 +1408,7 @@ Delay:               10.716ns (Levels of Logic = 11)
      FDE:C->Q             18   0.568   1.057  r/disp/char_index_0_1 (r/disp/char_index_0_1)
      LUT3:I2->O            1   0.439   0.000  r/disp/mux_9 (r/disp/mux_9)
      MUXF5:I1->O           1   0.436   0.552  r/disp/mux_8_f5 (r/disp/mux_8_f5)
-     LUT3:I2->O            1   0.439   0.000  r/disp/mux_2_f5_F (N250)
+     LUT3:I2->O            1   0.439   0.000  r/disp/mux_2_f5_F (N247)
      MUXF5:I0->O          28   0.436   1.362  r/disp/mux_2_f5 (r/disp/nibble<0>1)
      LUT4:I0->O            2   0.439   0.735  r/disp/Mrom_dots1311 (r/disp/Mrom_dots12)
      LUT3:I2->O            1   0.439   0.000  r/disp/Mmux__varindex0000_16 (r/disp/Mmux__varindex0000_16)
@@ -1462,7 +1460,7 @@ Offset:              3.997ns (Levels of Logic = 3)
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      IBUF:I->O             5   0.825   0.811  flash_sts_IBUF (flash_sts_IBUF)
-     LUT4:I3->O            1   0.439   0.725  r/flash_flash/flash/busy_not000177_SW0 (N280)
+     LUT4:I3->O            1   0.439   0.725  r/flash_flash/flash/busy_not000177_SW0 (N283)
      LUT3:I1->O            1   0.439   0.517  r/flash_flash/flash/busy_not000177 (r/flash_flash/flash/busy_not0001)
      FDSE:CE                   0.240          r/flash_flash/flash/busy
     ----------------------------------------
@@ -1550,14 +1548,14 @@ Delay:               5.887ns (Levels of Logic = 2)
 
 
 Total REAL time to Xst completion: 10.00 secs
-Total CPU time to Xst completion: 9.62 secs
+Total CPU time to Xst completion: 10.17 secs
  
 --> 
 
 
-Total memory usage is 497020 kilobytes
+Total memory usage is 496864 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :  518 (   0 filtered)
+Number of warnings :  519 (   0 filtered)
 Number of infos    :   44 (   0 filtered)
 
