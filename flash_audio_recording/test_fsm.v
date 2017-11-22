@@ -57,7 +57,7 @@ module test_fsm (reset, clock, fop, faddress, fwdata, frdata, fbusy, dots, mode,
    parameter MODE_WRITE = 2;
    parameter MODE_READ	= 3;
 
-   parameter MAX_ADDRESS = 23'h090005; 
+   parameter MAX_ADDRESS = 23'h0F0000; 
 
    parameter HOME = 8'h12;
 

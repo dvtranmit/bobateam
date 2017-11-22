@@ -780,7 +780,12 @@ module recorder(
 	assign led[6] = ~writing; //sw5
 	assign led[7] = ~reading; //sw6, sw7 for incrementing read address
 	
-	reg [2:0] ready_count; //take every 8 sample to write to flash
+
+	reg [7:0] ready_count;
+	
+	wire signed [17:0] filter_output; //filtered
+	reg [7:0] filter_input; //input to filter
+	
 
    debounce sw0(.reset(reset),.clock(clock),.noisy(switch[0]),.clean(display_reset));
 	debounce sw1(.reset(reset),.clock(clock),.noisy(switch[1]),.clean(clean_sw1));
@@ -799,54 +804,60 @@ module recorder(
 	display_16hex disp(.reset(display_reset), .clock_27mhz(clock), .data_in(display_data), 
 		                .disp_rs(disp_rs), .disp_ce_b(disp_ce_b), .disp_blank(disp_blank),
 							 .disp_reset_b(disp_reset_b), .disp_data_out(disp_data_out), .disp_clock(disp_clock));
-							 
-	always @(posedge clock) begin
-		
-		if(clean_sw1 & clean_sw2) begin
-			//reset signals
-			writemode <= 1;
-			dowrite <= 0;
-			doread <= 0;
-			raddr <= 0;
+	
+	//low pass filter
+	fir31 fir31(.clock(clock), .reset(reset), .ready(ready), .x(filter_input), .y(filter_output));
+	
+always @(posedge clock) begin
+	if(clean_sw1 & clean_sw2) begin
+		//reset signals
+		writemode <= 1;
+		dowrite <= 0;
+		doread <= 0;
+		raddr <= 0;
+		ready_count <= 0;
+	end
+	else begin
+		//if not resetting signals then do things based on if flash is busy or not
+		if(!busy) begin
+			//if flash is not busy
+			if (writing) begin
+				writemode <= 1;
+				doread <= 0;
+				
+				filter_input <= from_ac97_data;
+
+				if (ready) begin
+					ready_count <= ready_count + 1;
+					if (ready_count == 7) begin //i think 6 7 or 8 will work for this?
+						ready_count <= 0;
+						dowrite <=1;
+						wdata <= filter_output[17:10]; //from_ac97_data;
+					end
+				end
+			end
+	
+			if (reading) begin
+				writemode <= 0;
+				doread <= 1;
+				filter_input <= frdata[7:0];
+				if (ready) begin
+					to_ac97_data <= filter_output[17:10]; //frdata[7:0];
+					if (raddr >= MAX_READ_ADDRESS) begin
+						raddr <= 0;
+					end
+					else raddr <= raddr + 1;
+				end
+			end
 		end
 		else begin
-			//if not resetting signals then do things based on if flash is busy or not
-			if(!busy) begin
-				//if flash is not busy
-				if (writing) begin
-					writemode <= 1;
-					doread <= 0;
-
-					if (ready) begin
-						ready_count <= ready_count + 1;
-						if (ready_count == 2) begin
-							dowrite <=1;
-							wdata <= from_ac97_data;
-						end
-					end
-				end
-				
-				if (reading) begin
-					writemode <= 0;
-					doread <= 1;
-					if (ready) begin
-						to_ac97_data <= frdata[7:0];
-						if (raddr >= MAX_READ_ADDRESS) begin
-							raddr <= 0;
-						end
-						else raddr <= raddr + 1;
-					end
-				end
-			end
-			else begin
-				//if flash is busy
-				if (writing) begin
-					dowrite <= 0;
-				end
+			//if flash is busy
+			if (writing) begin
+				dowrite <= 0;
 			end
 		end
-		
 	end
+end //always block end
 endmodule
 
 
@@ -888,12 +899,43 @@ endmodule
 module fir31(
   input wire clock,reset,ready,
   input wire signed [7:0] x,
-  output reg signed [17:0] y
+  output reg signed [17:0] y //accumulator
 );
+  reg signed [17:0] sum;
+  reg [4:0] offset;
+  reg [4:0] index_reg;
+  wire [4:0] index;
+  assign index = index_reg;
+  reg signed [7:0] sample [31:0]; //32 element array each 8 bits wide
+  initial begin
+		sum = 0;
+		offset = 0;
+		index_reg =0;
+  end
+  
+  wire signed [9:0] coeff;
+  coeffs31 coeffs31(.index(index),.coeff(coeff));
+  
+  always @(posedge clock) begin
+		if (ready) begin
+			sum <= 0;
+			index_reg <= 0;
+			offset <= offset+1;
+			sample[offset] <= x;
+		end
+		else if (index_reg<= 30) begin
+			index_reg <= index_reg + 1;
+			sum <= sum+ coeff*sample[offset-index];
+			if(index_reg == 30)
+				y <= sum + coeff*sample[offset-index];
+		end
+  end
+  /*
   // for now just pass data through
   always @(posedge clock) begin
     if (ready) y <= {x,10'd0};
   end
+  */
 endmodule
 
 ///////////////////////////////////////////////////////////////////////////////
