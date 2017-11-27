@@ -934,7 +934,9 @@ module sound_module(
 	parameter REQUEST_MOLE	= 4'd3;		// Request a mole to be displayed (pulse)
 	parameter MOLE_MISSED	= 4'd5;		// Lives counter decremented (pulse)
 	parameter MOLE_WHACKED	= 4'd6;		// Score counter incremented (pulse)
-	parameter MOLE_COUNTDOWN = 4'd4;		// Mole displayed until stomped/expired 
+	parameter MOLE_COUNTDOWN = 4'd4;		// Mole displayed until stomped/expired
+	parameter MOLE_MISSED_SOUND	= 4'd9;		// Extra time for sound
+	parameter MOLE_WHACKED_SOUND	= 4'd10;		// Extra time for sound
 
 	reg pop_sound_done;
 	reg missed_sound_done;
@@ -982,7 +984,7 @@ module sound_module(
 											end
 										end
 										
-				MOLE_MISSED: 		begin
+				MOLE_MISSED_SOUND: 		begin
 											if(last_state != current_state) begin
 												//state changed so missed mole sound should start from beginning
 												raddr <= MISSED_START;
@@ -1010,7 +1012,7 @@ module sound_module(
 											end
 										end
 										
-				MOLE_WHACKED: 		begin
+				MOLE_WHACKED_SOUND: 		begin
 											if(last_state != current_state) begin
 												//state changed so whacked mole sound should start from beginning
 												raddr <= WHACKED_START;
@@ -1543,8 +1545,15 @@ endmodule
 //																									 //
 //////////////////////////////////////////////////////////////////////////////
 
+//////////////////////////////////////////////////////////////////////////////
+//																									 //
+//								    MOLE TIMING MODULE									 	 //
+//																									 //
+//////////////////////////////////////////////////////////////////////////////
+
 module mole(	input clk, reset,
 					input one_hz_enable, // delete this when we can check address
+					input [22:0] music_address,
 					output request_mole );
 
 // Current implementation is just a really long alternating signal
@@ -1566,22 +1575,32 @@ parameter COUNTING 	= 1'b1;		// Countdown from timer_value (until expired)
 parameter MOLE			= 1'b0;		// mole pulse lasts one clock cycle
 
 // Mole Parameters
-parameter MOLE_REQUEST_FREQUENCY = 4'd3;
+//parameter MOLE_REQUEST_FREQUENCY = 4'd3;
 
-// State machine variables
+//// State machine variables
 reg state = COUNTING;
-reg [3:0] counter = MOLE_REQUEST_FREQUENCY;
+//reg [3:0] counter = MOLE_REQUEST_FREQUENCY;
+
+// Music tracker
+reg [3:0] i = 4'd15;
+reg [367:0] addresses = {23'h0001, 23'h3000, 23'h6000, 23'h9000,
+										 23'h0, 23'hC000, 23'hF000, 23'h12000,
+										 23'h15000, 23'h18000, 23'h1A000, 23'h1D000,
+										 23'h21000, 23'h24000, 23'h27000, 23'h2B000};
 
 always @(posedge clk) begin
 	if (reset) begin
-		state <= COUNTING;
-		counter <= MOLE_REQUEST_FREQUENCY;
+//		state <= COUNTING;
+//		counter <= MOLE_REQUEST_FREQUENCY;
+		addresses[367:0] <= {23'h0001, 23'h3000, 23'h6000, 23'h9000,
+										 23'hA500, 23'hC000, 23'hF000, 23'h12000,
+										 23'h15000, 23'h18000, 23'h1A000, 23'h1D000,
+										 23'h21000, 23'h24000, 23'h27000, 23'h2B000};									 		
 	end else if (state == COUNTING) begin
-		state <= (counter == 0) ? MOLE : COUNTING;
-		counter <= (one_hz_enable) ? counter - 1: counter;
+		state <= (addresses[367:345] == music_address) ? MOLE : COUNTING;
+		addresses <= (addresses[367:345] == music_address) ? {addresses[344:322], addresses[367:345]} : addresses;
 	end else if (state == MOLE) begin
 		state <= COUNTING;
-		counter <= MOLE_REQUEST_FREQUENCY;
 	end
 end
 
@@ -1621,6 +1640,8 @@ reg [3:0] MOLE_MISSED			= 4'd5;		// Lives counter decremented (pulse)
 reg [3:0] MOLE_WHACKED			= 4'd6;		// Score counter incremented (pulse)
 reg [3:0] SAFE_STEP_DELAY		= 4'd7;		// Prevent repeated lives decrement
 reg [3:0] GAME_OVER				= 4'd8;		// Display Game Over Screen
+reg [3:0] MOLE_MISSED_SOUND	= 4'd9;		// Extra time for sound
+reg [3:0] MOLE_WHACKED_SOUND	= 4'd10;		// Extra time for sound
 
 // State machine variables
 reg [3:0] state = 4'b0;
@@ -1655,9 +1676,10 @@ always @(*) begin
 		GAME_ONGOING : next_state = (lives == 0) ? GAME_OVER : (request_mole) ? REQUEST_MOLE : GAME_ONGOING;
 		REQUEST_MOLE : next_state = MOLE_COUNTDOWN;
 		MOLE_COUNTDOWN : next_state = (expired || misstep) ? MOLE_MISSED : (whacked) ? MOLE_WHACKED : MOLE_COUNTDOWN;
-		MOLE_MISSED : next_state = SAFE_STEP_DELAY;
-		MOLE_WHACKED : next_state = SAFE_STEP_DELAY;
-		SAFE_STEP_DELAY : next_state = (expired) ? GAME_ONGOING : SAFE_STEP_DELAY;
+		MOLE_MISSED : next_state = MOLE_MISSED_SOUND;
+		MOLE_WHACKED : next_state = MOLE_WHACKED_SOUND;
+		MOLE_MISSED_SOUND : next_state = (expired) ? GAME_ONGOING : MOLE_MISSED_SOUND;
+		MOLE_WHACKED_SOUND : next_state = (expired) ? GAME_ONGOING : MOLE_WHACKED_SOUND;
 		GAME_OVER : next_state = (expired) ? IDLE : GAME_OVER;
 		default : next_state = IDLE;
 	endcase

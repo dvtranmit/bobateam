@@ -8,96 +8,6 @@
 <msg type="info" file="Par" num="282" delta="unknown" >No user timing constraints were detected or you have set the option to ignore timing constraints (&quot;par -x&quot;). Place and Route will run in &quot;Performance Evaluation Mode&quot; to automatically improve the performance of all internal clocks in this design. The PAR timing summary will list the performance achieved for each clock. Note: For the fastest runtime, set the effort level to &quot;std&quot;.  For best performance, set the effort level to &quot;high&quot;. For a balance between the fastest runtime and best performance, set the effort level to &quot;med&quot;.
 </msg>
 
-<msg type="warning" file="Par" num="288" delta="unknown" >The signal <arg fmt="%s" index="1">daughtercard&lt;13&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
-</msg>
-
-<msg type="warning" file="Par" num="288" delta="unknown" >The signal <arg fmt="%s" index="1">daughtercard&lt;30&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
-</msg>
-
-<msg type="warning" file="Par" num="288" delta="unknown" >The signal <arg fmt="%s" index="1">daughtercard&lt;22&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
-</msg>
-
-<msg type="warning" file="Par" num="288" delta="unknown" >The signal <arg fmt="%s" index="1">daughtercard&lt;14&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
-</msg>
-
-<msg type="warning" file="Par" num="288" delta="unknown" >The signal <arg fmt="%s" index="1">daughtercard&lt;31&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
-</msg>
-
-<msg type="warning" file="Par" num="288" delta="unknown" >The signal <arg fmt="%s" index="1">daughtercard&lt;23&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
-</msg>
-
-<msg type="warning" file="Par" num="288" delta="unknown" >The signal <arg fmt="%s" index="1">daughtercard&lt;15&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
-</msg>
-
-<msg type="warning" file="Par" num="288" delta="unknown" >The signal <arg fmt="%s" index="1">daughtercard&lt;40&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
-</msg>
-
-<msg type="warning" file="Par" num="288" delta="unknown" >The signal <arg fmt="%s" index="1">daughtercard&lt;32&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
-</msg>
-
-<msg type="warning" file="Par" num="288" delta="unknown" >The signal <arg fmt="%s" index="1">daughtercard&lt;24&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
-</msg>
-
-<msg type="warning" file="Par" num="288" delta="unknown" >The signal <arg fmt="%s" index="1">daughtercard&lt;16&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
-</msg>
-
-<msg type="warning" file="Par" num="288" delta="unknown" >The signal <arg fmt="%s" index="1">daughtercard&lt;41&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
-</msg>
-
-<msg type="warning" file="Par" num="288" delta="unknown" >The signal <arg fmt="%s" index="1">daughtercard&lt;33&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
-</msg>
-
-<msg type="warning" file="Par" num="288" delta="unknown" >The signal <arg fmt="%s" index="1">daughtercard&lt;25&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
-</msg>
-
-<msg type="warning" file="Par" num="288" delta="unknown" >The signal <arg fmt="%s" index="1">daughtercard&lt;17&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
-</msg>
-
-<msg type="warning" file="Par" num="288" delta="unknown" >The signal <arg fmt="%s" index="1">daughtercard&lt;42&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
-</msg>
-
-<msg type="warning" file="Par" num="288" delta="unknown" >The signal <arg fmt="%s" index="1">daughtercard&lt;34&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
-</msg>
-
-<msg type="warning" file="Par" num="288" delta="unknown" >The signal <arg fmt="%s" index="1">daughtercard&lt;26&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
-</msg>
-
-<msg type="warning" file="Par" num="288" delta="unknown" >The signal <arg fmt="%s" index="1">daughtercard&lt;18&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
-</msg>
-
-<msg type="warning" file="Par" num="288" delta="unknown" >The signal <arg fmt="%s" index="1">daughtercard&lt;43&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
-</msg>
-
-<msg type="warning" file="Par" num="288" delta="unknown" >The signal <arg fmt="%s" index="1">daughtercard&lt;35&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
-</msg>
-
-<msg type="warning" file="Par" num="288" delta="unknown" >The signal <arg fmt="%s" index="1">daughtercard&lt;27&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
-</msg>
-
-<msg type="warning" file="Par" num="288" delta="unknown" >The signal <arg fmt="%s" index="1">daughtercard&lt;19&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
-</msg>
-
-<msg type="warning" file="Par" num="288" delta="unknown" >The signal <arg fmt="%s" index="1">daughtercard&lt;36&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
-</msg>
-
-<msg type="warning" file="Par" num="288" delta="unknown" >The signal <arg fmt="%s" index="1">daughtercard&lt;28&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
-</msg>
-
-<msg type="warning" file="Par" num="288" delta="unknown" >The signal <arg fmt="%s" index="1">daughtercard&lt;37&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
-</msg>
-
-<msg type="warning" file="Par" num="288" delta="unknown" >The signal <arg fmt="%s" index="1">daughtercard&lt;29&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
-</msg>
-
-<msg type="warning" file="Par" num="288" delta="unknown" >The signal <arg fmt="%s" index="1">daughtercard&lt;38&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
-</msg>
-
-<msg type="warning" file="Par" num="288" delta="unknown" >The signal <arg fmt="%s" index="1">daughtercard&lt;39&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
-</msg>
-
-<msg type="warning" file="Par" num="288" delta="unknown" >The signal <arg fmt="%s" index="1">rs232_cts_IBUF</arg> has no load.  PAR will not attempt to route this signal.
-</msg>
-
 <msg type="warning" file="Par" num="288" delta="unknown" >The signal <arg fmt="%s" index="1">ram0_data&lt;10&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
 </msg>
 
@@ -924,6 +834,96 @@
 </msg>
 
 <msg type="warning" file="Par" num="288" delta="unknown" >The signal <arg fmt="%s" index="1">daughtercard&lt;21&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
+</msg>
+
+<msg type="warning" file="Par" num="288" delta="unknown" >The signal <arg fmt="%s" index="1">daughtercard&lt;13&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
+</msg>
+
+<msg type="warning" file="Par" num="288" delta="unknown" >The signal <arg fmt="%s" index="1">daughtercard&lt;30&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
+</msg>
+
+<msg type="warning" file="Par" num="288" delta="unknown" >The signal <arg fmt="%s" index="1">daughtercard&lt;22&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
+</msg>
+
+<msg type="warning" file="Par" num="288" delta="unknown" >The signal <arg fmt="%s" index="1">daughtercard&lt;14&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
+</msg>
+
+<msg type="warning" file="Par" num="288" delta="unknown" >The signal <arg fmt="%s" index="1">daughtercard&lt;31&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
+</msg>
+
+<msg type="warning" file="Par" num="288" delta="unknown" >The signal <arg fmt="%s" index="1">daughtercard&lt;23&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
+</msg>
+
+<msg type="warning" file="Par" num="288" delta="unknown" >The signal <arg fmt="%s" index="1">daughtercard&lt;15&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
+</msg>
+
+<msg type="warning" file="Par" num="288" delta="unknown" >The signal <arg fmt="%s" index="1">daughtercard&lt;40&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
+</msg>
+
+<msg type="warning" file="Par" num="288" delta="unknown" >The signal <arg fmt="%s" index="1">daughtercard&lt;32&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
+</msg>
+
+<msg type="warning" file="Par" num="288" delta="unknown" >The signal <arg fmt="%s" index="1">daughtercard&lt;24&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
+</msg>
+
+<msg type="warning" file="Par" num="288" delta="unknown" >The signal <arg fmt="%s" index="1">daughtercard&lt;16&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
+</msg>
+
+<msg type="warning" file="Par" num="288" delta="unknown" >The signal <arg fmt="%s" index="1">daughtercard&lt;41&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
+</msg>
+
+<msg type="warning" file="Par" num="288" delta="unknown" >The signal <arg fmt="%s" index="1">daughtercard&lt;33&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
+</msg>
+
+<msg type="warning" file="Par" num="288" delta="unknown" >The signal <arg fmt="%s" index="1">daughtercard&lt;25&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
+</msg>
+
+<msg type="warning" file="Par" num="288" delta="unknown" >The signal <arg fmt="%s" index="1">daughtercard&lt;17&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
+</msg>
+
+<msg type="warning" file="Par" num="288" delta="unknown" >The signal <arg fmt="%s" index="1">daughtercard&lt;42&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
+</msg>
+
+<msg type="warning" file="Par" num="288" delta="unknown" >The signal <arg fmt="%s" index="1">daughtercard&lt;34&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
+</msg>
+
+<msg type="warning" file="Par" num="288" delta="unknown" >The signal <arg fmt="%s" index="1">daughtercard&lt;26&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
+</msg>
+
+<msg type="warning" file="Par" num="288" delta="unknown" >The signal <arg fmt="%s" index="1">daughtercard&lt;18&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
+</msg>
+
+<msg type="warning" file="Par" num="288" delta="unknown" >The signal <arg fmt="%s" index="1">daughtercard&lt;43&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
+</msg>
+
+<msg type="warning" file="Par" num="288" delta="unknown" >The signal <arg fmt="%s" index="1">daughtercard&lt;35&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
+</msg>
+
+<msg type="warning" file="Par" num="288" delta="unknown" >The signal <arg fmt="%s" index="1">daughtercard&lt;27&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
+</msg>
+
+<msg type="warning" file="Par" num="288" delta="unknown" >The signal <arg fmt="%s" index="1">daughtercard&lt;19&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
+</msg>
+
+<msg type="warning" file="Par" num="288" delta="unknown" >The signal <arg fmt="%s" index="1">daughtercard&lt;36&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
+</msg>
+
+<msg type="warning" file="Par" num="288" delta="unknown" >The signal <arg fmt="%s" index="1">daughtercard&lt;28&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
+</msg>
+
+<msg type="warning" file="Par" num="288" delta="unknown" >The signal <arg fmt="%s" index="1">daughtercard&lt;37&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
+</msg>
+
+<msg type="warning" file="Par" num="288" delta="unknown" >The signal <arg fmt="%s" index="1">daughtercard&lt;29&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
+</msg>
+
+<msg type="warning" file="Par" num="288" delta="unknown" >The signal <arg fmt="%s" index="1">daughtercard&lt;38&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
+</msg>
+
+<msg type="warning" file="Par" num="288" delta="unknown" >The signal <arg fmt="%s" index="1">daughtercard&lt;39&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
+</msg>
+
+<msg type="warning" file="Par" num="288" delta="unknown" >The signal <arg fmt="%s" index="1">rs232_cts_IBUF</arg> has no load.  PAR will not attempt to route this signal.
 </msg>
 
 <msg type="info" file="Timing" num="2761" delta="unknown" >N/A entries in the Constraints list may indicate that the constraint does not cover any paths or that it has no requested value.</msg>

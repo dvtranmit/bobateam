@@ -666,6 +666,7 @@ endmodule
 
 module mole(	input clk, reset,
 					input one_hz_enable, // delete this when we can check address
+					input [22:0] music_address,
 					output request_mole );
 
 // Current implementation is just a really long alternating signal
@@ -687,22 +688,32 @@ parameter COUNTING 	= 1'b1;		// Countdown from timer_value (until expired)
 parameter MOLE			= 1'b0;		// mole pulse lasts one clock cycle
 
 // Mole Parameters
-parameter MOLE_REQUEST_FREQUENCY = 4'd3;
+//parameter MOLE_REQUEST_FREQUENCY = 4'd3;
 
-// State machine variables
+//// State machine variables
 reg state = COUNTING;
-reg [3:0] counter = MOLE_REQUEST_FREQUENCY;
+//reg [3:0] counter = MOLE_REQUEST_FREQUENCY;
+
+// Music tracker
+reg [3:0] i = 4'd15;
+reg [367:0] addresses = {23'h0001, 23'h3000, 23'h6000, 23'h9000,
+										 23'h0, 23'hC000, 23'hF000, 23'h12000,
+										 23'h15000, 23'h18000, 23'h1A000, 23'h1D000,
+										 23'h21000, 23'h24000, 23'h27000, 23'h2B000};
 
 always @(posedge clk) begin
 	if (reset) begin
-		state <= COUNTING;
-		counter <= MOLE_REQUEST_FREQUENCY;
+//		state <= COUNTING;
+//		counter <= MOLE_REQUEST_FREQUENCY;
+		addresses[367:0] <= {23'h0001, 23'h3000, 23'h6000, 23'h9000,
+										 23'h0, 23'hC000, 23'hF000, 23'h12000,
+										 23'h15000, 23'h18000, 23'h1A000, 23'h1D000,
+										 23'h21000, 23'h24000, 23'h27000, 23'h2B000};									 		
 	end else if (state == COUNTING) begin
-		state <= (counter == 0) ? MOLE : COUNTING;
-		counter <= (one_hz_enable) ? counter - 1: counter;
+		state <= (addresses[367:345] == music_address) ? MOLE : COUNTING;
+		addresses <= (addresses[367:345] == music_address) ? {addresses[344:322], addresses[367:345]} : addresses;
 	end else if (state == MOLE) begin
 		state <= COUNTING;
-		counter <= MOLE_REQUEST_FREQUENCY;
 	end
 end
 
