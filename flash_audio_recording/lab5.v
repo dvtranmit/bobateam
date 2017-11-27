@@ -770,7 +770,7 @@ module recorder(
 	wire clean_sw1; //debounced switch1
 	wire clean_sw2; //debounced switch2	
 	
-	assign display_data = {flash_data, raddr[15:0], wdata};
+	assign display_data = {raddr[22:0], flash_data[15:0], wdata[15:0]};
 	assign led[0] = ~flash_reset; //sw3
 	assign led[1] = ~writemode; 
 	assign led[2] = ~dowrite;

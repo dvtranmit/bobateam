@@ -5,14 +5,14 @@ Parameter TMPDIR set to /afs/athena.mit.edu/user/a/d/adhikara/Documents/6.111thi
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.01 secs
+Total CPU time to Xst completion: 0.02 secs
  
 --> 
 Parameter xsthdpdir set to /afs/athena.mit.edu/user/a/d/adhikara/Documents/6.111things/6.111 project/bobateam/flash_audio_recording/xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.01 secs
+Total CPU time to Xst completion: 0.02 secs
  
 --> 
 Reading design: lab5.prj
@@ -1065,14 +1065,592 @@ WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <fsm/state_5> (witho
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <fsm/state_6> (without init value) has a constant value of 0 in block <flash_manager>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <fsm/state_7> (without init value) has a constant value of 0 in block <flash_manager>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <flash/flash_address_0> (without init value) has a constant value of 0 in block <flash_manager>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <wdata_8> has a constant value of 0 in block <recorder>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <wdata_9> has a constant value of 0 in block <recorder>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <wdata_10> has a constant value of 0 in block <recorder>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <wdata_11> has a constant value of 0 in block <recorder>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <wdata_12> has a constant value of 0 in block <recorder>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <wdata_13> has a constant value of 0 in block <recorder>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <wdata_14> has a constant value of 0 in block <recorder>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <wdata_15> has a constant value of 0 in block <recorder>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <fsm/fwdata_8> (without init value) has a constant value of 0 in block <flash_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <fsm/fwdata_9> (without init value) has a constant value of 0 in block <flash_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <fsm/fwdata_10> (without init value) has a constant value of 0 in block <flash_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <fsm/fwdata_11> (without init value) has a constant value of 0 in block <flash_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <fsm/fwdata_12> (without init value) has a constant value of 0 in block <flash_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <fsm/fwdata_13> (without init value) has a constant value of 0 in block <flash_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <fsm/fwdata_14> (without init value) has a constant value of 0 in block <flash_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <fsm/fwdata_15> (without init value) has a constant value of 0 in block <flash_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <data_8> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <data_9> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <data_10> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <data_11> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <data_12> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <data_13> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <data_14> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <data_15> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <data_55> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <data_56> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <data_57> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <data_58> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <data_59> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <data_60> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <data_61> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <data_62> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <data_63> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <l_right_data_10> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <l_right_data_9> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <l_right_data_8> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <l_right_data_7> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <l_right_data_6> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <l_right_data_5> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <l_right_data_4> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <l_right_data_3> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <l_right_data_2> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <l_right_data_1> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <l_right_data_0> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <l_cmd_data_18> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <l_cmd_data_17> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <l_cmd_data_11> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <l_cmd_data_9> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <l_cmd_addr_18> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <l_cmd_addr_12> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <fsm/data_to_store_15> (without init value) has a constant value of 0 in block <flash_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <fsm/data_to_store_14> (without init value) has a constant value of 0 in block <flash_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <fsm/data_to_store_13> (without init value) has a constant value of 0 in block <flash_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <fsm/data_to_store_12> (without init value) has a constant value of 0 in block <flash_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <fsm/data_to_store_11> (without init value) has a constant value of 0 in block <flash_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <fsm/data_to_store_10> (without init value) has a constant value of 0 in block <flash_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <fsm/data_to_store_9> (without init value) has a constant value of 0 in block <flash_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <fsm/data_to_store_8> (without init value) has a constant value of 0 in block <flash_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <l_right_data_11> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <flash/flash_wdata_8> (without init value) has a constant value of 0 in block <flash_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <flash/flash_wdata_9> (without init value) has a constant value of 0 in block <flash_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <flash/flash_wdata_10> (without init value) has a constant value of 0 in block <flash_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <flash/flash_wdata_11> (without init value) has a constant value of 0 in block <flash_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <flash/flash_wdata_12> (without init value) has a constant value of 0 in block <flash_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <flash/flash_wdata_13> (without init value) has a constant value of 0 in block <flash_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <flash/flash_wdata_14> (without init value) has a constant value of 0 in block <flash_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <flash/flash_wdata_15> (without init value) has a constant value of 0 in block <flash_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:2677 - Node <right_in_data_0> of sequential type is unconnected in block <ac97>.
+WARNING:Xst:2677 - Node <right_in_data_1> of sequential type is unconnected in block <ac97>.
+WARNING:Xst:2677 - Node <right_in_data_2> of sequential type is unconnected in block <ac97>.
+WARNING:Xst:2677 - Node <right_in_data_3> of sequential type is unconnected in block <ac97>.
+WARNING:Xst:2677 - Node <right_in_data_4> of sequential type is unconnected in block <ac97>.
+WARNING:Xst:2677 - Node <right_in_data_5> of sequential type is unconnected in block <ac97>.
+WARNING:Xst:2677 - Node <right_in_data_6> of sequential type is unconnected in block <ac97>.
+WARNING:Xst:2677 - Node <right_in_data_7> of sequential type is unconnected in block <ac97>.
+WARNING:Xst:2677 - Node <right_in_data_8> of sequential type is unconnected in block <ac97>.
+WARNING:Xst:2677 - Node <right_in_data_9> of sequential type is unconnected in block <ac97>.
+WARNING:Xst:2677 - Node <right_in_data_10> of sequential type is unconnected in block <ac97>.
+WARNING:Xst:2677 - Node <right_in_data_11> of sequential type is unconnected in block <ac97>.
+WARNING:Xst:2677 - Node <right_in_data_12> of sequential type is unconnected in block <ac97>.
+WARNING:Xst:2677 - Node <right_in_data_13> of sequential type is unconnected in block <ac97>.
+WARNING:Xst:2677 - Node <right_in_data_14> of sequential type is unconnected in block <ac97>.
+WARNING:Xst:2677 - Node <right_in_data_15> of sequential type is unconnected in block <ac97>.
+WARNING:Xst:2677 - Node <right_in_data_16> of sequential type is unconnected in block <ac97>.
+WARNING:Xst:2677 - Node <right_in_data_17> of sequential type is unconnected in block <ac97>.
+WARNING:Xst:2677 - Node <right_in_data_18> of sequential type is unconnected in block <ac97>.
+WARNING:Xst:2677 - Node <right_in_data_19> of sequential type is unconnected in block <ac97>.
+WARNING:Xst:2677 - Node <clean> of sequential type is unconnected in block <sw7>.
+WARNING:Xst:2677 - Node <fsm/status_0> of sequential type is unconnected in block <flash_flash>.
+WARNING:Xst:2677 - Node <fsm/status_1> of sequential type is unconnected in block <flash_flash>.
+WARNING:Xst:2677 - Node <fsm/status_2> of sequential type is unconnected in block <flash_flash>.
+WARNING:Xst:2677 - Node <fsm/status_3> of sequential type is unconnected in block <flash_flash>.
+WARNING:Xst:2677 - Node <fsm/status_4> of sequential type is unconnected in block <flash_flash>.
+WARNING:Xst:2677 - Node <fsm/status_7> of sequential type is unconnected in block <flash_flash>.
+WARNING:Xst:2677 - Node <fsm/status_8> of sequential type is unconnected in block <flash_flash>.
+WARNING:Xst:2677 - Node <fsm/status_9> of sequential type is unconnected in block <flash_flash>.
+WARNING:Xst:2677 - Node <fsm/status_10> of sequential type is unconnected in block <flash_flash>.
+WARNING:Xst:2677 - Node <fsm/status_11> of sequential type is unconnected in block <flash_flash>.
+WARNING:Xst:2677 - Node <y_0> of sequential type is unconnected in block <fir31>.
+WARNING:Xst:2677 - Node <y_1> of sequential type is unconnected in block <fir31>.
+WARNING:Xst:2677 - Node <y_2> of sequential type is unconnected in block <fir31>.
+WARNING:Xst:2677 - Node <y_3> of sequential type is unconnected in block <fir31>.
+WARNING:Xst:2677 - Node <y_4> of sequential type is unconnected in block <fir31>.
+WARNING:Xst:2677 - Node <y_5> of sequential type is unconnected in block <fir31>.
+WARNING:Xst:2677 - Node <y_6> of sequential type is unconnected in block <fir31>.
+WARNING:Xst:2677 - Node <y_7> of sequential type is unconnected in block <fir31>.
+WARNING:Xst:2677 - Node <y_8> of sequential type is unconnected in block <fir31>.
+WARNING:Xst:2677 - Node <y_9> of sequential type is unconnected in block <fir31>.
 
-User Interruption
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# RAMs                                                 : 5
+ 16x40-bit single-port block RAM                       : 4
+ 32x8-bit dual-port distributed RAM                    : 1
+# ROMs                                                 : 8
+ 16x40-bit ROM                                         : 7
+ 31x10-bit ROM                                         : 1
+# Multipliers                                          : 1
+ 10x8-bit multiplier                                   : 1
+# Adders/Subtractors                                   : 10
+ 10-bit adder                                          : 1
+ 10-bit addsub                                         : 1
+ 18-bit adder                                          : 1
+ 23-bit adder                                          : 1
+ 4-bit subtractor                                      : 1
+ 5-bit adder                                           : 4
+ 5-bit subtractor                                      : 1
+# Counters                                             : 19
+ 10-bit up counter                                     : 1
+ 19-bit up counter                                     : 9
+ 23-bit up counter                                     : 1
+ 4-bit up counter                                      : 1
+ 5-bit up counter                                      : 2
+ 5-bit updown counter                                  : 1
+ 6-bit up counter                                      : 1
+ 8-bit down counter                                    : 1
+ 8-bit up counter                                      : 2
+# Accumulators                                         : 1
+ 18-bit up accumulator                                 : 1
+# Registers                                            : 474
+ Flip-Flops                                            : 474
+# Comparators                                          : 22
+ 23-bit comparator greatequal                          : 1
+ 5-bit comparator lessequal                            : 1
+ 6-bit comparator less                                 : 1
+ 8-bit comparator greatequal                           : 5
+ 8-bit comparator greater                              : 4
+ 8-bit comparator less                                 : 4
+ 8-bit comparator lessequal                            : 6
+# Multiplexers                                         : 8
+ 1-bit 16-to-1 multiplexer                             : 4
+ 1-bit 20-to-1 multiplexer                             : 3
+ 1-bit 40-to-1 multiplexer                             : 1
+# Xors                                                 : 9
+ 1-bit xor2                                            : 9
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+INFO:Xst:2261 - The FF/Latch <l_right_data_0> in Unit <ac97> is equivalent to the following 11 FFs/Latches, which will be removed : <l_right_data_1> <l_right_data_2> <l_right_data_3> <l_right_data_4> <l_right_data_5> <l_right_data_6> <l_right_data_7> <l_right_data_8> <l_right_data_9> <l_right_data_10> <l_right_data_11> 
+INFO:Xst:2261 - The FF/Latch <fsm/data_to_store_8> in Unit <flash_manager> is equivalent to the following 7 FFs/Latches, which will be removed : <fsm/data_to_store_9> <fsm/data_to_store_10> <fsm/data_to_store_11> <fsm/data_to_store_12> <fsm/data_to_store_13> <fsm/data_to_store_14> <fsm/data_to_store_15> 
+WARNING:Xst:1710 - FF/Latch <l_right_data_0> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <data_63> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_62> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_61> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_60> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_59> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_58> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_57> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_56> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_55> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_15> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_14> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_13> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_12> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_11> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_10> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_9> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_8> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <fsm/fwdata_15> (without init value) has a constant value of 0 in block <flash_manager>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <fsm/fwdata_14> (without init value) has a constant value of 0 in block <flash_manager>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <fsm/fwdata_13> (without init value) has a constant value of 0 in block <flash_manager>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <fsm/fwdata_12> (without init value) has a constant value of 0 in block <flash_manager>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <fsm/fwdata_11> (without init value) has a constant value of 0 in block <flash_manager>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <fsm/fwdata_10> (without init value) has a constant value of 0 in block <flash_manager>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <fsm/fwdata_9> (without init value) has a constant value of 0 in block <flash_manager>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <fsm/fwdata_8> (without init value) has a constant value of 0 in block <flash_manager>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <fsm/data_to_store_8> (without init value) has a constant value of 0 in block <flash_manager>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <flash/flash_wdata_8> (without init value) has a constant value of 0 in block <flash_manager>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <flash/flash_wdata_9> (without init value) has a constant value of 0 in block <flash_manager>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <flash/flash_wdata_10> (without init value) has a constant value of 0 in block <flash_manager>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <flash/flash_wdata_11> (without init value) has a constant value of 0 in block <flash_manager>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <flash/flash_wdata_12> (without init value) has a constant value of 0 in block <flash_manager>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <flash/flash_wdata_13> (without init value) has a constant value of 0 in block <flash_manager>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <flash/flash_wdata_14> (without init value) has a constant value of 0 in block <flash_manager>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <flash/flash_wdata_15> (without init value) has a constant value of 0 in block <flash_manager>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:2677 - Node <sw7/clean> of sequential type is unconnected in block <recorder>.
+WARNING:Xst:2677 - Node <sw7/new> of sequential type is unconnected in block <recorder>.
+INFO:Xst:2697 - Unit <flash_manager> : the RAMs <fsm/Mrom_nib2char_4_nib2char>, <fsm/Mrom_nib2char_1_nib2char> are packed into the single block RAM <fsm/Mrom_nib2char_4_nib2char1>
+INFO:Xst:2697 - Unit <flash_manager> : the RAMs <fsm/Mrom_nib2char_3_nib2char>, <fsm/Mrom_nib2char_2_nib2char> are packed into the single block RAM <fsm/Mrom_nib2char_3_nib2char1>
+WARNING:Xst:2677 - Node <r/flash_flash/fsm/status_0> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <r/flash_flash/fsm/status_1> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <r/flash_flash/fsm/status_2> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <r/flash_flash/fsm/status_3> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <r/flash_flash/fsm/status_4> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <r/flash_flash/fsm/status_7> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <r/flash_flash/fsm/status_8> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <r/flash_flash/fsm/status_9> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <r/flash_flash/fsm/status_10> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <r/flash_flash/fsm/status_11> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <r/flash_flash/fsm/Mrom_nib2char_4_nib2char11> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <r/flash_flash/fsm/Mrom_nib2char_3_nib2char12> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <r/flash_flash/fsm/Mrom_nib2char_4_nib2char12> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <r/flash_flash/fsm/Mrom_nib2char_3_nib2char11> of sequential type is unconnected in block <lab5>.
+
+Optimizing unit <lab5> ...
+
+Optimizing unit <ac97> ...
+
+Optimizing unit <ac97commands> ...
+
+Optimizing unit <display_16hex> ...
+
+Optimizing unit <fir31> ...
+WARNING:Xst:1710 - FF/Latch <a/ac97/l_cmd_data_18> (without init value) has a constant value of 0 in block <lab5>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <a/ac97/l_cmd_data_17> (without init value) has a constant value of 0 in block <lab5>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <a/ac97/l_cmd_data_11> (without init value) has a constant value of 0 in block <lab5>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <a/ac97/l_cmd_data_9> (without init value) has a constant value of 0 in block <lab5>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <a/ac97/l_cmd_addr_18> (without init value) has a constant value of 0 in block <lab5>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <a/ac97/l_cmd_addr_12> (without init value) has a constant value of 0 in block <lab5>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:2677 - Node <a/ac97/right_in_data_19> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <a/ac97/right_in_data_18> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <a/ac97/right_in_data_17> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <a/ac97/right_in_data_16> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <a/ac97/right_in_data_15> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <a/ac97/right_in_data_14> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <a/ac97/right_in_data_13> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <a/ac97/right_in_data_12> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <a/ac97/right_in_data_11> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <a/ac97/right_in_data_10> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <a/ac97/right_in_data_9> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <a/ac97/right_in_data_8> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <a/ac97/right_in_data_7> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <a/ac97/right_in_data_6> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <a/ac97/right_in_data_5> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <a/ac97/right_in_data_4> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <a/ac97/right_in_data_3> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <a/ac97/right_in_data_2> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <a/ac97/right_in_data_1> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <a/ac97/right_in_data_0> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <r/fir31/y_9> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <r/fir31/y_8> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <r/fir31/y_7> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <r/fir31/y_6> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <r/fir31/y_5> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <r/fir31/y_4> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <r/fir31/y_3> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <r/fir31/y_2> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <r/fir31/y_1> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <r/fir31/y_0> of sequential type is unconnected in block <lab5>.
+
+Mapping all equations...
+Building and optimizing final netlist ...
+INFO:Xst:2261 - The FF/Latch <a/ac97/l_cmd_data_12> in Unit <lab5> is equivalent to the following FF/Latch, which will be removed : <a/ac97/l_cmd_data_4> 
+INFO:Xst:2261 - The FF/Latch <a/ac97/l_cmd_data_13> in Unit <lab5> is equivalent to the following FF/Latch, which will be removed : <a/ac97/l_cmd_data_5> 
+INFO:Xst:2261 - The FF/Latch <a/ac97/l_cmd_data_14> in Unit <lab5> is equivalent to the following FF/Latch, which will be removed : <a/ac97/l_cmd_data_6> 
+INFO:Xst:2261 - The FF/Latch <a/ac97/l_cmd_data_16> in Unit <lab5> is equivalent to the following FF/Latch, which will be removed : <a/ac97/l_cmd_data_8> 
+Found area constraint ratio of 100 (+ 5) on block lab5, actual ratio is 1.
+FlipFlop r/fir31/offset_0 has been replicated 1 time(s)
+FlipFlop r/fir31/offset_1 has been replicated 1 time(s)
+FlipFlop r/fir31/offset_2 has been replicated 1 time(s)
+FlipFlop r/fir31/offset_3 has been replicated 1 time(s)
+
+Final Macro Processing ...
+
+Processing Unit <lab5> :
+	Found 2-bit shift register for signal <a/ready_sync_1>.
+	Found 13-bit shift register for signal <a/ac97/left_in_data_12>.
+Unit <lab5> processed.
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 610
+ Flip-Flops                                            : 610
+# Shift Registers                                      : 2
+ 13-bit shift register                                 : 1
+ 2-bit shift register                                  : 1
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                             *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : lab5.ngr
+Top Level Output File Name         : lab5
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : NO
+
+Design Statistics
+# IOs                              : 576
+
+Cell Usage :
+# BELS                             : 1733
+#      GND                         : 1
+#      INV                         : 47
+#      LUT1                        : 213
+#      LUT2                        : 104
+#      LUT2_D                      : 1
+#      LUT3                        : 242
+#      LUT3_D                      : 5
+#      LUT3_L                      : 1
+#      LUT4                        : 414
+#      LUT4_D                      : 10
+#      LUT4_L                      : 36
+#      MUXCY                       : 311
+#      MUXF5                       : 73
+#      MUXF6                       : 9
+#      MUXF7                       : 2
+#      VCC                         : 1
+#      XORCY                       : 263
+# FlipFlops/Latches                : 612
+#      FD                          : 17
+#      FDE                         : 283
+#      FDE_1                       : 8
+#      FDR                         : 18
+#      FDRE                        : 262
+#      FDRS                        : 9
+#      FDS                         : 7
+#      FDSE                        : 8
+# RAMS                             : 8
+#      RAM32X1D                    : 8
+# Shift Registers                  : 3
+#      SRL16                       : 2
+#      SRL16E_1                    : 1
+# Clock Buffers                    : 2
+#      BUFG                        : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 267
+#      IBUF                        : 11
+#      IOBUF                       : 16
+#      OBUF                        : 240
+# MULTs                            : 1
+#      MULT18X18                   : 1
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 2v6000bf957-4 
+
+ Number of Slices:                      583  out of  33792     1%  
+ Number of Slice Flip Flops:            612  out of  67584     0%  
+ Number of 4 input LUTs:               1108  out of  67584     1%  
+    Number used as logic:              1073
+    Number used as Shift registers:       3
+    Number used as RAMs:                 32
+ Number of IOs:                         576
+ Number of bonded IOBs:                 268  out of    684    39%  
+ Number of MULT18X18s:                    1  out of    144     0%  
+ Number of GCLKs:                         2  out of     16    12%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+clock_27mhz                        | BUFGP                  | 559   |
+ac97_bit_clock                     | IBUF+BUFG              | 64    |
+-----------------------------------+------------------------+-------+
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -4
+
+   Minimum period: 16.826ns (Maximum Frequency: 59.434MHz)
+   Minimum input arrival time before clock: 3.997ns
+   Maximum output required time after clock: 8.030ns
+   Maximum combinational path delay: 5.887ns
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clock_27mhz'
+  Clock period: 16.826ns (frequency: 59.434MHz)
+  Total number of paths / destination ports: 122147 / 1437
+-------------------------------------------------------------------------
+Delay:               16.826ns (Levels of Logic = 9)
+  Source:            r/fir31/index_reg_1 (FF)
+  Destination:       r/fir31/sum_17 (FF)
+  Source Clock:      clock_27mhz rising
+  Destination Clock: clock_27mhz rising
+
+  Data Path: r/fir31/index_reg_1 to r/fir31/sum_17
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDRE:C->Q            15   0.568   1.197  r/fir31/index_reg_1 (r/fir31/index_reg_1)
+     LUT2:I1->O            1   0.439   0.000  r/fir31/Msub__COND_15_lut<1> (r/fir31/Msub__COND_15_lut<1>)
+     MUXCY:S->O            1   0.298   0.000  r/fir31/Msub__COND_15_cy<1> (r/fir31/Msub__COND_15_cy<1>)
+     MUXCY:CI->O           1   0.053   0.000  r/fir31/Msub__COND_15_cy<2> (r/fir31/Msub__COND_15_cy<2>)
+     XORCY:CI->O          16   1.274   1.000  r/fir31/Msub__COND_15_xor<3> (r/fir31/_COND_15<3>)
+     RAM32X1D:DPRA3->DPO   11   1.374   0.908  r/fir31/Mram_sample8 (r/fir31/_varindex0000<7>)
+     MULT18X18:B7->P16     2   6.423   0.910  r/fir31/Mmult_sum_mult0001 (r/fir31/sum_mult0001<16>)
+     LUT2:I1->O            1   0.439   0.000  r/fir31/Madd_y_add0000_lut<16> (r/fir31/Madd_y_add0000_lut<16>)
+     MUXCY:S->O            0   0.298   0.000  r/fir31/Madd_y_add0000_cy<16> (r/fir31/Madd_y_add0000_cy<16>)
+     XORCY:CI->O           1   1.274   0.000  r/fir31/Madd_y_add0000_xor<17> (r/fir31/y_add0000<17>)
+     FDE:D                     0.370          r/fir31/y_17
+    ----------------------------------------
+    Total                     16.826ns (12.810ns logic, 4.015ns route)
+                                       (76.1% logic, 23.9% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'ac97_bit_clock'
+  Clock period: 12.211ns (frequency: 81.893MHz)
+  Total number of paths / destination ports: 1624 / 95
+-------------------------------------------------------------------------
+Delay:               6.105ns (Levels of Logic = 3)
+  Source:            a/ac97/bit_count_4 (FF)
+  Destination:       a/ac97/Mshreg_left_in_data_12 (FF)
+  Source Clock:      ac97_bit_clock rising
+  Destination Clock: ac97_bit_clock falling
+
+  Data Path: a/ac97/bit_count_4 to a/ac97/Mshreg_left_in_data_12
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q              17   0.568   1.297  a/ac97/bit_count_4 (a/ac97/bit_count_4)
+     LUT3:I0->O            3   0.439   0.724  a/ac97/l_left_data_not0001131 (a/ac97/N18)
+     MUXF5:S->O            1   0.699   0.551  a/ac97/left_in_data_and000013_f5 (a/ac97/left_in_data_and000013)
+     LUT3:I2->O            9   0.439   0.862  a/ac97/left_in_data_and000048 (a/ac97/left_in_data_and0000)
+     SRL16E_1:CE               0.525          a/ac97/Mshreg_left_in_data_12
+    ----------------------------------------
+    Total                      6.105ns (2.670ns logic, 3.435ns route)
+                                       (43.7% logic, 56.3% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clock_27mhz'
+  Total number of paths / destination ports: 230 / 229
+-------------------------------------------------------------------------
+Offset:              3.997ns (Levels of Logic = 3)
+  Source:            flash_sts (PAD)
+  Destination:       r/flash_flash/flash/busy (FF)
+  Destination Clock: clock_27mhz rising
+
+  Data Path: flash_sts to r/flash_flash/flash/busy
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             5   0.825   0.811  flash_sts_IBUF (flash_sts_IBUF)
+     LUT4:I3->O            1   0.439   0.725  r/flash_flash/flash/busy_not000177_SW0 (N223)
+     LUT3:I1->O            1   0.439   0.517  r/flash_flash/flash/busy_not000177 (r/flash_flash/flash/busy_not0001)
+     FDSE:CE                   0.240          r/flash_flash/flash/busy
+    ----------------------------------------
+    Total                      3.997ns (1.943ns logic, 2.054ns route)
+                                       (48.6% logic, 51.4% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'ac97_bit_clock'
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Offset:              2.194ns (Levels of Logic = 1)
+  Source:            ac97_sdata_in (PAD)
+  Destination:       a/ac97/Mshreg_left_in_data_12 (FF)
+  Destination Clock: ac97_bit_clock falling
+
+  Data Path: ac97_sdata_in to a/ac97/Mshreg_left_in_data_12
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             2   0.825   0.701  ac97_sdata_in_IBUF (ac97_sdata_in_IBUF)
+     SRL16E_1:D                0.667          a/ac97/Mshreg_left_in_data_12
+    ----------------------------------------
+    Total                      2.194ns (1.492ns logic, 0.701ns route)
+                                       (68.0% logic, 32.0% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clock_27mhz'
+  Total number of paths / destination ports: 82 / 67
+-------------------------------------------------------------------------
+Offset:              8.030ns (Levels of Logic = 3)
+  Source:            r/disp/count_1 (FF)
+  Destination:       disp_clock (PAD)
+  Source Clock:      clock_27mhz rising
+
+  Data Path: r/disp/count_1 to disp_clock
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDR:C->Q              9   0.568   1.148  r/disp/count_1 (r/disp/count_1)
+     LUT3:I0->O            1   0.439   0.557  r/disp/disp_clock1_SW0 (N01)
+     LUT4:I3->O            1   0.439   0.517  r/disp/disp_clock1 (disp_clock_OBUF)
+     OBUF:I->O                 4.361          disp_clock_OBUF (disp_clock)
+    ----------------------------------------
+    Total                      8.030ns (5.807ns logic, 2.222ns route)
+                                       (72.3% logic, 27.7% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'ac97_bit_clock'
+  Total number of paths / destination ports: 12 / 12
+-------------------------------------------------------------------------
+Offset:              5.654ns (Levels of Logic = 1)
+  Source:            a/ac97/ac97_synch (FF)
+  Destination:       ac97_synch (PAD)
+  Source Clock:      ac97_bit_clock rising
+
+  Data Path: a/ac97/ac97_synch to ac97_synch
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDS:C->Q              3   0.568   0.725  a/ac97/ac97_synch (a/ac97/ac97_synch)
+     OBUF:I->O                 4.361          ac97_synch_OBUF (ac97_synch)
+    ----------------------------------------
+    Total                      5.654ns (4.929ns logic, 0.725ns route)
+                                       (87.2% logic, 12.8% route)
+
+=========================================================================
+Timing constraint: Default path analysis
+  Total number of paths / destination ports: 2 / 2
+-------------------------------------------------------------------------
+Delay:               5.887ns (Levels of Logic = 2)
+  Source:            ac97_bit_clock (PAD)
+  Destination:       analyzer1_clock (PAD)
+
+  Data Path: ac97_bit_clock to analyzer1_clock
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             2   0.825   0.701  ac97_bit_clock_IBUF (analyzer1_clock_OBUF1)
+     OBUF:I->O                 4.361          analyzer1_clock_OBUF (analyzer1_clock)
+    ----------------------------------------
+    Total                      5.887ns (5.186ns logic, 0.701ns route)
+                                       (88.1% logic, 11.9% route)
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 10.00 secs
+Total CPU time to Xst completion: 9.86 secs
+ 
 --> 
 
 
-Total memory usage is 472636 kilobytes
+Total memory usage is 501112 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :  332 (   0 filtered)
-Number of infos    :   38 (   0 filtered)
+Number of warnings :  527 (   0 filtered)
+Number of infos    :   46 (   0 filtered)
 
