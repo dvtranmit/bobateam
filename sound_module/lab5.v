@@ -712,7 +712,9 @@ module lab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 												.misstep(misstep), .whacked(whacked));
 
 	wire request_mole;
+	wire [22:0] music_address;
 	mole getmole(.clk(clock_27mhz), .reset(enter),
+						.music_address(music_address),
 						.one_hz_enable(one_hz_enable),
 						.request_mole(request_mole));
 
@@ -815,7 +817,7 @@ module lab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 	       ac97_synch, ac97_bit_clock);
 
    // sound module
-	wire [22:0] music_address;
+	
    sound_module s(.clock(clock_27mhz), .reset(reset), .ready(ready),
               .switch(switch), 
               .from_ac97_data(from_ac97_data), .to_ac97_data(to_ac97_data),
@@ -919,14 +921,14 @@ module sound_module(
 
 
 	//address for background music and sound effects
-	parameter MUSIC_START = 23'h0;
-	parameter MUSIC_END = 23'h282F4;
-	parameter POPUP_START = 23'h29600; //23'h29300 gives about 1 second delay for sound effect; 23'h29600 is good for immediate sound effect
-	parameter POPUP_END = 23'h29C00; //23'h29D00 was a decent ending marker for the sound
-	parameter MISSED_START = 23'h30000; //made up address
-	parameter MISSED_END = 23'h30600; //made up address
-	parameter WHACKED_START = 23'h31000; //made up address
-	parameter WHACKED_END = 23'h31600; //made up address
+	parameter MUSIC_START = 23'h4000;
+	parameter MUSIC_END = 23'h3B000;
+	parameter POPUP_START = 23'h69000;
+	parameter POPUP_END = 23'h6BC00;
+	parameter MISSED_START = 23'h6D000;
+	parameter MISSED_END = 23'h71500;
+	parameter WHACKED_START = 23'h72000;
+	parameter WHACKED_END = 23'h74000;
 
 	//states
 	parameter IDLE = 4'd0;		// Check if user has pressed start
@@ -1575,32 +1577,34 @@ parameter COUNTING 	= 1'b1;		// Countdown from timer_value (until expired)
 parameter MOLE			= 1'b0;		// mole pulse lasts one clock cycle
 
 // Mole Parameters
-//parameter MOLE_REQUEST_FREQUENCY = 4'd3;
+parameter MOLE_REQUEST_FREQUENCY = 4'd3;
 
 //// State machine variables
 reg state = COUNTING;
-//reg [3:0] counter = MOLE_REQUEST_FREQUENCY;
+reg [3:0] counter = MOLE_REQUEST_FREQUENCY;
 
 // Music tracker
-reg [3:0] i = 4'd15;
-reg [367:0] addresses = {23'h0001, 23'h3000, 23'h6000, 23'h9000,
-										 23'h0, 23'hC000, 23'hF000, 23'h12000,
-										 23'h15000, 23'h18000, 23'h1A000, 23'h1D000,
-										 23'h21000, 23'h24000, 23'h27000, 23'h2B000};
+//reg [3:0] i = 4'd15;
+//reg [367:0] addresses = {23'h6000, 23'h7000, 23'h8000, 23'h9000,
+//										 23'hA500, 23'hC000, 23'hF000, 23'h12000,
+//										 23'h15000, 23'h18000, 23'h1A000, 23'h1D000,
+//										 23'h21000, 23'h24000, 23'h27000, 23'h2B000};
 
 always @(posedge clk) begin
 	if (reset) begin
-//		state <= COUNTING;
-//		counter <= MOLE_REQUEST_FREQUENCY;
-		addresses[367:0] <= {23'h0001, 23'h3000, 23'h6000, 23'h9000,
-										 23'hA500, 23'hC000, 23'hF000, 23'h12000,
-										 23'h15000, 23'h18000, 23'h1A000, 23'h1D000,
-										 23'h21000, 23'h24000, 23'h27000, 23'h2B000};									 		
+		state <= COUNTING;
+		counter <= MOLE_REQUEST_FREQUENCY;
+//		addresses[367:0] <= {23'h0001, 23'h3000, 23'h6000, 23'h9000,
+//										 23'hA500, 23'hC000, 23'hF000, 23'h12000,
+//										 23'h15000, 23'h18000, 23'h1A000, 23'h1D000,
+//										 23'h21000, 23'h24000, 23'h27000, 23'h2B000};									 		
 	end else if (state == COUNTING) begin
-		state <= (addresses[367:345] == music_address) ? MOLE : COUNTING;
-		addresses <= (addresses[367:345] == music_address) ? {addresses[344:322], addresses[367:345]} : addresses;
+		state <= (counter == 0) ? MOLE : COUNTING;
+		counter <= (one_hz_enable) ? counter - 1 : counter;
+		//addresses <= (addresses[367:345] == music_address) ? {addresses[344:322], addresses[367:345]} : addresses;
 	end else if (state == MOLE) begin
 		state <= COUNTING;
+		counter <= MOLE_REQUEST_FREQUENCY;
 	end
 end
 
