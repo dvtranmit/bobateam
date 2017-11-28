@@ -1,9 +1,12 @@
 NUM_USER_FILES
-2
+3
 s
 user_file_1
 labkit.v
 s
 user_file_2
 labkit.ucf
+s
+user_file_3
+mole_tf.v
 s

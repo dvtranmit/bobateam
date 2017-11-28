@@ -700,7 +700,7 @@ reg [367:0] addresses = {23'h0001, 23'h3000, 23'h6000, 23'h9000,
 										 23'h0, 23'hC000, 23'hF000, 23'h12000,
 										 23'h15000, 23'h18000, 23'h1A000, 23'h1D000,
 										 23'h21000, 23'h24000, 23'h27000, 23'h2B000};
-
+reg addresses_changed = 1'b0;
 always @(posedge clk) begin
 	if (reset) begin
 //		state <= COUNTING;
@@ -711,7 +711,8 @@ always @(posedge clk) begin
 										 23'h21000, 23'h24000, 23'h27000, 23'h2B000};									 		
 	end else if (state == COUNTING) begin
 		state <= (addresses[367:345] == music_address) ? MOLE : COUNTING;
-		addresses <= (addresses[367:345] == music_address) ? {addresses[344:322], addresses[367:345]} : addresses;
+		addresses <= (addresses[367:345] == music_address) ? {addresses[344:0], addresses[367:345]} : addresses;
+		addresses_changed <= (addresses[367:345] == music_address) ? 1'b1 : 1'b0;
 	end else if (state == MOLE) begin
 		state <= COUNTING;
 	end
