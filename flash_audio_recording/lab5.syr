@@ -1,14 +1,14 @@
 Release 10.1.03 - xst K.39 (lin64)
 Copyright (c) 1995-2008 Xilinx, Inc.  All rights reserved.
 --> 
-Parameter TMPDIR set to /afs/athena.mit.edu/user/a/d/adhikara/Documents/6.111things/6.111 project/bobateam/flash_audio_recording/xst/projnav.tmp
+Parameter TMPDIR set to /afs/athena.mit.edu/user/d/v/dvtran/Documents/6.111/finalproject/bobateam/flash_audio_recording/xst/projnav.tmp
 
 
 Total REAL time to Xst completion: 0.00 secs
 Total CPU time to Xst completion: 0.02 secs
  
 --> 
-Parameter xsthdpdir set to /afs/athena.mit.edu/user/a/d/adhikara/Documents/6.111things/6.111 project/bobateam/flash_audio_recording/xst
+Parameter xsthdpdir set to /afs/athena.mit.edu/user/d/v/dvtran/Documents/6.111/finalproject/bobateam/flash_audio_recording/xst
 
 
 Total REAL time to Xst completion: 0.00 secs
@@ -1642,13 +1642,13 @@ Delay:               5.887ns (Levels of Logic = 2)
 =========================================================================
 
 
-Total REAL time to Xst completion: 10.00 secs
-Total CPU time to Xst completion: 9.86 secs
+Total REAL time to Xst completion: 11.00 secs
+Total CPU time to Xst completion: 10.60 secs
  
 --> 
 
 
-Total memory usage is 501112 kilobytes
+Total memory usage is 501076 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :  527 (   0 filtered)

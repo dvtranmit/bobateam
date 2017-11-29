@@ -921,14 +921,14 @@ module sound_module(
 
 
 	//address for background music and sound effects
-	parameter MUSIC_START = 23'h4000;
-	parameter MUSIC_END = 23'h3B000;
-	parameter POPUP_START = 23'h69000;
-	parameter POPUP_END = 23'h6BC00;
-	parameter MISSED_START = 23'h6D000;
-	parameter MISSED_END = 23'h71500;
-	parameter WHACKED_START = 23'h72000;
-	parameter WHACKED_END = 23'h74000;
+	parameter MUSIC_START = 23'h3000;
+	parameter MUSIC_END = 23'h6AC00;
+	parameter POPUP_START = 23'h83000;
+	parameter POPUP_END = 23'h83500;
+	parameter MISSED_START = 23'h8C000;
+	parameter MISSED_END = 23'h8CD00;
+	parameter WHACKED_START = 23'h92A00;
+	parameter WHACKED_END = 23'h93000;
 
 	//states
 	parameter IDLE = 4'd0;		// Check if user has pressed start
@@ -1584,19 +1584,19 @@ reg state = COUNTING;
 //reg [3:0] counter = MOLE_REQUEST_FREQUENCY;
 
 // Music tracker
-reg [367:0] addresses = {23'h6000, 23'h7000, 23'h8000, 23'h9000,
-										 23'hA500, 23'hC000, 23'hF000, 23'h12000,
-										 23'h15000, 23'h18000, 23'h1A000, 23'h1D000,
-										 23'h21000, 23'h24000, 23'h27000, 23'h2B000};
+reg [367:0] addresses = {23'h6CDE, 23'h8B00, 23'hE900, 23'h14900,
+										 23'h17B00, 23'h1B100, 23'h21F00, 23'h28000,
+										 23'h2E500, 23'h31A00, 23'h35900, 23'h39500,
+										 23'h3DA00, 23'h41800, 23'h47800, 23'h4FD00};
 
 always @(posedge clk) begin
 	if (reset) begin
 //		state <= COUNTING;
 //		counter <= MOLE_REQUEST_FREQUENCY;
-		addresses[367:0] <= {23'h0001, 23'h3000, 23'h6000, 23'h9000,
-										 23'hA500, 23'hC000, 23'hF000, 23'h12000,
-										 23'h15000, 23'h18000, 23'h1A000, 23'h1D000,
-										 23'h21000, 23'h24000, 23'h27000, 23'h2B000};									 		
+		addresses[367:0] <= {23'h6CDE, 23'h8B00, 23'hE900, 23'h14900,
+										 23'h17B00, 23'h1B100, 23'h21F00, 23'h28000,
+										 23'h2E500, 23'h31A00, 23'h35900, 23'h39500,
+										 23'h3DA00, 23'h41800, 23'h47800, 23'h4FD00};									 		
 	end else if (state == COUNTING) begin
 		state <= (addresses[367:345] == music_address) ? MOLE : COUNTING;
 		addresses <= (addresses[367:345] == music_address) ? {addresses[344:0], addresses[367:345]} : addresses;

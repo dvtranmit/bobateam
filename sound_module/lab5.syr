@@ -5,14 +5,14 @@ Parameter TMPDIR set to /afs/athena.mit.edu/user/d/v/dvtran/Documents/6.111/fina
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.03 secs
+Total CPU time to Xst completion: 0.04 secs
  
 --> 
 Parameter xsthdpdir set to /afs/athena.mit.edu/user/d/v/dvtran/Documents/6.111/finalproject/bobateam/sound_module/xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.03 secs
+Total CPU time to Xst completion: 0.04 secs
  
 --> 
 Reading design: lab5.prj
@@ -176,20 +176,20 @@ Analyzing hierarchy for module <lab5audio> in library <work>.
 Analyzing hierarchy for module <sound_module> in library <work> with parameters.
 	GAME_ONGOING = "0010"
 	IDLE = "0000"
-	MISSED_END = "00001110001010100000000"
-	MISSED_START = "00001101101000000000000"
+	MISSED_END = "00010001100110100000000"
+	MISSED_START = "00010001100000000000000"
 	MOLE_COUNTDOWN = "0100"
 	MOLE_MISSED = "0101"
 	MOLE_MISSED_SOUND = "1001"
 	MOLE_WHACKED = "0110"
 	MOLE_WHACKED_SOUND = "1010"
-	MUSIC_END = "00000111011000000000000"
-	MUSIC_START = "00000000100000000000000"
-	POPUP_END = "00001101011110000000000"
-	POPUP_START = "00001101001000000000000"
+	MUSIC_END = "00001101010110000000000"
+	MUSIC_START = "00000000011000000000000"
+	POPUP_END = "00010000011010100000000"
+	POPUP_START = "00010000011000000000000"
 	REQUEST_MOLE = "0011"
-	WHACKED_END = "00001110100000000000000"
-	WHACKED_START = "00001110010000000000000"
+	WHACKED_END = "00010010011000000000000"
+	WHACKED_START = "00010010010101000000000"
 
 Analyzing hierarchy for module <synchronize> in library <work> with parameters.
 	NSYNC = "00000000000000000000000000000010"
@@ -313,20 +313,20 @@ Module <ac97commands> is correct for synthesis.
 Analyzing module <sound_module> in library <work>.
 	GAME_ONGOING = 4'b0010
 	IDLE = 4'b0000
-	MISSED_END = 23'b00001110001010100000000
-	MISSED_START = 23'b00001101101000000000000
+	MISSED_END = 23'b00010001100110100000000
+	MISSED_START = 23'b00010001100000000000000
 	MOLE_COUNTDOWN = 4'b0100
 	MOLE_MISSED = 4'b0101
 	MOLE_MISSED_SOUND = 4'b1001
 	MOLE_WHACKED = 4'b0110
 	MOLE_WHACKED_SOUND = 4'b1010
-	MUSIC_END = 23'b00000111011000000000000
-	MUSIC_START = 23'b00000000100000000000000
-	POPUP_END = 23'b00001101011110000000000
-	POPUP_START = 23'b00001101001000000000000
+	MUSIC_END = 23'b00001101010110000000000
+	MUSIC_START = 23'b00000000011000000000000
+	POPUP_END = 23'b00010000011010100000000
+	POPUP_START = 23'b00010000011000000000000
 	REQUEST_MOLE = 4'b0011
-	WHACKED_END = 23'b00001110100000000000000
-	WHACKED_START = 23'b00001110010000000000000
+	WHACKED_END = 23'b00010010011000000000000
+	WHACKED_START = 23'b00010010010101000000000
 WARNING:Xst:852 - "lab5.v" line 910: Unconnected input port 'wdata' of instance 'flash_flash' is tied to GND.
 Module <sound_module> is correct for synthesis.
  
@@ -1660,27 +1660,25 @@ Processing Unit <lab5> :
 	Found 16-bit shift register for signal <getmole/addresses_366>.
 	Found 16-bit shift register for signal <getmole/addresses_365>.
 	Found 16-bit shift register for signal <getmole/addresses_364>.
-	Found 16-bit shift register for signal <getmole/addresses_363>.
-	Found 12-bit shift register for signal <getmole/addresses_362>.
-	Found 7-bit shift register for signal <getmole/addresses_361>.
-	Found 16-bit shift register for signal <getmole/addresses_356>.
-	Found 4-bit shift register for signal <getmole/addresses_355>.
-	Found 16-bit shift register for signal <getmole/addresses_354>.
-	Found 4-bit shift register for signal <getmole/addresses_353>.
-	Found 16-bit shift register for signal <getmole/addresses_352>.
-	Found 16-bit shift register for signal <getmole/addresses_351>.
+	Found 13-bit shift register for signal <getmole/addresses_363>.
+	Found 6-bit shift register for signal <getmole/addresses_362>.
+	Found 4-bit shift register for signal <getmole/addresses_357>.
+	Found 5-bit shift register for signal <getmole/addresses_356>.
 	Found 16-bit shift register for signal <getmole/addresses_350>.
-	Found 16-bit shift register for signal <getmole/addresses_349>.
-	Found 16-bit shift register for signal <getmole/addresses_348>.
-	Found 16-bit shift register for signal <getmole/addresses_347>.
-	Found 16-bit shift register for signal <getmole/addresses_346>.
-	Found 15-bit shift register for signal <getmole/addresses_322>.
-	Found 4-bit shift register for signal <getmole/addresses_291>.
-	Found 11-bit shift register for signal <getmole/addresses_240>.
-	Found 11-bit shift register for signal <getmole/addresses_238>.
-	Found 5-bit shift register for signal <getmole/addresses_200>.
-	Found 4-bit shift register for signal <getmole/addresses_86>.
-	Found 4-bit shift register for signal <getmole/addresses_85>.
+	Found 16-bit shift register for signal <getmole/addresses_345>.
+	Found 5-bit shift register for signal <getmole/addresses_332>.
+	Found 6-bit shift register for signal <getmole/addresses_330>.
+	Found 15-bit shift register for signal <getmole/addresses_329>.
+	Found 15-bit shift register for signal <getmole/addresses_328>.
+	Found 15-bit shift register for signal <getmole/addresses_326>.
+	Found 15-bit shift register for signal <getmole/addresses_325>.
+	Found 15-bit shift register for signal <getmole/addresses_324>.
+	Found 15-bit shift register for signal <getmole/addresses_323>.
+	Found 7-bit shift register for signal <getmole/addresses_224>.
+	Found 4-bit shift register for signal <getmole/addresses_154>.
+	Found 5-bit shift register for signal <getmole/addresses_151>.
+	Found 7-bit shift register for signal <getmole/addresses_150>.
+	Found 4-bit shift register for signal <getmole/addresses_80>.
 	Found 13-bit shift register for signal <a/ac97/left_in_data_12>.
 	Found 7-bit shift register for signal <debug_display/control_30>.
 	Found 7-bit shift register for signal <debug_display/control_22>.
@@ -1692,21 +1690,20 @@ Unit <lab5> processed.
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 755
- Flip-Flops                                            : 755
-# Shift Registers                                      : 38
- 11-bit shift register                                 : 2
- 12-bit shift register                                 : 1
- 13-bit shift register                                 : 1
- 15-bit shift register                                 : 1
- 16-bit shift register                                 : 14
+# Registers                                            : 808
+ Flip-Flops                                            : 808
+# Shift Registers                                      : 36
+ 13-bit shift register                                 : 2
+ 15-bit shift register                                 : 6
+ 16-bit shift register                                 : 6
  2-bit shift register                                  : 8
- 4-bit shift register                                  : 5
- 5-bit shift register                                  : 1
- 7-bit shift register                                  : 5
+ 4-bit shift register                                  : 3
+ 5-bit shift register                                  : 3
+ 6-bit shift register                                  : 2
+ 7-bit shift register                                  : 6
 
 =========================================================================
-INFO:Xst:2146 - In block <lab5>, Shifter <getmole/Mshreg_addresses_344> <getmole/Mshreg_addresses_343> <getmole/Mshreg_addresses_340> <getmole/Mshreg_addresses_342> <getmole/Mshreg_addresses_341> <getmole/Mshreg_addresses_333> <getmole/Mshreg_addresses_331> <getmole/Mshreg_addresses_327> <getmole/Mshreg_addresses_329> <getmole/Mshreg_addresses_328> <getmole/Mshreg_addresses_326> <getmole/Mshreg_addresses_325> <getmole/Mshreg_addresses_324> <getmole/Mshreg_addresses_323> are equivalent, XST will keep only <getmole/Mshreg_addresses_344>.
+INFO:Xst:2146 - In block <lab5>, Shifter <getmole/Mshreg_addresses_344> <getmole/Mshreg_addresses_341> <getmole/Mshreg_addresses_343> <getmole/Mshreg_addresses_342> <getmole/Mshreg_addresses_327> <getmole/Mshreg_addresses_322> are equivalent, XST will keep only <getmole/Mshreg_addresses_344>.
 
 =========================================================================
 *                           Partition Report                             *
@@ -1733,39 +1730,40 @@ Design Statistics
 # IOs                              : 576
 
 Cell Usage :
-# BELS                             : 2496
+# BELS                             : 2531
 #      GND                         : 1
-#      INV                         : 53
-#      LUT1                        : 298
-#      LUT2                        : 156
-#      LUT2_D                      : 4
-#      LUT3                        : 283
+#      INV                         : 54
+#      LUT1                        : 303
+#      LUT2                        : 174
+#      LUT2_D                      : 2
+#      LUT2_L                      : 1
+#      LUT3                        : 296
 #      LUT3_D                      : 8
-#      LUT3_L                      : 4
-#      LUT4                        : 655
-#      LUT4_D                      : 21
-#      LUT4_L                      : 72
-#      MUXCY                       : 428
-#      MUXF5                       : 148
+#      LUT3_L                      : 3
+#      LUT4                        : 639
+#      LUT4_D                      : 22
+#      LUT4_L                      : 76
+#      MUXCY                       : 440
+#      MUXF5                       : 147
 #      MUXF6                       : 17
 #      MUXF7                       : 3
 #      MUXF8                       : 1
 #      VCC                         : 1
 #      XORCY                       : 343
-# FlipFlops/Latches                : 821
+# FlipFlops/Latches                : 888
 #      FD                          : 46
-#      FDE                         : 227
+#      FDE                         : 233
 #      FDE_1                       : 8
 #      FDR                         : 63
-#      FDRE                        : 396
+#      FDRE                        : 424
 #      FDRS                        : 14
 #      FDS                         : 9
-#      FDSE                        : 58
+#      FDSE                        : 91
 # RAMS                             : 8
 #      RAM32X1D                    : 8
-# Shift Registers                  : 26
+# Shift Registers                  : 32
 #      SRL16                       : 9
-#      SRL16E                      : 16
+#      SRL16E                      : 22
 #      SRL16E_1                    : 1
 # Clock Buffers                    : 3
 #      BUFG                        : 2
@@ -1783,11 +1781,11 @@ Device utilization summary:
 
 Selected Device : 2v6000bf957-4 
 
- Number of Slices:                      851  out of  33792     2%  
- Number of Slice Flip Flops:            821  out of  67584     1%  
- Number of 4 input LUTs:               1612  out of  67584     2%  
-    Number used as logic:              1554
-    Number used as Shift registers:      26
+ Number of Slices:                      899  out of  33792     2%  
+ Number of Slice Flip Flops:            888  out of  67584     1%  
+ Number of 4 input LUTs:               1642  out of  67584     2%  
+    Number used as logic:              1578
+    Number used as Shift registers:      32
     Number used as RAMs:                 32
  Number of IOs:                         576
  Number of bonded IOBs:                 270  out of    684    39%  
@@ -1815,7 +1813,7 @@ Clock Information:
 -----------------------------------+------------------------+-------+
 Clock Signal                       | Clock buffer(FF name)  | Load  |
 -----------------------------------+------------------------+-------+
-clock_27mhz                        | BUFGP                  | 713   |
+clock_27mhz                        | BUFGP                  | 786   |
 one_hz_div/enable                  | NONE(moleloc/temp_r_3) | 4     |
 ac97_bit_clock                     | IBUF+BUFG              | 62    |
 debug_display/clock1               | BUFG                   | 76    |
@@ -1832,7 +1830,7 @@ Speed Grade: -4
 
    Minimum period: 16.826ns (Maximum Frequency: 59.434MHz)
    Minimum input arrival time before clock: 3.804ns
-   Maximum output required time after clock: 7.842ns
+   Maximum output required time after clock: 7.804ns
    Maximum combinational path delay: 5.887ns
 
 Timing Detail:
@@ -1842,7 +1840,7 @@ All values displayed in nanoseconds (ns)
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clock_27mhz'
   Clock period: 16.826ns (frequency: 59.434MHz)
-  Total number of paths / destination ports: 130676 / 1820
+  Total number of paths / destination ports: 134373 / 2027
 -------------------------------------------------------------------------
 Delay:               16.826ns (Levels of Logic = 9)
   Source:            s/fir31/index_reg_1 (FF)
@@ -1918,7 +1916,7 @@ Delay:               6.088ns (Levels of Logic = 3)
 =========================================================================
 Timing constraint: Default period analysis for Clock 'debug_display/clock1'
   Clock period: 12.155ns (frequency: 82.270MHz)
-  Total number of paths / destination ports: 14463 / 103
+  Total number of paths / destination ports: 14414 / 103
 -------------------------------------------------------------------------
 Delay:               12.155ns (Levels of Logic = 11)
   Source:            debug_display/char_index_0 (FF)
@@ -1991,7 +1989,7 @@ Offset:              2.194ns (Levels of Logic = 1)
 Timing constraint: Default OFFSET OUT AFTER for Clock 'clock_27mhz'
   Total number of paths / destination ports: 65 / 55
 -------------------------------------------------------------------------
-Offset:              7.842ns (Levels of Logic = 2)
+Offset:              7.804ns (Levels of Logic = 2)
   Source:            a/ready_sync_1 (FF)
   Destination:       analyzer3_clock (PAD)
   Source Clock:      clock_27mhz rising
@@ -2000,12 +1998,12 @@ Offset:              7.842ns (Levels of Logic = 2)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FD:C->Q              14   0.568   1.262  a/ready_sync_1 (a/ready_sync_1)
-     LUT2:I0->O           80   0.439   1.212  a/ready1 (analyzer3_clock_OBUF)
+     FD:C->Q              14   0.568   1.263  a/ready_sync_1 (a/ready_sync_1)
+     LUT2:I0->O           65   0.439   1.173  a/ready1 (analyzer3_clock_OBUF)
      OBUF:I->O                 4.361          analyzer3_clock_OBUF (analyzer3_clock)
     ----------------------------------------
-    Total                      7.842ns (5.368ns logic, 2.474ns route)
-                                       (68.4% logic, 31.6% route)
+    Total                      7.804ns (5.368ns logic, 2.436ns route)
+                                       (68.8% logic, 31.2% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'debug_display/clock1'
@@ -2067,12 +2065,12 @@ Delay:               5.887ns (Levels of Logic = 2)
 
 
 Total REAL time to Xst completion: 20.00 secs
-Total CPU time to Xst completion: 17.62 secs
+Total CPU time to Xst completion: 18.61 secs
  
 --> 
 
 
-Total memory usage is 527488 kilobytes
+Total memory usage is 527204 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :  508 (   0 filtered)

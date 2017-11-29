@@ -3,7 +3,7 @@ Release 10.1.03 Trace  (lin64)
 Copyright (c) 1995-2008 Xilinx, Inc.  All rights reserved.
 
 /afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/bin/lin64/unwrapped/trce -ise
-/afs/athena.mit.edu/user/a/d/adhikara/Documents/6.111things/6.111 project/bobateam/flash_audio_recording/flash_audio_recording.ise
+/afs/athena.mit.edu/user/d/v/dvtran/Documents/6.111/finalproject/bobateam/flash_audio_recording/flash_audio_recording.ise
 -intstyle ise -v 3 -s 4 -xml lab5 lab5.ncd -o lab5.twr lab5.pcf -ucf labkit.ucf
 
 Design file:              lab5.ncd
@@ -191,7 +191,7 @@ ac97_sdata_in  |analyzer1_data<2>|   14.667|
 ---------------+-----------------+---------+
 
 
-Analysis completed Sun Nov 26 15:23:48 2017 
+Analysis completed Tue Nov 28 17:50:56 2017 
 --------------------------------------------------------------------------------
 
 Trace Settings:

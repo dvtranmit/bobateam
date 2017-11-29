@@ -4,15 +4,14 @@ Xilinx Mapping Report File for Design 'lab5'
 Design Information
 ------------------
 Command Line   : map -ise
-"/afs/athena.mit.edu/user/a/d/adhikara/Documents/6.111things/6.111
-project/bobateam/flash_audio_recording/flash_audio_recording.ise" -intstyle ise
--p xc2v6000-bf957-4 -cm area -pr off -k 4 -c 100 -tx off -o lab5_map.ncd
-lab5.ngd lab5.pcf 
+/afs/athena.mit.edu/user/d/v/dvtran/Documents/6.111/finalproject/bobateam/flash_
+audio_recording/flash_audio_recording.ise -intstyle ise -p xc2v6000-bf957-4 -cm
+area -pr off -k 4 -c 100 -tx off -o lab5_map.ncd lab5.ngd lab5.pcf 
 Target Device  : xc2v6000
 Target Package : bf957
 Target Speed   : -4
 Mapper Version : virtex2 -- $Revision: 1.46.12.2 $
-Mapped Date    : Sun Nov 26 15:23:14 2017
+Mapped Date    : Tue Nov 28 17:50:20 2017
 
 Design Summary
 --------------
@@ -38,7 +37,7 @@ Logic Distribution:
 
 Peak Memory Usage:  494 MB
 Total REAL time to MAP completion:  2 secs 
-Total CPU time to MAP completion:   1 secs 
+Total CPU time to MAP completion:   2 secs 
 
 NOTES:
 
