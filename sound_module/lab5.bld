@@ -10,6 +10,18 @@ xc2v6000-bf957-4 lab5.ngc lab5.ngd
 Reading NGO file
 "/afs/athena.mit.edu/user/d/v/dvtran/Documents/6.111/finalproject/bobateam/sound
 _module/lab5.ngc" ...
+Loading design module
+"/afs/athena.mit.edu/user/d/v/dvtran/Documents/6.111/finalproject/bobateam/sound
+_module/normalmole_image_rom.ngc"...
+Loading design module
+"/afs/athena.mit.edu/user/d/v/dvtran/Documents/6.111/finalproject/bobateam/sound
+_module/normalmole_red_rom.ngc"...
+Loading design module
+"/afs/athena.mit.edu/user/d/v/dvtran/Documents/6.111/finalproject/bobateam/sound
+_module/normalmole_green_rom.ngc"...
+Loading design module
+"/afs/athena.mit.edu/user/d/v/dvtran/Documents/6.111/finalproject/bobateam/sound
+_module/normalmole_blue_rom.ngc"...
 Reading in constraint information from 'labkit.ucf'...
 Gathering constraint information from source properties...
 Done.
@@ -298,7 +310,7 @@ NGDBUILD Design Results Summary:
   Number of errors:     0
   Number of warnings: 261
 
-Total memory usage is 235196 kilobytes
+Total memory usage is 238020 kilobytes
 
 Writing NGD file "lab5.ngd" ...
 

@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RootFolder label="COREGEN" treetype="folder" language="COREGEN">
+	<Folder label="VERILOG Component Instantiation" treetype="folder">
+		<Template label="normalmole_image_rom" treetype="template">
+ 
+ 
+// The following must be inserted into your Verilog file for this
+// core to be instantiated. Change the instance name and port connections
+// (in parentheses) to your own signal names.
+ 
+normalmole_image_rom YourInstanceName (
+    .clka(clka),
+    .addra(addra), // Bus [15 : 0] 
+    .douta(douta)); // Bus [3 : 0] 
+
+ 
+		</Template>
+		<Template label="normalmole_red_rom" treetype="template">
+ 
+ 
+// The following must be inserted into your Verilog file for this
+// core to be instantiated. Change the instance name and port connections
+// (in parentheses) to your own signal names.
+ 
+normalmole_red_rom YourInstanceName (
+    .clka(clka),
+    .addra(addra), // Bus [3 : 0] 
+    .douta(douta)); // Bus [3 : 0] 
+
+ 
+		</Template>
+		<Template label="normalmole_green_rom" treetype="template">
+ 
+ 
+// The following must be inserted into your Verilog file for this
+// core to be instantiated. Change the instance name and port connections
+// (in parentheses) to your own signal names.
+ 
+normalmole_green_rom YourInstanceName (
+    .clka(clka),
+    .addra(addra), // Bus [3 : 0] 
+    .douta(douta)); // Bus [3 : 0] 
+
+ 
+		</Template>
+		<Template label="normalmole_blue_rom" treetype="template">
+ 
+ 
+// The following must be inserted into your Verilog file for this
+// core to be instantiated. Change the instance name and port connections
+// (in parentheses) to your own signal names.
+ 
+normalmole_blue_rom YourInstanceName (
+    .clka(clka),
+    .addra(addra), // Bus [3 : 0] 
+    .douta(douta)); // Bus [3 : 0] 
+
+ 
+		</Template>
+	</Folder>
+	<Folder label="VHDL Component Instantiation" treetype="folder">
+		<Template label="normalmole_image_rom" treetype="template">
+ 
+ 
+-- The following code must appear in the VHDL architecture header:
+ 
+component normalmole_image_rom
+    port (
+    clka: IN std_logic;
+    addra: IN std_logic_VECTOR(15 downto 0);
+    douta: OUT std_logic_VECTOR(3 downto 0));
+end component;
+
+
+ 
+-------------------------------------------------------------
+ 
+-- The following code must appear in the VHDL architecture body.
+-- Substitute your own instance name and net names.
+ 
+your_instance_name : normalmole_image_rom
+        port map (
+            clka =&gt; clka,
+            addra =&gt; addra,
+            douta =&gt; douta);
+ 
+		</Template>
+		<Template label="normalmole_red_rom" treetype="template">
+ 
+ 
+-- The following code must appear in the VHDL architecture header:
+ 
+component normalmole_red_rom
+    port (
+    clka: IN std_logic;
+    addra: IN std_logic_VECTOR(3 downto 0);
+    douta: OUT std_logic_VECTOR(3 downto 0));
+end component;
+
+
+ 
+-------------------------------------------------------------
+ 
+-- The following code must appear in the VHDL architecture body.
+-- Substitute your own instance name and net names.
+ 
+your_instance_name : normalmole_red_rom
+        port map (
+            clka =&gt; clka,
+            addra =&gt; addra,
+            douta =&gt; douta);
+ 
+		</Template>
+		<Template label="normalmole_green_rom" treetype="template">
+ 
+ 
+-- The following code must appear in the VHDL architecture header:
+ 
+component normalmole_green_rom
+    port (
+    clka: IN std_logic;
+    addra: IN std_logic_VECTOR(3 downto 0);
+    douta: OUT std_logic_VECTOR(3 downto 0));
+end component;
+
+
+ 
+-------------------------------------------------------------
+ 
+-- The following code must appear in the VHDL architecture body.
+-- Substitute your own instance name and net names.
+ 
+your_instance_name : normalmole_green_rom
+        port map (
+            clka =&gt; clka,
+            addra =&gt; addra,
+            douta =&gt; douta);
+ 
+		</Template>
+		<Template label="normalmole_blue_rom" treetype="template">
+ 
+ 
+-- The following code must appear in the VHDL architecture header:
+ 
+component normalmole_blue_rom
+    port (
+    clka: IN std_logic;
+    addra: IN std_logic_VECTOR(3 downto 0);
+    douta: OUT std_logic_VECTOR(3 downto 0));
+end component;
+
+
+ 
+-------------------------------------------------------------
+ 
+-- The following code must appear in the VHDL architecture body.
+-- Substitute your own instance name and net names.
+ 
+your_instance_name : normalmole_blue_rom
+        port map (
+            clka =&gt; clka,
+            addra =&gt; addra,
+            douta =&gt; douta);
+ 
+		</Template>
+	</Folder>
+</RootFolder>

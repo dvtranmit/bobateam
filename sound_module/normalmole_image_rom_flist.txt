@@ -1,0 +1,13 @@
+# Output products list for <normalmole_image_rom>
+normalmole_image_rom.asy
+normalmole_image_rom.mif
+normalmole_image_rom.ngc
+normalmole_image_rom.sym
+normalmole_image_rom.v
+normalmole_image_rom.veo
+normalmole_image_rom.vhd
+normalmole_image_rom.vho
+normalmole_image_rom.xco
+normalmole_image_rom_blk_mem_gen_v2_8_xst_1.ngc_xst.xrpt
+normalmole_image_rom_flist.txt
+normalmole_image_rom_xmdf.tcl

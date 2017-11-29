@@ -1,0 +1,13 @@
+# Output products list for <normalmole_red_rom>
+normalmole_red_rom.asy
+normalmole_red_rom.mif
+normalmole_red_rom.ngc
+normalmole_red_rom.sym
+normalmole_red_rom.v
+normalmole_red_rom.veo
+normalmole_red_rom.vhd
+normalmole_red_rom.vho
+normalmole_red_rom.xco
+normalmole_red_rom_blk_mem_gen_v2_8_xst_1.ngc_xst.xrpt
+normalmole_red_rom_flist.txt
+normalmole_red_rom_xmdf.tcl

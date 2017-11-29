@@ -515,16 +515,6 @@ module lab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
    //lab5 assign ac97_sdata_out = 1'b0;
    // ac97_sdata_in is an input
 
-   // VGA Output
-   assign vga_out_red = 10'h0;
-   assign vga_out_green = 10'h0;
-   assign vga_out_blue = 10'h0;
-   assign vga_out_sync_b = 1'b1;
-   assign vga_out_blank_b = 1'b1;
-   assign vga_out_pixel_clock = 1'b0;
-   assign vga_out_hsync = 1'b0;
-   assign vga_out_vsync = 1'b0;
-
    // Video Output
    assign tv_out_ycrcb = 10'h0;
    assign tv_out_reset_b = 1'b0;
@@ -645,9 +635,19 @@ module lab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
    SRL16 #(.INIT(16'hFFFF)) reset_sr(.D(1'b0), .CLK(clock_27mhz), .Q(reset),
                                      .A0(1'b1), .A1(1'b1), .A2(1'b1), .A3(1'b1));
 			
+///////////////////////////////////////////
+//			GENERATE 65MHz Clock				  //
+///////////////////////////////////////////
 
-
-
+   // use FPGA's digital clock manager to produce a
+   // 65MHz clock (actually 64.8MHz)
+   wire clock_65mhz_unbuf,clock_65mhz;
+   DCM vclk1(.CLKIN(clock_27mhz),.CLKFX(clock_65mhz_unbuf));
+   // synthesis attribute CLKFX_DIVIDE of vclk1 is 10
+   // synthesis attribute CLKFX_MULTIPLY of vclk1 is 24
+   // synthesis attribute CLK_FEEDBACK of vclk1 is NONE
+   // synthesis attribute CLKIN_PERIOD of vclk1 is 37
+   BUFG vclk2(.O(clock_65mhz),.I(clock_65mhz_unbuf));
 
 ///////////////////////////////////////////
 //				  DEBOUNCE INPUTS				  //
@@ -788,7 +788,6 @@ module lab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 											.disp_ce_b(disp_ce_b),
 											.disp_reset_b(disp_reset_b));
 
-	assign led = {toggler, button_up, button2, button_left, button_right, button1, button_down, button0};
 
 	/****Ara's code for sounds things here*/		
    wire [7:0] from_ac97_data, to_ac97_data;
@@ -842,6 +841,34 @@ module lab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 
    assign analyzer3_clock = ready;
    assign analyzer3_data = {from_ac97_data, to_ac97_data};
+
+
+	/*
+	VICTORIA'S CODE
+	*/
+
+   // feed XVGA signals
+   wire [23:0] pixel;
+   wire b,hs,vs;
+	wire [10:0] hcount;
+   wire [9:0] vcount;
+   xvga xvga(.vclock(clock_65mhz),.hcount(hcount),.vcount(vcount),
+              .hsync(hs),.vsync(vs),.blank(b));
+		  
+	displaymole displaymole1(.clk(clock_65mhz), .reset(reset), .hcount(hcount), .vcount(vcount),
+									.state(display_state), .mole_location(mole_location), .pixel(pixel), .led(led));
+
+   // VGA Output.  In order to meet the setup and hold times of the
+   // AD7125, we send it ~clock_65mhz.
+   assign vga_out_red = pixel[23:16];
+   assign vga_out_green = pixel[15:8];
+   assign vga_out_blue = pixel[7:0];
+   assign vga_out_sync_b = 1'b1;    // not used
+   assign vga_out_blank_b = ~b;
+   assign vga_out_pixel_clock = ~clock_65mhz;
+   assign vga_out_hsync = hs;
+   assign vga_out_vsync = vs;	
+
 endmodule
 
 
@@ -2021,3 +2048,154 @@ output [39:0] char_dots;
     endcase
 
 endmodule
+
+/******************************************************************************/
+//VICTORIA CODE HERE
+
+////////////////////////////////////////////////////////////////////////////////
+//
+// xvga: Generate XVGA display signals (1024 x 768 @ 60Hz)
+//
+////////////////////////////////////////////////////////////////////////////////
+
+module xvga(input vclock,
+            output reg [10:0] hcount,    // pixel number on current line
+            output reg [9:0] vcount,	 // line number
+            output reg vsync,hsync,blank);
+
+   // horizontal: 1344 pixels total
+   // display 1024 pixels per line
+   reg hblank,vblank;
+   wire hsyncon,hsyncoff,hreset,hblankon;
+   assign hblankon = (hcount == 1023);    
+   assign hsyncon = (hcount == 1047);
+   assign hsyncoff = (hcount == 1183);
+   assign hreset = (hcount == 1343);
+
+   // vertical: 806 lines total
+   // display 768 lines
+   wire vsyncon,vsyncoff,vreset,vblankon;
+   assign vblankon = hreset & (vcount == 767);    
+   assign vsyncon = hreset & (vcount == 776);
+   assign vsyncoff = hreset & (vcount == 782);
+   assign vreset = hreset & (vcount == 805);
+
+   // sync and blanking
+   wire next_hblank,next_vblank;
+   assign next_hblank = hreset ? 0 : hblankon ? 1 : hblank;
+   assign next_vblank = vreset ? 0 : vblankon ? 1 : vblank;
+   always @(posedge vclock) begin
+      hcount <= hreset ? 0 : hcount + 1;
+      hblank <= next_hblank;
+      hsync <= hsyncon ? 0 : hsyncoff ? 1 : hsync;  // active low
+
+      vcount <= hreset ? (vreset ? 0 : vcount + 1) : vcount;
+      vblank <= next_vblank;
+      vsync <= vsyncon ? 0 : vsyncoff ? 1 : vsync;  // active low
+
+      blank <= next_vblank | (next_hblank & ~hreset);
+   end
+endmodule
+
+////////////////////////////////////////////////////////////////////////////////
+//
+// NORMAL MOLE MODULE
+//
+////////////////////////////////////////////////////////////////////////////////
+
+module normalmole
+	#(parameter WIDTH = 212, HEIGHT = 256)
+	(input pixel_clk,
+    input [10:0] x, hcount,
+    input [9:0] y, vcount,
+    output reg [23:0] pixel
+    );
+	wire [15:0] image_addr;
+	wire [3:0] image_bits, red_mapped, green_mapped, blue_mapped;
+	always @ (posedge pixel_clk) begin
+		if ((hcount >= x && hcount < (x + WIDTH)) && (vcount >= y && vcount < (y + HEIGHT)))
+			pixel <= {red_mapped,4'b0, green_mapped,4'b0, blue_mapped,4'b0};
+		else
+			pixel <= 0;
+	end
+	assign image_addr = (hcount - x) + (vcount - y) * WIDTH;
+	normalmole_image_rom rom1(.clka(pixel_clk),.addra(image_addr),.douta(image_bits));
+	normalmole_red_rom rcm (.clka(pixel_clk), .addra(image_bits), .douta(red_mapped));
+	normalmole_green_rom gcm (.clka(pixel_clk), .addra(image_bits), .douta(green_mapped));
+	normalmole_blue_rom bcm (.clka(pixel_clk), .addra(image_bits), .douta(blue_mapped));	
+endmodule
+
+////////////////////////////////////////////////////////////////////////////////
+//
+// MOLE MUX
+//
+////////////////////////////////////////////////////////////////////////////////
+module displaymole(	input clk, reset,
+							input [3:0] state,
+							input [2:0] mole_location,
+							input [10:0] hcount,
+							input [9:0]  vcount,
+							output [23:0] pixel,
+							output [10:0] led);
+
+	// States
+	reg [3:0] IDLE 					= 4'd0;		// Check if user has pressed start
+	reg [3:0] GAME_START_DELAY 	= 4'd1;		// Delay until user stands on center
+	reg [3:0] GAME_ONGOING			= 4'd2;		// Check lives & Address from Music
+	reg [3:0] REQUEST_MOLE			= 4'd3;		// Request a mole to be displayed (pulse)
+	reg [3:0] MOLE_COUNTDOWN		= 4'd4;		// Mole displayed until stomped/expired 
+	reg [3:0] MOLE_MISSED			= 4'd5;		// Lives counter decremented (pulse)
+	reg [3:0] MOLE_WHACKED			= 4'd6;		// Score counter incremented (pulse)
+	reg [3:0] SAFE_STEP_DELAY		= 4'd7;		// Prevent repeated lives decrement
+	reg [3:0] GAME_OVER				= 4'd8;		// Display Game Over Screen
+	reg [3:0] MOLE_MISSED_SOUND	= 4'd9;		// Extra time for sound
+	reg [3:0] MOLE_WHACKED_SOUND	= 4'd10;		// Extra time for sound
+
+   // TOP LEFT MOLE CORNERS
+	parameter [10:0] x1 = 65;
+	parameter [9:0] y1 = 0;
+	parameter [10:0] x2 = 406;
+	parameter [9:0] y2 = 0;
+	parameter [10:0] x3 = 747;
+	parameter [9:0] y3 = 0;
+	parameter [10:0] x4 = 65;
+	parameter [9:0] y4 = 256;
+	parameter [10:0] x5 = 747;
+	parameter [9:0] y5 = 256;
+	parameter [10:0] x6 = 65;
+	parameter [9:0] y6 = 512;
+	parameter [10:0] x7 = 406;
+	parameter [9:0] y7 = 512;
+	parameter [10:0] x8 = 747;
+	parameter [9:0] y8 = 512;
+
+	// Assign x y location based on input from game state
+	reg [10:0] x;
+	reg [9:0] y;
+	always@(posedge clk) begin
+		if (reset) begin
+			x <= x1;
+			y <= y1;
+		end else if (state == REQUEST_MOLE) begin
+			case(mole_location)
+				3'd0: begin x <= x1; y <= y1; end
+				3'd1: begin x <= x2; y <= y2; end
+				3'd2: begin x <= x3; y <= y3; end
+				3'd3: begin x <= x4; y <= y4; end
+				3'd4: begin x <= x5; y <= y5; end
+				3'd5: begin x <= x6; y <= y6; end
+				3'd6: begin x <= x7; y <= y7; end
+				3'd7: begin x <= x8; y <= y8; end
+			endcase
+		end
+	end
+	
+	wire [23:0] temp_pixel;
+	normalmole #(.WIDTH(212),.HEIGHT(256))
+			mole1(.pixel_clk(clk),.x(x),.hcount(hcount),.y(y),.vcount(vcount),.pixel(temp_pixel));
+
+//	assign pixel = (state == REQUEST_MOLE || state == MOLE_COUNTDOWN) ? temp_pixel : 24'h0;
+	assign pixel = temp_pixel;
+	assign led = x[7:0];
+endmodule
+		

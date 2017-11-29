@@ -11,7 +11,7 @@ Target Device  : xc2v6000
 Target Package : bf957
 Target Speed   : -4
 Mapper Version : virtex2 -- $Revision: 1.46.12.2 $
-Mapped Date    : Tue Nov 28 19:07:06 2017
+Mapped Date    : Wed Nov 29 18:43:24 2017
 
 Mapping design into LUTs...
 Running directed packing...
@@ -23,26 +23,28 @@ Design Summary
 
 Design Summary:
 Number of errors:      0
-Number of warnings:  308
+Number of warnings:  399
 Logic Utilization:
-  Number of Slice Flip Flops:           888 out of  67,584    1%
-  Number of 4 input LUTs:             1,338 out of  67,584    1%
+  Number of Slice Flip Flops:           937 out of  67,584    1%
+  Number of 4 input LUTs:             1,447 out of  67,584    2%
 Logic Distribution:
-  Number of occupied Slices:          1,069 out of  33,792    3%
-    Number of Slices containing only related logic:   1,069 out of   1,069 100%
-    Number of Slices containing unrelated logic:          0 out of   1,069   0%
+  Number of occupied Slices:          1,154 out of  33,792    3%
+    Number of Slices containing only related logic:   1,154 out of   1,154 100%
+    Number of Slices containing unrelated logic:          0 out of   1,154   0%
       *See NOTES below for an explanation of the effects of unrelated logic.
-  Total Number of 4 input LUTs:       1,645 out of  67,584    2%
-    Number used as logic:             1,274
-    Number used as a route-thru:        307
+  Total Number of 4 input LUTs:       1,774 out of  67,584    2%
+    Number used as logic:             1,390
+    Number used as a route-thru:        327
     Number used for Dual Port RAMs:      32
       (Two LUTs used per Dual Port RAM)
-    Number used as Shift registers:      32
+    Number used as Shift registers:      25
   Number of bonded IOBs:                576 out of     684   84%
-  Number of MULT18X18s:                   1 out of     144    1%
-  Number of BUFGMUXs:                     3 out of      16   18%
+  Number of RAMB16s:                     17 out of     144   11%
+  Number of MULT18X18s:                   2 out of     144    1%
+  Number of BUFGMUXs:                     4 out of      16   25%
+  Number of DCMs:                         1 out of      12    8%
 
-Peak Memory Usage:  503 MB
+Peak Memory Usage:  509 MB
 Total REAL time to MAP completion:  2 secs 
 Total CPU time to MAP completion:   2 secs 
 

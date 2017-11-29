@@ -1,0 +1,13 @@
+# Output products list for <normalmole_green_rom>
+normalmole_green_rom.asy
+normalmole_green_rom.mif
+normalmole_green_rom.ngc
+normalmole_green_rom.sym
+normalmole_green_rom.v
+normalmole_green_rom.veo
+normalmole_green_rom.vhd
+normalmole_green_rom.vho
+normalmole_green_rom.xco
+normalmole_green_rom_blk_mem_gen_v2_8_xst_1.ngc_xst.xrpt
+normalmole_green_rom_flist.txt
+normalmole_green_rom_xmdf.tcl

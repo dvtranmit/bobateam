@@ -842,6 +842,10 @@ proc restore { { project_dir "" } } {
       "flash_manager.v" 
       "lab5.v" 
       "labkit.ucf" 
+      "normalmole_blue_rom.xco" 
+      "normalmole_green_rom.xco" 
+      "normalmole_image_rom.xco" 
+      "normalmole_red_rom.xco" 
       "test_fsm.v"}
 
   HandleException {
@@ -849,7 +853,35 @@ proc restore { { project_dir "" } } {
   } "A problem occured while restoring user files."
 
   set imported_files { 
-      "lab5_guide.ncd"}
+      "lab5_guide.ncd" 
+      "normalmole_blue_rom.asy" 
+      "normalmole_blue_rom.ngc" 
+      "normalmole_blue_rom.sym" 
+      "normalmole_blue_rom.v" 
+      "normalmole_blue_rom.veo" 
+      "normalmole_blue_rom.vhd" 
+      "normalmole_blue_rom.vho" 
+      "normalmole_green_rom.asy" 
+      "normalmole_green_rom.ngc" 
+      "normalmole_green_rom.sym" 
+      "normalmole_green_rom.v" 
+      "normalmole_green_rom.veo" 
+      "normalmole_green_rom.vhd" 
+      "normalmole_green_rom.vho" 
+      "normalmole_image_rom.asy" 
+      "normalmole_image_rom.ngc" 
+      "normalmole_image_rom.sym" 
+      "normalmole_image_rom.v" 
+      "normalmole_image_rom.veo" 
+      "normalmole_image_rom.vhd" 
+      "normalmole_image_rom.vho" 
+      "normalmole_red_rom.asy" 
+      "normalmole_red_rom.ngc" 
+      "normalmole_red_rom.sym" 
+      "normalmole_red_rom.v" 
+      "normalmole_red_rom.veo" 
+      "normalmole_red_rom.vhd" 
+      "normalmole_red_rom.vho"}
 
   set origination 2
 
@@ -872,6 +904,7 @@ proc restore { { project_dir "" } } {
       "A" "" "" "" "PROP_CompxlibOverwriteLib" "Overwrite" 
       "A" "" "" "" "PROP_CompxlibSimPrimatives" "true" 
       "A" "" "" "" "PROP_CompxlibXlnxCoreLib" "true" 
+      "A" "" "" "" "PROP_CorgenRegenCore" "Under Current Project Setting" 
       "A" "" "" "" "PROP_CurrentFloorplanFile" "" 
       "A" "" "" "" "PROP_DesignName" "sound_module" 
       "A" "" "" "" "PROP_Dummy" "dum1" 
@@ -1204,6 +1237,7 @@ proc restore { { project_dir "" } } {
       "E" "" "" "" "PROP_PreferredLanguage" "Verilog" 
       "F" "" "" "" "PROP_ChangeDevSpeed" "-4" 
       "F" "" "" "" "PROP_SimModelTarget" "Verilog" 
+      "F" "" "" "" "PROP_coregenFuncModelTargetLang" "Verilog" 
       "F" "" "" "" "PROP_tbwTestbenchTargetLang" "Verilog" 
       "F" "" "" "" "PROP_xilxPostTrceSpeed" "-4" 
       "F" "" "" "" "PROP_xilxPreTrceSpeed" "-4" 
