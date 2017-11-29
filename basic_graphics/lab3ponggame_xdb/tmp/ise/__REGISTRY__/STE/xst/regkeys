@@ -1,0 +1,6 @@
+CommandLine
+/afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/bin/lin64/unwrapped/xst -ise /afs/athena.mit.edu/user/v/s/vsouyang/Documents/6.111/basic_graphics/lab3ponggame.ise -intstyle ise -ifn /afs/athena.mit.edu/user/v/s/vsouyang/Documents/6.111/basic_graphics/lab3.xst -ofn /afs/athena.mit.edu/user/v/s/vsouyang/Documents/6.111/basic_graphics/lab3.syr -finalclean 1
+s
+FormatString
+xst [-ifn <InputFile>] [-ofn <OutputFile>] [-ise <iseProjectFile>] [--quiet] [-intstyle <Style>] [--deb <DebugLevel>] [--finalclean <Clean>] [--PcubeFlow] [--globOptFlow] [--XstNtrc]
+s

@@ -1,0 +1,13 @@
+# Output products list for <tiger_green_rom>
+tiger_green_rom.asy
+tiger_green_rom.mif
+tiger_green_rom.ngc
+tiger_green_rom.sym
+tiger_green_rom.v
+tiger_green_rom.veo
+tiger_green_rom.vhd
+tiger_green_rom.vho
+tiger_green_rom.xco
+tiger_green_rom_blk_mem_gen_v2_8_xst_1.ngc_xst.xrpt
+tiger_green_rom_flist.txt
+tiger_green_rom_xmdf.tcl

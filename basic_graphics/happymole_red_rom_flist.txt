@@ -1,0 +1,13 @@
+# Output products list for <happymole_red_rom>
+happymole_red_rom.asy
+happymole_red_rom.mif
+happymole_red_rom.ngc
+happymole_red_rom.sym
+happymole_red_rom.v
+happymole_red_rom.veo
+happymole_red_rom.vhd
+happymole_red_rom.vho
+happymole_red_rom.xco
+happymole_red_rom_blk_mem_gen_v2_8_xst_1.ngc_xst.xrpt
+happymole_red_rom_flist.txt
+happymole_red_rom_xmdf.tcl

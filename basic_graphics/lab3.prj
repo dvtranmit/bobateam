@@ -1,0 +1,5 @@
+verilog work "./tiger_red_rom.v"
+verilog work "./tiger_image_rom.v"
+verilog work "./tiger_green_rom.v"
+verilog work "tiger_blue_rom.v"
+verilog work "lab3.v"

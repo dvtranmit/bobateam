@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RootFolder label="COREGEN" treetype="folder" language="COREGEN">
+	<Folder label="VERILOG Component Instantiation" treetype="folder">
+		<Template label="happymole_image_rom" treetype="template">
+ 
+ 
+// The following must be inserted into your Verilog file for this
+// core to be instantiated. Change the instance name and port connections
+// (in parentheses) to your own signal names.
+ 
+happymole_image_rom YourInstanceName (
+    .clka(clka),
+    .addra(addra), // Bus [18 : 0] 
+    .douta(douta)); // Bus [3 : 0] 
+
+ 
+		</Template>
+		<Template label="happymole_red_rom" treetype="template">
+ 
+ 
+// The following must be inserted into your Verilog file for this
+// core to be instantiated. Change the instance name and port connections
+// (in parentheses) to your own signal names.
+ 
+happymole_red_rom YourInstanceName (
+    .clka(clka),
+    .addra(addra), // Bus [3 : 0] 
+    .douta(douta)); // Bus [3 : 0] 
+
+ 
+		</Template>
+		<Template label="happymole_green_rom" treetype="template">
+ 
+ 
+// The following must be inserted into your Verilog file for this
+// core to be instantiated. Change the instance name and port connections
+// (in parentheses) to your own signal names.
+ 
+happymole_green_rom YourInstanceName (
+    .clka(clka),
+    .addra(addra), // Bus [3 : 0] 
+    .douta(douta)); // Bus [3 : 0] 
+
+ 
+		</Template>
+		<Template label="happymole_blue_rom" treetype="template">
+ 
+ 
+// The following must be inserted into your Verilog file for this
+// core to be instantiated. Change the instance name and port connections
+// (in parentheses) to your own signal names.
+ 
+happymole_blue_rom YourInstanceName (
+    .clka(clka),
+    .addra(addra), // Bus [3 : 0] 
+    .douta(douta)); // Bus [3 : 0] 
+
+ 
+		</Template>
+		<Template label="tiger_image_rom" treetype="template">
+ 
+ 
+// The following must be inserted into your Verilog file for this
+// core to be instantiated. Change the instance name and port connections
+// (in parentheses) to your own signal names.
+ 
+tiger_image_rom YourInstanceName (
+    .clka(clka),
+    .addra(addra), // Bus [15 : 0] 
+    .douta(douta)); // Bus [3 : 0] 
+
+ 
+		</Template>
+		<Template label="tiger_red_rom" treetype="template">
+ 
+ 
+// The following must be inserted into your Verilog file for this
+// core to be instantiated. Change the instance name and port connections
+// (in parentheses) to your own signal names.
+ 
+tiger_red_rom YourInstanceName (
+    .clka(clka),
+    .addra(addra), // Bus [3 : 0] 
+    .douta(douta)); // Bus [3 : 0] 
+
+ 
+		</Template>
+		<Template label="tiger_green_rom" treetype="template">
+ 
+ 
+// The following must be inserted into your Verilog file for this
+// core to be instantiated. Change the instance name and port connections
+// (in parentheses) to your own signal names.
+ 
+tiger_green_rom YourInstanceName (
+    .clka(clka),
+    .addra(addra), // Bus [3 : 0] 
+    .douta(douta)); // Bus [3 : 0] 
+
+ 
+		</Template>
+		<Template label="tiger_blue_rom" treetype="template">
+ 
+ 
+// The following must be inserted into your Verilog file for this
+// core to be instantiated. Change the instance name and port connections
+// (in parentheses) to your own signal names.
+ 
+tiger_blue_rom YourInstanceName (
+    .clka(clka),
+    .addra(addra), // Bus [3 : 0] 
+    .douta(douta)); // Bus [3 : 0] 
+
+ 
+		</Template>
+	</Folder>
+	<Folder label="VHDL Component Instantiation" treetype="folder">
+		<Template label="happymole_image_rom" treetype="template">
+ 
+ 
+-- The following code must appear in the VHDL architecture header:
+ 
+component happymole_image_rom
+    port (
+    clka: IN std_logic;
+    addra: IN std_logic_VECTOR(18 downto 0);
+    douta: OUT std_logic_VECTOR(3 downto 0));
+end component;
+
+
+ 
+-------------------------------------------------------------
+ 
+-- The following code must appear in the VHDL architecture body.
+-- Substitute your own instance name and net names.
+ 
+your_instance_name : happymole_image_rom
+        port map (
+            clka =&gt; clka,
+            addra =&gt; addra,
+            douta =&gt; douta);
+ 
+		</Template>
+		<Template label="happymole_red_rom" treetype="template">
+ 
+ 
+-- The following code must appear in the VHDL architecture header:
+ 
+component happymole_red_rom
+    port (
+    clka: IN std_logic;
+    addra: IN std_logic_VECTOR(3 downto 0);
+    douta: OUT std_logic_VECTOR(3 downto 0));
+end component;
+
+
+ 
+-------------------------------------------------------------
+ 
+-- The following code must appear in the VHDL architecture body.
+-- Substitute your own instance name and net names.
+ 
+your_instance_name : happymole_red_rom
+        port map (
+            clka =&gt; clka,
+            addra =&gt; addra,
+            douta =&gt; douta);
+ 
+		</Template>
+		<Template label="happymole_green_rom" treetype="template">
+ 
+ 
+-- The following code must appear in the VHDL architecture header:
+ 
+component happymole_green_rom
+    port (
+    clka: IN std_logic;
+    addra: IN std_logic_VECTOR(3 downto 0);
+    douta: OUT std_logic_VECTOR(3 downto 0));
+end component;
+
+
+ 
+-------------------------------------------------------------
+ 
+-- The following code must appear in the VHDL architecture body.
+-- Substitute your own instance name and net names.
+ 
+your_instance_name : happymole_green_rom
+        port map (
+            clka =&gt; clka,
+            addra =&gt; addra,
+            douta =&gt; douta);
+ 
+		</Template>
+		<Template label="happymole_blue_rom" treetype="template">
+ 
+ 
+-- The following code must appear in the VHDL architecture header:
+ 
+component happymole_blue_rom
+    port (
+    clka: IN std_logic;
+    addra: IN std_logic_VECTOR(3 downto 0);
+    douta: OUT std_logic_VECTOR(3 downto 0));
+end component;
+
+
+ 
+-------------------------------------------------------------
+ 
+-- The following code must appear in the VHDL architecture body.
+-- Substitute your own instance name and net names.
+ 
+your_instance_name : happymole_blue_rom
+        port map (
+            clka =&gt; clka,
+            addra =&gt; addra,
+            douta =&gt; douta);
+ 
+		</Template>
+		<Template label="tiger_image_rom" treetype="template">
+ 
+ 
+-- The following code must appear in the VHDL architecture header:
+ 
+component tiger_image_rom
+    port (
+    clka: IN std_logic;
+    addra: IN std_logic_VECTOR(15 downto 0);
+    douta: OUT std_logic_VECTOR(3 downto 0));
+end component;
+
+
+ 
+-------------------------------------------------------------
+ 
+-- The following code must appear in the VHDL architecture body.
+-- Substitute your own instance name and net names.
+ 
+your_instance_name : tiger_image_rom
+        port map (
+            clka =&gt; clka,
+            addra =&gt; addra,
+            douta =&gt; douta);
+ 
+		</Template>
+		<Template label="tiger_red_rom" treetype="template">
+ 
+ 
+-- The following code must appear in the VHDL architecture header:
+ 
+component tiger_red_rom
+    port (
+    clka: IN std_logic;
+    addra: IN std_logic_VECTOR(3 downto 0);
+    douta: OUT std_logic_VECTOR(3 downto 0));
+end component;
+
+
+ 
+-------------------------------------------------------------
+ 
+-- The following code must appear in the VHDL architecture body.
+-- Substitute your own instance name and net names.
+ 
+your_instance_name : tiger_red_rom
+        port map (
+            clka =&gt; clka,
+            addra =&gt; addra,
+            douta =&gt; douta);
+ 
+		</Template>
+		<Template label="tiger_green_rom" treetype="template">
+ 
+ 
+-- The following code must appear in the VHDL architecture header:
+ 
+component tiger_green_rom
+    port (
+    clka: IN std_logic;
+    addra: IN std_logic_VECTOR(3 downto 0);
+    douta: OUT std_logic_VECTOR(3 downto 0));
+end component;
+
+
+ 
+-------------------------------------------------------------
+ 
+-- The following code must appear in the VHDL architecture body.
+-- Substitute your own instance name and net names.
+ 
+your_instance_name : tiger_green_rom
+        port map (
+            clka =&gt; clka,
+            addra =&gt; addra,
+            douta =&gt; douta);
+ 
+		</Template>
+		<Template label="tiger_blue_rom" treetype="template">
+ 
+ 
+-- The following code must appear in the VHDL architecture header:
+ 
+component tiger_blue_rom
+    port (
+    clka: IN std_logic;
+    addra: IN std_logic_VECTOR(3 downto 0);
+    douta: OUT std_logic_VECTOR(3 downto 0));
+end component;
+
+
+ 
+-------------------------------------------------------------
+ 
+-- The following code must appear in the VHDL architecture body.
+-- Substitute your own instance name and net names.
+ 
+your_instance_name : tiger_blue_rom
+        port map (
+            clka =&gt; clka,
+            addra =&gt; addra,
+            douta =&gt; douta);
+ 
+		</Template>
+	</Folder>
+</RootFolder>

@@ -1,0 +1,13 @@
+# Output products list for <happymole_image_rom>
+happymole_image_rom.asy
+happymole_image_rom.mif
+happymole_image_rom.ngc
+happymole_image_rom.sym
+happymole_image_rom.v
+happymole_image_rom.veo
+happymole_image_rom.vhd
+happymole_image_rom.vho
+happymole_image_rom.xco
+happymole_image_rom_blk_mem_gen_v2_8_xst_1.ngc_xst.xrpt
+happymole_image_rom_flist.txt
+happymole_image_rom_xmdf.tcl

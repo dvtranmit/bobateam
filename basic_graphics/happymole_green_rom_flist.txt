@@ -1,0 +1,13 @@
+# Output products list for <happymole_green_rom>
+happymole_green_rom.asy
+happymole_green_rom.mif
+happymole_green_rom.ngc
+happymole_green_rom.sym
+happymole_green_rom.v
+happymole_green_rom.veo
+happymole_green_rom.vhd
+happymole_green_rom.vho
+happymole_green_rom.xco
+happymole_green_rom_blk_mem_gen_v2_8_xst_1.ngc_xst.xrpt
+happymole_green_rom_flist.txt
+happymole_green_rom_xmdf.tcl

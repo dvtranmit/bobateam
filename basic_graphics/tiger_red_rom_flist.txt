@@ -1,0 +1,13 @@
+# Output products list for <tiger_red_rom>
+tiger_red_rom.asy
+tiger_red_rom.mif
+tiger_red_rom.ngc
+tiger_red_rom.sym
+tiger_red_rom.v
+tiger_red_rom.veo
+tiger_red_rom.vhd
+tiger_red_rom.vho
+tiger_red_rom.xco
+tiger_red_rom_blk_mem_gen_v2_8_xst_1.ngc_xst.xrpt
+tiger_red_rom_flist.txt
+tiger_red_rom_xmdf.tcl

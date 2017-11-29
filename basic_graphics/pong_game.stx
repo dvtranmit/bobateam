@@ -1,0 +1,36 @@
+Release 10.1.03 - xst K.39 (lin64)
+Copyright (c) 1995-2008 Xilinx, Inc.  All rights reserved.
+--> 
+Parameter TMPDIR set to ./xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.03 secs
+ 
+--> 
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling verilog file "lab3.v" in library work
+Module <debounce> compiled
+Module <lab3> compiled
+Module <xvga> compiled
+ERROR:HDLCompilers:28 - "lab3.v" line 496 'clk' has not been declared
+ERROR:HDLCompilers:26 - "lab3.v" line 497 unexpected token: '&&'
+ERROR:HDLCompilers:26 - "lab3.v" line 497 unexpected token: '('
+ERROR:HDLCompilers:26 - "lab3.v" line 497 unexpected token: 'vcount'
+ERROR:HDLCompilers:26 - "lab3.v" line 497 expecting 'end', found '300'
+ERROR:HDLCompilers:26 - "lab3.v" line 497 unexpected token: '<='
+Module <pong_game> compiled
+ERROR:HDLCompilers:26 - "lab3.v" line 497 expecting 'endmodule', found '350'
+Analysis of file <"pong_game.prj"> failed.
+--> 
+
+
+Total memory usage is 283816 kilobytes
+
+Number of errors   :    7 (   0 filtered)
+Number of warnings :    0 (   0 filtered)
+Number of infos    :    0 (   0 filtered)
+
