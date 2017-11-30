@@ -855,7 +855,7 @@ module lab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
    xvga xvga(.vclock(clock_65mhz),.hcount(hcount),.vcount(vcount),
               .hsync(hs),.vsync(vs),.blank(b));
 		  
-	displaymole displaymole1(.clk(clock_65mhz), .reset(reset), .hcount(hcount), .vcount(vcount),
+	displaymole displaymole1(.clk(clock_65mhz), .clk2(clock_27mhz), .reset(reset), .hcount(hcount), .vcount(vcount),
 									.state(display_state), .mole_location(mole_location), .pixel(pixel), .led(led));
 
    // VGA Output.  In order to meet the setup and hold times of the
@@ -992,6 +992,7 @@ module sound_module(
 												pop_sound_done <= 0;
 												if (ready) begin
 													to_ac97_data <= filter_output[17:10];
+													last_music_addr <= (last_music_addr >= MUSIC_END) ? MUSIC_START : last_music_addr + 1;
 												end
 											end
 											else begin 
@@ -999,6 +1000,7 @@ module sound_module(
 												if (ready) begin
 													to_ac97_data <= filter_output[17:10];
 													if (!pop_sound_done) begin //if pop up sound effect not finished playing
+														last_music_addr <= (last_music_addr >= MUSIC_END) ? MUSIC_START : last_music_addr + 1;
 														if (raddr >= POPUP_END) begin //if reached last address of pop up sound effect
 															pop_sound_done <= 1;
 															raddr <= last_music_addr;
@@ -1020,6 +1022,7 @@ module sound_module(
 												missed_sound_done <= 0;
 												if (ready) begin
 													to_ac97_data <= filter_output[17:10];
+													last_music_addr <= (last_music_addr >= MUSIC_END) ? MUSIC_START : last_music_addr + 1;
 												end
 											end
 											else begin 
@@ -1027,6 +1030,7 @@ module sound_module(
 												if (ready) begin
 													to_ac97_data <= filter_output[17:10];
 													if (!missed_sound_done) begin //if pop up sound effect not finished playing
+														last_music_addr <= (last_music_addr >= MUSIC_END) ? MUSIC_START : last_music_addr + 1;
 														if (raddr >= MISSED_END) begin //if reached last address of pop up sound effect
 															missed_sound_done <= 1;
 															raddr <= last_music_addr;
@@ -1048,6 +1052,7 @@ module sound_module(
 												whacked_sound_done <= 0;
 												if (ready) begin
 													to_ac97_data <= filter_output[17:10];
+													last_music_addr <= (last_music_addr >= MUSIC_END) ? MUSIC_START : last_music_addr + 1;
 												end
 											end
 											else begin 
@@ -1055,6 +1060,7 @@ module sound_module(
 												if (ready) begin
 													to_ac97_data <= filter_output[17:10];
 													if (!whacked_sound_done) begin //if pop up sound effect not finished playing
+														last_music_addr <= (last_music_addr >= MUSIC_END) ? MUSIC_START : last_music_addr + 1;
 														if (raddr >= WHACKED_END) begin //if reached last address of pop up sound effect
 															whacked_sound_done <= 1;
 															raddr <= last_music_addr;
@@ -2130,13 +2136,13 @@ endmodule
 // MOLE MUX
 //
 ////////////////////////////////////////////////////////////////////////////////
-module displaymole(	input clk, reset,
+module displaymole(	input clk, clk2, reset,
 							input [3:0] state,
 							input [2:0] mole_location,
 							input [10:0] hcount,
 							input [9:0]  vcount,
 							output [23:0] pixel,
-							output [10:0] led);
+							output [7:0] led);
 
 	// States
 	reg [3:0] IDLE 					= 4'd0;		// Check if user has pressed start
@@ -2172,7 +2178,7 @@ module displaymole(	input clk, reset,
 	// Assign x y location based on input from game state
 	reg [10:0] x;
 	reg [9:0] y;
-	always@(posedge clk) begin
+	always@(posedge clk2) begin
 		if (reset) begin
 			x <= x1;
 			y <= y1;
@@ -2194,8 +2200,7 @@ module displaymole(	input clk, reset,
 	normalmole #(.WIDTH(212),.HEIGHT(256))
 			mole1(.pixel_clk(clk),.x(x),.hcount(hcount),.y(y),.vcount(vcount),.pixel(temp_pixel));
 
-//	assign pixel = (state == REQUEST_MOLE || state == MOLE_COUNTDOWN) ? temp_pixel : 24'h0;
-	assign pixel = temp_pixel;
-	assign led = x[7:0];
+	assign pixel = (state == REQUEST_MOLE || state == MOLE_COUNTDOWN) ? temp_pixel : 24'h0;
+	assign led = mole_location[2:0];
 endmodule
 		

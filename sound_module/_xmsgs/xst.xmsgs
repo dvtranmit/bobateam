@@ -5,9 +5,6 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
-<msg type="warning" file="HDLCompilers" num="261" delta="unknown" ><arg fmt="%s" index="1">&quot;lab5.v&quot; line 859 </arg>Connection to output port &apos;<arg fmt="%s" index="2">led</arg>&apos; does not match port size
-</msg>
-
 <msg type="warning" file="Xst" num="2591" delta="unknown" ><arg fmt="%s" index="1">&quot;lab5.v&quot; line 645:</arg> <arg fmt="%s" index="2">attribute on instance</arg> &lt;<arg fmt="%s" index="3">CLKFX_DIVIDE</arg>&gt; overrides <arg fmt="%s" index="4">generic/parameter on entity</arg>. It is possible that simulator will not take this attribute into account.
 </msg>
 
@@ -23,13 +20,13 @@
 <msg type="warning" file="Xst" num="852" delta="unknown" >&quot;<arg fmt="%s" index="1">lab5.v</arg>&quot; line <arg fmt="%d" index="2">820</arg>: Unconnected input port &apos;<arg fmt="%s" index="3">disp_data_in</arg>&apos; of instance &apos;<arg fmt="%s" index="4">s</arg>&apos; is tied to GND.
 </msg>
 
-<msg type="warning" file="Xst" num="1465" delta="unknown" >&quot;<arg fmt="%s" index="1">lab5.v</arg>&quot; line <arg fmt="%d" index="2">1544</arg>: Exactly not equal expression will be synthesized as a not equal expression, simulation mismatch is possible. 
+<msg type="warning" file="Xst" num="1465" delta="unknown" >&quot;<arg fmt="%s" index="1">lab5.v</arg>&quot; line <arg fmt="%d" index="2">1550</arg>: Exactly not equal expression will be synthesized as a not equal expression, simulation mismatch is possible. 
 </msg>
 
-<msg type="warning" file="Xst" num="863" delta="unknown" >&quot;<arg fmt="%s" index="1">lab5.v</arg>&quot; line <arg fmt="%d" index="2">1649</arg>: Name conflict (<arg fmt="%s" index="3">&lt;REQUEST_MOLE&gt; and &lt;request_mole&gt;, renaming REQUEST_MOLE as request_mole_rnm0</arg>).
+<msg type="warning" file="Xst" num="863" delta="unknown" >&quot;<arg fmt="%s" index="1">lab5.v</arg>&quot; line <arg fmt="%d" index="2">1655</arg>: Name conflict (<arg fmt="%s" index="3">&lt;REQUEST_MOLE&gt; and &lt;request_mole&gt;, renaming REQUEST_MOLE as request_mole_rnm0</arg>).
 </msg>
 
-<msg type="warning" file="Xst" num="1465" delta="unknown" >&quot;<arg fmt="%s" index="1">lab5.v</arg>&quot; line <arg fmt="%d" index="2">1716</arg>: Exactly not equal expression will be synthesized as a not equal expression, simulation mismatch is possible. 
+<msg type="warning" file="Xst" num="1465" delta="unknown" >&quot;<arg fmt="%s" index="1">lab5.v</arg>&quot; line <arg fmt="%d" index="2">1722</arg>: Exactly not equal expression will be synthesized as a not equal expression, simulation mismatch is possible. 
 </msg>
 
 <msg type="info" file="Xst" num="1433" delta="unknown" >Contents of array &lt;<arg fmt="%s" index="1">rdots</arg>&gt; may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
@@ -152,7 +149,7 @@
 <msg type="warning" file="Xst" num="647" delta="unknown" >Input &lt;<arg fmt="%s" index="1">reset</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 </msg>
 
-<msg type="warning" file="Xst" num="643" delta="unknown" >&quot;<arg fmt="%s" index="1">lab5.v</arg>&quot; line <arg fmt="%d" index="2">2121</arg>: The result of a <arg fmt="%d" index="3">11</arg>x<arg fmt="%d" index="4">10</arg>-bit multiplication is partially used. Only the <arg fmt="%d" index="5">16</arg> least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
+<msg type="warning" file="Xst" num="643" delta="unknown" >&quot;<arg fmt="%s" index="1">lab5.v</arg>&quot; line <arg fmt="%d" index="2">2127</arg>: The result of a <arg fmt="%d" index="3">11</arg>x<arg fmt="%d" index="4">10</arg>-bit multiplication is partially used. Only the <arg fmt="%d" index="5">16</arg> least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
 </msg>
 
 <msg type="warning" file="Xst" num="647" delta="unknown" >Input &lt;<arg fmt="%s" index="1">disp_data_in</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
@@ -203,7 +200,7 @@
 <msg type="warning" file="Xst" num="1780" delta="unknown" >Signal &lt;<arg fmt="%s" index="1">MOLE_MISSED</arg>&gt; is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 </msg>
 
-<msg type="warning" file="Xst" num="1780" delta="unknown" >Signal &lt;<arg fmt="%s" index="1">MOLE_COUNTDOWN</arg>&gt; is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+<msg type="warning" file="Xst" num="653" delta="unknown" >Signal &lt;<arg fmt="%s" index="1">MOLE_COUNTDOWN</arg>&gt; is used but never assigned. This sourceless signal will be automatically connected to value <arg fmt="%s" index="2">0100</arg>.
 </msg>
 
 <msg type="warning" file="Xst" num="1780" delta="unknown" >Signal &lt;<arg fmt="%s" index="1">IDLE</arg>&gt; is never used or assigned. This unconnected signal will be trimmed during the optimization process.
@@ -1651,9 +1648,6 @@ You should achieve better results by setting this init to <arg fmt="%i" index="3
 <msg type="info" file="Xst" num="2261" delta="unknown" >The FF/Latch &lt;<arg fmt="%s" index="1">command_0</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">ac97commands</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">2 FFs/Latches</arg>, which will be removed : <arg fmt="%s" index="4">&lt;command_1&gt; &lt;command_2&gt; </arg>
 </msg>
 
-<msg type="info" file="Xst" num="2261" delta="unknown" >The FF/Latch &lt;<arg fmt="%s" index="1">x_0</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">displaymole</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;x_6&gt; </arg>
-</msg>
-
 <msg type="info" file="Xst" num="2261" delta="unknown" >The FF/Latch &lt;<arg fmt="%s" index="1">x_3</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">displaymole</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">2 FFs/Latches</arg>, which will be removed : <arg fmt="%s" index="4">&lt;x_5&gt; &lt;x_9&gt; </arg>
 </msg>
 
@@ -1661,6 +1655,9 @@ You should achieve better results by setting this init to <arg fmt="%i" index="3
 </msg>
 
 <msg type="info" file="Xst" num="2261" delta="unknown" >The FF/Latch &lt;<arg fmt="%s" index="1">x_1</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">displaymole</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;x_7&gt; </arg>
+</msg>
+
+<msg type="info" file="Xst" num="2261" delta="unknown" >The FF/Latch &lt;<arg fmt="%s" index="1">x_0</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">displaymole</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;x_6&gt; </arg>
 </msg>
 
 <msg type="info" file="Xst" num="2261" delta="unknown" >The FF/Latch &lt;<arg fmt="%s" index="1">lives_display_3</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">lab5</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">12 FFs/Latches</arg>, which will be removed : <arg fmt="%s" index="4">&lt;lives_display_10&gt; &lt;lives_display_17&gt; &lt;lives_display_19&gt; &lt;lives_display_20&gt; &lt;lives_display_21&gt; &lt;lives_display_24&gt; &lt;lives_display_27&gt; &lt;lives_display_29&gt; &lt;lives_display_34&gt; &lt;lives_display_37&gt; &lt;lives_display_41&gt; &lt;lives_display_45&gt; </arg>
