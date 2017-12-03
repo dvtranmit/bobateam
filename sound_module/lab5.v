@@ -664,8 +664,8 @@ module lab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 	debounce db_r(.clk(clock_27mhz), .reset(reset), .noisy(button_right), .clean(right));
 	debounce db_e(.clk(clock_27mhz), .reset(reset), .noisy(button_enter), .clean(enter));
 	
-	wire start;
-	debounce db_st(.clk(clock_27mhz), .reset(reset), .noisy(switch[7]), .clean(start));
+	wire diy_mode;
+	debounce db_diy(.clk(clock_27mhz), .reset(reset), .noisy(switch[7]), .clean(diy_mode));
 
 ///////////////////////////////////////////
 //			INITIALIZE & CONNECT GAME		  //
@@ -722,9 +722,9 @@ module lab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 	wire [1:0] lives;
 	wire [7:0] score;
 	gameState game(.clk(clock_27mhz), .misstep(misstep),
-						.whacked(whacked), .start(start),
+						.whacked(whacked), .start(up),
 						.reset(enter), .request_mole(request_mole),
-						.expired(expired), .random_mole_location(random_mole_location),
+						.expired(expired), .diy_mode(diy_mode), .random_mole_location(random_mole_location),
 						.start_timer(start_timer), .timer_value(timer_value),
 						.display_state(display_state), .mole_location(mole_location), 
 						.lives(lives), .score(score));
@@ -1042,6 +1042,10 @@ reg temp_whacked = 1'b0;
 reg temp_misstep = 1'b0;
  
 always@(posedge clk) begin
+	// xor up with mole up
+	// if xor == 1 (HIGH) then they don't match and you have missed it
+	// if xor == 0 and mole up is 1 then it's whacked so change mole up to 1
+	// if xor == 0 and mole up is 0 then nothing really happened
 	if ({upleft, up, upright, left, right, downleft, down, downright} == location)
 		temp_whacked <= 1'b1;
 	else if ({upleft, up, upright, left, right, downleft, down, downright} !== 8'd0)
@@ -1088,10 +1092,6 @@ module mole(	input clk, reset,
 					input [22:0] music_address,
 					output request_mole );
 
-// Current implementation is just a really long alternating signal
-// Future implemention should either pop a mole up at specific memory addresses
-// or at pre-programmed times
-
 /* Memory address popup pseudocode
 	
 	initialize array of popup times
@@ -1106,12 +1106,8 @@ module mole(	input clk, reset,
 parameter COUNTING 	= 1'b1;		// Countdown from timer_value (until expired)
 parameter MOLE			= 1'b0;		// mole pulse lasts one clock cycle
 
-// Mole Parameters
-//parameter MOLE_REQUEST_FREQUENCY = 4'd3;
-
-//// State machine variables
+// State machine variables
 reg state = COUNTING;
-//reg [3:0] counter = MOLE_REQUEST_FREQUENCY;
 
 // Music tracker
 reg [367:0] addresses = {23'h6CDE, 23'h8B00, 23'hE900, 23'h14900,
@@ -1121,8 +1117,6 @@ reg [367:0] addresses = {23'h6CDE, 23'h8B00, 23'hE900, 23'h14900,
 
 always @(posedge clk) begin
 	if (reset) begin
-//		state <= COUNTING;
-//		counter <= MOLE_REQUEST_FREQUENCY;
 		addresses[367:0] <= {23'h6CDE, 23'h8B00, 23'hE900, 23'h14900,
 										 23'h17B00, 23'h1B100, 23'h21F00, 23'h28000,
 										 23'h2E500, 23'h31A00, 23'h35900, 23'h39500,
@@ -1151,6 +1145,7 @@ module gameState(input clk,
 						input reset,
 						input request_mole,
 						input expired,
+						input diy_mode,
 						input [2:0] random_mole_location,
 						// Future input: record
 						output start_timer,
@@ -1162,17 +1157,22 @@ module gameState(input clk,
 						);
 						
 // States
-reg [3:0] IDLE 					= 4'd0;		// Check if user has pressed start
-reg [3:0] GAME_START_DELAY 	= 4'd1;		// Delay until user stands on center
-reg [3:0] GAME_ONGOING			= 4'd2;		// Check lives & Address from Music
-reg [3:0] REQUEST_MOLE			= 4'd3;		// Request a mole to be displayed (pulse)
-reg [3:0] MOLE_COUNTDOWN		= 4'd4;		// Mole displayed until stomped/expired 
-reg [3:0] MOLE_MISSED			= 4'd5;		// Lives counter decremented (pulse)
-reg [3:0] MOLE_WHACKED			= 4'd6;		// Score counter incremented (pulse)
-reg [3:0] SAFE_STEP_DELAY		= 4'd7;		// Prevent repeated lives decrement
-reg [3:0] GAME_OVER				= 4'd8;		// Display Game Over Screen
-reg [3:0] MOLE_MISSED_SOUND	= 4'd9;		// Extra time for sound
-reg [3:0] MOLE_WHACKED_SOUND	= 4'd10;		// Extra time for sound
+parameter [3:0] IDLE 					= 4'd0;		// Check if user has pressed start
+parameter [3:0] GAME_START_DELAY 	= 4'd1;		// Delay until user stands on center
+parameter [3:0] GAME_ONGOING			= 4'd2;		// Check lives & Address from Music
+parameter [3:0] REQUEST_MOLE			= 4'd3;		// Request a mole to be displayed (pulse)
+parameter [3:0] MOLE_COUNTDOWN		= 4'd4;		// Mole displayed until stomped/expired 
+parameter [3:0] MOLE_MISSED			= 4'd5;		// Lives counter decremented (pulse)
+parameter [3:0] MOLE_WHACKED			= 4'd6;		// Score counter incremented (pulse)
+parameter [3:0] SAFE_STEP_DELAY		= 4'd7;		// Prevent repeated lives decrement
+parameter [3:0] GAME_OVER				= 4'd8;		// Display Game Over Screen
+parameter [3:0] MOLE_MISSED_SOUND	= 4'd9;		// Extra time for sound
+parameter [3:0] MOLE_WHACKED_SOUND	= 4'd10;		// Extra time for sound
+
+// Placeholder variables for DIY mode
+parameter [3:0] RECORD_DIY_BEGIN 	= 4'd11;		// Begin Recording Moles
+parameter [3:0] RECORD_DIY_IN_PROGRESS = 4'd11;// Begin Recording Moles
+parameter [3:0] RECORD_DIY_END		= 4'd13;		// Recording ended
 
 // State machine variables
 reg [3:0] state = 4'b0;
@@ -1186,8 +1186,7 @@ reg [7:0] temp_score = 8'd0;
 reg [2:0] current_mole_location;
 // Do a thing each relevant state
 always @(posedge clk) begin
-	if (reset) begin
-		state <= 4'b0;
+	if (state == IDLE) begin
 		temp_lives <= 2'd3;
 		temp_score <= 8'd0;
 	end else if (state == MOLE_MISSED)
@@ -1201,19 +1200,23 @@ end
 
 // State machine
 always @(*) begin
-	case(state)
-		IDLE : next_state = (start) ? GAME_START_DELAY : IDLE;
-		GAME_START_DELAY: next_state = (expired) ? GAME_ONGOING : GAME_START_DELAY;
-		GAME_ONGOING : next_state = (lives == 0) ? GAME_OVER : (request_mole) ? REQUEST_MOLE : GAME_ONGOING;
-		REQUEST_MOLE : next_state = MOLE_COUNTDOWN;
-		MOLE_COUNTDOWN : next_state = (expired || misstep) ? MOLE_MISSED : (whacked) ? MOLE_WHACKED : MOLE_COUNTDOWN;
-		MOLE_MISSED : next_state = MOLE_MISSED_SOUND;
-		MOLE_WHACKED : next_state = MOLE_WHACKED_SOUND;
-		MOLE_MISSED_SOUND : next_state = (expired) ? GAME_ONGOING : MOLE_MISSED_SOUND;
-		MOLE_WHACKED_SOUND : next_state = (expired) ? GAME_ONGOING : MOLE_WHACKED_SOUND;
-		GAME_OVER : next_state = (expired) ? IDLE : GAME_OVER;
-		default : next_state = IDLE;
-	endcase
+	if (reset) begin
+		next_state = IDLE;
+	end else begin
+		case(state)
+			IDLE : next_state = (start) ? GAME_START_DELAY : IDLE;
+			GAME_START_DELAY: next_state = (expired) ? GAME_ONGOING : GAME_START_DELAY;
+			GAME_ONGOING : next_state = (lives == 0) ? GAME_OVER : (request_mole) ? REQUEST_MOLE : GAME_ONGOING;
+			REQUEST_MOLE : next_state = MOLE_COUNTDOWN;
+			MOLE_COUNTDOWN : next_state = (expired || misstep) ? MOLE_MISSED : (whacked) ? MOLE_WHACKED : MOLE_COUNTDOWN;
+			MOLE_MISSED : next_state = MOLE_MISSED_SOUND;
+			MOLE_WHACKED : next_state = MOLE_WHACKED_SOUND;
+			MOLE_MISSED_SOUND : next_state = (expired) ? GAME_ONGOING : MOLE_MISSED_SOUND;
+			MOLE_WHACKED_SOUND : next_state = (expired) ? GAME_ONGOING : MOLE_WHACKED_SOUND;
+			GAME_OVER : next_state = (expired) ? IDLE : GAME_OVER;
+			default : next_state = IDLE;
+		endcase
+	end
 end
 
 assign start_timer = (state !== next_state);

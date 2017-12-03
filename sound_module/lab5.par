@@ -1,7 +1,7 @@
 Release 10.1.03 par K.39 (lin64)
 Copyright (c) 1995-2008 Xilinx, Inc.  All rights reserved.
 
-eecs-digital-33::  Sun Dec 03 16:49:18 2017
+eecs-digital-33::  Sun Dec 03 17:44:18 2017
 
 par -w -intstyle ise -ol std -t 1 lab5_map.ncd lab5.ncd lab5.pcf 
 
@@ -37,7 +37,7 @@ Device Utilization Summary:
 
    Number of MULT18X18s                      2 out of 144     1%
    Number of RAMB16s                        49 out of 144    34%
-   Number of SLICEs                       1272 out of 33792   3%
+   Number of SLICEs                       1261 out of 33792   3%
 
 
 Overall effort level (-ol):   Standard 
@@ -45,34 +45,28 @@ Placer effort level (-pl):    High
 Placer cost table entry (-t): 1
 Router effort level (-rl):    Standard 
 
-WARNING:Par:288 - The signal ram0_data<10>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal ram0_data<11>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal ram0_data<20>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal ram0_data<12>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal ram0_data<21>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal ram0_data<13>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal ram0_data<30>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal ram0_data<22>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal ram0_data<14>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal ram0_data<31>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal ram0_data<23>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal ram0_data<15>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal ram0_data<32>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal ram0_data<24>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal ram0_data<16>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal ram0_data<33>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal ram0_data<25>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal ram0_data<17>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal ram0_data<34>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal ram0_data<26>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal ram0_data<18>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal ram0_data<35>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal ram0_data<27>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal ram0_data<19>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal ram0_data<28>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal ram0_data<29>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal rs232_cts_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal rs232_rxd_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal ram1_data<0>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal ram1_data<1>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal ram1_data<2>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal ram1_data<3>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal ram1_data<4>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal ram1_data<5>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal ram1_data<6>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal ram1_data<7>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal ram1_data<8>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal ram1_data<9>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal disp_data_in_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal tv_in_data_valid_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal tv_in_ycrcb<0>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal tv_in_ycrcb<1>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal tv_in_ycrcb<2>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal tv_in_ycrcb<3>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal tv_in_ycrcb<4>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal tv_in_ycrcb<5>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal tv_in_ycrcb<6>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal tv_in_ycrcb<7>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal tv_in_ycrcb<8>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal tv_in_ycrcb<9>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal ram1_data<10>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal ram1_data<11>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal ram1_data<20>_IBUF has no load.  PAR will not attempt to route this signal.
@@ -97,12 +91,10 @@ WARNING:Par:288 - The signal ram1_data<18>_IBUF has no load.  PAR will not attem
 WARNING:Par:288 - The signal ram1_data<35>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal ram1_data<27>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal ram1_data<19>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal ram1_data<28>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal ram1_data<29>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal systemace_mpbrdy_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal mouse_data_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal systemace_data<0>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal ram1_data<28>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal systemace_data<1>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal ram1_data<29>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal systemace_data<2>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal systemace_data<3>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal systemace_data<4>_IBUF has no load.  PAR will not attempt to route this signal.
@@ -111,19 +103,109 @@ WARNING:Par:288 - The signal systemace_data<6>_IBUF has no load.  PAR will not a
 WARNING:Par:288 - The signal systemace_data<7>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal systemace_data<8>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal systemace_data<9>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal daughtercard<0>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal daughtercard<1>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal daughtercard<2>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal daughtercard<3>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal daughtercard<4>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal daughtercard<5>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal daughtercard<6>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal daughtercard<7>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal daughtercard<8>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal daughtercard<9>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal tv_in_ycrcb<10>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal tv_in_ycrcb<11>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal tv_in_ycrcb<12>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal tv_in_ycrcb<13>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal tv_in_ycrcb<14>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal tv_in_ycrcb<15>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal tv_in_ycrcb<16>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal tv_in_ycrcb<17>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal tv_in_ycrcb<18>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal tv_in_ycrcb<19>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal systemace_data<10>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal systemace_data<11>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal systemace_data<12>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal systemace_data<13>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal systemace_data<14>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal systemace_data<15>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal clock1_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal clock2_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal switch<0>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal switch<1>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal switch<2>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal switch<3>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal switch<4>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal switch<5>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal switch<6>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal daughtercard<10>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal switch<7>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal clock_feedback_in_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal daughtercard<11>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal daughtercard<20>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal daughtercard<12>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal daughtercard<21>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal daughtercard<13>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal daughtercard<30>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal daughtercard<22>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal daughtercard<14>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal daughtercard<31>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal daughtercard<23>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal daughtercard<15>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal daughtercard<40>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal daughtercard<32>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal daughtercard<24>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal daughtercard<16>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal daughtercard<41>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal daughtercard<33>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal daughtercard<25>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal daughtercard<17>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal daughtercard<42>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal daughtercard<34>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal daughtercard<26>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal daughtercard<18>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal daughtercard<43>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal daughtercard<35>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal daughtercard<27>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal daughtercard<19>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal daughtercard<36>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal daughtercard<28>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal daughtercard<37>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal daughtercard<29>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal daughtercard<38>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal daughtercard<39>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal rs232_cts_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal ram0_data<10>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal ram0_data<11>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal ram0_data<20>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal ram0_data<12>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal ram0_data<21>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal ram0_data<13>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal ram0_data<30>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal ram0_data<22>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal ram0_data<14>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal ram0_data<31>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal ram0_data<23>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal ram0_data<15>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal rs232_rxd_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal ram0_data<32>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal ram0_data<24>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal ram0_data<16>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal ram0_data<33>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal ram0_data<25>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal ram0_data<17>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal ram0_data<34>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal ram0_data<26>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal ram0_data<18>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal ram0_data<35>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal ram0_data<27>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal ram0_data<19>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal systemace_mpbrdy_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal ram0_data<28>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal ram0_data<29>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal keyboard_clock_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal tv_in_i2c_data_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal keyboard_data_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal tv_in_ycrcb<0>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal tv_in_ycrcb<1>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal tv_in_ycrcb<2>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal tv_in_ycrcb<3>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal tv_in_ycrcb<4>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal tv_in_ycrcb<5>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal tv_in_ycrcb<6>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal tv_in_ycrcb<7>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal tv_in_ycrcb<8>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal tv_in_ycrcb<9>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal tv_in_data_valid_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal disp_data_in_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal ram0_data<0>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal ram0_data<1>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal ram0_data<2>_IBUF has no load.  PAR will not attempt to route this signal.
@@ -131,27 +213,12 @@ WARNING:Par:288 - The signal ram0_data<3>_IBUF has no load.  PAR will not attemp
 WARNING:Par:288 - The signal ram0_data<4>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal ram0_data<5>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal ram0_data<6>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal mouse_clock_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal ram0_data<7>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal ram0_data<8>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal ram0_data<9>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal ram1_data<0>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal ram1_data<1>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal ram1_data<2>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal ram1_data<3>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal ram1_data<4>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal ram1_data<5>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal ram1_data<6>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal ram1_data<7>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal ram1_data<8>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal ram1_data<9>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal mouse_clock_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal systemace_data<10>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal systemace_data<11>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal systemace_data<12>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal systemace_data<13>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal systemace_data<14>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal systemace_data<15>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal keyboard_clock_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal mouse_data_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal systemace_irq_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user1<10>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user1<11>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user1<20>_IBUF has no load.  PAR will not attempt to route this signal.
@@ -193,249 +260,185 @@ WARNING:Par:288 - The signal user2<17>_IBUF has no load.  PAR will not attempt t
 WARNING:Par:288 - The signal user3<10>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user2<26>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user2<18>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal user1<0>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user3<11>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user2<27>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user2<19>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal user1<1>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user3<20>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user3<12>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user2<28>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal user1<2>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user3<21>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user3<13>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user2<29>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal user1<3>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user3<30>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user3<22>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user3<14>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal user2<0>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal user1<4>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal tv_in_aef_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user3<31>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user3<23>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user3<15>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal user3<24>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal user3<16>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal user3<25>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal user3<17>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal user3<26>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal user3<18>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal user4<10>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal user3<27>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal user3<19>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal user4<11>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal user4<20>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal user4<12>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal user3<28>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal user4<21>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal user4<13>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal user3<29>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal user4<30>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal user4<22>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal user4<14>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal user4<31>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal user4<23>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal user4<15>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal user4<24>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal user4<16>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal user4<25>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal user4<17>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal user4<26>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal user4<18>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal user4<27>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal user4<19>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal user4<28>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal user4<29>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal clock1_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal clock2_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal tv_in_ycrcb<10>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal tv_in_ycrcb<11>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal tv_in_ycrcb<12>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal tv_in_ycrcb<13>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal tv_in_ycrcb<14>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal tv_in_ycrcb<15>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal tv_in_ycrcb<16>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal tv_in_ycrcb<17>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal tv_in_ycrcb<18>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal tv_in_ycrcb<19>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal clock_feedback_in_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal tv_in_aef_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal tv_in_aff_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal tv_in_hff_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal systemace_irq_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal switch<0>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal tv_in_i2c_data_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal switch<1>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal switch<2>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal switch<3>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal switch<4>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal switch<5>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal switch<6>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal user1<0>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal user1<1>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal user1<2>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal user1<3>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal user2<0>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal user1<4>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user2<1>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user1<5>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal tv_in_aff_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal user3<24>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal user3<16>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user2<2>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user1<6>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal user3<25>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal user3<17>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user2<3>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user1<7>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal user3<26>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user3<0>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal user3<18>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user2<4>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal user4<10>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user1<8>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal user3<27>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user3<1>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal user3<19>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user2<5>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal user4<11>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user1<9>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user3<2>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user2<6>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal user4<20>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal user4<12>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal user3<28>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user3<3>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user2<7>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal user4<21>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal user4<13>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal user3<29>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user2<8>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal user4<30>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal user4<22>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal user4<14>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user4<0>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user3<4>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user2<9>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal user4<31>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal user4<23>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal user4<15>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user4<1>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user3<5>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal user4<24>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal user4<16>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user4<2>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user3<6>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal user4<25>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal user4<17>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user4<3>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user3<7>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal user4<26>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal user4<18>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user4<4>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user3<8>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal user4<27>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal user4<19>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user4<5>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user3<9>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal user4<28>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user4<6>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal user4<29>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user4<7>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal user4<8>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal user4<9>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal tv_in_hff_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal tv_in_line_clock1_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal user4<8>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal tv_in_line_clock2_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal daughtercard<10>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal daughtercard<11>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal daughtercard<20>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal daughtercard<12>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal daughtercard<21>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal daughtercard<13>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal daughtercard<30>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal daughtercard<22>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal daughtercard<14>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal daughtercard<31>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal daughtercard<23>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal daughtercard<15>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal daughtercard<40>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal daughtercard<32>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal daughtercard<24>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal daughtercard<16>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal daughtercard<41>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal daughtercard<33>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal daughtercard<25>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal daughtercard<17>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal daughtercard<42>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal daughtercard<34>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal daughtercard<26>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal daughtercard<18>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal daughtercard<43>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal daughtercard<35>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal daughtercard<27>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal daughtercard<19>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal daughtercard<36>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal daughtercard<28>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal daughtercard<37>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal daughtercard<29>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal daughtercard<38>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal daughtercard<39>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal daughtercard<0>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal daughtercard<1>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal daughtercard<2>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal daughtercard<3>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal daughtercard<4>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal daughtercard<5>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal daughtercard<6>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal daughtercard<7>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal daughtercard<8>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal daughtercard<9>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal user4<9>_IBUF has no load.  PAR will not attempt to route this signal.
 
 Starting Placer
 
 Phase 1.1
-Phase 1.1 (Checksum:15df199) REAL time: 2 secs 
+Phase 1.1 (Checksum:15da00b) REAL time: 2 secs 
 
 Phase 2.7
-Phase 2.7 (Checksum:15df199) REAL time: 2 secs 
+Phase 2.7 (Checksum:15da00b) REAL time: 2 secs 
 
 Phase 3.31
-Phase 3.31 (Checksum:15df199) REAL time: 2 secs 
+Phase 3.31 (Checksum:15da00b) REAL time: 2 secs 
 
 Phase 4.2
 
 ......
-....................
-Phase 4.2 (Checksum:1606c85) REAL time: 4 secs 
+......................
+Phase 4.2 (Checksum:16066dd) REAL time: 4 secs 
 
 Phase 5.30
-Phase 5.30 (Checksum:1606c85) REAL time: 4 secs 
+Phase 5.30 (Checksum:16066dd) REAL time: 4 secs 
 
 Phase 6.3
-Phase 6.3 (Checksum:1606c85) REAL time: 4 secs 
+Phase 6.3 (Checksum:16066dd) REAL time: 4 secs 
 
 Phase 7.5
-Phase 7.5 (Checksum:1606c85) REAL time: 4 secs 
+Phase 7.5 (Checksum:16066dd) REAL time: 4 secs 
 
 Phase 8.8
 ........................................
-......................
-.....
+..........................
+........
 ..
-.........
+..............
 ....
 ...
-Phase 8.8 (Checksum:47b81f2) REAL time: 12 secs 
+Phase 8.8 (Checksum:48e9f99) REAL time: 12 secs 
 
 Phase 9.5
-Phase 9.5 (Checksum:47b81f2) REAL time: 12 secs 
+Phase 9.5 (Checksum:48e9f99) REAL time: 12 secs 
 
 Phase 10.18
-Phase 10.18 (Checksum:47c53f6) REAL time: 16 secs 
+Phase 10.18 (Checksum:48f8369) REAL time: 17 secs 
 
 Phase 11.5
-Phase 11.5 (Checksum:47c53f6) REAL time: 16 secs 
+Phase 11.5 (Checksum:48f8369) REAL time: 17 secs 
 
 Phase 12.27
-Phase 12.27 (Checksum:47c53f6) REAL time: 16 secs 
+Phase 12.27 (Checksum:48f8369) REAL time: 17 secs 
 
 Phase 13.24
-Phase 13.24 (Checksum:47c53f6) REAL time: 16 secs 
+Phase 13.24 (Checksum:48f8369) REAL time: 17 secs 
 
-REAL time consumed by placer: 16 secs 
-CPU  time consumed by placer: 16 secs 
+REAL time consumed by placer: 17 secs 
+CPU  time consumed by placer: 17 secs 
 Writing design to file lab5.ncd
 
 
 Total REAL time to Placer completion: 17 secs 
-Total CPU time to Placer completion: 16 secs 
+Total CPU time to Placer completion: 17 secs 
 
 Starting Router
 
-Phase 1: 9736 unrouted;       REAL time: 22 secs 
+Phase 1: 9694 unrouted;       REAL time: 23 secs 
 
-Phase 2: 8463 unrouted;       REAL time: 24 secs 
+Phase 2: 8424 unrouted;       REAL time: 24 secs 
 
-Phase 3: 1614 unrouted;       REAL time: 24 secs 
+Phase 3: 1710 unrouted;       REAL time: 24 secs 
 
-Phase 4: 1614 unrouted; (282165)      REAL time: 24 secs 
+Phase 4: 1710 unrouted; (249853)      REAL time: 24 secs 
 
-Phase 5: 1631 unrouted; (0)      REAL time: 25 secs 
+Phase 5: 1709 unrouted; (0)      REAL time: 24 secs 
 
-Phase 6: 0 unrouted; (115)      REAL time: 25 secs 
+Phase 6: 0 unrouted; (1252)      REAL time: 25 secs 
 
-Phase 7: 0 unrouted; (115)      REAL time: 26 secs 
+Phase 7: 0 unrouted; (1252)      REAL time: 26 secs 
 
-Phase 8: 0 unrouted; (115)      REAL time: 26 secs 
+Phase 8: 0 unrouted; (1252)      REAL time: 26 secs 
 
-Phase 9: 0 unrouted; (55)      REAL time: 26 secs 
+Phase 9: 0 unrouted; (1002)      REAL time: 26 secs 
 
-Phase 10: 0 unrouted; (55)      REAL time: 27 secs 
+Phase 10: 0 unrouted; (652)      REAL time: 27 secs 
 
-Phase 11: 0 unrouted; (55)      REAL time: 27 secs 
+Phase 11: 0 unrouted; (652)      REAL time: 27 secs 
 
-Phase 12: 0 unrouted; (55)      REAL time: 28 secs 
+Phase 12: 0 unrouted; (652)      REAL time: 28 secs 
+
+Phase 13: 0 unrouted; (592)      REAL time: 28 secs 
 
 
 Total REAL time to Router completion: 28 secs 
@@ -457,16 +460,16 @@ Generating Clock Report
 +---------------------+--------------+------+------+------------+-------------+
 |        Clock Net    |   Resource   |Locked|Fanout|Net Skew(ns)|Max Delay(ns)|
 +---------------------+--------------+------+------+------------+-------------+
-|   clock_27mhz_IBUFG |     BUFGMUX3P| No   |  575 |  0.637     |  2.516      |
+|   clock_27mhz_IBUFG |     BUFGMUX3P| No   |  561 |  0.660     |  2.539      |
 +---------------------+--------------+------+------+------------+-------------+
-| debug_display/clock |     BUFGMUX4S| No   |   61 |  0.206     |  2.349      |
-+---------------------+--------------+------+------+------------+-------------+
-|         clock_65mhz |     BUFGMUX0S| No   |   45 |  0.304     |  2.197      |
+|         clock_65mhz |     BUFGMUX6S| No   |   45 |  0.415     |  2.298      |
 +---------------------+--------------+------+------+------------+-------------+
 |analyzer1_clock_OBUF |              |      |      |            |             |
-|                     |     BUFGMUX7S| No   |   34 |  0.322     |  2.542      |
+|                     |     BUFGMUX7S| No   |   34 |  0.380     |  2.529      |
 +---------------------+--------------+------+------+------------+-------------+
-|   one_hz_div/enable |         Local|      |    9 |  0.000     |  2.026      |
+| debug_display/clock |     BUFGMUX4S| No   |   63 |  0.192     |  2.386      |
++---------------------+--------------+------+------+------------+-------------+
+|   one_hz_div/enable |         Local|      |    9 |  0.000     |  1.538      |
 +---------------------+--------------+------+------+------------+-------------+
 
 * Net Skew is the difference between the minimum and maximum routing
@@ -485,20 +488,20 @@ Asterisk (*) preceding a constraint indicates it was not met.
   Constraint                                |  Check  | Worst Case |  Best Case | Timing |   Timing   
                                             |         |    Slack   | Achievable | Errors |    Score   
 ------------------------------------------------------------------------------------------------------
-  Autotimespec constraint for clock net clo | SETUP   |         N/A|    14.874ns|     N/A|           0
-  ck_27mhz_IBUFG                            | HOLD    |     0.879ns|            |       0|           0
+  Autotimespec constraint for clock net clo | SETUP   |         N/A|    15.172ns|     N/A|           0
+  ck_27mhz_IBUFG                            | HOLD    |     0.933ns|            |       0|           0
 ------------------------------------------------------------------------------------------------------
-  Autotimespec constraint for clock net deb | SETUP   |         N/A|    11.130ns|     N/A|           0
-  ug_display/clock                          | HOLD    |     1.338ns|            |       0|           0
+  Autotimespec constraint for clock net clo | SETUP   |         N/A|    17.602ns|     N/A|           0
+  ck_65mhz                                  | HOLD    |     1.814ns|            |       0|           0
 ------------------------------------------------------------------------------------------------------
-  Autotimespec constraint for clock net clo | SETUP   |         N/A|    20.969ns|     N/A|           0
-  ck_65mhz                                  | HOLD    |     1.888ns|            |       0|           0
-------------------------------------------------------------------------------------------------------
-  Autotimespec constraint for clock net ana | SETUP   |         N/A|    24.650ns|     N/A|           0
+  Autotimespec constraint for clock net ana | SETUP   |         N/A|    20.510ns|     N/A|           0
   lyzer1_clock_OBUF                         | HOLD    |     1.391ns|            |       0|           0
 ------------------------------------------------------------------------------------------------------
-  Autotimespec constraint for clock net one | SETUP   |         N/A|     2.001ns|     N/A|           0
-  _hz_div/enable                            | HOLD    |     1.397ns|            |       0|           0
+  Autotimespec constraint for clock net deb | SETUP   |         N/A|    11.060ns|     N/A|           0
+  ug_display/clock                          | HOLD    |     1.359ns|            |       0|           0
+------------------------------------------------------------------------------------------------------
+  Autotimespec constraint for clock net one | SETUP   |         N/A|     1.841ns|     N/A|           0
+  _hz_div/enable                            | HOLD    |     1.391ns|            |       0|           0
 ------------------------------------------------------------------------------------------------------
 
 
@@ -511,18 +514,18 @@ Generating Pad Report.
 
 All signals are completely routed.
 
-WARNING:Par:283 - There are 306 loadless signals in this design. This design will cause Bitgen to issue DRC warnings.
+WARNING:Par:283 - There are 307 loadless signals in this design. This design will cause Bitgen to issue DRC warnings.
 
-Total REAL time to PAR completion: 34 secs 
+Total REAL time to PAR completion: 35 secs 
 Total CPU time to PAR completion: 31 secs 
 
-Peak Memory Usage:  775 MB
+Peak Memory Usage:  763 MB
 
 Placement: Completed - No errors found.
 Routing: Completed - No errors found.
 
 Number of error messages: 0
-Number of warning messages: 308
+Number of warning messages: 309
 Number of info messages: 2
 
 Writing design to file lab5.ncd

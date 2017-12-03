@@ -20,13 +20,13 @@
 <msg type="warning" file="Xst" num="852" delta="unknown" >&quot;<arg fmt="%s" index="1">lab5.v</arg>&quot; line <arg fmt="%d" index="2">814</arg>: Unconnected input port &apos;<arg fmt="%s" index="3">switch</arg>&apos; of instance &apos;<arg fmt="%s" index="4">s</arg>&apos; is tied to GND.
 </msg>
 
-<msg type="warning" file="Xst" num="1465" delta="unknown" >&quot;<arg fmt="%s" index="1">lab5.v</arg>&quot; line <arg fmt="%d" index="2">1047</arg>: Exactly not equal expression will be synthesized as a not equal expression, simulation mismatch is possible. 
+<msg type="warning" file="Xst" num="1465" delta="unknown" >&quot;<arg fmt="%s" index="1">lab5.v</arg>&quot; line <arg fmt="%d" index="2">1051</arg>: Exactly not equal expression will be synthesized as a not equal expression, simulation mismatch is possible. 
 </msg>
 
-<msg type="warning" file="Xst" num="863" delta="unknown" >&quot;<arg fmt="%s" index="1">lab5.v</arg>&quot; line <arg fmt="%d" index="2">1152</arg>: Name conflict (<arg fmt="%s" index="3">&lt;REQUEST_MOLE&gt; and &lt;request_mole&gt;, renaming REQUEST_MOLE as request_mole_rnm0</arg>).
+<msg type="warning" file="Xst" num="863" delta="unknown" >&quot;<arg fmt="%s" index="1">lab5.v</arg>&quot; line <arg fmt="%d" index="2">1146</arg>: Name conflict (<arg fmt="%s" index="3">&lt;REQUEST_MOLE&gt; and &lt;request_mole&gt;, renaming REQUEST_MOLE as request_mole_rnm0</arg>).
 </msg>
 
-<msg type="warning" file="Xst" num="1465" delta="unknown" >&quot;<arg fmt="%s" index="1">lab5.v</arg>&quot; line <arg fmt="%d" index="2">1219</arg>: Exactly not equal expression will be synthesized as a not equal expression, simulation mismatch is possible. 
+<msg type="warning" file="Xst" num="1465" delta="unknown" >&quot;<arg fmt="%s" index="1">lab5.v</arg>&quot; line <arg fmt="%d" index="2">1216</arg>: Exactly not equal expression will be synthesized as a not equal expression, simulation mismatch is possible. 
 </msg>
 
 <msg type="info" file="Xst" num="1433" delta="unknown" >Contents of array &lt;<arg fmt="%s" index="1">rdots</arg>&gt; may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
@@ -173,7 +173,7 @@
 <msg type="info" file="Xst" num="1799" delta="unknown" >State <arg fmt="%s" index="1">111</arg> is never reached in FSM &lt;<arg fmt="%s" index="2">state</arg>&gt;.
 </msg>
 
-<msg type="warning" file="Xst" num="643" delta="unknown" >&quot;<arg fmt="%s" index="1">lab5.v</arg>&quot; line <arg fmt="%d" index="2">1624</arg>: The result of a <arg fmt="%d" index="3">11</arg>x<arg fmt="%d" index="4">10</arg>-bit multiplication is partially used. Only the <arg fmt="%d" index="5">16</arg> least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
+<msg type="warning" file="Xst" num="643" delta="unknown" >&quot;<arg fmt="%s" index="1">lab5.v</arg>&quot; line <arg fmt="%d" index="2">1621</arg>: The result of a <arg fmt="%d" index="3">11</arg>x<arg fmt="%d" index="4">10</arg>-bit multiplication is partially used. Only the <arg fmt="%d" index="5">16</arg> least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
 </msg>
 
 <msg type="warning" file="Xst" num="1780" delta="unknown" >Signal &lt;<arg fmt="%s" index="1">SAFE_STEP_DELAY</arg>&gt; is never used or assigned. This unconnected signal will be trimmed during the optimization process.
@@ -1088,7 +1088,13 @@
 <msg type="warning" file="Xst" num="646" delta="unknown" >Signal &lt;<arg fmt="%s" index="1">step_location</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 </msg>
 
+<msg type="warning" file="Xst" num="646" delta="unknown" >Signal &lt;<arg fmt="%s" index="1">start</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
 <msg type="warning" file="Xst" num="646" delta="unknown" >Signal &lt;<arg fmt="%s" index="1">feedback</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="646" delta="unknown" >Signal &lt;<arg fmt="%s" index="1">displayed_counter</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 </msg>
 
 <msg type="info" file="Xst" num="1767" delta="unknown" >HDL ADVISOR - Resource sharing has identified that some arithmetic operations in this design can share the same physical resources for reduced device utilization. For improved clock frequency you may try to disable resource sharing.
@@ -1402,6 +1408,9 @@ You should achieve better results by setting this init to <arg fmt="%i" index="3
 <msg type="warning" file="Xst" num="1710" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">l_cmd_addr_12</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">ac97</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
 </msg>
 
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">temp_clean</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">db_st</arg>&gt;.
+</msg>
+
 <msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">right_in_data_0</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">ac97</arg>&gt;.
 </msg>
 
@@ -1583,6 +1592,18 @@ You should achieve better results by setting this init to <arg fmt="%i" index="3
 </msg>
 
 <msg type="warning" file="Xst" num="1293" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">flash/flash_reset_b</arg>&gt; has a constant value of <arg fmt="%d" index="2">1</arg> in block &lt;<arg fmt="%s" index="3">flash_manager</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">db_st/sync1/sync_0</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab5</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">db_st/sync1/out</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab5</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">db_st/new</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab5</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">db_st/temp_clean</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab5</arg>&gt;.
 </msg>
 
 <msg type="info" file="Xst" num="2697" delta="unknown" >Unit &lt;<arg fmt="%s" index="1">flash_manager</arg>&gt; : the RAMs &lt;<arg fmt="%s" index="2">fsm/Mrom_nib2char_4_nib2char</arg>&gt;, &lt;<arg fmt="%s" index="3">fsm/Mrom_nib2char_1_nib2char</arg>&gt; are packed into the single block RAM &lt;<arg fmt="%s" index="4">fsm/Mrom_nib2char_4_nib2char1</arg>&gt;
