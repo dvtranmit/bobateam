@@ -515,16 +515,6 @@ module lab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
    //lab5 assign ac97_sdata_out = 1'b0;
    // ac97_sdata_in is an input
 
-   // VGA Output
-   assign vga_out_red = 10'h0;
-   assign vga_out_green = 10'h0;
-   assign vga_out_blue = 10'h0;
-   assign vga_out_sync_b = 1'b1;
-   assign vga_out_blank_b = 1'b1;
-   assign vga_out_pixel_clock = 1'b0;
-   assign vga_out_hsync = 1'b0;
-   assign vga_out_vsync = 1'b0;
-
    // Video Output
    assign tv_out_ycrcb = 10'h0;
    assign tv_out_reset_b = 1'b0;
@@ -645,9 +635,19 @@ module lab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
    SRL16 #(.INIT(16'hFFFF)) reset_sr(.D(1'b0), .CLK(clock_27mhz), .Q(reset),
                                      .A0(1'b1), .A1(1'b1), .A2(1'b1), .A3(1'b1));
 			
+///////////////////////////////////////////
+//			GENERATE 65MHz Clock				  //
+///////////////////////////////////////////
 
-
-
+   // use FPGA's digital clock manager to produce a
+   // 65MHz clock (actually 64.8MHz)
+   wire clock_65mhz_unbuf,clock_65mhz;
+   DCM vclk1(.CLKIN(clock_27mhz),.CLKFX(clock_65mhz_unbuf));
+   // synthesis attribute CLKFX_DIVIDE of vclk1 is 10
+   // synthesis attribute CLKFX_MULTIPLY of vclk1 is 24
+   // synthesis attribute CLK_FEEDBACK of vclk1 is NONE
+   // synthesis attribute CLKIN_PERIOD of vclk1 is 37
+   BUFG vclk2(.O(clock_65mhz),.I(clock_65mhz_unbuf));
 
 ///////////////////////////////////////////
 //				  DEBOUNCE INPUTS				  //
@@ -777,8 +777,10 @@ module lab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 			lives_display <= "??????";
 	end	
 	
+	
+	
 	// Display letter toggler value
-	wire [127:0] string = {displayed_mole_location, "SCORE:", " ", 8'h30+score, lives_display};
+	wire [127:0] string = {displayed_mole_location, 8'h30+display_state, "SCOR:", " ", 8'h30+score, lives_display};
 	display_string debug_display(.reset(reset), .clock_27mhz(clock_27mhz),
 											.string_data(string),
 											.disp_blank(disp_blank),
@@ -787,29 +789,20 @@ module lab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 											.disp_rs(disp_rs), 
 											.disp_ce_b(disp_ce_b),
 											.disp_reset_b(disp_reset_b));
-
-	assign led = {toggler, button_up, button2, button_left, button_right, button1, button_down, button0};
-
+	/*
+	wire [63:0] display_data;
+	assign display_data = {mole_location,4'b0,display_state, 4'b0, displayed_counter};
+		display_16hex disp(.reset(switch[0]), .clock_27mhz(clock_27mhz), .data_in(display_data), 
+		                .disp_rs(disp_rs), .disp_ce_b(disp_ce_b), .disp_blank(disp_blank),
+							 .disp_reset_b(disp_reset_b), .disp_data_out(disp_data_out), .disp_clock(disp_clock));
+	*/
+	
 	/****Ara's code for sounds things here*/		
    wire [7:0] from_ac97_data, to_ac97_data;
    wire ready;
 
    // allow user to adjust volume
-   /*wire vup,vdown;
-   reg old_vup,old_vdown;
-   debounce_ara bup(.reset(reset),.clock(clock_27mhz),.noisy(~button_up),.clean(vup));
-   debounce bdown(.reset(reset),.clock(clock_27mhz),.noisy(~button_down),.clean(vdown));*/
    reg [4:0] volume = 5'd8;
-   /*always @ (posedge clock_27mhz) begin
-     if (reset) volume <= 5'd8;
-     else begin
-	if (vup & ~old_vup & volume != 5'd31) volume <= volume+1;       
-	if (vdown & ~old_vdown & volume != 5'd0) volume <= volume-1;       
-     end
-     old_vup <= vup;
-     old_vdown <= vdown;
-   end
-	*/
 	
    // AC97 driver
    lab5audio a(clock_27mhz, reset, volume, from_ac97_data, to_ac97_data, ready,
@@ -819,8 +812,15 @@ module lab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
    // sound module
 	
    sound_module s(.clock(clock_27mhz), .reset(reset), .ready(ready),
-              .switch(switch), 
               .from_ac97_data(from_ac97_data), .to_ac97_data(to_ac97_data),
+				  //.mole_loc(mole_location),
+				  //.switch(switch),
+				  //.disp_blank(disp_blank),
+				  //.disp_clock(disp_clock),
+				  //.disp_data_out(disp_data_out), 
+				  //.disp_rs(disp_rs), 
+				  //.disp_ce_b(disp_ce_b),
+				  //.disp_reset_b(disp_reset_b),
 				  .flash_data(flash_data),
 				  .flash_address(flash_address),
 				  .flash_ce_b(flash_ce_b),
@@ -842,506 +842,36 @@ module lab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 
    assign analyzer3_clock = ready;
    assign analyzer3_data = {from_ac97_data, to_ac97_data};
-endmodule
 
 
-//sound module for DDR whack-a-mole
-module sound_module(
-  input wire clock,	                // 27mhz system clock
-  input wire reset,                 // 1 to reset to initial state
-  input wire ready,                 // 1 when AC97 data is available
-  input wire [7:0] switch,    //using switches inputs as game states for now
-  input wire [7:0] from_ac97_data, // 8-bit PCM data from mic
-  input wire disp_data_in,			 // LED display signal
-  input wire flash_sts,				 // flash signal
-  output wire [15:0] flash_data,   // flash signals
-  output wire [23:0] flash_address,// flash signals
-  output wire flash_ce_b,           // flash signals
-  output wire flash_oe_b,           // flash signals
-  output wire flash_we_b,           // flash signals
-  output wire flash_reset_b,        // flash signals
-  output wire flash_byte_b,         // flash signals
-  //output wire [7:0] led,			    // leds
-  output wire [22:0] music_address, //output to davis
-  input wire [3:0] game_state,     //input from davis
-  output reg [7:0] to_ac97_data    // 8-bit PCM data to headphone
-);
+	/*
+	VICTORIA'S CODE
+	*/
 
-	wire signed [17:0] filter_output; //filtered
-	reg [7:0] filter_input; //input to filter	
-	
-	//flash will be hardcoded to readmode
-	reg flash_reset = 0;
-	reg writemode = 0;
-	reg dowrite = 0;
-	reg doread;
-	wire busy;
-	reg [22:0]raddr; //address for reading from flash
-	wire [15:0] frdata; //data from flash reading
-	reg [22:0]last_music_addr; //used to go back to the original location of music when things change
-	//wire [63:0]display_data; //data for display_16hex.v module
+   // feed XVGA signals
+   wire [23:0] pixel;
+   wire b,hs,vs;
+	wire [10:0] hcount;
+   wire [9:0] vcount;
+   xvga xvga(.vclock(clock_65mhz),.hcount(hcount),.vcount(vcount),
+              .hsync(hs),.vsync(vs),.blank(b));
+		  
+	displaymole displaymole1(.clk(clock_65mhz), .clk2(clock_27mhz), .reset(reset), .hcount(hcount), .vcount(vcount),
+									.state(display_state), .mole_location(mole_location), .pixel(pixel), .led(led));
 
-	//wire display_reset; //to reset display_16hex.v module; switch6
-	wire clean_sw0;
-	wire clean_sw1;
-	wire clean_sw2;
-
-	
-	//debounce_ara sw6(.reset(reset),.clock(clock),.noisy(switch[6]),.clean(display_reset));
-	debounce_ara sw0(.reset(reset),.clock(clock),.noisy(switch[0]),.clean(clean_sw0)); //switch 0 for game started
-	debounce_ara sw1(.reset(reset),.clock(clock),.noisy(switch[1]),.clean(clean_sw1)); //switch1's pulse for mole popup
-	debounce_ara sw2(.reset(reset),.clock(clock),.noisy(switch[2]),.clean(clean_sw2));
-	
-	assign music_address = raddr;
-	
-	wire [3:0] current_state;
-	assign current_state =  game_state; //{0,clean_sw2,clean_sw1,clean_sw0};
-	reg [3:0] last_state;
-	//assign display_data = {last_music_addr, frdata[15:0], 8'b0 ,1'b0, last_state[2:0],1'b0,current_state[2:0]};
-	/*assign led[0] = ~flash_reset;
-	assign led[1] = ~writemode; 
-	assign led[2] = ~dowrite;
-	assign led[3] = ~doread;
-	assign led[4] = ~display_reset; //sw7
-	assign led[5] = ~busy;
-	assign led[6] = 1;
-	assign led[7] = 1; */
-
-	flash_manager flash_flash(.clock(clock), .reset(flash_reset), .writemode(writemode), .dowrite(dowrite),
-										.doread(doread),  .busy(busy), .raddr(raddr), .frdata(frdata),
-										.flash_data(flash_data), .flash_address(flash_address), .flash_ce_b(flash_ce_b), .flash_oe_b(flash_oe_b),
-										.flash_we_b(flash_we_b), .flash_reset_b(flash_reset_b), .flash_sts(flash_sts), .flash_byte_b(flash_byte_b));
-										
-	/*display_16hex disp(.reset(display_reset), .clock_27mhz(clock), .data_in(display_data), 
-		                .disp_rs(disp_rs), .disp_ce_b(disp_ce_b), .disp_blank(disp_blank),
-							 .disp_reset_b(disp_reset_b), .disp_data_out(disp_data_out), .disp_clock(disp_clock));
-	*/					 
-	//low pass filter
-	fir31 fir31(.clock(clock), .reset(reset), .ready(ready), .x(filter_input), .y(filter_output));
-
-
-	//address for background music and sound effects
-	parameter MUSIC_START = 23'h3000;
-	parameter MUSIC_END = 23'h6AC00;
-	parameter POPUP_START = 23'h83000;
-	parameter POPUP_END = 23'h83500;
-	parameter MISSED_START = 23'h8C000;
-	parameter MISSED_END = 23'h8CD00;
-	parameter WHACKED_START = 23'h92A00;
-	parameter WHACKED_END = 23'h93000;
-
-	//states
-	parameter IDLE = 4'd0;		// Check if user has pressed start
-	parameter GAME_ONGOING	= 4'd2;		// Check lives & Address from Music
-	parameter REQUEST_MOLE	= 4'd3;		// Request a mole to be displayed (pulse)
-	parameter MOLE_MISSED	= 4'd5;		// Lives counter decremented (pulse)
-	parameter MOLE_WHACKED	= 4'd6;		// Score counter incremented (pulse)
-	parameter MOLE_COUNTDOWN = 4'd4;		// Mole displayed until stomped/expired
-	parameter MOLE_MISSED_SOUND	= 4'd9;		// Extra time for sound
-	parameter MOLE_WHACKED_SOUND	= 4'd10;		// Extra time for sound
-
-	reg pop_sound_done;
-	reg missed_sound_done;
-	reg whacked_sound_done;
-	
-	always @ (posedge clock) begin
-		if ((current_state == IDLE)) begin
-			//before game starts
-			to_ac97_data <= 0;
-			raddr <= MUSIC_START;
-			last_music_addr <= MUSIC_START;
-			doread <= 0;
-		end
-		else if (!busy )begin //if flash is not busy, and game has started
-			writemode <= 0;
-			doread <= 1;
-			filter_input <= frdata[7:0];
-			last_state <= current_state;
-			case (current_state)
-				MOLE_COUNTDOWN: 		begin
-											if(last_state != current_state) begin
-												//state changed so popup sound should start from beginning
-												raddr <= POPUP_START;
-												pop_sound_done <= 0;
-												if (ready) begin
-													to_ac97_data <= filter_output[17:10];
-												end
-											end
-											else begin 
-												//if state has not changed
-												if (ready) begin
-													to_ac97_data <= filter_output[17:10];
-													if (!pop_sound_done) begin //if pop up sound effect not finished playing
-														if (raddr >= POPUP_END) begin //if reached last address of pop up sound effect
-															pop_sound_done <= 1;
-															raddr <= last_music_addr;
-														end
-														else raddr <= raddr + 1; //if still more of pop up sound effect left to play
-													end
-													else begin //if finished pop up sound
-														last_music_addr <= raddr;
-														raddr <= (raddr >= MUSIC_END) ? MUSIC_START : raddr + 1;
-													end
-												end
-											end
-										end
-										
-				MOLE_MISSED_SOUND: 		begin
-											if(last_state != current_state) begin
-												//state changed so missed mole sound should start from beginning
-												raddr <= MISSED_START;
-												missed_sound_done <= 0;
-												if (ready) begin
-													to_ac97_data <= filter_output[17:10];
-												end
-											end
-											else begin 
-												//if state has not changed
-												if (ready) begin
-													to_ac97_data <= filter_output[17:10];
-													if (!missed_sound_done) begin //if pop up sound effect not finished playing
-														if (raddr >= MISSED_END) begin //if reached last address of pop up sound effect
-															missed_sound_done <= 1;
-															raddr <= last_music_addr;
-														end
-														else raddr <= raddr + 1; //if still more of pop up sound effect left to play
-													end
-													else begin //if finished pop up sound
-														last_music_addr <= raddr;
-														raddr <= (raddr >= MUSIC_END) ? MUSIC_START : raddr + 1;
-													end
-												end
-											end
-										end
-										
-				MOLE_WHACKED_SOUND: 		begin
-											if(last_state != current_state) begin
-												//state changed so whacked mole sound should start from beginning
-												raddr <= WHACKED_START;
-												whacked_sound_done <= 0;
-												if (ready) begin
-													to_ac97_data <= filter_output[17:10];
-												end
-											end
-											else begin 
-												//if state has not changed
-												if (ready) begin
-													to_ac97_data <= filter_output[17:10];
-													if (!whacked_sound_done) begin //if pop up sound effect not finished playing
-														if (raddr >= WHACKED_END) begin //if reached last address of pop up sound effect
-															whacked_sound_done <= 1;
-															raddr <= last_music_addr;
-														end
-														else raddr <= raddr + 1; //if still more of pop up sound effect left to play
-													end
-													else begin //if finished pop up sound
-														last_music_addr <= raddr;
-														raddr <= (raddr >= MUSIC_END) ? MUSIC_START : raddr + 1;
-													end
-												end
-											end
-										end
-										
-				default: 			begin 	//play background music
-											pop_sound_done <= 0;
-											if (last_state != current_state) begin
-												raddr <= last_music_addr;
-												if (ready) begin
-													to_ac97_data <= filter_output[17:10];
-												end
-											end
-											else begin
-												if (ready) begin
-													to_ac97_data <= filter_output[17:10];
-													raddr <= (raddr >= MUSIC_END) ? MUSIC_START : raddr + 1;
-													last_music_addr <= raddr;
-												end
-											end
-										end
-			endcase							
-		end
-	end
+   // VGA Output.  In order to meet the setup and hold times of the
+   // AD7125, we send it ~clock_65mhz.
+   assign vga_out_red = pixel[23:16];
+   assign vga_out_green = pixel[15:8];
+   assign vga_out_blue = pixel[7:0];
+   assign vga_out_sync_b = 1'b1;    // not used
+   assign vga_out_blank_b = ~b;
+   assign vga_out_pixel_clock = ~clock_65mhz;
+   assign vga_out_hsync = hs;
+   assign vga_out_vsync = vs;	
 
 endmodule
 
-///////////////////////////////////////////////////////////////////////////////
-//
-// Record/playback
-//
-///////////////////////////////////////////////////////////////////////////////
-
-
-//one that has sampling issues but works in terms of reading and writing to flash!	
-module recorder(
-  input wire clock,	                // 27mhz system clock
-  input wire reset,                 // 1 to reset to initial state
-  input wire playback,              // 1 for playback, 0 for record
-  input wire ready,                 // 1 when AC97 data is available
-  input wire [7:0] switch,         // switches
-  input wire [7:0] from_ac97_data, // 8-bit PCM data from mic
-  input wire disp_data_in,			 // LED display signal
-  input wire flash_sts,				 // flash signal
-  output wire [15:0] flash_data,   // flash signals
-  output wire [23:0] flash_address,// flash signals
-  output wire flash_ce_b,           // flash signals
-  output wire flash_oe_b,           // flash signals
-  output wire flash_we_b,           // flash signals
-  output wire flash_reset_b,        // flash signals
-  output wire flash_byte_b,         // flash signals
-  output wire disp_blank,           // LED display signal
-  output wire disp_clock,           // LED display signal
-  output wire disp_rs,              // LED display signal
-  output wire disp_ce_b,            // LED display signal
-  output wire disp_reset_b,         // LED display signal
-  output wire disp_data_out,        // LED display signal
-  output wire [7:0] led,			    // leds
-  output reg [7:0] to_ac97_data    // 8-bit PCM data to headphone
-);  
-
-	parameter MAX_READ_ADDRESS = 23'h0F0005; //23'h025; //max address you want to read
-														//to set max write address, change parameter MAX_ADDRESS in test_fsm.v
-														//should be same as in test_fsm, slighty higher right now for testing purposes
-														
-	wire busy; //output from flash that tells you if flash is busy doing something
-	wire [11:0] fsmstate; //output from flash for debugging purposes
-	wire [639:0] dots; //output from flash for debugging purposes (dots is used with the display.v module)
-	reg writemode;
-	reg dowrite;
-	reg doread;
-	reg [15:0] wdata = 16'h0; //data to be written to flash when flash is under write mode
-	reg [22:0]raddr; //address for reading from flash
-	wire [15:0] frdata; //data from flash reading
-	
-	reg [3:0] flash_write_counter; //waitsome clock cycles between each write to flash
-	wire [63:0]display_data; //data for display_16hex.v module
-	
-	wire display_reset; //to reset display_16hex.v module; switch0
-	wire flash_reset; //to put flash in erase mode; switch3
-	wire writing; //to put flash in write mode; switch5
-	wire reading; //to put flash in read mode; switch6
-	wire read_incr; //to increment the read address (will be incrementing everytime this goes from 0 to 1); switch7
-	reg last_read_incr; //to store last read_incr value
-	wire clean_sw1; //debounced switch1
-	wire clean_sw2; //debounced switch2	
-	
-	assign display_data = {flash_data, raddr[15:0], wdata};
-	assign led[0] = ~flash_reset; //sw3
-	assign led[1] = ~writemode; 
-	assign led[2] = ~dowrite;
-	assign led[3] = ~doread;
-	assign led[4] = ~display_reset; //sw0
-	assign led[5] = ~busy;
-	assign led[6] = ~writing; //sw5
-	assign led[7] = ~reading; //sw6, sw7 for incrementing read address
-	
-
-	reg [7:0] ready_count;
-	
-	wire signed [17:0] filter_output; //filtered
-	reg [7:0] filter_input; //input to filter
-	
-
-   debounce sw0(.reset(reset),.clock(clock),.noisy(switch[0]),.clean(display_reset));
-	debounce sw1(.reset(reset),.clock(clock),.noisy(switch[1]),.clean(clean_sw1));
-	debounce sw2(.reset(reset),.clock(clock),.noisy(switch[2]),.clean(clean_sw2));
-   debounce sw3(.reset(reset),.clock(clock),.noisy(switch[3]),.clean(flash_reset));
-	debounce sw5(.reset(reset),.clock(clock),.noisy(switch[5]),.clean(writing));
-	debounce sw6(.reset(reset),.clock(clock),.noisy(switch[6]),.clean(reading));
-	debounce sw7(.reset(reset),.clock(clock),.noisy(switch[7]),.clean(read_incr));
-	
-	flash_manager flash_flash(.clock(clock), .reset(flash_reset), .dots(dots),
-										.writemode(writemode), .wdata(wdata), .dowrite(dowrite),
-										.raddr(raddr), .frdata(frdata), .doread(doread), .busy(busy), .fsmstate(fsmstate),
-										.flash_data(flash_data), .flash_address(flash_address), .flash_ce_b(flash_ce_b), .flash_oe_b(flash_oe_b),
-										.flash_we_b(flash_we_b), .flash_reset_b(flash_reset_b), .flash_sts(flash_sts), .flash_byte_b(flash_byte_b));
-										
-	display_16hex disp(.reset(display_reset), .clock_27mhz(clock), .data_in(display_data), 
-		                .disp_rs(disp_rs), .disp_ce_b(disp_ce_b), .disp_blank(disp_blank),
-							 .disp_reset_b(disp_reset_b), .disp_data_out(disp_data_out), .disp_clock(disp_clock));
-	
-	//low pass filter
-	fir31 fir31(.clock(clock), .reset(reset), .ready(ready), .x(filter_input), .y(filter_output));
-	
-always @(posedge clock) begin
-	if(clean_sw1 & clean_sw2) begin
-		//reset signals
-		writemode <= 1;
-		dowrite <= 0;
-		doread <= 0;
-		raddr <= 0;
-		ready_count <= 0;
-	end
-	else begin
-		//if not resetting signals then do things based on if flash is busy or not
-		if(!busy) begin
-			//if flash is not busy
-			if (writing) begin
-				writemode <= 1;
-				doread <= 0;
-				
-				filter_input <= from_ac97_data;
-
-				if (ready) begin
-					ready_count <= ready_count + 1;
-					if (ready_count == 7) begin //i think 6 7 or 8 will work for this?
-						ready_count <= 0;
-						dowrite <=1;
-						wdata <= filter_output[17:10]; //from_ac97_data;
-					end
-				end
-			end
-	
-			if (reading) begin
-				writemode <= 0;
-				doread <= 1;
-				filter_input <= frdata[7:0];
-				if (ready) begin
-					to_ac97_data <= filter_output[17:10]; //frdata[7:0];
-					if (raddr >= MAX_READ_ADDRESS) begin
-						raddr <= 0;
-					end
-					else raddr <= raddr + 1;
-				end
-			end
-		end
-		else begin
-			//if flash is busy
-			if (writing) begin
-				dowrite <= 0;
-			end
-		end
-	end
-end //always block end
-endmodule
-
-
-///////////////////////////////////////////////////////////////////////////////
-//
-// Verilog equivalent to a BRAM, tools will infer the right thing!
-// number of locations = 1<<LOGSIZE, width in bits = WIDTH.
-// default is a 16K x 1 memory.
-//
-///////////////////////////////////////////////////////////////////////////////
-
-module mybram #(parameter LOGSIZE=14, WIDTH=1)
-              (input wire [LOGSIZE-1:0] addr,
-               input wire clk,
-               input wire [WIDTH-1:0] din,
-               output reg [WIDTH-1:0] dout,
-               input wire we);
-   // let the tools infer the right number of BRAMs
-   (* ram_style = "block" *)
-   reg [WIDTH-1:0] mem[(1<<LOGSIZE)-1:0];
-   always @(posedge clk) begin
-     if (we) mem[addr] <= din;
-     dout <= mem[addr];
-   end
-endmodule
-
-///////////////////////////////////////////////////////////////////////////////
-//
-// 31-tap FIR filter, 8-bit signed data, 10-bit signed coefficients.
-// ready is asserted whenever there is a new sample on the X input,
-// the Y output should also be sampled at the same time.  Assumes at
-// least 32 clocks between ready assertions.  Note that since the
-// coefficients have been scaled by 2**10, so has the output (it's
-// expanded from 8 bits to 18 bits).  To get an 8-bit result from the
-// filter just divide by 2**10, ie, use Y[17:10].
-//
-///////////////////////////////////////////////////////////////////////////////
-
-module fir31(
-  input wire clock,reset,ready,
-  input wire signed [7:0] x,
-  output reg signed [17:0] y //accumulator
-);
-  reg signed [17:0] sum;
-  reg [4:0] offset;
-  reg [4:0] index_reg;
-  wire [4:0] index;
-  assign index = index_reg;
-  reg signed [7:0] sample [31:0]; //32 element array each 8 bits wide
-  initial begin
-		sum = 0;
-		offset = 0;
-		index_reg =0;
-  end
-  
-  wire signed [9:0] coeff;
-  coeffs31 coeffs31(.index(index),.coeff(coeff));
-  
-  always @(posedge clock) begin
-		if (ready) begin
-			sum <= 0;
-			index_reg <= 0;
-			offset <= offset+1;
-			sample[offset] <= x;
-		end
-		else if (index_reg<= 30) begin
-			index_reg <= index_reg + 1;
-			sum <= sum+ coeff*sample[offset-index];
-			if(index_reg == 30)
-				y <= sum + coeff*sample[offset-index];
-		end
-  end
-  /*
-  // for now just pass data through
-  always @(posedge clock) begin
-    if (ready) y <= {x,10'd0};
-  end
-  */
-endmodule
-
-///////////////////////////////////////////////////////////////////////////////
-//
-// Coefficients for a 31-tap low-pass FIR filter with Wn=.125 (eg, 3kHz for a
-// 48kHz sample rate).  Since we're doing integer arithmetic, we've scaled
-// the coefficients by 2**10
-// Matlab command: round(fir1(30,.125)*1024)
-//
-///////////////////////////////////////////////////////////////////////////////
-
-module coeffs31(
-  input wire [4:0] index,
-  output reg signed [9:0] coeff
-);
-  // tools will turn this into a 31x10 ROM
-  always @(index)
-    case (index)
-      5'd0:  coeff = -10'sd1;
-      5'd1:  coeff = -10'sd1;
-      5'd2:  coeff = -10'sd3;
-      5'd3:  coeff = -10'sd5;
-      5'd4:  coeff = -10'sd6;
-      5'd5:  coeff = -10'sd7;
-      5'd6:  coeff = -10'sd5;
-      5'd7:  coeff = 10'sd0;
-      5'd8:  coeff = 10'sd10;
-      5'd9:  coeff = 10'sd26;
-      5'd10: coeff = 10'sd46;
-      5'd11: coeff = 10'sd69;
-      5'd12: coeff = 10'sd91;
-      5'd13: coeff = 10'sd110;
-      5'd14: coeff = 10'sd123;
-      5'd15: coeff = 10'sd128;
-      5'd16: coeff = 10'sd123;
-      5'd17: coeff = 10'sd110;
-      5'd18: coeff = 10'sd91;
-      5'd19: coeff = 10'sd69;
-      5'd20: coeff = 10'sd46;
-      5'd21: coeff = 10'sd26;
-      5'd22: coeff = 10'sd10;
-      5'd23: coeff = 10'sd0;
-      5'd24: coeff = -10'sd5;
-      5'd25: coeff = -10'sd7;
-      5'd26: coeff = -10'sd6;
-      5'd27: coeff = -10'sd5;
-      5'd28: coeff = -10'sd3;
-      5'd29: coeff = -10'sd1;
-      5'd30: coeff = -10'sd1;
-      default: coeff = 10'hXXX;
-    endcase
-endmodule
 
 /******************************************************************************/
 //DAVIS CODE HERE
@@ -2021,3 +1551,153 @@ output [39:0] char_dots;
     endcase
 
 endmodule
+
+/******************************************************************************/
+//VICTORIA CODE HERE
+
+////////////////////////////////////////////////////////////////////////////////
+//
+// xvga: Generate XVGA display signals (1024 x 768 @ 60Hz)
+//
+////////////////////////////////////////////////////////////////////////////////
+
+module xvga(input vclock,
+            output reg [10:0] hcount,    // pixel number on current line
+            output reg [9:0] vcount,	 // line number
+            output reg vsync,hsync,blank);
+
+   // horizontal: 1344 pixels total
+   // display 1024 pixels per line
+   reg hblank,vblank;
+   wire hsyncon,hsyncoff,hreset,hblankon;
+   assign hblankon = (hcount == 1023);    
+   assign hsyncon = (hcount == 1047);
+   assign hsyncoff = (hcount == 1183);
+   assign hreset = (hcount == 1343);
+
+   // vertical: 806 lines total
+   // display 768 lines
+   wire vsyncon,vsyncoff,vreset,vblankon;
+   assign vblankon = hreset & (vcount == 767);    
+   assign vsyncon = hreset & (vcount == 776);
+   assign vsyncoff = hreset & (vcount == 782);
+   assign vreset = hreset & (vcount == 805);
+
+   // sync and blanking
+   wire next_hblank,next_vblank;
+   assign next_hblank = hreset ? 0 : hblankon ? 1 : hblank;
+   assign next_vblank = vreset ? 0 : vblankon ? 1 : vblank;
+   always @(posedge vclock) begin
+      hcount <= hreset ? 0 : hcount + 1;
+      hblank <= next_hblank;
+      hsync <= hsyncon ? 0 : hsyncoff ? 1 : hsync;  // active low
+
+      vcount <= hreset ? (vreset ? 0 : vcount + 1) : vcount;
+      vblank <= next_vblank;
+      vsync <= vsyncon ? 0 : vsyncoff ? 1 : vsync;  // active low
+
+      blank <= next_vblank | (next_hblank & ~hreset);
+   end
+endmodule
+
+////////////////////////////////////////////////////////////////////////////////
+//
+// NORMAL MOLE MODULE
+//
+////////////////////////////////////////////////////////////////////////////////
+
+module normalmole
+	#(parameter WIDTH = 212, HEIGHT = 256)
+	(input pixel_clk,
+    input [10:0] x, hcount,
+    input [9:0] y, vcount,
+    output reg [23:0] pixel
+    );
+	wire [15:0] image_addr;
+	wire [3:0] image_bits, red_mapped, green_mapped, blue_mapped;
+	always @ (posedge pixel_clk) begin
+		if ((hcount >= x && hcount < (x + WIDTH)) && (vcount >= y && vcount < (y + HEIGHT)))
+			pixel <= {red_mapped,4'b0, green_mapped,4'b0, blue_mapped,4'b0};
+		else
+			pixel <= 0;
+	end
+	assign image_addr = (hcount - x) + (vcount - y) * WIDTH;
+	normalmole_image_rom rom1(.clka(pixel_clk),.addra(image_addr),.douta(image_bits));
+	normalmole_red_rom rcm (.clka(pixel_clk), .addra(image_bits), .douta(red_mapped));
+	normalmole_green_rom gcm (.clka(pixel_clk), .addra(image_bits), .douta(green_mapped));
+	normalmole_blue_rom bcm (.clka(pixel_clk), .addra(image_bits), .douta(blue_mapped));	
+endmodule
+
+////////////////////////////////////////////////////////////////////////////////
+//
+// MOLE MUX
+//
+////////////////////////////////////////////////////////////////////////////////
+module displaymole(	input clk, clk2, reset,
+							input [3:0] state,
+							input [2:0] mole_location,
+							input [10:0] hcount,
+							input [9:0]  vcount,
+							output [23:0] pixel,
+							output [7:0] led);
+
+	// States
+	reg [3:0] IDLE 					= 4'd0;		// Check if user has pressed start
+	reg [3:0] GAME_START_DELAY 	= 4'd1;		// Delay until user stands on center
+	reg [3:0] GAME_ONGOING			= 4'd2;		// Check lives & Address from Music
+	reg [3:0] REQUEST_MOLE			= 4'd3;		// Request a mole to be displayed (pulse)
+	reg [3:0] MOLE_COUNTDOWN		= 4'd4;		// Mole displayed until stomped/expired 
+	reg [3:0] MOLE_MISSED			= 4'd5;		// Lives counter decremented (pulse)
+	reg [3:0] MOLE_WHACKED			= 4'd6;		// Score counter incremented (pulse)
+	reg [3:0] SAFE_STEP_DELAY		= 4'd7;		// Prevent repeated lives decrement
+	reg [3:0] GAME_OVER				= 4'd8;		// Display Game Over Screen
+	reg [3:0] MOLE_MISSED_SOUND	= 4'd9;		// Extra time for sound
+	reg [3:0] MOLE_WHACKED_SOUND	= 4'd10;		// Extra time for sound
+
+   // TOP LEFT MOLE CORNERS
+	parameter [10:0] x1 = 65;
+	parameter [9:0] y1 = 0;
+	parameter [10:0] x2 = 406;
+	parameter [9:0] y2 = 0;
+	parameter [10:0] x3 = 747;
+	parameter [9:0] y3 = 0;
+	parameter [10:0] x4 = 65;
+	parameter [9:0] y4 = 256;
+	parameter [10:0] x5 = 747;
+	parameter [9:0] y5 = 256;
+	parameter [10:0] x6 = 65;
+	parameter [9:0] y6 = 512;
+	parameter [10:0] x7 = 406;
+	parameter [9:0] y7 = 512;
+	parameter [10:0] x8 = 747;
+	parameter [9:0] y8 = 512;
+
+	// Assign x y location based on input from game state
+	reg [10:0] x;
+	reg [9:0] y;
+	always@(posedge clk2) begin
+		if (reset) begin
+			x <= x1;
+			y <= y1;
+		end else if (state == REQUEST_MOLE) begin
+			case(mole_location)
+				3'd0: begin x <= x1; y <= y1; end
+				3'd1: begin x <= x2; y <= y2; end
+				3'd2: begin x <= x3; y <= y3; end
+				3'd3: begin x <= x4; y <= y4; end
+				3'd4: begin x <= x5; y <= y5; end
+				3'd5: begin x <= x6; y <= y6; end
+				3'd6: begin x <= x7; y <= y7; end
+				3'd7: begin x <= x8; y <= y8; end
+			endcase
+		end
+	end
+	
+	wire [23:0] temp_pixel;
+	normalmole #(.WIDTH(212),.HEIGHT(256))
+			mole1(.pixel_clk(clk),.x(x),.hcount(hcount),.y(y),.vcount(vcount),.pixel(temp_pixel));
+
+	assign pixel = (state == REQUEST_MOLE || state == MOLE_COUNTDOWN) ? temp_pixel : 24'h0;
+	assign led = mole_location[2:0];
+endmodule
+		

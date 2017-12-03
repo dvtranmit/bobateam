@@ -1,0 +1,13 @@
+# Output products list for <normalmole_blue_rom>
+normalmole_blue_rom.asy
+normalmole_blue_rom.mif
+normalmole_blue_rom.ngc
+normalmole_blue_rom.sym
+normalmole_blue_rom.v
+normalmole_blue_rom.veo
+normalmole_blue_rom.vhd
+normalmole_blue_rom.vho
+normalmole_blue_rom.xco
+normalmole_blue_rom_blk_mem_gen_v2_8_xst_1.ngc_xst.xrpt
+normalmole_blue_rom_flist.txt
+normalmole_blue_rom_xmdf.tcl
