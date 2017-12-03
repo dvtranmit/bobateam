@@ -1,0 +1,13 @@
+# Output products list for <dead_blue_rom>
+dead_blue_rom.asy
+dead_blue_rom.mif
+dead_blue_rom.ngc
+dead_blue_rom.sym
+dead_blue_rom.v
+dead_blue_rom.veo
+dead_blue_rom.vhd
+dead_blue_rom.vho
+dead_blue_rom.xco
+dead_blue_rom_blk_mem_gen_v2_8_xst_1.ngc_xst.xrpt
+dead_blue_rom_flist.txt
+dead_blue_rom_xmdf.tcl

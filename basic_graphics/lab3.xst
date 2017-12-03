@@ -1,5 +1,5 @@
-set -tmpdir "/afs/athena.mit.edu/user/v/s/vsouyang/Documents/6.111/basic_graphics/xst/projnav.tmp"
-set -xsthdpdir "/afs/athena.mit.edu/user/v/s/vsouyang/Documents/6.111/basic_graphics/xst"
+set -tmpdir "/afs/athena.mit.edu/user/v/s/vsouyang/Documents/6.111/bobateam/basic_graphics/xst/projnav.tmp"
+set -xsthdpdir "/afs/athena.mit.edu/user/v/s/vsouyang/Documents/6.111/bobateam/basic_graphics/xst"
 run
 -ifn lab3.prj
 -ifmt mixed

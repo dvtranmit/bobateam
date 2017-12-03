@@ -1,0 +1,13 @@
+# Output products list for <happy_blue_rom>
+happy_blue_rom.asy
+happy_blue_rom.mif
+happy_blue_rom.ngc
+happy_blue_rom.sym
+happy_blue_rom.v
+happy_blue_rom.veo
+happy_blue_rom.vhd
+happy_blue_rom.vho
+happy_blue_rom.xco
+happy_blue_rom_blk_mem_gen_v2_8_xst_1.ngc_xst.xrpt
+happy_blue_rom_flist.txt
+happy_blue_rom_xmdf.tcl

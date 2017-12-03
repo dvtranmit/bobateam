@@ -426,19 +426,19 @@ module lab3   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 	wire [10:0] x8 = 747;
 	wire [9:0] y8 = 512;
 
-	normalmole #(.WIDTH(212),.HEIGHT(256))
+	happymole #(.WIDTH(207),.HEIGHT(256))
 			mole1(.pixel_clk(clock_65mhz),.x(x1),.hcount(hcount1),.y(y1),.vcount(vcount1),.pixel(mole1_pixel));
 	normalmole #(.WIDTH(212),.HEIGHT(256))
 			mole2(.pixel_clk(clock_65mhz),.x(x2),.hcount(hcount2),.y(y2),.vcount(vcount2),.pixel(mole2_pixel));
-	normalmole #(.WIDTH(212),.HEIGHT(256))
+	deadmole #(.WIDTH(191),.HEIGHT(256))
 			mole3(.pixel_clk(clock_65mhz),.x(x3),.hcount(hcount3),.y(y3),.vcount(vcount3),.pixel(mole3_pixel));
-	normalmole #(.WIDTH(212),.HEIGHT(256))
+	deadmole #(.WIDTH(191),.HEIGHT(256))
 			mole4(.pixel_clk(clock_65mhz),.x(x4),.hcount(hcount4),.y(y4),.vcount(vcount4),.pixel(mole4_pixel));
 	normalmole #(.WIDTH(212),.HEIGHT(256))
 			mole5(.pixel_clk(clock_65mhz),.x(x5),.hcount(hcount5),.y(y5),.vcount(vcount5),.pixel(mole5_pixel));
 	normalmole #(.WIDTH(212),.HEIGHT(256))
 			mole6(.pixel_clk(clock_65mhz),.x(x6),.hcount(hcount6),.y(y6),.vcount(vcount6),.pixel(mole6_pixel));
-	normalmole #(.WIDTH(212),.HEIGHT(256))
+	happymole #(.WIDTH(207),.HEIGHT(256))
 			mole7(.pixel_clk(clock_65mhz),.x(x7),.hcount(hcount7),.y(y7),.vcount(vcount7),.pixel(mole7_pixel));
 	normalmole #(.WIDTH(212),.HEIGHT(256))
 			mole8(.pixel_clk(clock_65mhz),.x(x8),.hcount(hcount8),.y(y8),.vcount(vcount8),.pixel(mole8_pixel));
@@ -556,4 +556,48 @@ module normalmole
 	tiger_red_rom rcm (.clka(pixel_clk), .addra(image_bits), .douta(red_mapped));
 	tiger_green_rom gcm (.clka(pixel_clk), .addra(image_bits), .douta(green_mapped));
 	tiger_blue_rom bcm (.clka(pixel_clk), .addra(image_bits), .douta(blue_mapped));	
+endmodule
+
+module deadmole
+	#(parameter WIDTH = 191, HEIGHT = 256)
+	(input pixel_clk,
+    input [10:0] x, hcount,
+    input [9:0] y, vcount,
+    output reg [23:0] pixel
+    );
+	wire [15:0] image_addr;
+	wire [3:0] image_bits, red_mapped, green_mapped, blue_mapped;
+	always @ (posedge pixel_clk) begin
+		if ((hcount >= x && hcount < (x + WIDTH)) && (vcount >= y && vcount < (y + HEIGHT)))
+			pixel <= {red_mapped,4'b0, green_mapped,4'b0, blue_mapped,4'b0};
+		else
+			pixel <= 0;
+	end
+	assign image_addr = (hcount - x) + (vcount - y) * WIDTH;
+	dead_image_rom rom1_dead(.clka(pixel_clk),.addra(image_addr),.douta(image_bits));
+	dead_red_rom rcm_dead (.clka(pixel_clk), .addra(image_bits), .douta(red_mapped));
+	dead_green_rom gcm_dead (.clka(pixel_clk), .addra(image_bits), .douta(green_mapped));
+	dead_blue_rom bcm_dead (.clka(pixel_clk), .addra(image_bits), .douta(blue_mapped));	
+endmodule
+
+module happymole
+	#(parameter WIDTH = 207, HEIGHT = 256)
+	(input pixel_clk,
+    input [10:0] x, hcount,
+    input [9:0] y, vcount,
+    output reg [23:0] pixel
+    );
+	wire [15:0] image_addr;
+	wire [3:0] image_bits, red_mapped, green_mapped, blue_mapped;
+	always @ (posedge pixel_clk) begin
+		if ((hcount >= x && hcount < (x + WIDTH)) && (vcount >= y && vcount < (y + HEIGHT)))
+			pixel <= {red_mapped,4'b0, green_mapped,4'b0, blue_mapped,4'b0};
+		else
+			pixel <= 0;
+	end
+	assign image_addr = (hcount - x) + (vcount - y) * WIDTH;
+	happy_image_rom rom1_happy(.clka(pixel_clk),.addra(image_addr),.douta(image_bits));
+	happy_red_rom rcm_happy (.clka(pixel_clk), .addra(image_bits), .douta(red_mapped));
+	happy_green_rom gcm_happy (.clka(pixel_clk), .addra(image_bits), .douta(green_mapped));
+	happy_blue_rom bcm_happy (.clka(pixel_clk), .addra(image_bits), .douta(blue_mapped));	
 endmodule
