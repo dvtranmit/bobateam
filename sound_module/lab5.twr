@@ -3,7 +3,7 @@ Release 10.1.03 Trace  (lin64)
 Copyright (c) 1995-2008 Xilinx, Inc.  All rights reserved.
 
 /afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/bin/lin64/unwrapped/trce -ise
-/afs/athena.mit.edu/user/d/v/dvtran/Documents/6.111/finalproject/bobateam/sound_module/sound_module.ise
+/afs/athena.mit.edu/user/a/d/adhikara/Documents/6.111things/6.111 project/bobateam/sound_module/sound_module.ise
 -intstyle ise -v 3 -s 4 -xml lab5 lab5.ncd -o lab5.twr lab5.pcf -ucf labkit.ucf
 
 Design file:              lab5.ncd
@@ -36,7 +36,7 @@ Setup/Hold to clock ac97_bit_clock
              |  Setup to  |  Hold to   |                    | Clock  |
 Source       | clk (edge) | clk (edge) |Internal Clock(s)   | Phase  |
 -------------+------------+------------+--------------------+--------+
-ac97_sdata_in|   -0.855(F)|    1.404(F)|analyzer1_clock_OBUF|   0.000|
+ac97_sdata_in|   -0.950(F)|    1.499(F)|analyzer1_clock_OBUF|   0.000|
 -------------+------------+------------+--------------------+--------+
 
 Setup/Hold to clock clock_27mhz
@@ -44,33 +44,33 @@ Setup/Hold to clock clock_27mhz
               |  Setup to  |  Hold to   |                  | Clock  |
 Source        | clk (edge) | clk (edge) |Internal Clock(s) | Phase  |
 --------------+------------+------------+------------------+--------+
-button0       |   -0.582(R)|    0.854(R)|clock_27mhz_IBUFG |   0.000|
-button1       |   -0.433(R)|    0.705(R)|clock_27mhz_IBUFG |   0.000|
-button2       |   -0.747(R)|    1.019(R)|clock_27mhz_IBUFG |   0.000|
-button3       |   -0.356(R)|    0.628(R)|clock_27mhz_IBUFG |   0.000|
-button_down   |   -0.771(R)|    1.043(R)|clock_27mhz_IBUFG |   0.000|
-button_enter  |    0.503(R)|   -0.231(R)|clock_27mhz_IBUFG |   0.000|
-button_left   |   -0.115(R)|    0.387(R)|clock_27mhz_IBUFG |   0.000|
-button_right  |   -0.357(R)|    0.629(R)|clock_27mhz_IBUFG |   0.000|
-button_up     |   -0.353(R)|    0.625(R)|clock_27mhz_IBUFG |   0.000|
-flash_data<0> |   -0.131(R)|    0.403(R)|clock_27mhz_IBUFG |   0.000|
-flash_data<1> |    0.762(R)|   -0.490(R)|clock_27mhz_IBUFG |   0.000|
-flash_data<2> |   -0.136(R)|    0.408(R)|clock_27mhz_IBUFG |   0.000|
-flash_data<3> |   -0.515(R)|    0.787(R)|clock_27mhz_IBUFG |   0.000|
-flash_data<4> |    0.407(R)|   -0.135(R)|clock_27mhz_IBUFG |   0.000|
-flash_data<5> |    0.351(R)|   -0.079(R)|clock_27mhz_IBUFG |   0.000|
-flash_data<6> |    0.644(R)|   -0.372(R)|clock_27mhz_IBUFG |   0.000|
-flash_data<7> |    0.283(R)|   -0.011(R)|clock_27mhz_IBUFG |   0.000|
-flash_data<8> |   -0.253(R)|    0.525(R)|clock_27mhz_IBUFG |   0.000|
-flash_data<9> |    0.873(R)|   -0.601(R)|clock_27mhz_IBUFG |   0.000|
-flash_data<10>|   -0.186(R)|    0.458(R)|clock_27mhz_IBUFG |   0.000|
-flash_data<11>|   -0.252(R)|    0.524(R)|clock_27mhz_IBUFG |   0.000|
-flash_data<12>|    0.039(R)|    0.233(R)|clock_27mhz_IBUFG |   0.000|
-flash_data<13>|    0.108(R)|    0.164(R)|clock_27mhz_IBUFG |   0.000|
-flash_data<14>|   -0.143(R)|    0.415(R)|clock_27mhz_IBUFG |   0.000|
-flash_data<15>|    0.890(R)|   -0.618(R)|clock_27mhz_IBUFG |   0.000|
-flash_sts     |    1.211(R)|   -0.142(R)|clock_27mhz_IBUFG |   0.000|
-switch<7>     |   -0.849(R)|    1.121(R)|clock_27mhz_IBUFG |   0.000|
+button0       |   -0.189(R)|    0.461(R)|clock_27mhz_IBUFG |   0.000|
+button1       |   -0.810(R)|    1.082(R)|clock_27mhz_IBUFG |   0.000|
+button2       |   -0.370(R)|    0.642(R)|clock_27mhz_IBUFG |   0.000|
+button3       |   -0.755(R)|    1.027(R)|clock_27mhz_IBUFG |   0.000|
+button_down   |   -0.784(R)|    1.056(R)|clock_27mhz_IBUFG |   0.000|
+button_enter  |   -0.438(R)|    0.710(R)|clock_27mhz_IBUFG |   0.000|
+button_left   |   -0.746(R)|    1.018(R)|clock_27mhz_IBUFG |   0.000|
+button_right  |   -0.318(R)|    0.590(R)|clock_27mhz_IBUFG |   0.000|
+button_up     |   -0.413(R)|    0.685(R)|clock_27mhz_IBUFG |   0.000|
+flash_data<0> |    2.544(R)|    0.902(R)|clock_27mhz_IBUFG |   0.000|
+flash_data<1> |    2.490(R)|    0.631(R)|clock_27mhz_IBUFG |   0.000|
+flash_data<2> |    0.504(R)|    1.161(R)|clock_27mhz_IBUFG |   0.000|
+flash_data<3> |    1.212(R)|    1.150(R)|clock_27mhz_IBUFG |   0.000|
+flash_data<4> |    1.980(R)|    0.741(R)|clock_27mhz_IBUFG |   0.000|
+flash_data<5> |    1.642(R)|    0.495(R)|clock_27mhz_IBUFG |   0.000|
+flash_data<6> |    2.164(R)|    0.328(R)|clock_27mhz_IBUFG |   0.000|
+flash_data<7> |    1.826(R)|    0.688(R)|clock_27mhz_IBUFG |   0.000|
+flash_data<8> |   -0.684(R)|    0.956(R)|clock_27mhz_IBUFG |   0.000|
+flash_data<9> |   -0.188(R)|    0.460(R)|clock_27mhz_IBUFG |   0.000|
+flash_data<10>|   -1.611(R)|    1.883(R)|clock_27mhz_IBUFG |   0.000|
+flash_data<11>|   -1.622(R)|    1.894(R)|clock_27mhz_IBUFG |   0.000|
+flash_data<12>|   -1.100(R)|    1.372(R)|clock_27mhz_IBUFG |   0.000|
+flash_data<13>|   -0.996(R)|    1.268(R)|clock_27mhz_IBUFG |   0.000|
+flash_data<14>|   -0.673(R)|    0.945(R)|clock_27mhz_IBUFG |   0.000|
+flash_data<15>|    0.133(R)|    0.139(R)|clock_27mhz_IBUFG |   0.000|
+flash_sts     |    1.270(R)|    0.114(R)|clock_27mhz_IBUFG |   0.000|
+switch<7>     |    0.060(R)|    0.212(R)|clock_27mhz_IBUFG |   0.000|
 --------------+------------+------------+------------------+--------+
 
 Clock ac97_bit_clock to Pad
@@ -78,17 +78,17 @@ Clock ac97_bit_clock to Pad
                   | clk (edge) |                    | Clock  |
 Destination       |   to PAD   |Internal Clock(s)   | Phase  |
 ------------------+------------+--------------------+--------+
-ac97_sdata_out    |   14.714(R)|analyzer1_clock_OBUF|   0.000|
-ac97_synch        |   13.600(R)|analyzer1_clock_OBUF|   0.000|
-analyzer1_data<1> |   18.772(R)|analyzer1_clock_OBUF|   0.000|
-analyzer1_data<3> |   18.702(R)|analyzer1_clock_OBUF|   0.000|
-analyzer3_data<8> |   15.651(F)|analyzer1_clock_OBUF|   0.000|
-analyzer3_data<9> |   15.869(F)|analyzer1_clock_OBUF|   0.000|
-analyzer3_data<10>|   15.163(F)|analyzer1_clock_OBUF|   0.000|
-analyzer3_data<11>|   14.180(F)|analyzer1_clock_OBUF|   0.000|
-analyzer3_data<12>|   14.068(F)|analyzer1_clock_OBUF|   0.000|
-analyzer3_data<13>|   16.030(F)|analyzer1_clock_OBUF|   0.000|
-analyzer3_data<14>|   14.643(F)|analyzer1_clock_OBUF|   0.000|
+ac97_sdata_out    |   13.373(R)|analyzer1_clock_OBUF|   0.000|
+ac97_synch        |   13.479(R)|analyzer1_clock_OBUF|   0.000|
+analyzer1_data<1> |   19.144(R)|analyzer1_clock_OBUF|   0.000|
+analyzer1_data<3> |   18.750(R)|analyzer1_clock_OBUF|   0.000|
+analyzer3_data<8> |   15.489(F)|analyzer1_clock_OBUF|   0.000|
+analyzer3_data<9> |   16.201(F)|analyzer1_clock_OBUF|   0.000|
+analyzer3_data<10>|   14.614(F)|analyzer1_clock_OBUF|   0.000|
+analyzer3_data<11>|   14.852(F)|analyzer1_clock_OBUF|   0.000|
+analyzer3_data<12>|   14.746(F)|analyzer1_clock_OBUF|   0.000|
+analyzer3_data<13>|   15.861(F)|analyzer1_clock_OBUF|   0.000|
+analyzer3_data<14>|   14.663(F)|analyzer1_clock_OBUF|   0.000|
 analyzer3_data<15>|   14.854(F)|analyzer1_clock_OBUF|   0.000|
 ------------------+------------+--------------------+--------+
 
@@ -97,90 +97,90 @@ Clock clock_27mhz to Pad
                  | clk (edge) |                  | Clock  |
 Destination      |   to PAD   |Internal Clock(s) | Phase  |
 -----------------+------------+------------------+--------+
-analyzer1_data<0>|   13.354(R)|clock_27mhz_IBUFG |   0.000|
-analyzer3_clock  |   16.090(R)|clock_27mhz_IBUFG |   0.000|
-analyzer3_data<0>|   10.586(R)|clock_27mhz_IBUFG |   0.000|
-analyzer3_data<1>|   10.939(R)|clock_27mhz_IBUFG |   0.000|
-analyzer3_data<2>|   10.815(R)|clock_27mhz_IBUFG |   0.000|
-analyzer3_data<3>|   11.402(R)|clock_27mhz_IBUFG |   0.000|
-analyzer3_data<4>|   11.573(R)|clock_27mhz_IBUFG |   0.000|
-analyzer3_data<5>|   11.397(R)|clock_27mhz_IBUFG |   0.000|
-analyzer3_data<6>|   11.346(R)|clock_27mhz_IBUFG |   0.000|
-analyzer3_data<7>|   11.808(R)|clock_27mhz_IBUFG |   0.000|
-audio_reset_b    |   13.007(R)|clock_27mhz_IBUFG |   0.000|
-disp_clock       |   10.585(R)|clock_27mhz_IBUFG |   0.000|
-flash_address<1> |   10.972(R)|clock_27mhz_IBUFG |   0.000|
-flash_address<2> |    9.736(R)|clock_27mhz_IBUFG |   0.000|
-flash_address<3> |    9.774(R)|clock_27mhz_IBUFG |   0.000|
-flash_address<4> |    9.440(R)|clock_27mhz_IBUFG |   0.000|
-flash_address<5> |    9.768(R)|clock_27mhz_IBUFG |   0.000|
-flash_address<6> |    9.788(R)|clock_27mhz_IBUFG |   0.000|
-flash_address<7> |    9.469(R)|clock_27mhz_IBUFG |   0.000|
-flash_address<8> |    9.792(R)|clock_27mhz_IBUFG |   0.000|
-flash_address<9> |    9.893(R)|clock_27mhz_IBUFG |   0.000|
-flash_address<10>|    9.714(R)|clock_27mhz_IBUFG |   0.000|
-flash_address<11>|   10.209(R)|clock_27mhz_IBUFG |   0.000|
-flash_address<12>|    9.196(R)|clock_27mhz_IBUFG |   0.000|
-flash_address<13>|    9.794(R)|clock_27mhz_IBUFG |   0.000|
-flash_address<14>|    9.780(R)|clock_27mhz_IBUFG |   0.000|
-flash_address<15>|    9.811(R)|clock_27mhz_IBUFG |   0.000|
-flash_address<16>|    9.850(R)|clock_27mhz_IBUFG |   0.000|
-flash_address<17>|    9.825(R)|clock_27mhz_IBUFG |   0.000|
-flash_address<18>|    9.813(R)|clock_27mhz_IBUFG |   0.000|
-flash_address<19>|    9.938(R)|clock_27mhz_IBUFG |   0.000|
-flash_address<20>|   10.990(R)|clock_27mhz_IBUFG |   0.000|
-flash_address<21>|   10.251(R)|clock_27mhz_IBUFG |   0.000|
-flash_address<22>|   10.691(R)|clock_27mhz_IBUFG |   0.000|
-flash_address<23>|   10.171(R)|clock_27mhz_IBUFG |   0.000|
-flash_ce_b       |   10.558(R)|clock_27mhz_IBUFG |   0.000|
-flash_data<0>    |    9.791(R)|clock_27mhz_IBUFG |   0.000|
-flash_data<1>    |   10.453(R)|clock_27mhz_IBUFG |   0.000|
-flash_data<2>    |   10.661(R)|clock_27mhz_IBUFG |   0.000|
-flash_data<3>    |   10.665(R)|clock_27mhz_IBUFG |   0.000|
-flash_data<4>    |   10.443(R)|clock_27mhz_IBUFG |   0.000|
-flash_data<5>    |   10.379(R)|clock_27mhz_IBUFG |   0.000|
-flash_data<6>    |   10.474(R)|clock_27mhz_IBUFG |   0.000|
-flash_data<7>    |   10.475(R)|clock_27mhz_IBUFG |   0.000|
-flash_data<8>    |   10.132(R)|clock_27mhz_IBUFG |   0.000|
-flash_data<9>    |   11.367(R)|clock_27mhz_IBUFG |   0.000|
-flash_data<10>   |   10.020(R)|clock_27mhz_IBUFG |   0.000|
-flash_data<11>   |   10.026(R)|clock_27mhz_IBUFG |   0.000|
-flash_data<12>   |    9.803(R)|clock_27mhz_IBUFG |   0.000|
-flash_data<13>   |   10.154(R)|clock_27mhz_IBUFG |   0.000|
-flash_data<14>   |   10.156(R)|clock_27mhz_IBUFG |   0.000|
-flash_data<15>   |   12.002(R)|clock_27mhz_IBUFG |   0.000|
-flash_oe_b       |    8.781(R)|clock_27mhz_IBUFG |   0.000|
-flash_we_b       |    9.508(R)|clock_27mhz_IBUFG |   0.000|
-led<0>           |   13.625(R)|clock_27mhz_IBUFG |   0.000|
-led<1>           |   12.547(R)|clock_27mhz_IBUFG |   0.000|
-led<2>           |   12.103(R)|clock_27mhz_IBUFG |   0.000|
-vga_out_blank_b  |   16.121(R)|clock_65mhz       |   0.000|
-vga_out_blue<4>  |   18.290(R)|clock_27mhz_IBUFG |   0.000|
-                 |   14.145(R)|clock_65mhz       |   0.000|
-vga_out_blue<5>  |   17.846(R)|clock_27mhz_IBUFG |   0.000|
-                 |   14.165(R)|clock_65mhz       |   0.000|
-vga_out_blue<6>  |   20.338(R)|clock_27mhz_IBUFG |   0.000|
-                 |   15.246(R)|clock_65mhz       |   0.000|
-vga_out_blue<7>  |   16.772(R)|clock_27mhz_IBUFG |   0.000|
-                 |   14.170(R)|clock_65mhz       |   0.000|
-vga_out_green<4> |   20.027(R)|clock_27mhz_IBUFG |   0.000|
-                 |   15.900(R)|clock_65mhz       |   0.000|
-vga_out_green<5> |   19.143(R)|clock_27mhz_IBUFG |   0.000|
-                 |   15.460(R)|clock_65mhz       |   0.000|
-vga_out_green<6> |   22.260(R)|clock_27mhz_IBUFG |   0.000|
-                 |   16.244(R)|clock_65mhz       |   0.000|
-vga_out_green<7> |   20.046(R)|clock_27mhz_IBUFG |   0.000|
-                 |   15.613(R)|clock_65mhz       |   0.000|
-vga_out_hsync    |   14.208(R)|clock_65mhz       |   0.000|
-vga_out_red<4>   |   20.934(R)|clock_27mhz_IBUFG |   0.000|
-                 |   16.153(R)|clock_65mhz       |   0.000|
-vga_out_red<5>   |   19.748(R)|clock_27mhz_IBUFG |   0.000|
-                 |   14.885(R)|clock_65mhz       |   0.000|
-vga_out_red<6>   |   21.035(R)|clock_27mhz_IBUFG |   0.000|
-                 |   15.829(R)|clock_65mhz       |   0.000|
-vga_out_red<7>   |   20.398(R)|clock_27mhz_IBUFG |   0.000|
-                 |   15.747(R)|clock_65mhz       |   0.000|
-vga_out_vsync    |   14.535(R)|clock_65mhz       |   0.000|
+analyzer1_data<0>|   13.012(R)|clock_27mhz_IBUFG |   0.000|
+analyzer3_clock  |   19.082(R)|clock_27mhz_IBUFG |   0.000|
+analyzer3_data<0>|   13.246(R)|clock_27mhz_IBUFG |   0.000|
+analyzer3_data<1>|   13.781(R)|clock_27mhz_IBUFG |   0.000|
+analyzer3_data<2>|   13.877(R)|clock_27mhz_IBUFG |   0.000|
+analyzer3_data<3>|   14.160(R)|clock_27mhz_IBUFG |   0.000|
+analyzer3_data<4>|   13.942(R)|clock_27mhz_IBUFG |   0.000|
+analyzer3_data<5>|   15.421(R)|clock_27mhz_IBUFG |   0.000|
+analyzer3_data<6>|   13.429(R)|clock_27mhz_IBUFG |   0.000|
+analyzer3_data<7>|   13.902(R)|clock_27mhz_IBUFG |   0.000|
+audio_reset_b    |   14.318(R)|clock_27mhz_IBUFG |   0.000|
+disp_clock       |   10.533(R)|clock_27mhz_IBUFG |   0.000|
+flash_address<1> |   11.248(R)|clock_27mhz_IBUFG |   0.000|
+flash_address<2> |    9.392(R)|clock_27mhz_IBUFG |   0.000|
+flash_address<3> |    9.462(R)|clock_27mhz_IBUFG |   0.000|
+flash_address<4> |    9.764(R)|clock_27mhz_IBUFG |   0.000|
+flash_address<5> |    9.488(R)|clock_27mhz_IBUFG |   0.000|
+flash_address<6> |    9.852(R)|clock_27mhz_IBUFG |   0.000|
+flash_address<7> |    9.762(R)|clock_27mhz_IBUFG |   0.000|
+flash_address<8> |   10.371(R)|clock_27mhz_IBUFG |   0.000|
+flash_address<9> |   10.058(R)|clock_27mhz_IBUFG |   0.000|
+flash_address<10>|    9.706(R)|clock_27mhz_IBUFG |   0.000|
+flash_address<11>|    9.752(R)|clock_27mhz_IBUFG |   0.000|
+flash_address<12>|   10.145(R)|clock_27mhz_IBUFG |   0.000|
+flash_address<13>|    9.470(R)|clock_27mhz_IBUFG |   0.000|
+flash_address<14>|    9.790(R)|clock_27mhz_IBUFG |   0.000|
+flash_address<15>|    9.809(R)|clock_27mhz_IBUFG |   0.000|
+flash_address<16>|   10.100(R)|clock_27mhz_IBUFG |   0.000|
+flash_address<17>|    9.787(R)|clock_27mhz_IBUFG |   0.000|
+flash_address<18>|   10.198(R)|clock_27mhz_IBUFG |   0.000|
+flash_address<19>|   10.641(R)|clock_27mhz_IBUFG |   0.000|
+flash_address<20>|   10.950(R)|clock_27mhz_IBUFG |   0.000|
+flash_address<21>|   10.640(R)|clock_27mhz_IBUFG |   0.000|
+flash_address<22>|   10.877(R)|clock_27mhz_IBUFG |   0.000|
+flash_address<23>|    9.321(R)|clock_27mhz_IBUFG |   0.000|
+flash_ce_b       |   11.115(R)|clock_27mhz_IBUFG |   0.000|
+flash_data<0>    |    9.744(R)|clock_27mhz_IBUFG |   0.000|
+flash_data<1>    |   10.208(R)|clock_27mhz_IBUFG |   0.000|
+flash_data<2>    |   10.673(R)|clock_27mhz_IBUFG |   0.000|
+flash_data<3>    |   10.677(R)|clock_27mhz_IBUFG |   0.000|
+flash_data<4>    |    9.801(R)|clock_27mhz_IBUFG |   0.000|
+flash_data<5>    |    9.756(R)|clock_27mhz_IBUFG |   0.000|
+flash_data<6>    |   10.229(R)|clock_27mhz_IBUFG |   0.000|
+flash_data<7>    |   10.481(R)|clock_27mhz_IBUFG |   0.000|
+flash_data<8>    |    9.732(R)|clock_27mhz_IBUFG |   0.000|
+flash_data<9>    |   10.634(R)|clock_27mhz_IBUFG |   0.000|
+flash_data<10>   |   10.032(R)|clock_27mhz_IBUFG |   0.000|
+flash_data<11>   |   10.038(R)|clock_27mhz_IBUFG |   0.000|
+flash_data<12>   |    9.434(R)|clock_27mhz_IBUFG |   0.000|
+flash_data<13>   |   10.216(R)|clock_27mhz_IBUFG |   0.000|
+flash_data<14>   |   10.218(R)|clock_27mhz_IBUFG |   0.000|
+flash_data<15>   |   10.673(R)|clock_27mhz_IBUFG |   0.000|
+flash_oe_b       |    9.079(R)|clock_27mhz_IBUFG |   0.000|
+flash_we_b       |    9.121(R)|clock_27mhz_IBUFG |   0.000|
+led<0>           |   16.366(R)|clock_27mhz_IBUFG |   0.000|
+led<1>           |   20.809(R)|clock_27mhz_IBUFG |   0.000|
+led<2>           |   20.520(R)|clock_27mhz_IBUFG |   0.000|
+vga_out_blank_b  |   13.483(R)|clock_65mhz       |   0.000|
+vga_out_blue<4>  |   16.610(R)|clock_27mhz_IBUFG |   0.000|
+                 |   15.434(R)|clock_65mhz       |   0.000|
+vga_out_blue<5>  |   17.011(R)|clock_27mhz_IBUFG |   0.000|
+                 |   15.757(R)|clock_65mhz       |   0.000|
+vga_out_blue<6>  |   16.488(R)|clock_27mhz_IBUFG |   0.000|
+                 |   14.526(R)|clock_65mhz       |   0.000|
+vga_out_blue<7>  |   15.578(R)|clock_27mhz_IBUFG |   0.000|
+                 |   14.828(R)|clock_65mhz       |   0.000|
+vga_out_green<4> |   19.242(R)|clock_27mhz_IBUFG |   0.000|
+                 |   17.122(R)|clock_65mhz       |   0.000|
+vga_out_green<5> |   18.967(R)|clock_27mhz_IBUFG |   0.000|
+                 |   16.180(R)|clock_65mhz       |   0.000|
+vga_out_green<6> |   19.357(R)|clock_27mhz_IBUFG |   0.000|
+                 |   16.755(R)|clock_65mhz       |   0.000|
+vga_out_green<7> |   18.330(R)|clock_27mhz_IBUFG |   0.000|
+                 |   16.808(R)|clock_65mhz       |   0.000|
+vga_out_hsync    |   15.381(R)|clock_65mhz       |   0.000|
+vga_out_red<4>   |   19.115(R)|clock_27mhz_IBUFG |   0.000|
+                 |   17.402(R)|clock_65mhz       |   0.000|
+vga_out_red<5>   |   17.847(R)|clock_27mhz_IBUFG |   0.000|
+                 |   15.785(R)|clock_65mhz       |   0.000|
+vga_out_red<6>   |   19.162(R)|clock_27mhz_IBUFG |   0.000|
+                 |   17.314(R)|clock_65mhz       |   0.000|
+vga_out_red<7>   |   19.502(R)|clock_27mhz_IBUFG |   0.000|
+                 |   16.414(R)|clock_65mhz       |   0.000|
+vga_out_vsync    |   14.197(R)|clock_65mhz       |   0.000|
 -----------------+------------+------------------+--------+
 
 Clock to Setup on destination clock ac97_bit_clock
@@ -188,8 +188,8 @@ Clock to Setup on destination clock ac97_bit_clock
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-ac97_bit_clock |    8.095|         |   10.484|    4.141|
-clock_27mhz    |    3.174|         |         |         |
+ac97_bit_clock |    9.610|         |   12.325|    3.893|
+clock_27mhz    |    3.271|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 Clock to Setup on destination clock clock_27mhz
@@ -197,28 +197,28 @@ Clock to Setup on destination clock clock_27mhz
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-ac97_bit_clock |    3.881|         |         |         |
-clock_27mhz    |   19.765|         |         |         |
+ac97_bit_clock |    2.197|         |         |         |
+clock_27mhz    |   21.815|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 Pad to Pad
 ---------------+-------------------+---------+
 Source Pad     |Destination Pad    |  Delay  |
 ---------------+-------------------+---------+
-ac97_bit_clock |analyzer1_clock    |   17.071|
-ac97_sdata_in  |analyzer1_data<2>  |   14.667|
-clock_27mhz    |vga_out_pixel_clock|   11.447|
+ac97_bit_clock |analyzer1_clock    |   17.015|
+ac97_sdata_in  |analyzer1_data<2>  |   14.662|
+clock_27mhz    |vga_out_pixel_clock|   11.453|
 ---------------+-------------------+---------+
 
 
-Analysis completed Wed Nov 29 19:37:57 2017 
+Analysis completed Sun Dec  3 16:49:56 2017 
 --------------------------------------------------------------------------------
 
 Trace Settings:
 -------------------------
 Trace Settings 
 
-Peak Memory Usage: 384 MB
+Peak Memory Usage: 392 MB
 
 
 

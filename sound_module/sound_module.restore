@@ -846,6 +846,7 @@ proc restore { { project_dir "" } } {
       "normalmole_green_rom.xco" 
       "normalmole_image_rom.xco" 
       "normalmole_red_rom.xco" 
+      "sound_modules.v" 
       "test_fsm.v"}
 
   HandleException {
