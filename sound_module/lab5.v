@@ -2,39 +2,6 @@
 
 ///////////////////////////////////////////////////////////////////////////////
 //
-// Switch Debounce Module
-//
-///////////////////////////////////////////////////////////////////////////////
-
-module debounce_ara (
-  input wire reset, clock, noisy,
-  output reg clean
-);
-  reg [18:0] count;
-  reg new;
-
-  always @(posedge clock)
-    if (reset) begin
-      count <= 0;
-      new <= noisy;
-      clean <= noisy;
-    end
-    else if (noisy != new) begin
-      // noisy input changed, restart the .01 sec clock
-      new <= noisy;
-      count <= 0;
-    end
-    else if (count == 270000)
-      // noisy input stable for .01 secs, pass it along!
-      clean <= new;
-    else
-      // waiting for .01 sec to pass
-      count <= count+1;
-
-endmodule
-
-///////////////////////////////////////////////////////////////////////////////
-//
 // bi-directional monaural interface to AC97
 //
 ///////////////////////////////////////////////////////////////////////////////
@@ -694,7 +661,7 @@ module lab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 	timer game_start_delay(.clk(clock_27mhz), .start_timer(start_timer), .one_hz_enable(one_hz_enable),
 									.timer_value(timer_value), .expired(expired),
 									.displayed_counter(displayed_counter));
-	
+
 	// Generate random locations (a number 0-7)
 	wire [2:0] random_mole_location;
 	random moleloc(.clk(one_hz_enable), .reset(enter), .r(random_mole_location));
@@ -830,7 +797,8 @@ module lab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 				  .flash_byte_b(flash_byte_b),
 				  .flash_sts(flash_sts),
 				  .music_address(music_address),
-				  .game_state(display_state));
+				  .game_state(display_state),
+				  .diy_mode(diy_mode));
 
    // output useful things to the logic analyzer connectors
    assign analyzer1_clock = ac97_bit_clock;
@@ -843,6 +811,32 @@ module lab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
    assign analyzer3_clock = ready;
    assign analyzer3_data = {from_ac97_data, to_ac97_data};
 
+	//diy game module
+	wire full;
+	wire [959:0]diy_addresses;
+	wire [319:0]diy_locations;
+	mole_adressss_locations diy_addr_loc(.clock(clock_27mhz),
+														//.disp_blank(disp_blank),
+														//.disp_clock(disp_clock),
+														//.disp_data_out(disp_data_out), 
+														//.disp_rs(disp_rs), 
+														//.disp_ce_b(disp_ce_b),
+														//.disp_reset_b(disp_reset_b),
+													   .reset(reset),
+														.upleft(upleft),
+														.up(up),
+														.upright(upright),
+														.left(left),
+														.right(right),
+														.downleft(downleft),
+														.down(down),
+														.downright(downright),
+														.enter(enter),
+														.diy_mode(diy_mode),
+														.flash_address(flash_address),
+														.full(full),
+														.addresses(diy_addresses),
+														.locations(diy_locations));
 
 	/*
 	VICTORIA'S CODE
@@ -871,6 +865,7 @@ module lab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
    assign vga_out_vsync = vs;	
 
 endmodule
+
 
 
 /******************************************************************************/
