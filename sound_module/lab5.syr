@@ -110,8 +110,23 @@ Slice Utilization Ratio Delta      : 5
 *                          HDL Compilation                              *
 =========================================================================
 Compiling verilog file "test_fsm.v" in library work
-Compiling verilog file "sound_modules.v" in library work
+Compiling verilog file "flash_int.v" in library work
 Module <test_fsm> compiled
+Compiling verilog file "game_logic.v" in library work
+Module <flash_int> compiled
+Module <divider> compiled
+Module <timer> compiled
+Module <synchronize> compiled
+Module <debounce> compiled
+Module <random> compiled
+Module <interpret_input> compiled
+Module <mole> compiled
+Compiling verilog file "flash_manager.v" in library work
+Module <gameState> compiled
+Compiling verilog file "display_16hex.v" in library work
+Module <flash_manager> compiled
+Compiling verilog file "sound_modules.v" in library work
+Module <display_16hex> compiled
 Module <mole_adressss_locations> compiled
 Module <debounce_ara> compiled
 Module <sound_module> compiled
@@ -134,25 +149,11 @@ Module <ac97> compiled
 Module <ac97commands> compiled
 Module <tone750hz> compiled
 Module <lab5> compiled
-Module <divider> compiled
-Module <timer> compiled
-Module <synchronize> compiled
-Module <debounce> compiled
-Module <random> compiled
-Module <interpret_input> compiled
-Module <mole> compiled
-Module <gameState> compiled
 Module <display_string> compiled
 Module <ascii2dots> compiled
 Module <xvga> compiled
 Module <normalmole> compiled
-Compiling verilog file "flash_manager.v" in library work
 Module <displaymole> compiled
-Compiling verilog file "flash_int.v" in library work
-Module <flash_manager> compiled
-Compiling verilog file "display_16hex.v" in library work
-Module <flash_int> compiled
-Module <display_16hex> compiled
 No errors in compilation
 Analysis of file <"lab5.prj"> succeeded.
  
@@ -193,11 +194,9 @@ Analyzing hierarchy for module <gameState> in library <work> with parameters.
 	MOLE_WHACKED_SOUND = "1010"
 	RECORD_DIY_BEGIN = "1011"
 	RECORD_DIY_END = "1101"
-	RECORD_DIY_IN_PROGRESS = "1011"
+	RECORD_DIY_IN_PROGRESS = "1100"
 	REQUEST_MOLE = "0011"
 	SAFE_STEP_DELAY = "0111"
-
-Analyzing hierarchy for module <display_string> in library <work>.
 
 Analyzing hierarchy for module <lab5audio> in library <work>.
 
@@ -255,10 +254,10 @@ Analyzing hierarchy for module <displaymole> in library <work> with parameters.
 	y7 = "1000000000"
 	y8 = "1000000000"
 
+Analyzing hierarchy for module <display_string> in library <work>.
+
 Analyzing hierarchy for module <synchronize> in library <work> with parameters.
 	NSYNC = "00000000000000000000000000000010"
-
-Analyzing hierarchy for module <ascii2dots> in library <work>.
 
 Analyzing hierarchy for module <ac97> in library <work>.
 
@@ -280,6 +279,8 @@ Analyzing hierarchy for module <timer> in library <work> with parameters.
 Analyzing hierarchy for module <normalmole> in library <work> with parameters.
 	HEIGHT = "00000000000000000000000100000000"
 	WIDTH = "00000000000000000000000011010100"
+
+Analyzing hierarchy for module <ascii2dots> in library <work>.
 
 Analyzing hierarchy for module <flash_manager> in library <work> with parameters.
 	HOME = "000"
@@ -318,8 +319,8 @@ WARNING:Xst:2591 - "lab5.v" line 612: attribute on instance <CLK_FEEDBACK> overr
 *                            HDL Analysis                               *
 =========================================================================
 Analyzing top module <lab5>.
-WARNING:Xst:852 - "lab5.v" line 781: Unconnected input port 'switch' of instance 's' is tied to GND.
-WARNING:Xst:852 - "lab5.v" line 818: Unconnected input port 'switch' of instance 'diy_addr_loc' is tied to GND.
+WARNING:Xst:852 - "lab5.v" line 712: Unconnected input port 'switch' of instance 's' is tied to GND.
+WARNING:Xst:852 - "lab5.v" line 749: Unconnected input port 'switch' of instance 'diy_addr_loc' is tied to GND.
 Module <lab5> is correct for synthesis.
  
     Set user-defined property "INIT =  FFFF" for instance <reset_sr> in unit <lab5>.
@@ -361,7 +362,7 @@ Analyzing module <random> in library <work>.
 Module <random> is correct for synthesis.
  
 Analyzing module <interpret_input> in library <work>.
-WARNING:Xst:1465 - "lab5.v" line 1046: Exactly not equal expression will be synthesized as a not equal expression, simulation mismatch is possible. 
+WARNING:Xst:1465 - "game_logic.v" line 192: Exactly not equal expression will be synthesized as a not equal expression, simulation mismatch is possible. 
 Module <interpret_input> is correct for synthesis.
  
 Analyzing module <mole> in library <work>.
@@ -381,18 +382,11 @@ Analyzing module <gameState> in library <work>.
 	MOLE_WHACKED_SOUND = 4'b1010
 	RECORD_DIY_BEGIN = 4'b1011
 	RECORD_DIY_END = 4'b1101
-	RECORD_DIY_IN_PROGRESS = 4'b1011
+	RECORD_DIY_IN_PROGRESS = 4'b1100
 	REQUEST_MOLE = 4'b0011
 	SAFE_STEP_DELAY = 4'b0111
-WARNING:Xst:1465 - "lab5.v" line 1217: Exactly not equal expression will be synthesized as a not equal expression, simulation mismatch is possible. 
+WARNING:Xst:1465 - "game_logic.v" line 363: Exactly not equal expression will be synthesized as a not equal expression, simulation mismatch is possible. 
 Module <gameState> is correct for synthesis.
- 
-Analyzing module <display_string> in library <work>.
-INFO:Xst:1433 - Contents of array <rdots> may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
-Module <display_string> is correct for synthesis.
- 
-Analyzing module <ascii2dots> in library <work>.
-Module <ascii2dots> is correct for synthesis.
  
 Analyzing module <lab5audio> in library <work>.
 Module <lab5audio> is correct for synthesis.
@@ -547,6 +541,13 @@ Analyzing module <normalmole> in library <work>.
 	WIDTH = 32'sb00000000000000000000000011010100
 Module <normalmole> is correct for synthesis.
  
+Analyzing module <display_string> in library <work>.
+INFO:Xst:1433 - Contents of array <rdots> may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
+Module <display_string> is correct for synthesis.
+ 
+Analyzing module <ascii2dots> in library <work>.
+Module <ascii2dots> is correct for synthesis.
+ 
 
 =========================================================================
 *                           HDL Synthesis                               *
@@ -566,7 +567,7 @@ INFO:Xst:2679 - Register <diy_mode_done> in unit <sound_module> has a constant v
 INFO:Xst:2679 - Register <writemode> in unit <flash_reader> has a constant value of 0 during circuit operation. The register is replaced by logic.
 
 Synthesizing Unit <divider>.
-    Related source file is "lab5.v".
+    Related source file is "game_logic.v".
     Found 32-bit up counter for signal <counter>.
     Found 1-bit register for signal <enable>.
     Summary:
@@ -576,7 +577,7 @@ Unit <divider> synthesized.
 
 
 Synthesizing Unit <timer>.
-    Related source file is "lab5.v".
+    Related source file is "game_logic.v".
     Found finite state machine <FSM_0> for signal <state>.
     -----------------------------------------------------------------------
     | States             | 3                                              |
@@ -589,7 +590,7 @@ Synthesizing Unit <timer>.
     | Implementation     | LUT                                            |
     -----------------------------------------------------------------------
     Found 4-bit register for signal <counter>.
-    Found 4-bit subtractor for signal <counter$addsub0000> created at line 934.
+    Found 4-bit subtractor for signal <counter$addsub0000> created at line 80.
     Summary:
 	inferred   1 Finite State Machine(s).
 	inferred   4 D-type flip-flop(s).
@@ -598,21 +599,21 @@ Unit <timer> synthesized.
 
 
 Synthesizing Unit <random>.
-    Related source file is "lab5.v".
+    Related source file is "game_logic.v".
     Found 4-bit register for signal <temp_r>.
-    Found 1-bit xor2 for signal <temp_r$xor0000> created at line 1011.
+    Found 1-bit xor2 for signal <temp_r$xor0000> created at line 157.
     Summary:
 	inferred   4 D-type flip-flop(s).
 Unit <random> synthesized.
 
 
 Synthesizing Unit <interpret_input>.
-    Related source file is "lab5.v".
+    Related source file is "game_logic.v".
 WARNING:Xst:647 - Input <reset> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
     Found 8x8-bit ROM for signal <location>.
     Found 1-bit register for signal <temp_misstep>.
     Found 1-bit register for signal <temp_whacked>.
-    Found 8-bit comparator equal for signal <temp_whacked$cmp_eq0000> created at line 1044.
+    Found 8-bit comparator equal for signal <temp_whacked$cmp_eq0000> created at line 190.
     Summary:
 	inferred   1 ROM(s).
 	inferred   2 D-type flip-flop(s).
@@ -621,12 +622,11 @@ Unit <interpret_input> synthesized.
 
 
 Synthesizing Unit <mole>.
-    Related source file is "lab5.v".
-WARNING:Xst:647 - Input <one_hz_enable> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+    Related source file is "game_logic.v".
     Found 368-bit register for signal <addresses>.
-    Found 23-bit comparator not equal for signal <addresses$cmp_ne0000> created at line 1121.
+    Found 23-bit comparator not equal for signal <addresses$cmp_ne0000> created at line 266.
     Found 1-bit register for signal <state>.
-    Found 23-bit comparator equal for signal <state$cmp_eq0000> created at line 1120.
+    Found 23-bit comparator equal for signal <state$cmp_eq0000> created at line 265.
 INFO:Xst:738 - HDL ADVISOR - 368 flip-flops were inferred for signal <addresses>. You may be trying to describe a RAM in a way that is incompatible with block and distributed RAM resources available on Xilinx devices, or with a specific template that is not supported. Please review the Xilinx resources documentation and the XST user manual for coding guidelines. Taking advantage of RAM resources will lead to improved device usage and reduced synthesis time.
     Summary:
 	inferred 369 D-type flip-flop(s).
@@ -635,7 +635,7 @@ Unit <mole> synthesized.
 
 
 Synthesizing Unit <gameState>.
-    Related source file is "lab5.v".
+    Related source file is "game_logic.v".
 WARNING:Xst:647 - Input <diy_mode> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
     Found finite state machine <FSM_1> for signal <state>.
     -----------------------------------------------------------------------
@@ -648,6 +648,7 @@ WARNING:Xst:647 - Input <diy_mode> is never used. This port will be preserved an
     | Encoding           | automatic                                      |
     | Implementation     | LUT                                            |
     -----------------------------------------------------------------------
+WARNING:Xst:737 - Found 3-bit latch for signal <next_mole_location>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
     Found 4-bit comparator not equal for signal <start_timer>.
     Found 3-bit register for signal <current_mole_location>.
     Found 2-bit down counter for signal <temp_lives>.
@@ -676,20 +677,12 @@ Unit <xvga> synthesized.
 
 
 Synthesizing Unit <synchronize>.
-    Related source file is "lab5.v".
+    Related source file is "game_logic.v".
     Found 1-bit register for signal <out>.
     Found 1-bit register for signal <sync<0>>.
     Summary:
 	inferred   2 D-type flip-flop(s).
 Unit <synchronize> synthesized.
-
-
-Synthesizing Unit <ascii2dots>.
-    Related source file is "lab5.v".
-    Found 128x40-bit ROM for signal <char_dots$mux0000>.
-    Summary:
-	inferred   1 ROM(s).
-Unit <ascii2dots> synthesized.
 
 
 Synthesizing Unit <ac97>.
@@ -822,55 +815,24 @@ Synthesizing Unit <coeffs31>.
 Unit <coeffs31> synthesized.
 
 
-Synthesizing Unit <debounce>.
+Synthesizing Unit <ascii2dots>.
     Related source file is "lab5.v".
+    Found 128x40-bit ROM for signal <char_dots$mux0000>.
+    Summary:
+	inferred   1 ROM(s).
+Unit <ascii2dots> synthesized.
+
+
+Synthesizing Unit <debounce>.
+    Related source file is "game_logic.v".
     Found 20-bit up counter for signal <count>.
-    Found 1-bit xor2 for signal <count$xor0000> created at line 985.
+    Found 1-bit xor2 for signal <count$xor0000> created at line 131.
     Found 1-bit register for signal <new>.
     Found 1-bit register for signal <temp_clean>.
     Summary:
 	inferred   1 Counter(s).
 	inferred   2 D-type flip-flop(s).
 Unit <debounce> synthesized.
-
-
-Synthesizing Unit <display_string>.
-    Related source file is "lab5.v".
-    Found finite state machine <FSM_2> for signal <state>.
-    -----------------------------------------------------------------------
-    | States             | 7                                              |
-    | Transitions        | 11                                             |
-    | Inputs             | 3                                              |
-    | Outputs            | 7                                              |
-    | Clock              | clock (rising_edge)                            |
-    | Reset              | dreset (positive)                              |
-    | Reset type         | synchronous                                    |
-    | Reset State        | 00000000                                       |
-    | Encoding           | automatic                                      |
-    | Implementation     | LUT                                            |
-    -----------------------------------------------------------------------
-    Found 1-bit register for signal <disp_ce_b>.
-    Found 1-bit register for signal <disp_data_out>.
-    Found 1-bit register for signal <disp_rs>.
-    Found 1-bit register for signal <disp_reset_b>.
-    Found 1-bit 40-to-1 multiplexer for signal <$varindex0000> created at line 1393.
-    Found 8-bit 16-to-1 multiplexer for signal <ascii>.
-    Found 4-bit register for signal <char_index>.
-    Found 4-bit subtractor for signal <char_index$addsub0000> created at line 1399.
-    Found 1-bit register for signal <clock>.
-    Found 32-bit register for signal <control>.
-    Found 5-bit up counter for signal <count>.
-    Found 10-bit register for signal <dot_index>.
-    Found 10-bit addsub for signal <dot_index$share0000> created at line 1326.
-    Found 40-bit register for signal <rdots>.
-    Found 8-bit down counter for signal <reset_count>.
-    Summary:
-	inferred   1 Finite State Machine(s).
-	inferred   2 Counter(s).
-	inferred  91 D-type flip-flop(s).
-	inferred   2 Adder/Subtractor(s).
-	inferred   9 Multiplexer(s).
-Unit <display_string> synthesized.
 
 
 Synthesizing Unit <lab5audio>.
@@ -909,6 +871,45 @@ WARNING:Xst:646 - Signal <buttons> is assigned but never used. This unconnected 
 	inferred 1283 D-type flip-flop(s).
 	inferred   2 Comparator(s).
 Unit <mole_adressss_locations> synthesized.
+
+
+Synthesizing Unit <display_string>.
+    Related source file is "lab5.v".
+    Found finite state machine <FSM_2> for signal <state>.
+    -----------------------------------------------------------------------
+    | States             | 7                                              |
+    | Transitions        | 11                                             |
+    | Inputs             | 3                                              |
+    | Outputs            | 7                                              |
+    | Clock              | clock (rising_edge)                            |
+    | Reset              | dreset (positive)                              |
+    | Reset type         | synchronous                                    |
+    | Reset State        | 00000000                                       |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 1-bit register for signal <disp_ce_b>.
+    Found 1-bit register for signal <disp_data_out>.
+    Found 1-bit register for signal <disp_rs>.
+    Found 1-bit register for signal <disp_reset_b>.
+    Found 1-bit 40-to-1 multiplexer for signal <$varindex0000> created at line 1030.
+    Found 8-bit 16-to-1 multiplexer for signal <ascii>.
+    Found 4-bit register for signal <char_index>.
+    Found 4-bit subtractor for signal <char_index$addsub0000> created at line 1036.
+    Found 1-bit register for signal <clock>.
+    Found 32-bit register for signal <control>.
+    Found 5-bit up counter for signal <count>.
+    Found 10-bit register for signal <dot_index>.
+    Found 10-bit addsub for signal <dot_index$share0000> created at line 963.
+    Found 40-bit register for signal <rdots>.
+    Found 8-bit down counter for signal <reset_count>.
+    Summary:
+	inferred   1 Finite State Machine(s).
+	inferred   2 Counter(s).
+	inferred  91 D-type flip-flop(s).
+	inferred   2 Adder/Subtractor(s).
+	inferred   9 Multiplexer(s).
+Unit <display_string> synthesized.
 
 
 Synthesizing Unit <fir31>.
@@ -963,18 +964,18 @@ Unit <flash_manager> synthesized.
 
 Synthesizing Unit <normalmole>.
     Related source file is "lab5.v".
-WARNING:Xst:643 - "lab5.v" line 1622: The result of a 11x10-bit multiplication is partially used. Only the 16 least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
+WARNING:Xst:643 - "lab5.v" line 1259: The result of a 11x10-bit multiplication is partially used. Only the 16 least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
     Found 24-bit register for signal <pixel>.
-    Found 11-bit adder carry out for signal <add0000$addsub0000> created at line 1617.
-    Found 10-bit adder carry out for signal <add0001$addsub0000> created at line 1617.
+    Found 11-bit adder carry out for signal <add0000$addsub0000> created at line 1254.
+    Found 10-bit adder carry out for signal <add0001$addsub0000> created at line 1254.
     Found 16-bit adder for signal <image_addr>.
-    Found 11-bit subtractor for signal <image_addr$addsub0000> created at line 1622.
-    Found 11x10-bit multiplier for signal <image_addr$mult0001> created at line 1622.
-    Found 13-bit subtractor for signal <image_addr$sub0000> created at line 1622.
-    Found 11-bit comparator greatequal for signal <pixel$cmp_ge0000> created at line 1617.
-    Found 10-bit comparator greatequal for signal <pixel$cmp_ge0001> created at line 1617.
-    Found 12-bit comparator less for signal <pixel$cmp_lt0000> created at line 1617.
-    Found 11-bit comparator less for signal <pixel$cmp_lt0001> created at line 1617.
+    Found 11-bit subtractor for signal <image_addr$addsub0000> created at line 1259.
+    Found 11x10-bit multiplier for signal <image_addr$mult0001> created at line 1259.
+    Found 13-bit subtractor for signal <image_addr$sub0000> created at line 1259.
+    Found 11-bit comparator greatequal for signal <pixel$cmp_ge0000> created at line 1254.
+    Found 10-bit comparator greatequal for signal <pixel$cmp_ge0001> created at line 1254.
+    Found 12-bit comparator less for signal <pixel$cmp_lt0000> created at line 1254.
+    Found 11-bit comparator less for signal <pixel$cmp_lt0001> created at line 1254.
     Summary:
 	inferred  24 D-type flip-flop(s).
 	inferred   5 Adder/Subtractor(s).
@@ -1372,14 +1373,14 @@ WARNING:Xst:646 - Signal <feedback> is assigned but never used. This unconnected
 WARNING:Xst:646 - Signal <diy_locations> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <diy_addresses> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <displayed_counter> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-    Found 8x16-bit ROM for signal <displayed_mole_location$mux0000> created at line 723.
+    Found 8x16-bit ROM for signal <displayed_mole_location$mux0000> created at line 825.
     Found 16-bit register for signal <displayed_mole_location>.
     Found 48-bit register for signal <lives_display>.
-    Found 6-bit adder for signal <lives_display$add0000> created at line 740.
-    Found 2-bit comparator greater for signal <lives_display$cmp_gt0000> created at line 739.
+    Found 6-bit adder for signal <lives_display$add0000> created at line 842.
+    Found 2-bit comparator greater for signal <lives_display$cmp_gt0000> created at line 841.
     Found 48-bit 4-to-1 multiplexer for signal <lives_display$mux0000>.
-    Found 6-bit adder for signal <string$add0000> created at line 750.
-    Found 8-bit adder for signal <string$add0001> created at line 750.
+    Found 6-bit adder for signal <string$add0000> created at line 850.
+    Found 8-bit adder for signal <string$add0001> created at line 850.
     Found 1-bit register for signal <toggler>.
     Summary:
 	inferred   1 ROM(s).
@@ -1458,6 +1459,8 @@ Macro Statistics
  5-bit register                                        : 1
  8-bit register                                        : 6
  960-bit register                                      : 1
+# Latches                                              : 1
+ 3-bit latch                                           : 1
 # Comparators                                          : 43
  10-bit comparator greatequal                          : 1
  11-bit comparator greatequal                          : 1
@@ -3182,6 +3185,8 @@ Macro Statistics
  18-bit up accumulator                                 : 2
 # Registers                                            : 2392
  Flip-Flops                                            : 2392
+# Latches                                              : 1
+ 3-bit latch                                           : 1
 # Comparators                                          : 43
  10-bit comparator greatequal                          : 1
  11-bit comparator greatequal                          : 1
@@ -3281,21 +3286,21 @@ Optimizing unit <timer> ...
 
 Optimizing unit <mole> ...
 
-Optimizing unit <gameState> ...
-
 Optimizing unit <xvga> ...
-
-Optimizing unit <ascii2dots> ...
 
 Optimizing unit <ac97> ...
 
 Optimizing unit <ac97commands> ...
 
+Optimizing unit <ascii2dots> ...
+
 Optimizing unit <normalmole> ...
 
-Optimizing unit <display_string> ...
+Optimizing unit <gameState> ...
 
 Optimizing unit <mole_adressss_locations> ...
+
+Optimizing unit <display_string> ...
 
 Optimizing unit <fir31> ...
 
@@ -4722,6 +4727,9 @@ Building and optimizing final netlist ...
 INFO:Xst:2261 - The FF/Latch <a/ac97/l_cmd_data_14> in Unit <lab5> is equivalent to the following 5 FFs/Latches, which will be removed : <a/ac97/l_cmd_data_13> <a/ac97/l_cmd_data_12> <a/ac97/l_cmd_data_6> <a/ac97/l_cmd_data_5> <a/ac97/l_cmd_data_4> 
 INFO:Xst:2261 - The FF/Latch <a/ac97/l_cmd_data_16> in Unit <lab5> is equivalent to the following FF/Latch, which will be removed : <a/ac97/l_cmd_data_8> 
 Found area constraint ratio of 100 (+ 5) on block lab5, actual ratio is 3.
+FlipFlop game/current_mole_location_2 has been replicated 1 time(s) to handle iob=true attribute.
+FlipFlop game/current_mole_location_1 has been replicated 1 time(s) to handle iob=true attribute.
+FlipFlop game/current_mole_location_0 has been replicated 1 time(s) to handle iob=true attribute.
 
 Final Macro Processing ...
 
@@ -4761,8 +4769,8 @@ Unit <lab5> processed.
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 955
- Flip-Flops                                            : 955
+# Registers                                            : 958
+ Flip-Flops                                            : 958
 # Shift Registers                                      : 29
  13-bit shift register                                 : 2
  15-bit shift register                                 : 6
@@ -4801,29 +4809,30 @@ Design Statistics
 # IOs                              : 576
 
 Cell Usage :
-# BELS                             : 3066
+# BELS                             : 3065
 #      GND                         : 5
-#      INV                         : 83
+#      INV                         : 84
 #      LUT1                        : 318
-#      LUT2                        : 303
-#      LUT3                        : 335
-#      LUT4                        : 822
+#      LUT2                        : 299
+#      LUT3                        : 337
+#      LUT4                        : 823
 #      MUXCY                       : 590
-#      MUXF5                       : 176
+#      MUXF5                       : 175
 #      MUXF6                       : 17
 #      MUXF7                       : 3
 #      MUXF8                       : 1
 #      VCC                         : 5
 #      XORCY                       : 408
-# FlipFlops/Latches                : 1031
-#      FD                          : 57
-#      FDE                         : 400
+# FlipFlops/Latches                : 1037
+#      FD                          : 63
+#      FDE                         : 397
 #      FDE_1                       : 8
 #      FDR                         : 86
 #      FDRE                        : 370
 #      FDRS                        : 14
 #      FDS                         : 8
 #      FDSE                        : 88
+#      LDE_1                       : 3
 # RAMS                             : 57
 #      RAM32X1D                    : 8
 #      RAMB16_S1                   : 32
@@ -4852,14 +4861,15 @@ Device utilization summary:
 
 Selected Device : 2v6000bf957-4 
 
- Number of Slices:                     1097  out of  33792     3%  
- Number of Slice Flip Flops:           1031  out of  67584     1%  
+ Number of Slices:                     1098  out of  33792     3%  
+ Number of Slice Flip Flops:           1034  out of  67584     1%  
  Number of 4 input LUTs:               1918  out of  67584     2%  
     Number used as logic:              1861
     Number used as Shift registers:      25
     Number used as RAMs:                 32
  Number of IOs:                         576
  Number of bonded IOBs:                 269  out of    684    39%  
+    IOB Flip Flops:                       3
  Number of BRAMs:                        49  out of    144    34%  
  Number of MULT18X18s:                    2  out of    144     1%  
  Number of GCLKs:                         4  out of     16    25%  
@@ -4886,10 +4896,11 @@ Clock Information:
 -----------------------------------+----------------------------------------------------------------------------------------------------------------+-------+
 Clock Signal                       | Clock buffer(FF name)                                                                                          | Load  |
 -----------------------------------+----------------------------------------------------------------------------------------------------------------+-------+
-clock_27mhz                        | IBUFG+BUFG                                                                                                     | 881   |
+clock_27mhz                        | IBUFG+BUFG                                                                                                     | 884   |
 one_hz_div/enable                  | NONE(moleloc/temp_r_3)                                                                                         | 4     |
 clock_27mhz                        | vclk1:CLKFX                                                                                                    | 58    |
 ac97_bit_clock                     | IBUF+BUFG                                                                                                      | 62    |
+db_e/temp_clean                    | NONE(game/next_mole_location_2)                                                                                | 3     |
 debug_display/clock1               | BUFG                                                                                                           | 76    |
 displaymole1/mole1/rom1/BU2/dbiterr| NONE(displaymole1/mole1/rom1/BU2/U0/blk_mem_generator/valid.cstr/ramloop[13].ram.r/v2_init.ram/dpram.dp1x1.ram)| 14    |
 -----------------------------------+----------------------------------------------------------------------------------------------------------------+-------+
@@ -4905,7 +4916,7 @@ Speed Grade: -4
 
    Minimum period: 63.186ns (Maximum Frequency: 15.826MHz)
    Minimum input arrival time before clock: 3.804ns
-   Maximum output required time after clock: 8.911ns
+   Maximum output required time after clock: 8.916ns
    Maximum combinational path delay: 5.887ns
 
 Timing Detail:
@@ -4915,7 +4926,7 @@ All values displayed in nanoseconds (ns)
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clock_27mhz'
   Clock period: 63.186ns (frequency: 15.826MHz)
-  Total number of paths / destination ports: 313736 / 2466
+  Total number of paths / destination ports: 313735 / 2463
 -------------------------------------------------------------------------
 Delay:               15.797ns (Levels of Logic = 10)
   Source:            displaymole1/y_8 (FF)
@@ -5066,7 +5077,7 @@ Offset:              2.194ns (Levels of Logic = 1)
 Timing constraint: Default OFFSET OUT AFTER for Clock 'clock_27mhz'
   Total number of paths / destination ports: 130 / 72
 -------------------------------------------------------------------------
-Offset:              8.911ns (Levels of Logic = 3)
+Offset:              8.916ns (Levels of Logic = 3)
   Source:            game/state_FFd1 (FF)
   Destination:       vga_out_red<7> (PAD)
   Source Clock:      clock_27mhz rising
@@ -5075,13 +5086,13 @@ Offset:              8.911ns (Levels of Logic = 3)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FD:C->Q              31   0.568   1.370  game/state_FFd1 (game/state_FFd1)
+     FD:C->Q              33   0.568   1.375  game/state_FFd1 (game/state_FFd1)
      LUT4:I0->O           12   0.439   1.216  displaymole1/pixel_or00001 (displaymole1/pixel_or0000)
      LUT2:I0->O            1   0.439   0.517  displaymole1/pixel<7>1 (pixel<7>)
      OBUF:I->O                 4.361          vga_out_blue_7_OBUF (vga_out_blue<7>)
     ----------------------------------------
-    Total                      8.911ns (5.807ns logic, 3.104ns route)
-                                       (65.2% logic, 34.8% route)
+    Total                      8.916ns (5.807ns logic, 3.109ns route)
+                                       (65.1% logic, 34.9% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'debug_display/clock1'
@@ -5143,12 +5154,12 @@ Delay:               5.887ns (Levels of Logic = 2)
 
 
 Total REAL time to Xst completion: 25.00 secs
-Total CPU time to Xst completion: 24.40 secs
+Total CPU time to Xst completion: 24.88 secs
  
 --> 
 
 
-Total memory usage is 565496 kilobytes
+Total memory usage is 565468 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings : 3229 (   0 filtered)

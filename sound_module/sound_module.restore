@@ -840,6 +840,7 @@ proc restore { { project_dir "" } } {
       "display_16hex.v" 
       "flash_int.v" 
       "flash_manager.v" 
+      "game_logic.v" 
       "lab5.v" 
       "labkit.ucf" 
       "normalmole_blue_rom.xco" 
