@@ -5,7 +5,7 @@
 module mole_adressss_locations (
 	input wire clock,
 	input wire reset,
-	input wire switch,
+	input wire [7:0]switch,
 	input wire upleft,
 	input wire up,
 	input wire upright,
@@ -16,76 +16,128 @@ module mole_adressss_locations (
 	input wire downright,
 	input wire enter,
 	input wire diy_mode,
-	//input wire disp_data_in,			 // LED display signal
-   //output wire disp_blank,           // LED display signal
-   //output wire disp_clock,           // LED display signal
-   //output wire disp_rs,              // LED display signal
-   //output wire disp_ce_b,            // LED display signal
-   //output wire disp_reset_b,         // LED display signal
-   //output wire disp_data_out,        // LED display signal
+	input wire one_hz_enable,
+	input wire disp_data_in,			 // LED display signal
+   output wire disp_blank,           // LED display signal
+   output wire disp_clock,           // LED display signal
+   output wire disp_rs,              // LED display signal
+   output wire disp_ce_b,            // LED display signal
+   output wire disp_reset_b,         // LED display signal
+   output wire disp_data_out,        // LED display signal
 	input wire [23:0] flash_address,
 	output reg full,
-	output reg [959:0]addresses, //to store 40 24-bit addresses
-	output reg [319:0] locations); //to store 40 8-bit locations
+	output reg [119:0]addresses, //24-bit addresses, 5 of them
+	output reg [19:0] locations);	//4-bit locations, 5 of them
 	
-	reg [5:0] counter;
-	initial counter = 0;
-	wire buttons;
-	assign buttons = {upleft, up, upright, left, right, downleft, down, downright};
-	// timer for delay between button presses
-	wire expired;
+	parameter MAX_NUMBER_ITEMS = 4;
+	parameter INITIAL_STATE = 3'd0;
+	parameter DIY_START = 3'd1;
+	parameter DIY_BUTTON = 3'd2;
+	parameter DIY_BUTTON_WAIT = 3'd3;
+	parameter DIY_BUTTON_WAIT_DONE1 = 3'd4;
+	parameter DIY_BUTTON_WAIT_DONE2 = 3'd5;
+	parameter DIY_FULL = 3'd6;
+	
+	reg [2:0] state;
+	initial state = 0;
+	reg [2:0] next_state;
+	
+	reg button;
+	reg [7:0] button_bits;
+	reg [3:0] timer_value = 2;
+	reg start_timer;
+	wire timer_expired;
 	wire [3:0] displayed_counter;
-	wire button_press;
-	assign button_press = (upleft | up | upright | left | right | downleft| down | downright);
-	reg [3:0] timer_value;
-	initial timer_value = 2; // wait for 2 seconds before recording button presses
-	timer buttons_delay(.clk(clock_27mhz), .start_timer(button_press), .one_hz_enable(one_hz_enable),
-									.timer_value(timer_value), .expired(expired),
-									.displayed_counter(displayed_counter));
-	reg time_long_enough;
-	reg last_expired;
-	always @ (posedge clock) begin
-		if(reset) begin
-			time_long_enough <= reset;
-			addresses <= 0;
-			locations <= 0;
-			counter <= 0;
-			full <= 0;
-		end
-		else begin
-			last_expired <= expired;
-			if (!last_expired & expired) begin //expired went from 0 to 1 then enough time has passed
-				time_long_enough <= 1;
-			end
-			else if (last_expired & !expired) begin //if expired went from 1 to 0 then reset time_long_enough
-				time_long_enough <= 0;
-			end
-			if((counter < 40) & diy_mode) begin
-				if(counter == 0) begin
-					//first button press, record without waiting for timer expired
-					//addresses and locations are shift registers
-					//if any of the 8 buttons are pressed
-					if (button_press) begin
-						addresses <= {addresses[936:0], flash_address};
-						locations <= {locations[311:0],upleft, up, upright, left, right, downleft, down, downright};
-						counter <= counter + 1;
-					end
-				end
-				else if (time_long_enough) begin
-					if(button_press) begin
-						addresses <= {addresses[936:0], flash_address};
-						locations <= {locations[311:0],upleft, up, upright, left, right, downleft, down, downright};
-						counter <= counter + 1;
-					end
-				end
-			end
-			else begin
-				full <= 1;
-			end
-		end
+	
+	wire increment;
+	debounce_ara db_diy(.clock(clock_27mhz), .reset(reset), .noisy(switch[2]), .clean(increment));
+
+	timer diy_timer(.clk(clock),
+						 .start_timer(start_timer),
+						 .one_hz_enable(one_hz_enable),
+						 .timer_value(timer_value),
+						 .expired(expired),
+						 .displayed_counter(displayed_counter));
+						 
+
+	
+	reg [3:0] location;
+	reg [23:0] address;
+	reg [23:0]address_memory[3:0]; //4 24-bit words
+	reg [3:0] location_memory[3:0];// 4 4-bit words
+	reg [2:0] items;
+	reg[2:0] counts;
+	
+	reg [23:0] disp_address;
+	reg [3:0] disp_loc;
+	wire [63:0] display_data;
+	assign display_data = {disp_address,disp_loc,1'b0, state, 1'b0,counts};
+	
+	display_16hex disp(.reset(switch[3]), .clock_27mhz(clock), .data_in(display_data), 
+		                .disp_rs(disp_rs), .disp_ce_b(disp_ce_b), .disp_blank(disp_blank),
+							 .disp_reset_b(disp_reset_b), .disp_data_out(disp_data_out), .disp_clock(disp_clock));
+	reg last_right;
+	always @(posedge clock) begin
+		state <= next_state;
+		last_right <= increment;
+		button = (upleft | up | upright | left | right | downleft | down | downright);
+		button_bits = {upleft, up, upright, left, right, downleft, down, downright};
+		case(state)
+			INITIAL_STATE: begin 
+									next_state <= (!diy_mode) ? INITIAL_STATE : DIY_START;
+									items <= 0;
+									full <= 0;
+								end
+			DIY_START: begin
+								next_state <= (!diy_mode) ? INITIAL_STATE : (full) ? DIY_FULL : (button) ? DIY_BUTTON : DIY_START;
+							end
+			DIY_BUTTON: begin
+								next_state <= (!diy_mode) ? INITIAL_STATE : DIY_BUTTON_WAIT;
+								address_memory[items] <= flash_address;
+								items <= items + 1;
+								start_timer <= 1;
+								case(button_bits)
+									8'b10000000: location_memory[items]  <= 4'd0;
+									8'b01000000: location_memory[items]  <= 4'd1;
+									8'b00100000: location_memory[items]  <= 4'd2;
+									8'b00010000: location_memory[items]  <= 4'd3;
+									8'b00001000: location_memory[items]  <= 4'd4;
+									8'b00000100: location_memory[items]  <= 4'd5;
+									8'b00000010: location_memory[items]  <= 4'd6;
+									8'b00000001: location_memory[items]  <= 4'd7;
+									default: location_memory[items] <= 4'd7;
+								endcase
+							end
+			DIY_BUTTON_WAIT: begin
+										next_state <= (!diy_mode) ? INITIAL_STATE : (expired) ? DIY_BUTTON_WAIT_DONE1: DIY_BUTTON_WAIT;
+										start_timer <= 0;
+								  end
+			DIY_BUTTON_WAIT_DONE1: begin
+												next_state <= (!diy_mode) ? INITIAL_STATE : (items == 3) ? DIY_FULL : DIY_BUTTON_WAIT_DONE2;
+												counts <= 0;
+										  end
+			DIY_BUTTON_WAIT_DONE2: begin
+												counts <= counts + 1;
+												addresses <= {address_memory[items-counts], addresses[119:24]};
+												locations <= {location_memory[items-counts], locations[19:4]};
+												next_state <= (!diy_mode) ? INITIAL_STATE : (counts != items) ? DIY_BUTTON_WAIT_DONE2 : DIY_START;
+										  end
+			DIY_FULL: begin
+							full <= 1;
+							next_state <= (!diy_mode) ? INITIAL_STATE : DIY_FULL;
+							disp_address <= address_memory[counts];
+							disp_loc <= location_memory[counts];
+							if(increment & !last_right) begin
+								counts <= counts + 1;
+							end
+						 end
+			default: begin
+							next_state <= INITIAL_STATE;
+						end
+			
+		endcase
+
 	end
-	
-	
 
 endmodule
 
@@ -423,42 +475,30 @@ module sound_module(
 													end
 												end
 										 end
-					RECORD_DIY_BEGIN: begin
-												flash_raddr <= MUSIC_START;
-												diy_mode_done <= 0;
-												diy_playback <= 0;
-											end
 					RECORD_DIY_IN_PROGRESS: begin
-														if (!diy_mode_done) begin
-															filter_f_input <= flash_data[7:0];
-															if (ready) begin
-																to_ac97_data <= filter_f_output[17:0];
-																if(flash_raddr >= MUSIC_END) begin
-																	diy_mode_done <= 1;
-																end
-																else begin
-																	flash_raddr <= flash_raddr + 1; 
-																end
-															end
+														if(last_game_state != game_state) begin
+															flash_raddr <= MUSIC_START;
+															diy_mode_done <= 0;
+															diy_playback <= 0;
 														end
 														else begin
-															to_ac97_data <= 0;
+															if (!diy_mode_done) begin
+																filter_f_input <= flash_data[7:0];
+																if (ready) begin
+																	to_ac97_data <= filter_f_output[17:0];
+																	if(flash_raddr >= MUSIC_END) begin
+																		diy_mode_done <= 1;
+																	end
+																	else begin
+																		flash_raddr <= flash_raddr + 1; 
+																	end
+																end
+															end
+															else begin
+																to_ac97_data <= 0;
+															end
 														end
 													end
-					RECORD_DIY_END: begin
-											if(!diy_playback) begin
-												diy_playback <= 1;
-												flash_raddr <= MUSIC_START;
-											end
-											if (diy_playback) begin
-												//play background music
-												filter_f_input <= flash_data[7:0];
-												if(ready) begin
-													to_ac97_data <= filter_f_output[17:10];
-													flash_raddr <= (flash_raddr >= MUSIC_END) ? MUSIC_START : flash_raddr + 1;
-												end
-											end
-										 end
 					default: begin
 									//play background music
 									filter_f_input <= flash_data[7:0];

@@ -632,7 +632,7 @@ module lab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 	debounce db_e(.clk(clock_27mhz), .reset(reset), .noisy(button_enter), .clean(enter));
 	
 	wire diy_mode;
-	debounce db_diy(.clk(clock_27mhz), .reset(reset), .noisy(switch[7]), .clean(diy_mode));
+	debounce_ara db_diy(.clock(clock_27mhz), .reset(reset), .noisy(switch[7]), .clean(diy_mode));
 
 ///////////////////////////////////////////
 //			INITIALIZE & CONNECT GAME		  //
@@ -747,12 +747,13 @@ module lab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 	wire [959:0]diy_addresses;
 	wire [319:0]diy_locations;
 	mole_adressss_locations diy_addr_loc(.clock(clock_27mhz),
-														//.disp_blank(disp_blank),
-														//.disp_clock(disp_clock),
-														//.disp_data_out(disp_data_out), 
-														//.disp_rs(disp_rs), 
-														//.disp_ce_b(disp_ce_b),
-														//.disp_reset_b(disp_reset_b),
+														.disp_blank(disp_blank),
+														.disp_clock(disp_clock),
+														.disp_data_out(disp_data_out), 
+														.disp_rs(disp_rs), 
+														.disp_ce_b(disp_ce_b),
+														.disp_reset_b(disp_reset_b),
+														.switch(switch),
 													   .reset(reset),
 														.upleft(upleft),
 														.up(up),
@@ -764,6 +765,7 @@ module lab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 														.downright(downright),
 														.enter(enter),
 														.diy_mode(diy_mode),
+														.one_hz_enable(one_hz_enable),
 														.flash_address(flash_address),
 														.full(full),
 														.addresses(diy_addresses),
@@ -848,7 +850,7 @@ module lab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 
 	// Display letter toggler value
 	wire [127:0] string = {displayed_mole_location, 8'h30+display_state, "SCOR:", " ", 8'h30+score, lives_display};
-	display_string debug_display(.reset(reset), .clock_27mhz(clock_27mhz),
+	/*display_string debug_display(.reset(reset), .clock_27mhz(clock_27mhz),
 											.string_data(string),
 											.disp_blank(disp_blank),
 											.disp_clock(disp_clock),
@@ -856,6 +858,7 @@ module lab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 											.disp_rs(disp_rs), 
 											.disp_ce_b(disp_ce_b),
 											.disp_reset_b(disp_reset_b));
+	*/
 endmodule
 
 

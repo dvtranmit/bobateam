@@ -345,7 +345,7 @@ always @(*) begin
 	end else begin
 		next_mole_location = (request_mole) ? random_mole_location : next_mole_location;
 		case(state)
-			IDLE : next_state = (start) ? GAME_START_DELAY : IDLE;
+			IDLE : next_state = (start) ? GAME_START_DELAY : (diy_mode) ? RECORD_DIY_BEGIN : IDLE;
 			GAME_START_DELAY: next_state = (expired) ? GAME_ONGOING : GAME_START_DELAY;
 			GAME_ONGOING : next_state = (lives == 0) ? GAME_OVER : (request_mole) ? REQUEST_MOLE : GAME_ONGOING;
 			REQUEST_MOLE : next_state = MOLE_COUNTDOWN;
@@ -355,6 +355,8 @@ always @(*) begin
 			MOLE_MISSED_SOUND : next_state = (expired) ? GAME_ONGOING : MOLE_MISSED_SOUND;
 			MOLE_WHACKED_SOUND : next_state = (expired) ? GAME_ONGOING : MOLE_WHACKED_SOUND;
 			GAME_OVER : next_state = (expired) ? IDLE : GAME_OVER;
+			RECORD_DIY_BEGIN: next_state = RECORD_DIY_IN_PROGRESS;
+			RECORD_DIY_IN_PROGRESS: next_state = (!diy_mode) ? IDLE : RECORD_DIY_IN_PROGRESS;
 			default : next_state = IDLE;
 		endcase
 	end
