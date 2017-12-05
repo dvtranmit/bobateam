@@ -1,7 +1,7 @@
 ##############################################################
 #
 # Xilinx Core Generator version K.39
-# Date: Sun Dec  3 21:58:28 2017
+# Date: Sun Dec  3 23:11:15 2017
 #
 ##############################################################
 #
@@ -38,7 +38,7 @@ SELECT Block_Memory_Generator family Xilinx,_Inc. 2.8
 CSET algorithm=Minimum_Area
 CSET assume_synchronous_clk=false
 CSET byte_size=9
-CSET coe_file=/afs/athena.mit.edu/user/v/s/vsouyang/Documents/6.111/bobateam/basic_graphics/all_images/matlab_script_new/happy.coe
+CSET coe_file=/afs/athena.mit.edu/user/v/s/vsouyang/Documents/6.111/bobateam/basic_graphics/images/happy.coe
 CSET collision_warnings=ALL
 CSET component_name=happy_image_rom
 CSET disable_collision_warnings=false
@@ -74,5 +74,5 @@ CSET write_width_a=4
 CSET write_width_b=4
 # END Parameters
 GENERATE
-# CRC: 2bacad06
+# CRC: 7af55c39
 
