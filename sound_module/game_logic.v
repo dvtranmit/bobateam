@@ -355,8 +355,8 @@ always @(*) begin
 			MOLE_MISSED_SOUND : next_state = (expired) ? GAME_ONGOING : MOLE_MISSED_SOUND;
 			MOLE_WHACKED_SOUND : next_state = (expired) ? GAME_ONGOING : MOLE_WHACKED_SOUND;
 			GAME_OVER : next_state = (expired) ? IDLE : GAME_OVER;
-			RECORD_DIY_BEGIN: next_state = RECORD_DIY_IN_PROGRESS;
-			RECORD_DIY_IN_PROGRESS: next_state = (!diy_mode) ? IDLE : RECORD_DIY_IN_PROGRESS;
+			RECORD_DIY_BEGIN: next_state = RECORD_DIY_IN_PROGRESS; //i only made changes so i could test very sketchly, probably want to fix this and use correct signals
+			RECORD_DIY_IN_PROGRESS: next_state = (!diy_mode) ? IDLE : RECORD_DIY_IN_PROGRESS; 
 			default : next_state = IDLE;
 		endcase
 	end

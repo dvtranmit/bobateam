@@ -743,9 +743,14 @@ module lab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
    assign analyzer3_data = {from_ac97_data, to_ac97_data};
 
 	//diy game module
-	wire full;
-	wire [959:0]diy_addresses;
-	wire [319:0]diy_locations;
+	wire ready_to_use;
+	wire [23:0]index_address;
+	wire [3:0]index_location;
+	wire [3:0] lookup_index;
+	wire [3:0] items; //this is a *count* of the number items stored in bram!!!!
+	wire [2:0] state;
+	assign lookup_index = (switch[6:3] <= items-1) ? switch[6:3] : 0 ; 
+	
 	mole_adressss_locations diy_addr_loc(.clock(clock_27mhz),
 														.disp_blank(disp_blank),
 														.disp_clock(disp_clock),
@@ -766,11 +771,21 @@ module lab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 														.enter(enter),
 														.diy_mode(diy_mode),
 														.one_hz_enable(one_hz_enable),
+														.state(state),
+														.lookup_index(lookup_index),
+														.items(items),
 														.flash_address(flash_address),
-														.full(full),
-														.addresses(diy_addresses),
-														.locations(diy_locations));
-
+														.ready_to_use(ready_to_use),
+														.index_address(index_address),
+														.index_location(index_location));
+	/*
+	wire [63:0] display_data;
+	assign display_data = {index_address, index_location, 1'b0,  state, lookup_index, items};
+	
+	display_16hex disp(.reset(switch[2]), .clock_27mhz(clock_27mhz), .data_in(display_data), 
+		                .disp_rs(disp_rs), .disp_ce_b(disp_ce_b), .disp_blank(disp_blank),
+							 .disp_reset_b(disp_reset_b), .disp_data_out(disp_data_out), .disp_clock(disp_clock));
+	*/
 	/*
 	VICTORIA'S CODE
 	*/

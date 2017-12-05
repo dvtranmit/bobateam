@@ -5,14 +5,14 @@ Parameter TMPDIR set to /afs/athena.mit.edu/user/a/d/adhikara/Documents/6.111thi
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.03 secs
+Total CPU time to Xst completion: 0.02 secs
  
 --> 
 Parameter xsthdpdir set to /afs/athena.mit.edu/user/a/d/adhikara/Documents/6.111things/6.111 project/bobateam/sound_module/xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.03 secs
+Total CPU time to Xst completion: 0.02 secs
  
 --> 
 Reading design: lab5.prj
@@ -236,13 +236,14 @@ Analyzing hierarchy for module <sound_module> in library <work> with parameters.
 
 Analyzing hierarchy for module <mole_adressss_locations> in library <work> with parameters.
 	DIY_BUTTON_WAIT = "011"
-	DIY_BUTTON_WAIT_DONE1 = "100"
-	DIY_BUTTON_WAIT_DONE2 = "101"
-	DIY_FULL = "110"
+	DIY_BUTTON_WAIT_DONE = "100"
+	DIY_DONE = "101"
 	DIY_INITIAL = "001"
 	DIY_START = "010"
+	INDEX_BITS = "0100"
 	INITIAL_STATE = "000"
 	MAX_ITEM = "0101"
+	MUSIC_END = "00001101010110000000000"
 
 Analyzing hierarchy for module <xvga> in library <work>.
 
@@ -328,7 +329,7 @@ WARNING:Xst:2591 - "lab5.v" line 612: attribute on instance <CLK_FEEDBACK> overr
 =========================================================================
 Analyzing top module <lab5>.
 WARNING:Xst:852 - "lab5.v" line 712: Unconnected input port 'switch' of instance 's' is tied to GND.
-WARNING:Xst:852 - "lab5.v" line 749: Unconnected input port 'disp_data_in' of instance 'diy_addr_loc' is tied to GND.
+WARNING:Xst:852 - "lab5.v" line 754: Unconnected input port 'disp_data_in' of instance 'diy_addr_loc' is tied to GND.
 Module <lab5> is correct for synthesis.
  
     Set user-defined property "INIT =  FFFF" for instance <reset_sr> in unit <lab5>.
@@ -457,13 +458,13 @@ Analyzing module <sound_module> in library <work>.
 	WHACKED_END = 23'b00010010011000000000000
 	WHACKED_START = 23'b00010010010101000000000
 	WIDTH = 32'sb00000000000000000000000000001000
-WARNING:Xst:2725 - "sound_modules.v" line 376: Size mismatch between case item and case selector.
-WARNING:Xst:2725 - "sound_modules.v" line 383: Size mismatch between case item and case selector.
-WARNING:Xst:2725 - "sound_modules.v" line 398: Size mismatch between case item and case selector.
-WARNING:Xst:2725 - "sound_modules.v" line 403: Size mismatch between case item and case selector.
-WARNING:Xst:2725 - "sound_modules.v" line 418: Size mismatch between case item and case selector.
-WARNING:Xst:2725 - "sound_modules.v" line 423: Size mismatch between case item and case selector.
-WARNING:Xst:2725 - "sound_modules.v" line 438: Size mismatch between case item and case selector.
+WARNING:Xst:2725 - "sound_modules.v" line 362: Size mismatch between case item and case selector.
+WARNING:Xst:2725 - "sound_modules.v" line 369: Size mismatch between case item and case selector.
+WARNING:Xst:2725 - "sound_modules.v" line 384: Size mismatch between case item and case selector.
+WARNING:Xst:2725 - "sound_modules.v" line 389: Size mismatch between case item and case selector.
+WARNING:Xst:2725 - "sound_modules.v" line 404: Size mismatch between case item and case selector.
+WARNING:Xst:2725 - "sound_modules.v" line 409: Size mismatch between case item and case selector.
+WARNING:Xst:2725 - "sound_modules.v" line 424: Size mismatch between case item and case selector.
 Module <sound_module> is correct for synthesis.
  
 Analyzing module <mybram> in library <work>.
@@ -473,7 +474,7 @@ Module <mybram> is correct for synthesis.
  
     Set property "ram_style = block" for signal <mem>.
 Analyzing module <flash_reader> in library <work>.
-WARNING:Xst:852 - "sound_modules.v" line 619: Unconnected input port 'wdata' of instance 'flash_flash' is tied to GND.
+WARNING:Xst:852 - "sound_modules.v" line 605: Unconnected input port 'wdata' of instance 'flash_flash' is tied to GND.
 Module <flash_reader> is correct for synthesis.
  
 Analyzing module <flash_manager> in library <work>.
@@ -523,13 +524,14 @@ Module <coeffs31> is correct for synthesis.
  
 Analyzing module <mole_adressss_locations> in library <work>.
 	DIY_BUTTON_WAIT = 3'b011
-	DIY_BUTTON_WAIT_DONE1 = 3'b100
-	DIY_BUTTON_WAIT_DONE2 = 3'b101
-	DIY_FULL = 3'b110
+	DIY_BUTTON_WAIT_DONE = 3'b100
+	DIY_DONE = 3'b101
 	DIY_INITIAL = 3'b001
 	DIY_START = 3'b010
+	INDEX_BITS = 4'b0100
 	INITIAL_STATE = 3'b000
 	MAX_ITEM = 4'b0101
+	MUSIC_END = 23'b00001101010110000000000
 Module <mole_adressss_locations> is correct for synthesis.
  
 Analyzing module <display_16hex> in library <work>.
@@ -580,12 +582,13 @@ INFO:Xst:2561 - Always blocking tristate driving signal <tv_in_i2c_data> in unit
 INFO:Xst:2679 - Register <bram_pop_start> in unit <sound_module> has a constant value of 0000000000000000 during circuit operation. The register is replaced by logic.
 INFO:Xst:2679 - Register <diy_playback> in unit <sound_module> has a constant value of 0 during circuit operation. The register is replaced by logic.
 INFO:Xst:2679 - Register <writemode> in unit <flash_reader> has a constant value of 0 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <counts> in unit <mole_adressss_locations> has a constant value of 0000 during circuit operation. The register is replaced by logic.
 
 Synthesizing Unit <debounce_ara>.
     Related source file is "sound_modules.v".
     Found 1-bit register for signal <clean>.
     Found 19-bit up counter for signal <count>.
-    Found 1-bit xor2 for signal <count$xor0000> created at line 226.
+    Found 1-bit xor2 for signal <count$xor0000> created at line 212.
     Found 1-bit register for signal <new>.
     Summary:
 	inferred   1 Counter(s).
@@ -906,41 +909,30 @@ Synthesizing Unit <mole_adressss_locations>.
 WARNING:Xst:647 - Input <enter> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <reset> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <disp_data_in> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:647 - Input <switch<7:4>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:647 - Input <switch<2:0>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <switch<7:3>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <switch<1:0>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:653 - Signal <timer_value> is used but never assigned. This sourceless signal will be automatically connected to value 0010.
 WARNING:Xst:1780 - Signal <timer_expired> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:1780 - Signal <location> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:653 - Signal <last_button_bits> is used but never assigned. This sourceless signal will be automatically connected to value 00000000.
 WARNING:Xst:646 - Signal <expired> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <disp_loc> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <disp_address> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <counts> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:1780 - Signal <address> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
-INFO:Xst:2117 - HDL ADVISOR - Mux Selector <state> of Case statement line 89 was re-encoded using one-hot encoding. The case statement will be optimized (default statement optimization), but this optimization may lead to design initialization problems. To ensure the design works safely, you can:
-   	- add an 'INIT' attribute on signal <state> (optimization is then done without any risk)
-   	- use the attribute 'signal_encoding user' to avoid onehot optimization
-   	- use the attribute 'safe_implementation yes' to force XST to perform a safe (but less efficient) optimization
-    Using one-hot encoding for signal <state>.
-    Found 20-bit register for signal <locations>.
-    Found 120-bit register for signal <addresses>.
-    Found 1-bit register for signal <full>.
-    Found 120-bit register for signal <address_memory>.
-    Found 4-bit register for signal <counts>.
-    Found 6-bit comparator less for signal <counts$cmp_lt0000> created at line 194.
-    Found 4-bit adder for signal <counts$share0000> created at line 89.
-    Found 6-bit subtractor for signal <counts$sub0000> created at line 194.
+    Found 3-bit register for signal <state>.
     Found 4-bit register for signal <items>.
-    Found 4-bit adder for signal <items$share0000> created at line 100.
-    Found 8-bit register for signal <last_button_bits>.
-    Found 1-bit register for signal <last_increment>.
+    Found 1-bit register for signal <ready_to_use>.
+    Found 4-bit register for signal <index_location>.
+    Found 24-bit register for signal <index_address>.
+    Found 120-bit register for signal <address_memory>.
+    Found 4-bit adder for signal <items$share0000> created at line 90.
     Found 20-bit register for signal <location_memory>.
-    Found 7-bit register for signal <next_state>.
-    Found 4-bit comparator less for signal <next_state$cmp_lt0000> created at line 181.
+    Found 3-bit register for signal <next_state>.
+    Found 24-bit comparator greatequal for signal <next_state$cmp_ge0000> created at line 86.
     Found 1-bit register for signal <start_timer>.
-    Found 7-bit register for signal <state>.
     Summary:
-	inferred 313 D-type flip-flop(s).
-	inferred   4 Adder/Subtractor(s).
-	inferred   2 Comparator(s).
+	inferred 180 D-type flip-flop(s).
+	inferred   1 Adder/Subtractor(s).
+	inferred   1 Comparator(s).
 	inferred  28 Multiplexer(s).
 Unit <mole_adressss_locations> synthesized.
 
@@ -953,9 +945,9 @@ WARNING:Xst:647 - Input <reset> is never used. This port will be preserved and l
     Found 5-bit up counter for signal <index_reg>.
     Found 5-bit up counter for signal <offset>.
     Found 18-bit up accumulator for signal <sum>.
-    Found 5-bit comparator lessequal for signal <sum$cmp_le0000> created at line 847.
-    Found 10x8-bit multiplier for signal <sum$mult0001> created at line 849.
-    Found 18-bit adder for signal <y$add0000> created at line 851.
+    Found 5-bit comparator lessequal for signal <sum$cmp_le0000> created at line 833.
+    Found 10x8-bit multiplier for signal <sum$mult0001> created at line 835.
+    Found 18-bit adder for signal <y$add0000> created at line 837.
     Summary:
 	inferred   1 RAM(s).
 	inferred   2 Counter(s).
@@ -997,18 +989,18 @@ Unit <flash_manager> synthesized.
 
 Synthesizing Unit <normalmole>.
     Related source file is "lab5.v".
-WARNING:Xst:643 - "lab5.v" line 1262: The result of a 11x10-bit multiplication is partially used. Only the 16 least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
+WARNING:Xst:643 - "lab5.v" line 1277: The result of a 11x10-bit multiplication is partially used. Only the 16 least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
     Found 24-bit register for signal <pixel>.
-    Found 11-bit adder carry out for signal <add0000$addsub0000> created at line 1257.
-    Found 10-bit adder carry out for signal <add0001$addsub0000> created at line 1257.
+    Found 11-bit adder carry out for signal <add0000$addsub0000> created at line 1272.
+    Found 10-bit adder carry out for signal <add0001$addsub0000> created at line 1272.
     Found 16-bit adder for signal <image_addr>.
-    Found 11-bit subtractor for signal <image_addr$addsub0000> created at line 1262.
-    Found 11x10-bit multiplier for signal <image_addr$mult0001> created at line 1262.
-    Found 13-bit subtractor for signal <image_addr$sub0000> created at line 1262.
-    Found 11-bit comparator greatequal for signal <pixel$cmp_ge0000> created at line 1257.
-    Found 10-bit comparator greatequal for signal <pixel$cmp_ge0001> created at line 1257.
-    Found 12-bit comparator less for signal <pixel$cmp_lt0000> created at line 1257.
-    Found 11-bit comparator less for signal <pixel$cmp_lt0001> created at line 1257.
+    Found 11-bit subtractor for signal <image_addr$addsub0000> created at line 1277.
+    Found 11x10-bit multiplier for signal <image_addr$mult0001> created at line 1277.
+    Found 13-bit subtractor for signal <image_addr$sub0000> created at line 1277.
+    Found 11-bit comparator greatequal for signal <pixel$cmp_ge0000> created at line 1272.
+    Found 10-bit comparator greatequal for signal <pixel$cmp_ge0001> created at line 1272.
+    Found 12-bit comparator less for signal <pixel$cmp_lt0000> created at line 1272.
+    Found 11-bit comparator less for signal <pixel$cmp_lt0001> created at line 1272.
     Summary:
 	inferred  24 D-type flip-flop(s).
 	inferred   5 Adder/Subtractor(s).
@@ -1075,7 +1067,7 @@ WARNING:Xst:1780 - Signal <bram_max_use> is never used or assigned. This unconne
     -----------------------------------------------------------------------
     Found 8-bit register for signal <to_ac97_data>.
     Found 16-bit register for signal <bram_address>.
-    Found 17-bit comparator less for signal <bram_address$cmp_lt0000> created at line 387.
+    Found 17-bit comparator less for signal <bram_address$cmp_lt0000> created at line 373.
     Found 16-bit adder for signal <bram_address$share0000>.
     Found 8-bit register for signal <bram_in>.
     Found 16-bit register for signal <bram_missed_end>.
@@ -1085,29 +1077,29 @@ WARNING:Xst:1780 - Signal <bram_max_use> is never used or assigned. This unconne
     Found 16-bit register for signal <bram_whacked_end>.
     Found 16-bit register for signal <bram_whacked_start>.
     Found 1-bit register for signal <diy_mode_done>.
-    Found 23-bit comparator less for signal <diy_mode_done$cmp_lt0000> created at line 552.
+    Found 23-bit comparator less for signal <diy_mode_done$cmp_lt0000> created at line 538.
     Found 8-bit register for signal <filter_f_input>.
     Found 23-bit register for signal <flash_raddr>.
-    Found 16-bit comparator greatequal for signal <flash_raddr$cmp_ge0000> created at line 470.
-    Found 23-bit comparator greatequal for signal <flash_raddr$cmp_ge0001> created at line 475.
-    Found 16-bit comparator greatequal for signal <flash_raddr$cmp_ge0002> created at line 497.
-    Found 16-bit comparator greatequal for signal <flash_raddr$cmp_ge0003> created at line 524.
+    Found 16-bit comparator greatequal for signal <flash_raddr$cmp_ge0000> created at line 456.
+    Found 23-bit comparator greatequal for signal <flash_raddr$cmp_ge0001> created at line 461.
+    Found 16-bit comparator greatequal for signal <flash_raddr$cmp_ge0002> created at line 483.
+    Found 16-bit comparator greatequal for signal <flash_raddr$cmp_ge0003> created at line 510.
     Found 23-bit adder for signal <flash_raddr$share0000>.
     Found 5-bit register for signal <flash_read_count>.
     Found 5-bit adder for signal <flash_read_count$addsub0000>.
     Found 4-bit register for signal <last_game_state>.
     Found 1-bit register for signal <loaded_to_bram>.
     Found 1-bit register for signal <missed_sound_done>.
-    Found 16-bit comparator less for signal <missed_sound_done$cmp_lt0000> created at line 497.
+    Found 16-bit comparator less for signal <missed_sound_done$cmp_lt0000> created at line 483.
     Found 1-bit register for signal <pop_sound_done>.
-    Found 16-bit comparator less for signal <pop_sound_done$cmp_lt0000> created at line 470.
+    Found 16-bit comparator less for signal <pop_sound_done$cmp_lt0000> created at line 456.
     Found 1-bit register for signal <reading>.
-    Found 23-bit comparator less for signal <sound_state$cmp_lt0000> created at line 390.
-    Found 23-bit comparator less for signal <sound_state$cmp_lt0001> created at line 410.
-    Found 23-bit comparator less for signal <sound_state$cmp_lt0002> created at line 430.
-    Found 8-bit adder for signal <to_ac97_data$share0000> created at line 459.
+    Found 23-bit comparator less for signal <sound_state$cmp_lt0000> created at line 376.
+    Found 23-bit comparator less for signal <sound_state$cmp_lt0001> created at line 396.
+    Found 23-bit comparator less for signal <sound_state$cmp_lt0002> created at line 416.
+    Found 8-bit adder for signal <to_ac97_data$share0000> created at line 445.
     Found 1-bit register for signal <whacked_sound_done>.
-    Found 16-bit comparator less for signal <whacked_sound_done$cmp_lt0000> created at line 524.
+    Found 16-bit comparator less for signal <whacked_sound_done$cmp_lt0000> created at line 510.
     Summary:
 	inferred   1 Finite State Machine(s).
 	inferred 159 D-type flip-flop(s).
@@ -1401,14 +1393,19 @@ WARNING:Xst:2565 - Inout <user3<3>> is never assigned.
 WARNING:Xst:653 - Signal <volume> is used but never assigned. This sourceless signal will be automatically connected to value 01000.
 WARNING:Xst:646 - Signal <string> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <step_location> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <full> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <state> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <ready_to_use> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <index_location> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <index_address> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <feedback> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <diy_locations> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <diy_addresses> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <displayed_counter> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+    Found 6-bit comparator lessequal for signal <lookup_index$cmp_le0000> created at line 752.
+    Found 6-bit subtractor for signal <lookup_index$sub0000> created at line 752.
     Found 1-bit register for signal <toggler>.
     Summary:
 	inferred   1 D-type flip-flop(s).
+	inferred   1 Adder/Subtractor(s).
+	inferred   1 Comparator(s).
 Unit <lab5> synthesized.
 
 INFO:Xst:1767 - HDL ADVISOR - Resource sharing has identified that some arithmetic operations in this design can share the same physical resources for reduced device utilization. For improved clock frequency you may try to disable resource sharing.
@@ -1428,7 +1425,7 @@ Macro Statistics
 # Multipliers                                          : 3
  10x8-bit multiplier                                   : 2
  11x10-bit multiplier                                  : 1
-# Adders/Subtractors                                   : 27
+# Adders/Subtractors                                   : 25
  10-bit adder                                          : 1
  10-bit adder carry out                                : 1
  10-bit addsub                                         : 1
@@ -1438,8 +1435,8 @@ Macro Statistics
  16-bit adder                                          : 2
  18-bit adder                                          : 2
  23-bit adder                                          : 2
- 4-bit adder                                           : 2
- 4-bit subtractor                                      : 4
+ 4-bit adder                                           : 1
+ 4-bit subtractor                                      : 3
  5-bit adder                                           : 2
  5-bit subtractor                                      : 2
  6-bit subtractor                                      : 1
@@ -1459,26 +1456,25 @@ Macro Statistics
  8-bit up counter                                      : 2
 # Accumulators                                         : 2
  18-bit up accumulator                                 : 2
-# Registers                                            : 143
- 1-bit register                                        : 76
+# Registers                                            : 140
+ 1-bit register                                        : 75
  10-bit register                                       : 3
  11-bit register                                       : 1
- 120-bit register                                      : 1
  13-bit register                                       : 1
  16-bit register                                       : 10
  18-bit register                                       : 2
  2-bit register                                        : 3
- 20-bit register                                       : 7
+ 20-bit register                                       : 6
  23-bit register                                       : 3
- 24-bit register                                       : 8
- 3-bit register                                        : 2
+ 24-bit register                                       : 9
+ 3-bit register                                        : 4
  32-bit register                                       : 1
  368-bit register                                      : 1
  4-bit register                                        : 12
  5-bit register                                        : 1
  64-bit register                                       : 1
- 7-bit register                                        : 3
- 8-bit register                                        : 7
+ 7-bit register                                        : 1
+ 8-bit register                                        : 6
 # Latches                                              : 1
  3-bit latch                                           : 1
 # Comparators                                          : 44
@@ -1493,10 +1489,11 @@ Macro Statistics
  23-bit comparator greatequal                          : 1
  23-bit comparator less                                : 4
  23-bit comparator not equal                           : 1
- 4-bit comparator less                                 : 1
+ 24-bit comparator greatequal                          : 1
  4-bit comparator not equal                            : 1
  5-bit comparator lessequal                            : 2
- 6-bit comparator less                                 : 2
+ 6-bit comparator less                                 : 1
+ 6-bit comparator lessequal                            : 1
  8-bit comparator equal                                : 1
  8-bit comparator greatequal                           : 5
  8-bit comparator greater                              : 4
@@ -1750,11 +1747,10 @@ WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_17> (without 
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_18> (without init value) has a constant value of 0 in block <normalmole>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_19> (without init value) has a constant value of 0 in block <normalmole>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <location_memory_0_3> (without init value) has a constant value of 0 in block <mole_adressss_locations>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <location_memory_3_3> (without init value) has a constant value of 0 in block <mole_adressss_locations>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <location_memory_1_3> (without init value) has a constant value of 0 in block <mole_adressss_locations>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <location_memory_2_3> (without init value) has a constant value of 0 in block <mole_adressss_locations>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <location_memory_3_3> (without init value) has a constant value of 0 in block <mole_adressss_locations>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <location_memory_4_3> (without init value) has a constant value of 0 in block <mole_adressss_locations>. This FF/Latch will be trimmed during the optimization process.
-INFO:Xst:2261 - The FF/Latch <last_increment> in Unit <mole_adressss_locations> is equivalent to the following FF/Latch, which will be removed : <last_button_bits_3> 
 WARNING:Xst:1710 - FF/Latch <flash/flash_address_0> (without init value) has a constant value of 0 in block <flash_manager>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <fsm/state_7> (without init value) has a constant value of 0 in block <flash_manager>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <fsm/state_6> (without init value) has a constant value of 0 in block <flash_manager>. This FF/Latch will be trimmed during the optimization process.
@@ -1779,74 +1775,50 @@ WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <flash/flash_wdata_1
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <flash/flash_wdata_15> (without init value) has a constant value of 0 in block <flash_manager>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1426 - The value init of the FF/Latch loaded_to_bram hinder the constant cleaning in the block sound_module.
    You should achieve better results by setting this init to 1.
-WARNING:Xst:1710 - FF/Latch <data_46> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_45> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_44> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_43> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_42> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_41> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_40> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_39> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_38> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_37> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_36> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_35> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_34> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_33> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_32> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_31> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_30> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_63> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_62> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_61> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_60> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_59> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_58> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_57> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_56> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_55> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_54> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_53> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_52> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_51> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_50> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_49> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_48> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_47> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <l_right_data_10> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <l_right_data_9> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <l_right_data_8> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <l_right_data_7> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <l_right_data_6> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <l_right_data_5> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <l_right_data_4> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <l_right_data_3> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <l_right_data_2> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <l_right_data_1> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <l_right_data_0> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <l_cmd_data_18> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <l_cmd_data_17> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <l_cmd_data_11> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <l_cmd_data_9> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <l_cmd_addr_18> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <l_cmd_addr_12> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_29> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_28> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_27> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_26> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_25> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_24> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_23> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_22> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_21> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_20> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <address_memory_4_0> (without init value) has a constant value of 0 in block <diy_addr_loc>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <address_memory_3_0> (without init value) has a constant value of 0 in block <diy_addr_loc>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <address_memory_2_0> (without init value) has a constant value of 0 in block <diy_addr_loc>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <address_memory_1_0> (without init value) has a constant value of 0 in block <diy_addr_loc>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <address_memory_0_0> (without init value) has a constant value of 0 in block <diy_addr_loc>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <flash/flash_reset_b> has a constant value of 1 in block <flash_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <address_memory_4_0> (without init value) has a constant value of 0 in block <diy_addr_loc>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <data_7> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <data_17> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <data_18> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <data_19> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <data_48> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <data_49> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <data_50> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <data_51> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <data_52> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <data_53> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <data_54> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <data_55> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <data_56> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <data_57> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <data_58> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <data_59> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <data_60> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <data_61> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <data_62> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <data_63> (without init value) has a constant value of 0 in block <disp>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <l_cmd_addr_12> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <l_cmd_addr_18> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <l_cmd_data_9> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <l_cmd_data_11> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <l_cmd_data_17> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <l_cmd_data_18> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <l_right_data_0> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <l_right_data_1> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <l_right_data_2> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <l_right_data_3> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <l_right_data_4> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <l_right_data_5> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <l_right_data_6> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <l_right_data_7> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <l_right_data_8> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <l_right_data_9> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <l_right_data_10> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <l_right_data_11> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <flash/flash_reset_b> has a constant value of 1 in block <flash_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <address_memory_2_0> (without init value) has a constant value of 0 in block <diy_addr_loc>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <address_memory_0_0> (without init value) has a constant value of 0 in block <diy_addr_loc>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <address_memory_1_0> (without init value) has a constant value of 0 in block <diy_addr_loc>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:2677 - Node <right_in_data_0> of sequential type is unconnected in block <ac97>.
 WARNING:Xst:2677 - Node <right_in_data_1> of sequential type is unconnected in block <ac97>.
 WARNING:Xst:2677 - Node <right_in_data_2> of sequential type is unconnected in block <ac97>.
@@ -1897,127 +1869,6 @@ WARNING:Xst:2677 - Node <y_16> of sequential type is unconnected in block <fir31
 WARNING:Xst:2677 - Node <y_17> of sequential type is unconnected in block <fir31_bram>.
 WARNING:Xst:2677 - Node <y_8> of sequential type is unconnected in block <fir31_flash>.
 WARNING:Xst:2677 - Node <y_9> of sequential type is unconnected in block <fir31_flash>.
-WARNING:Xst:2677 - Node <full> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_0> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_1> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_2> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_3> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_4> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_5> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_6> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_7> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_8> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_9> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_10> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_11> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_12> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_13> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_14> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_15> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_16> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_17> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_18> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_19> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_20> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_21> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_22> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_23> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_24> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_25> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_26> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_27> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_28> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_29> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_30> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_31> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_32> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_33> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_34> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_35> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_36> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_37> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_38> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_39> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_40> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_41> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_42> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_43> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_44> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_45> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_46> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_47> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_48> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_49> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_50> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_51> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_52> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_53> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_54> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_55> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_56> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_57> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_58> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_59> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_60> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_61> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_62> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_63> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_64> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_65> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_66> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_67> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_68> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_69> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_70> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_71> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_72> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_73> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_74> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_75> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_76> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_77> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_78> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_79> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_80> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_81> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_82> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_83> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_84> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_85> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_86> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_87> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_88> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_89> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_90> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_91> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_92> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_93> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_94> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_95> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_96> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_97> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_98> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_99> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_100> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_101> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_102> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_103> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_104> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_105> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_106> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_107> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_108> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_109> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_110> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_111> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_112> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_113> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_114> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_115> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_116> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_117> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_118> of sequential type is unconnected in block <diy_addr_loc>.
-WARNING:Xst:2677 - Node <addresses_119> of sequential type is unconnected in block <diy_addr_loc>.
 
 =========================================================================
 Advanced HDL Synthesis Report
@@ -2035,7 +1886,7 @@ Macro Statistics
 # Multipliers                                          : 3
  10x8-bit multiplier                                   : 2
  11x10-bit multiplier                                  : 1
-# Adders/Subtractors                                   : 27
+# Adders/Subtractors                                   : 25
  10-bit adder                                          : 1
  10-bit adder carry out                                : 1
  10-bit addsub                                         : 1
@@ -2045,8 +1896,7 @@ Macro Statistics
  16-bit adder                                          : 2
  18-bit adder                                          : 2
  23-bit adder                                          : 2
- 3-bit subtractor                                      : 1
- 4-bit adder                                           : 2
+ 4-bit adder                                           : 1
  4-bit subtractor                                      : 3
  5-bit adder                                           : 5
  5-bit subtractor                                      : 2
@@ -2066,8 +1916,8 @@ Macro Statistics
  8-bit up counter                                      : 2
 # Accumulators                                         : 2
  18-bit up accumulator                                 : 2
-# Registers                                            : 1385
- Flip-Flops                                            : 1385
+# Registers                                            : 1253
+ Flip-Flops                                            : 1253
 # Latches                                              : 1
  3-bit latch                                           : 1
 # Comparators                                          : 44
@@ -2082,10 +1932,11 @@ Macro Statistics
  23-bit comparator greatequal                          : 1
  23-bit comparator less                                : 4
  23-bit comparator not equal                           : 1
- 4-bit comparator less                                 : 1
+ 24-bit comparator greatequal                          : 1
  4-bit comparator not equal                            : 1
  5-bit comparator lessequal                            : 2
- 6-bit comparator less                                 : 2
+ 6-bit comparator less                                 : 1
+ 6-bit comparator lessequal                            : 1
  8-bit comparator equal                                : 1
  8-bit comparator greatequal                           : 5
  8-bit comparator greater                              : 4
@@ -2106,50 +1957,26 @@ Macro Statistics
 =========================================================================
 INFO:Xst:2261 - The FF/Latch <l_right_data_0> in Unit <ac97> is equivalent to the following 11 FFs/Latches, which will be removed : <l_right_data_1> <l_right_data_2> <l_right_data_3> <l_right_data_4> <l_right_data_5> <l_right_data_6> <l_right_data_7> <l_right_data_8> <l_right_data_9> <l_right_data_10> <l_right_data_11> 
 WARNING:Xst:1710 - FF/Latch <l_right_data_0> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_42> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_43> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_44> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_45> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_46> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_47> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_48> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_49> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_50> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_51> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_52> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_53> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_54> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_55> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_56> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_57> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_58> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_59> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_60> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_61> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <data_63> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_62> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_63> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_20> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_21> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_22> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_23> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_24> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_25> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_26> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_27> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_28> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_29> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_30> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_31> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_32> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_33> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_34> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_35> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_36> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_37> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_38> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_39> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_40> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_41> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_61> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_60> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_59> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_58> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_57> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_56> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_55> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_54> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_53> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_52> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_51> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_50> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_49> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_48> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_19> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_18> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_17> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_7> (without init value) has a constant value of 0 in block <display_16hex>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <flash/flash_reset_b> has a constant value of 1 in block <flash_manager>. This FF/Latch will be trimmed during the optimization process.
 INFO:Xst:2697 - Unit <flash_manager> : the RAMs <fsm/Mrom_nib2char_4_nib2char>, <fsm/Mrom_nib2char_1_nib2char> are packed into the single block RAM <fsm/Mrom_nib2char_4_nib2char1>
 INFO:Xst:2697 - Unit <flash_manager> : the RAMs <fsm/Mrom_nib2char_3_nib2char>, <fsm/Mrom_nib2char_2_nib2char> are packed into the single block RAM <fsm/Mrom_nib2char_3_nib2char1>
@@ -2162,11 +1989,7 @@ WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <y_4> (without init 
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <y_5> (without init value) has a constant value of 0 in block <displaymole>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <y_6> (without init value) has a constant value of 0 in block <displaymole>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <y_7> (without init value) has a constant value of 0 in block <displaymole>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <locations_19> (without init value) has a constant value of 0 in block <mole_adressss_locations>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <locations_15> (without init value) has a constant value of 0 in block <mole_adressss_locations>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <locations_11> (without init value) has a constant value of 0 in block <mole_adressss_locations>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <locations_7> (without init value) has a constant value of 0 in block <mole_adressss_locations>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <locations_3> (without init value) has a constant value of 0 in block <mole_adressss_locations>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <index_location_3> (without init value) has a constant value of 0 in block <mole_adressss_locations>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:2677 - Node <s/reader_bramdata/flash_flash/fsm/Mrom_nib2char_3_nib2char11> of sequential type is unconnected in block <lab5>.
 WARNING:Xst:2677 - Node <s/reader_bramdata/flash_flash/fsm/Mrom_nib2char_4_nib2char12> of sequential type is unconnected in block <lab5>.
 WARNING:Xst:2677 - Node <s/reader_bramdata/flash_flash/fsm/Mrom_nib2char_3_nib2char12> of sequential type is unconnected in block <lab5>.
@@ -2216,11 +2039,14 @@ WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <a/ac97/l_cmd_data_1
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <a/ac97/l_cmd_data_9> (without init value) has a constant value of 0 in block <lab5>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <a/ac97/l_cmd_addr_18> (without init value) has a constant value of 0 in block <lab5>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <a/ac97/l_cmd_addr_12> (without init value) has a constant value of 0 in block <lab5>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <diy_addr_loc/disp/data_3> (without init value) has a constant value of 0 in block <lab5>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <diy_addr_loc/disp/data_7> (without init value) has a constant value of 0 in block <lab5>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <diy_addr_loc/disp/data_11> (without init value) has a constant value of 0 in block <lab5>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <diy_addr_loc/disp/data_15> (without init value) has a constant value of 0 in block <lab5>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <diy_addr_loc/disp/data_19> (without init value) has a constant value of 0 in block <lab5>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <diy_addr_loc/disp/data_23> (without init value) has a constant value of 0 in block <lab5>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <diy_addr_loc/disp/data_24> (without init value) has a constant value of 0 in block <lab5>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <diy_addr_loc/index_address_0> (without init value) has a constant value of 0 in block <lab5>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <diy_addr_loc/address_memory_4_0> (without init value) has a constant value of 0 in block <lab5>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <diy_addr_loc/address_memory_3_0> (without init value) has a constant value of 0 in block <lab5>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <diy_addr_loc/address_memory_1_0> (without init value) has a constant value of 0 in block <lab5>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <diy_addr_loc/address_memory_0_0> (without init value) has a constant value of 0 in block <lab5>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <diy_addr_loc/address_memory_2_0> (without init value) has a constant value of 0 in block <lab5>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:2677 - Node <a/ac97/right_in_data_19> of sequential type is unconnected in block <lab5>.
 WARNING:Xst:2677 - Node <a/ac97/right_in_data_18> of sequential type is unconnected in block <lab5>.
 WARNING:Xst:2677 - Node <a/ac97/right_in_data_17> of sequential type is unconnected in block <lab5>.
@@ -2249,247 +2075,6 @@ WARNING:Xst:2677 - Node <game/temp_score_3> of sequential type is unconnected in
 WARNING:Xst:2677 - Node <game/temp_score_2> of sequential type is unconnected in block <lab5>.
 WARNING:Xst:2677 - Node <game/temp_score_1> of sequential type is unconnected in block <lab5>.
 WARNING:Xst:2677 - Node <game/temp_score_0> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_119> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_118> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_117> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_116> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_115> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_114> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_113> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_112> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_111> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_110> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_109> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_108> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_107> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_106> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_105> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_104> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_103> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_102> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_101> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_100> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_99> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_98> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_97> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_96> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_95> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_94> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_93> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_92> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_91> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_90> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_89> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_88> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_87> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_86> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_85> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_84> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_83> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_82> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_81> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_80> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_79> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_78> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_77> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_76> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_75> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_74> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_73> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_72> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_71> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_70> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_69> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_68> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_67> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_66> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_65> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_64> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_63> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_62> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_61> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_60> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_59> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_58> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_57> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_56> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_55> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_54> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_53> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_52> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_51> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_50> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_49> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_48> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_47> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_46> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_45> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_44> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_43> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_42> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_41> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_40> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_39> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_38> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_37> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_36> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_35> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_34> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_33> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_32> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_31> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_30> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_29> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_28> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_27> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_26> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_25> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_24> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_23> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_22> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_21> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_20> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_19> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_18> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_17> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_16> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_15> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_14> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_13> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_12> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_11> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_10> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_9> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_8> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_7> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_6> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_5> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_4> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_3> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_2> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_1> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/addresses_0> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_4_23> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_4_22> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_4_21> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_4_20> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_4_19> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_4_18> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_4_17> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_4_16> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_4_15> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_4_14> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_4_13> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_4_12> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_4_11> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_4_10> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_4_9> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_4_8> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_4_7> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_4_6> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_4_5> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_4_4> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_4_3> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_4_2> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_4_1> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_4_0> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_3_23> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_3_22> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_3_21> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_3_20> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_3_19> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_3_18> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_3_17> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_3_16> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_3_15> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_3_14> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_3_13> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_3_12> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_3_11> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_3_10> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_3_9> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_3_8> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_3_7> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_3_6> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_3_5> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_3_4> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_3_3> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_3_2> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_3_1> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_3_0> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_2_23> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_2_22> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_2_21> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_2_20> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_2_19> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_2_18> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_2_17> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_2_16> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_2_15> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_2_14> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_2_13> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_2_12> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_2_11> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_2_10> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_2_9> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_2_8> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_2_7> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_2_6> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_2_5> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_2_4> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_2_3> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_2_2> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_2_1> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_2_0> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_1_23> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_1_22> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_1_21> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_1_20> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_1_19> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_1_18> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_1_17> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_1_16> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_1_15> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_1_14> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_1_13> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_1_12> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_1_11> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_1_10> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_1_9> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_1_8> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_1_7> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_1_6> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_1_5> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_1_4> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_1_3> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_1_2> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_1_1> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_1_0> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_0_23> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_0_22> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_0_21> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_0_20> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_0_19> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_0_18> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_0_17> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_0_16> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_0_15> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_0_14> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_0_13> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_0_12> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_0_11> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_0_10> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_0_9> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_0_8> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_0_7> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_0_6> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_0_5> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_0_4> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_0_3> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_0_2> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_0_1> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_0_0> of sequential type is unconnected in block <lab5>.
-WARNING:Xst:2677 - Node <diy_addr_loc/full> of sequential type is unconnected in block <lab5>.
 WARNING:Xst:2677 - Node <s/fir31_bram/sum_17> of sequential type is unconnected in block <lab5>.
 WARNING:Xst:2677 - Node <s/fir31_bram/sum_16> of sequential type is unconnected in block <lab5>.
 WARNING:Xst:2677 - Node <s/fir31_bram/sum_15> of sequential type is unconnected in block <lab5>.
@@ -2551,7 +2136,7 @@ Mapping all equations...
 Building and optimizing final netlist ...
 INFO:Xst:2261 - The FF/Latch <a/ac97/l_cmd_data_14> in Unit <lab5> is equivalent to the following 5 FFs/Latches, which will be removed : <a/ac97/l_cmd_data_13> <a/ac97/l_cmd_data_12> <a/ac97/l_cmd_data_6> <a/ac97/l_cmd_data_5> <a/ac97/l_cmd_data_4> 
 INFO:Xst:2261 - The FF/Latch <a/ac97/l_cmd_data_16> in Unit <lab5> is equivalent to the following FF/Latch, which will be removed : <a/ac97/l_cmd_data_8> 
-Found area constraint ratio of 100 (+ 5) on block lab5, actual ratio is 3.
+Found area constraint ratio of 100 (+ 5) on block lab5, actual ratio is 4.
 FlipFlop game/current_mole_location_2 has been replicated 1 time(s) to handle iob=true attribute.
 FlipFlop game/current_mole_location_1 has been replicated 1 time(s) to handle iob=true attribute.
 FlipFlop game/current_mole_location_0 has been replicated 1 time(s) to handle iob=true attribute.
@@ -2590,8 +2175,8 @@ Unit <lab5> processed.
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 1054
- Flip-Flops                                            : 1054
+# Registers                                            : 1188
+ Flip-Flops                                            : 1188
 # Shift Registers                                      : 25
  13-bit shift register                                 : 2
  15-bit shift register                                 : 6
@@ -2630,27 +2215,27 @@ Design Statistics
 # IOs                              : 576
 
 Cell Usage :
-# BELS                             : 2941
+# BELS                             : 3246
 #      GND                         : 5
-#      INV                         : 84
-#      LUT1                        : 323
-#      LUT2                        : 291
-#      LUT3                        : 333
-#      LUT4                        : 746
-#      MUXCY                       : 606
-#      MUXF5                       : 111
-#      MUXF6                       : 8
+#      INV                         : 89
+#      LUT1                        : 325
+#      LUT2                        : 304
+#      LUT3                        : 348
+#      LUT4                        : 959
+#      MUXCY                       : 615
+#      MUXF5                       : 154
+#      MUXF6                       : 13
 #      MUXF7                       : 2
 #      VCC                         : 5
 #      XORCY                       : 427
-# FlipFlops/Latches                : 1119
-#      FD                          : 88
-#      FDE                         : 464
+# FlipFlops/Latches                : 1253
+#      FD                          : 77
+#      FDE                         : 617
 #      FDE_1                       : 8
-#      FDR                         : 86
+#      FDR                         : 77
 #      FDRE                        : 376
 #      FDRS                        : 7
-#      FDS                         : 9
+#      FDS                         : 10
 #      FDSE                        : 78
 #      LDE_1                       : 3
 # RAMS                             : 57
@@ -2665,8 +2250,8 @@ Cell Usage :
 #      SRL16E_1                    : 1
 # Clock Buffers                    : 3
 #      BUFG                        : 3
-# IO Buffers                       : 271
-#      IBUF                        : 14
+# IO Buffers                       : 275
+#      IBUF                        : 18
 #      IBUFG                       : 1
 #      IOBUF                       : 16
 #      OBUF                        : 240
@@ -2681,14 +2266,14 @@ Device utilization summary:
 
 Selected Device : 2v6000bf957-4 
 
- Number of Slices:                     1090  out of  33792     3%  
- Number of Slice Flip Flops:           1116  out of  67584     1%  
- Number of 4 input LUTs:               1830  out of  67584     2%  
-    Number used as logic:              1777
+ Number of Slices:                     1211  out of  33792     3%  
+ Number of Slice Flip Flops:           1250  out of  67584     1%  
+ Number of 4 input LUTs:               2078  out of  67584     3%  
+    Number used as logic:              2025
     Number used as Shift registers:      21
     Number used as RAMs:                 32
  Number of IOs:                         576
- Number of bonded IOBs:                 271  out of    684    39%  
+ Number of bonded IOBs:                 275  out of    684    40%  
     IOB Flip Flops:                       3
  Number of BRAMs:                        49  out of    144    34%  
  Number of MULT18X18s:                    2  out of    144     1%  
@@ -2716,7 +2301,7 @@ Clock Information:
 -----------------------------------+----------------------------------------------------------------------------------------------------------------+-------+
 Clock Signal                       | Clock buffer(FF name)                                                                                          | Load  |
 -----------------------------------+----------------------------------------------------------------------------------------------------------------+-------+
-clock_27mhz                        | IBUFG+BUFG                                                                                                     | 1038  |
+clock_27mhz                        | IBUFG+BUFG                                                                                                     | 1172  |
 one_hz_div/enable                  | NONE(moleloc/temp_r_3)                                                                                         | 4     |
 clock_27mhz                        | vclk1:CLKFX                                                                                                    | 58    |
 ac97_bit_clock                     | IBUF+BUFG                                                                                                      | 62    |
@@ -2734,7 +2319,7 @@ Timing Summary:
 Speed Grade: -4
 
    Minimum period: 63.186ns (Maximum Frequency: 15.826MHz)
-   Minimum input arrival time before clock: 3.804ns
+   Minimum input arrival time before clock: 9.969ns
    Maximum output required time after clock: 10.688ns
    Maximum combinational path delay: 5.887ns
 
@@ -2745,7 +2330,7 @@ All values displayed in nanoseconds (ns)
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clock_27mhz'
   Clock period: 63.186ns (frequency: 15.826MHz)
-  Total number of paths / destination ports: 339959 / 2746
+  Total number of paths / destination ports: 354524 / 3033
 -------------------------------------------------------------------------
 Delay:               15.797ns (Levels of Logic = 10)
   Source:            displaymole1/y_8 (FF)
@@ -2798,48 +2383,53 @@ Delay:               2.386ns (Levels of Logic = 1)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'ac97_bit_clock'
-  Clock period: 12.223ns (frequency: 81.813MHz)
+  Clock period: 12.177ns (frequency: 82.122MHz)
   Total number of paths / destination ports: 1608 / 93
 -------------------------------------------------------------------------
-Delay:               6.112ns (Levels of Logic = 3)
-  Source:            a/ac97/bit_count_4 (FF)
+Delay:               6.088ns (Levels of Logic = 3)
+  Source:            a/ac97/bit_count_5 (FF)
   Destination:       a/ac97/Mshreg_left_in_data_12 (FF)
   Source Clock:      ac97_bit_clock rising
   Destination Clock: ac97_bit_clock falling
 
-  Data Path: a/ac97/bit_count_4 to a/ac97/Mshreg_left_in_data_12
+  Data Path: a/ac97/bit_count_5 to a/ac97/Mshreg_left_in_data_12
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FD:C->Q              17   0.568   1.297  a/ac97/bit_count_4 (a/ac97/bit_count_4)
-     LUT3:I0->O            3   0.439   0.724  a/ac97/l_left_data_not0001131 (a/ac97/N18)
+     FD:C->Q              15   0.568   1.274  a/ac97/bit_count_5 (a/ac97/bit_count_5)
+     LUT3:I0->O            3   0.439   0.724  a/ac97/l_left_data_not0001132 (a/ac97/N18)
      MUXF5:S->O            1   0.699   0.557  a/ac97/left_in_data_and000013_f5 (a/ac97/left_in_data_and000013)
      LUT4:I3->O            9   0.439   0.862  a/ac97/left_in_data_and000048 (a/ac97/left_in_data_and0000)
      SRL16E_1:CE               0.525          a/ac97/Mshreg_left_in_data_12
     ----------------------------------------
-    Total                      6.112ns (2.670ns logic, 3.441ns route)
-                                       (43.7% logic, 56.3% route)
+    Total                      6.088ns (2.670ns logic, 3.418ns route)
+                                       (43.9% logic, 56.1% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'clock_27mhz'
-  Total number of paths / destination ports: 105 / 94
+  Total number of paths / destination ports: 1401 / 124
 -------------------------------------------------------------------------
-Offset:              3.804ns (Levels of Logic = 3)
-  Source:            flash_sts (PAD)
-  Destination:       s/reader_bramdata/flash_flash/flash/state_9 (FF)
+Offset:              9.969ns (Levels of Logic = 8)
+  Source:            switch<3> (PAD)
+  Destination:       diy_addr_loc/index_location_2 (FF)
   Destination Clock: clock_27mhz rising
 
-  Data Path: flash_sts to s/reader_bramdata/flash_flash/flash/state_9
+  Data Path: switch<3> to diy_addr_loc/index_location_2
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O             4   0.825   0.955  flash_sts_IBUF (flash_sts_IBUF)
-     LUT3:I1->O            1   0.439   0.000  s/reader_bramdata/flash_flash/flash/busy_mux00001 (s/reader_bramdata/flash_flash/flash/busy_mux00001)
-     MUXF5:I1->O          11   0.436   0.908  s/reader_bramdata/flash_flash/flash/busy_mux0000_f5 (s/reader_bramdata/flash_flash/flash/busy_mux0000)
-     FDRE:CE                   0.240          s/reader_bramdata/flash_flash/flash/state_0
+     IBUF:I->O            54   0.825   1.179  switch_3_IBUF (switch_3_IBUF)
+     LUT4:I2->O            4   0.439   0.956  lookup_index_cmp_le00001 (lookup_index_cmp_le00001)
+     LUT4:I1->O            1   0.439   0.000  lookup_index_cmp_le000024 (lookup_index_cmp_le000023)
+     MUXF5:I0->O           1   0.436   0.000  lookup_index_cmp_le00002_f5_0 (lookup_index_cmp_le00002_f51)
+     MUXF6:I0->O          82   0.447   1.502  lookup_index_cmp_le00002_f6 (lookup_index_cmp_le0000)
+     LUT2:I0->O           27   0.439   1.075  lookup_index<1>1 (lookup_index<1>)
+     MUXF5:S->O            1   0.699   0.725  diy_addr_loc/mux_5_f5 (diy_addr_loc/mux_5_f5)
+     LUT4:I1->O            1   0.439   0.000  diy_addr_loc/lookup_index<2>1 (diy_addr_loc/_COND_22<0>)
+     FDE:D                     0.370          diy_addr_loc/index_location_0
     ----------------------------------------
-    Total                      3.804ns (1.940ns logic, 1.864ns route)
-                                       (51.0% logic, 49.0% route)
+    Total                      9.969ns (4.533ns logic, 5.436ns route)
+                                       (45.5% logic, 54.5% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'ac97_bit_clock'
@@ -2923,15 +2513,15 @@ Delay:               5.887ns (Levels of Logic = 2)
 =========================================================================
 
 
-Total REAL time to Xst completion: 21.00 secs
-Total CPU time to Xst completion: 19.30 secs
+Total REAL time to Xst completion: 20.00 secs
+Total CPU time to Xst completion: 19.60 secs
  
 --> 
 
 
-Total memory usage is 551012 kilobytes
+Total memory usage is 550956 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings : 1062 (   0 filtered)
-Number of infos    :   60 (   0 filtered)
+Number of warnings :  650 (   0 filtered)
+Number of infos    :   59 (   0 filtered)
 
