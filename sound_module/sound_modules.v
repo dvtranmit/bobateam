@@ -29,10 +29,11 @@ module mole_adressss_locations (
 	output reg [119:0]addresses, //24-bit addresses, 5 of them
 	output reg [19:0] locations);	//4-bit locations, 5 of them
 	
-	parameter MAX_NUMBER_ITEMS = 4;
+	//parameter MAX_NUMBER_ITEMS = 4;
+	
 	parameter INITIAL_STATE = 3'd0;
-	parameter DIY_START = 3'd1;
-	parameter DIY_BUTTON = 3'd2;
+	parameter DIY_INITIAL = 3'd1;
+	parameter DIY_START = 3'd2;
 	parameter DIY_BUTTON_WAIT = 3'd3;
 	parameter DIY_BUTTON_WAIT_DONE1 = 3'd4;
 	parameter DIY_BUTTON_WAIT_DONE2 = 3'd5;
@@ -42,15 +43,18 @@ module mole_adressss_locations (
 	initial state = 0;
 	reg [2:0] next_state;
 	
-	reg button;
-	reg [7:0] button_bits;
+	//wire button;
+	//assign button = (upleft | up | upright | left | right | downleft | down | downright);
+	wire [7:0] button_bits;
+	assign button_bits = {upleft , up , upright , left , right , downleft , down , downright};
+	reg [7:0] last_button_bits;
 	reg [3:0] timer_value = 2;
 	reg start_timer;
 	wire timer_expired;
 	wire [3:0] displayed_counter;
 	
-	wire increment;
-	debounce_ara db_diy(.clock(clock_27mhz), .reset(reset), .noisy(switch[2]), .clean(increment));
+	wire increment = right;
+	//debounce_ara db_diy(.clock(clock_27mhz), .reset(reset), .noisy(switch[2]), .clean(increment));
 
 	timer diy_timer(.clk(clock),
 						 .start_timer(start_timer),
@@ -63,76 +67,136 @@ module mole_adressss_locations (
 	
 	reg [3:0] location;
 	reg [23:0] address;
-	reg [23:0]address_memory[3:0]; //4 24-bit words
-	reg [3:0] location_memory[3:0];// 4 4-bit words
-	reg [2:0] items;
-	reg[2:0] counts;
+	reg [23:0]address_memory[4:0]; // 5 24-bit words
+	reg [3:0] location_memory[4:0];// 5 4-bit words
+	parameter MAX_ITEM = 4'd5;
+	reg [3:0] items;
+	reg[3:0] counts;
 	
 	reg [23:0] disp_address;
 	reg [3:0] disp_loc;
 	wire [63:0] display_data;
-	assign display_data = {disp_address,disp_loc,1'b0, state, 1'b0,counts};
+	assign display_data = {disp_address,12'b0, disp_loc,counts, items, 1'b0, state, displayed_counter};
+	//assign display_data = {locations[19:16], locations[15:12],locations[11:8],locations[7:4],locations[3:0]};
 	
 	display_16hex disp(.reset(switch[3]), .clock_27mhz(clock), .data_in(display_data), 
 		                .disp_rs(disp_rs), .disp_ce_b(disp_ce_b), .disp_blank(disp_blank),
 							 .disp_reset_b(disp_reset_b), .disp_data_out(disp_data_out), .disp_clock(disp_clock));
-	reg last_right;
+	reg last_increment;
 	always @(posedge clock) begin
 		state <= next_state;
-		last_right <= increment;
-		button = (upleft | up | upright | left | right | downleft | down | downright);
-		button_bits = {upleft, up, upright, left, right, downleft, down, downright};
+		last_increment <= increment;
+		last_button_bits <= button_bits;
 		case(state)
 			INITIAL_STATE: begin 
-									next_state <= (!diy_mode) ? INITIAL_STATE : DIY_START;
+									next_state <= (!diy_mode) ? INITIAL_STATE : (displayed_counter == 4'b0)? DIY_INITIAL: INITIAL_STATE;
 									items <= 0;
 									full <= 0;
+									counts <= 0;
+								end
+			DIY_INITIAL: begin
+									next_state <= (!diy_mode) ? INITIAL_STATE : DIY_START;
 								end
 			DIY_START: begin
-								next_state <= (!diy_mode) ? INITIAL_STATE : (full) ? DIY_FULL : (button) ? DIY_BUTTON : DIY_START;
-							end
-			DIY_BUTTON: begin
-								next_state <= (!diy_mode) ? INITIAL_STATE : DIY_BUTTON_WAIT;
-								address_memory[items] <= flash_address;
-								items <= items + 1;
-								start_timer <= 1;
 								case(button_bits)
-									8'b10000000: location_memory[items]  <= 4'd0;
-									8'b01000000: location_memory[items]  <= 4'd1;
-									8'b00100000: location_memory[items]  <= 4'd2;
-									8'b00010000: location_memory[items]  <= 4'd3;
-									8'b00001000: location_memory[items]  <= 4'd4;
-									8'b00000100: location_memory[items]  <= 4'd5;
-									8'b00000010: location_memory[items]  <= 4'd6;
-									8'b00000001: location_memory[items]  <= 4'd7;
-									default: location_memory[items] <= 4'd7;
+									8'b10000000: begin
+															next_state <= (!diy_mode) ? INITIAL_STATE : DIY_BUTTON_WAIT;
+															address_memory[items] <= flash_address;
+															location_memory[items]  <= 4'd0;
+															start_timer <= 1;
+															if (!last_button_bits[7] & button_bits[7])
+																items <= items + 1;
+													 end
+									8'b01000000: begin
+															next_state <= (!diy_mode) ? INITIAL_STATE : DIY_BUTTON_WAIT;
+															address_memory[items] <= flash_address;
+															location_memory[items]  <= 4'd1;
+															start_timer <= 1;
+															if (!last_button_bits[6] & button_bits[6])
+																items <= items + 1;
+													 end
+									8'b00100000: begin
+															next_state <= (!diy_mode) ? INITIAL_STATE : DIY_BUTTON_WAIT;
+															address_memory[items] <= flash_address;
+															location_memory[items]  <= 4'd2;
+															start_timer <= 1;
+															if (!last_button_bits[5] & button_bits[5])
+																items <= items + 1;
+													 end
+									8'b00010000: begin
+															next_state <= (!diy_mode) ? INITIAL_STATE : DIY_BUTTON_WAIT;
+															address_memory[items] <= flash_address;
+															location_memory[items]  <= 4'd3;
+															start_timer <= 1;
+															if (!last_button_bits[4] & button_bits[4])
+																items <= items + 1;
+													 end
+									8'b00001000: begin
+															next_state <= (!diy_mode) ? INITIAL_STATE : DIY_BUTTON_WAIT;
+															address_memory[items] <= flash_address;
+															location_memory[items]  <= 4'd4;
+															start_timer <= 1;
+															if (!last_button_bits[3] & button_bits[3])
+																items <= items + 1;
+													 end
+									8'b00000100: begin
+															next_state <= (!diy_mode) ? INITIAL_STATE : DIY_BUTTON_WAIT;
+															address_memory[items] <= flash_address;
+															location_memory[items]  <= 4'd5;
+															start_timer <= 1;
+															if (!last_button_bits[2] & button_bits[2])
+																items <= items + 1;
+													 end
+									8'b00000010: begin
+															next_state <= (!diy_mode) ? INITIAL_STATE : DIY_BUTTON_WAIT;
+															address_memory[items] <= flash_address;
+															location_memory[items]  <= 4'd6;
+															start_timer <= 1;
+															if (!last_button_bits[1] & button_bits[1])
+																items <= items + 1;
+													 end
+									8'b00000001: begin
+															next_state <= (!diy_mode) ? INITIAL_STATE : DIY_BUTTON_WAIT;
+															address_memory[items] <= flash_address;
+															location_memory[items]  <= 4'd7;
+															start_timer <= 1;
+															if (!last_button_bits[0] & button_bits[0])
+																items <= items + 1;
+													 end
+									default: begin
+													items <= items;
+													start_timer <= 0;
+													next_state <= (!diy_mode) ? INITIAL_STATE : DIY_START;
+												end
 								endcase
 							end
 			DIY_BUTTON_WAIT: begin
-										next_state <= (!diy_mode) ? INITIAL_STATE : (expired) ? DIY_BUTTON_WAIT_DONE1: DIY_BUTTON_WAIT;
+										next_state <= (!diy_mode) ? INITIAL_STATE : (displayed_counter == 4'b0001) ? DIY_BUTTON_WAIT_DONE1: DIY_BUTTON_WAIT;
 										start_timer <= 0;
+										counts <= 0;
 								  end
 			DIY_BUTTON_WAIT_DONE1: begin
-												next_state <= (!diy_mode) ? INITIAL_STATE : (items == 3) ? DIY_FULL : DIY_BUTTON_WAIT_DONE2;
-												counts <= 0;
-										  end
-			DIY_BUTTON_WAIT_DONE2: begin
 												counts <= counts + 1;
 												addresses <= {address_memory[items-counts], addresses[119:24]};
 												locations <= {location_memory[items-counts], locations[19:4]};
-												next_state <= (!diy_mode) ? INITIAL_STATE : (counts != items) ? DIY_BUTTON_WAIT_DONE2 : DIY_START;
+												next_state <= (!diy_mode) ? INITIAL_STATE : (counts < items) ? DIY_BUTTON_WAIT_DONE1 : DIY_BUTTON_WAIT_DONE2 ;
+
+										  end
+			DIY_BUTTON_WAIT_DONE2: begin
+												next_state <= (!diy_mode) ? INITIAL_STATE : (items == MAX_ITEM) ? DIY_FULL : DIY_INITIAL; 
+												counts <= 0;
 										  end
 			DIY_FULL: begin
 							full <= 1;
 							next_state <= (!diy_mode) ? INITIAL_STATE : DIY_FULL;
 							disp_address <= address_memory[counts];
 							disp_loc <= location_memory[counts];
-							if(increment & !last_right) begin
-								counts <= counts + 1;
+							if(increment & !last_increment) begin
+								counts <= (counts < items-1) ? counts + 1 : 0;
 							end
 						 end
 			default: begin
-							next_state <= INITIAL_STATE;
+							next_state <= DIY_INITIAL;
 						end
 			
 		endcase
