@@ -47,13 +47,16 @@
 <msg type="info" file="Xst" num="2561" delta="unknown" >Always blocking tristate driving signal &lt;<arg fmt="%s" index="1">tv_in_i2c_data</arg>&gt; in unit &lt;<arg fmt="%s" index="2">lab3</arg>&gt; is removed.
 </msg>
 
-<msg type="warning" file="Xst" num="643" delta="unknown" >&quot;<arg fmt="%s" index="1">lab3.v</arg>&quot; line <arg fmt="%d" index="2">598</arg>: The result of a <arg fmt="%d" index="3">11</arg>x<arg fmt="%d" index="4">10</arg>-bit multiplication is partially used. Only the <arg fmt="%d" index="5">16</arg> least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
+<msg type="warning" file="Xst" num="643" delta="unknown" >&quot;<arg fmt="%s" index="1">lab3.v</arg>&quot; line <arg fmt="%d" index="2">552</arg>: The result of a <arg fmt="%d" index="3">11</arg>x<arg fmt="%d" index="4">10</arg>-bit multiplication is partially used. Only the <arg fmt="%d" index="5">16</arg> least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
 </msg>
 
-<msg type="warning" file="Xst" num="643" delta="unknown" >&quot;<arg fmt="%s" index="1">lab3.v</arg>&quot; line <arg fmt="%d" index="2">554</arg>: The result of a <arg fmt="%d" index="3">11</arg>x<arg fmt="%d" index="4">10</arg>-bit multiplication is partially used. Only the <arg fmt="%d" index="5">16</arg> least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
+<msg type="warning" file="Xst" num="643" delta="unknown" >&quot;<arg fmt="%s" index="1">lab3.v</arg>&quot; line <arg fmt="%d" index="2">574</arg>: The result of a <arg fmt="%d" index="3">11</arg>x<arg fmt="%d" index="4">10</arg>-bit multiplication is partially used. Only the <arg fmt="%d" index="5">16</arg> least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
 </msg>
 
-<msg type="warning" file="Xst" num="643" delta="unknown" >&quot;<arg fmt="%s" index="1">lab3.v</arg>&quot; line <arg fmt="%d" index="2">576</arg>: The result of a <arg fmt="%d" index="3">11</arg>x<arg fmt="%d" index="4">10</arg>-bit multiplication is partially used. Only the <arg fmt="%d" index="5">16</arg> least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
+<msg type="warning" file="Xst" num="647" delta="unknown" >Input &lt;<arg fmt="%s" index="1">height</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+</msg>
+
+<msg type="warning" file="Xst" num="643" delta="unknown" >&quot;<arg fmt="%s" index="1">lab3.v</arg>&quot; line <arg fmt="%d" index="2">597</arg>: The result of a <arg fmt="%d" index="3">11</arg>x<arg fmt="%d" index="4">10</arg>-bit multiplication is partially used. Only the <arg fmt="%d" index="5">16</arg> least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
 </msg>
 
 <msg type="warning" file="Xst" num="2565" delta="unknown" >Inout &lt;<arg fmt="%s" index="1">user3&lt;28&gt;</arg>&gt; is never assigned.
@@ -968,6 +971,15 @@
 <msg type="warning" file="Xst" num="2565" delta="unknown" >Inout &lt;<arg fmt="%s" index="1">user3&lt;3&gt;</arg>&gt; is never assigned.
 </msg>
 
+<msg type="warning" file="Xst" num="646" delta="unknown" >Signal &lt;<arg fmt="%s" index="1">y7</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1780" delta="unknown" >Signal &lt;<arg fmt="%s" index="1">y1</arg>&gt; is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="646" delta="unknown" >Signal &lt;<arg fmt="%s" index="1">x7</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
 <msg type="warning" file="Xst" num="646" delta="unknown" >Signal &lt;<arg fmt="%s" index="1">vsync8</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 </msg>
 
@@ -989,16 +1001,43 @@
 <msg type="warning" file="Xst" num="646" delta="unknown" >Signal &lt;<arg fmt="%s" index="1">vsync2</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 </msg>
 
+<msg type="warning" file="Xst" num="646" delta="unknown" >Signal &lt;<arg fmt="%s" index="1">vcount7</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
 <msg type="warning" file="Xst" num="646" delta="unknown" >Signal &lt;<arg fmt="%s" index="1">right</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 </msg>
 
 <msg type="warning" file="Xst" num="1780" delta="unknown" >Signal &lt;<arg fmt="%s" index="1">pvsync</arg>&gt; is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 </msg>
 
+<msg type="warning" file="Xst" num="1780" delta="unknown" >Signal &lt;<arg fmt="%s" index="1">pixel</arg>&gt; is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
 <msg type="warning" file="Xst" num="1780" delta="unknown" >Signal &lt;<arg fmt="%s" index="1">phsync</arg>&gt; is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 </msg>
 
 <msg type="warning" file="Xst" num="1780" delta="unknown" >Signal &lt;<arg fmt="%s" index="1">pblank</arg>&gt; is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="646" delta="unknown" >Signal &lt;<arg fmt="%s" index="1">mole8_pixel</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1780" delta="unknown" >Signal &lt;<arg fmt="%s" index="1">mole7_pixel</arg>&gt; is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="646" delta="unknown" >Signal &lt;<arg fmt="%s" index="1">mole6_pixel</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="646" delta="unknown" >Signal &lt;<arg fmt="%s" index="1">mole5_pixel</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="646" delta="unknown" >Signal &lt;<arg fmt="%s" index="1">mole4_pixel</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="646" delta="unknown" >Signal &lt;<arg fmt="%s" index="1">mole3_pixel</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="646" delta="unknown" >Signal &lt;<arg fmt="%s" index="1">mole2_pixel</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 </msg>
 
 <msg type="warning" file="Xst" num="646" delta="unknown" >Signal &lt;<arg fmt="%s" index="1">left</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
@@ -1023,6 +1062,12 @@
 </msg>
 
 <msg type="warning" file="Xst" num="646" delta="unknown" >Signal &lt;<arg fmt="%s" index="1">hsync2</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="653" delta="unknown" >Signal &lt;<arg fmt="%s" index="1">height</arg>&gt; is used but never assigned. This sourceless signal will be automatically connected to value <arg fmt="%s" index="2">0100000000</arg>.
+</msg>
+
+<msg type="warning" file="Xst" num="646" delta="unknown" >Signal &lt;<arg fmt="%s" index="1">hcount7</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 </msg>
 
 <msg type="warning" file="Xst" num="646" delta="unknown" >Signal &lt;<arg fmt="%s" index="1">border</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
@@ -1068,45 +1113,6 @@
 </msg>
 
 <msg type="info" file="Xst" num="2385" delta="unknown" >HDL ADVISOR - You can improve the performance of the multiplier <arg fmt="%s" index="1">Mmult_image_addr_mult0001</arg> by adding <arg fmt="%d" index="2">1</arg> register level(s).
-</msg>
-
-<msg type="info" file="Xst" num="2385" delta="unknown" >HDL ADVISOR - You can improve the performance of the multiplier <arg fmt="%s" index="1">Mmult_image_addr_mult0001</arg> by adding <arg fmt="%d" index="2">1</arg> register level(s).
-</msg>
-
-<msg type="warning" file="Xst" num="1710" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">pixel_0</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">happymole</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1895" delta="unknown" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">pixel_1</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">happymole</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1895" delta="unknown" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">pixel_2</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">happymole</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1895" delta="unknown" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">pixel_3</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">happymole</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1895" delta="unknown" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">pixel_8</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">happymole</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1895" delta="unknown" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">pixel_9</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">happymole</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1895" delta="unknown" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">pixel_10</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">happymole</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1895" delta="unknown" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">pixel_11</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">happymole</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1895" delta="unknown" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">pixel_16</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">happymole</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1895" delta="unknown" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">pixel_17</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">happymole</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1895" delta="unknown" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">pixel_18</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">happymole</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1895" delta="unknown" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">pixel_19</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">happymole</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
 </msg>
 
 <msg type="warning" file="Xst" num="1710" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">pixel_0</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">normalmole</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
@@ -1179,6 +1185,42 @@
 </msg>
 
 <msg type="warning" file="Xst" num="1895" delta="unknown" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">pixel_19</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">deadmole</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1710" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">pixel_0</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">happymole</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1895" delta="unknown" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">pixel_1</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">happymole</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1895" delta="unknown" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">pixel_2</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">happymole</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1895" delta="unknown" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">pixel_3</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">happymole</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1895" delta="unknown" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">pixel_8</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">happymole</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1895" delta="unknown" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">pixel_9</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">happymole</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1895" delta="unknown" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">pixel_10</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">happymole</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1895" delta="unknown" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">pixel_11</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">happymole</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1895" delta="unknown" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">pixel_16</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">happymole</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1895" delta="unknown" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">pixel_17</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">happymole</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1895" delta="unknown" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">pixel_18</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">happymole</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1895" delta="unknown" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">pixel_19</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">happymole</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
 </msg>
 
 <msg type="warning" file="Xst" num="1710" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">rgb_0</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">lab3</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
@@ -1328,6 +1370,222 @@
 <msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">vsync</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">xvga8</arg>&gt;.
 </msg>
 
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_4</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole2</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_5</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole2</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_6</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole2</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_7</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole2</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_12</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole2</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_13</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole2</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_14</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole2</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_15</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole2</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_20</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole2</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_21</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole2</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_22</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole2</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_23</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole2</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_4</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_5</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_6</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_7</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_12</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_13</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_14</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_15</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_20</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_21</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_22</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_23</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_4</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole4</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_5</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole4</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_6</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole4</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_7</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole4</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_12</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole4</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_13</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole4</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_14</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole4</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_15</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole4</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_20</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole4</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_21</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole4</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_22</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole4</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_23</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole4</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_4</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole5</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_5</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole5</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_6</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole5</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_7</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole5</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_12</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole5</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_13</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole5</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_14</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole5</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_15</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole5</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_20</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole5</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_21</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole5</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_22</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole5</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_23</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole5</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_4</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole6</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_5</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole6</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_6</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole6</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_7</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole6</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_12</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole6</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_13</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole6</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_14</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole6</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_15</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole6</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_20</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole6</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_21</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole6</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_22</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole6</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_23</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole6</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_4</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole8</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_5</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole8</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_6</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole8</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_7</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole8</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_12</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole8</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_13</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole8</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_14</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole8</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_15</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole8</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_20</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole8</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_21</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole8</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_22</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole8</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_23</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole8</arg>&gt;.
+</msg>
+
 <msg type="warning" file="Xst" num="1989" delta="unknown" >Unit &lt;<arg fmt="%s" index="1">lab3</arg>&gt;: instances &lt;<arg fmt="%s" index="2">xvga2</arg>&gt;, &lt;<arg fmt="%s" index="3">xvga3</arg>&gt; of unit &lt;<arg fmt="%s" index="4">xvga</arg>&gt; are equivalent, second instance is removed
 </msg>
 
@@ -1340,10 +1598,265 @@
 <msg type="warning" file="Xst" num="1989" delta="unknown" >Unit &lt;<arg fmt="%s" index="1">lab3</arg>&gt;: instances &lt;<arg fmt="%s" index="2">xvga2</arg>&gt;, &lt;<arg fmt="%s" index="3">xvga6</arg>&gt; of unit &lt;<arg fmt="%s" index="4">xvga</arg>&gt; are equivalent, second instance is removed
 </msg>
 
-<msg type="warning" file="Xst" num="1989" delta="unknown" >Unit &lt;<arg fmt="%s" index="1">lab3</arg>&gt;: instances &lt;<arg fmt="%s" index="2">xvga2</arg>&gt;, &lt;<arg fmt="%s" index="3">xvga7</arg>&gt; of unit &lt;<arg fmt="%s" index="4">xvga</arg>&gt; are equivalent, second instance is removed
+<msg type="warning" file="Xst" num="1989" delta="unknown" >Unit &lt;<arg fmt="%s" index="1">lab3</arg>&gt;: instances &lt;<arg fmt="%s" index="2">xvga2</arg>&gt;, &lt;<arg fmt="%s" index="3">xvga8</arg>&gt; of unit &lt;<arg fmt="%s" index="4">xvga</arg>&gt; are equivalent, second instance is removed
 </msg>
 
-<msg type="warning" file="Xst" num="1989" delta="unknown" >Unit &lt;<arg fmt="%s" index="1">lab3</arg>&gt;: instances &lt;<arg fmt="%s" index="2">xvga2</arg>&gt;, &lt;<arg fmt="%s" index="3">xvga8</arg>&gt; of unit &lt;<arg fmt="%s" index="4">xvga</arg>&gt; are equivalent, second instance is removed
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">db5/clean</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">db5/new</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">db4/clean</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">db4/new</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">xvga7/vsync</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">xvga7/vblank</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">xvga7/blank</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">xvga7/hsync</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">xvga7/hblank</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">xvga2/vsync</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">xvga2/vblank</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">xvga2/blank</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">xvga2/hsync</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">xvga2/hblank</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole8/pixel_23</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole8/pixel_22</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole8/pixel_21</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole8/pixel_20</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole8/pixel_15</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole8/pixel_14</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole8/pixel_13</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole8/pixel_12</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole8/pixel_7</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole8/pixel_6</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole8/pixel_5</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole8/pixel_4</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole6/pixel_23</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole6/pixel_22</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole6/pixel_21</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole6/pixel_20</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole6/pixel_15</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole6/pixel_14</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole6/pixel_13</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole6/pixel_12</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole6/pixel_7</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole6/pixel_6</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole6/pixel_5</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole6/pixel_4</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole5/pixel_23</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole5/pixel_22</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole5/pixel_21</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole5/pixel_20</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole5/pixel_15</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole5/pixel_14</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole5/pixel_13</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole5/pixel_12</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole5/pixel_7</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole5/pixel_6</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole5/pixel_5</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole5/pixel_4</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole2/pixel_23</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole2/pixel_22</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole2/pixel_21</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole2/pixel_20</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole2/pixel_15</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole2/pixel_14</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole2/pixel_13</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole2/pixel_12</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole2/pixel_7</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole2/pixel_6</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole2/pixel_5</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole2/pixel_4</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole4/pixel_23</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole4/pixel_22</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole4/pixel_21</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole4/pixel_20</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole4/pixel_15</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole4/pixel_14</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole4/pixel_13</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole4/pixel_12</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole4/pixel_7</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole4/pixel_6</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole4/pixel_5</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole4/pixel_4</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole3/pixel_23</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole3/pixel_22</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole3/pixel_21</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole3/pixel_20</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole3/pixel_15</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole3/pixel_14</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole3/pixel_13</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole3/pixel_12</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole3/pixel_7</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole3/pixel_6</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole3/pixel_5</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole3/pixel_4</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
 </msg>
 
 <msg type="warning" file="Xst" num="1710" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">rgb_0</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">lab3</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
@@ -1380,33 +1893,6 @@
 </msg>
 
 <msg type="warning" file="Xst" num="1710" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">rgb_19</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">lab3</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">db5/clean</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">db5/new</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">db4/clean</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">db4/new</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">xvga2/vsync</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">xvga2/vblank</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">xvga2/blank</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">xvga2/hsync</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">xvga2/hblank</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
 </msg>
 
 <msg type="info" file="Xst" num="2169" delta="unknown" >HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.

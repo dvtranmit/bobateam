@@ -409,8 +409,8 @@ module lab3   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 	
    wire phsync,pvsync,pblank;
 
-	wire [10:0] x1 = 65;
-	wire [9:0] y1 = 0;
+	//wire [10:0] x1 = 65;
+	//wire [9:0] y1 = 0;
 	wire [10:0] x2 = 406;
 	wire [9:0] y2 = 0;
 	wire [10:0] x3 = 747;
@@ -426,8 +426,8 @@ module lab3   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 	wire [10:0] x8 = 747;
 	wire [9:0] y8 = 512;
 
-	happymole #(.WIDTH(207),.HEIGHT(256))
-			mole1(.pixel_clk(clock_65mhz),.x(x1),.hcount(hcount1),.y(y1),.vcount(vcount1),.pixel(mole1_pixel));
+	//happymole #(.WIDTH(207),.HEIGHT(128))
+			//mole1(.pixel_clk(clock_65mhz),.x(x1),.hcount(hcount1),.y(y1),.vcount(vcount1),.pixel(mole1_pixel));
 	normalmole #(.WIDTH(212),.HEIGHT(256))
 			mole2(.pixel_clk(clock_65mhz),.x(x2),.hcount(hcount2),.y(y2),.vcount(vcount2),.pixel(mole2_pixel));
 	deadmole #(.WIDTH(191),.HEIGHT(256))
@@ -438,21 +438,38 @@ module lab3   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 			mole5(.pixel_clk(clock_65mhz),.x(x5),.hcount(hcount5),.y(y5),.vcount(vcount5),.pixel(mole5_pixel));
 	normalmole #(.WIDTH(212),.HEIGHT(256))
 			mole6(.pixel_clk(clock_65mhz),.x(x6),.hcount(hcount6),.y(y6),.vcount(vcount6),.pixel(mole6_pixel));
-	happymole #(.WIDTH(207),.HEIGHT(256))
-			mole7(.pixel_clk(clock_65mhz),.x(x7),.hcount(hcount7),.y(y7),.vcount(vcount7),.pixel(mole7_pixel));
+	//happymole #(.WIDTH(207),.HEIGHT(128))
+			//mole7(.pixel_clk(clock_65mhz),.x(x7),.hcount(hcount7),.y(y7),.vcount(vcount7),.pixel(mole7_pixel));
 	normalmole #(.WIDTH(212),.HEIGHT(256))
 			mole8(.pixel_clk(clock_65mhz),.x(x8),.hcount(hcount8),.y(y8),.vcount(vcount8),.pixel(mole8_pixel));
 
    reg [23:0] rgb;
    wire border = (hcount1==0 | hcount1==1023 | vcount1==0 | vcount1==767);
    
-	assign pixel = mole1_pixel | mole2_pixel | mole3_pixel | mole4_pixel | mole5_pixel | mole6_pixel | mole7_pixel | mole8_pixel;
+	//assign pixel = mole1_pixel | mole2_pixel | mole3_pixel | mole4_pixel | mole5_pixel | mole6_pixel | mole7_pixel | mole8_pixel;
+	//assign pixel = mole1_pixel;
    reg b,hs,vs;
+	reg [9:0] height = 256;
+	reg [9:0] y_change = 255;
+	wire [10:0] x1 = 65;
+	reg [9:0] y1 = 255;
+	wire mole_clock;
+	happymole #(.WIDTH(207),.HEIGHT(256))
+			mole1(.pixel_clk(clock_65mhz),.height(height),.x(x1),.hcount(hcount1),.y(y_change),.vcount(vcount1),.pixel(mole1_pixel));
+	divider divider1(.clk(clock_27mhz),.mole_popup_clock(mole_clock));
+	always @ (posedge mole_clock) begin
+		if (y_change < 256 && y_change > 0) begin
+			y_change <= y_change - 1;
+		end
+		else if (y_change == 0) begin
+			y_change <= 255;
+		end
+	end
    always @(posedge clock_65mhz) begin
 		hs <= hsync1;
 		vs <= vsync1;
 		b <= blank1;
-		rgb <= pixel; 
+		rgb <= mole1_pixel; 
    end
 
    // VGA Output.  In order to meet the setup and hold times of the
@@ -467,7 +484,6 @@ module lab3   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
    assign vga_out_vsync = vs;
    
    assign led = ~{3'b000,up,down,reset,switch[1:0]};
-
 endmodule
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -501,7 +517,7 @@ module xvga(input vclock,
    // sync and blanking
    wire next_hblank,next_vblank;
    assign next_hblank = hreset ? 0 : hblankon ? 1 : hblank;
-   assign next_vblank = vreset ? 0 : vblankon ? 1 : vblank;
+   assign next_vblank = vreset ? 0 : vblankon ? 1 : vblank;/////	
    always @(posedge vclock) begin
       hcount <= hreset ? 0 : hcount + 1;
       hblank <= next_hblank;
@@ -515,6 +531,9 @@ module xvga(input vclock,
    end
 endmodule
 
+///////////////////////////////////////////////////////////
+///// MOLE MODULES 																
+///////////////////////////////////////////////////////////
 module normalmole
 	#(parameter WIDTH = 212, HEIGHT = 256)
 	(input pixel_clk,
@@ -564,12 +583,13 @@ module happymole
 	(input pixel_clk,
     input [10:0] x, hcount,
     input [9:0] y, vcount,
+	 input [9:0] height,
     output reg [23:0] pixel
     );
 	wire [15:0] image_addr;
 	wire [3:0] image_bits, red_mapped, green_mapped, blue_mapped;
 	always @ (posedge pixel_clk) begin
-		if ((hcount >= x && hcount < (x + WIDTH)) && (vcount >= y && vcount < (y + HEIGHT)))
+		if ((hcount >= x && hcount < (x + WIDTH)) && (vcount >= y && vcount < HEIGHT))
 			pixel <= {red_mapped,4'b0, green_mapped,4'b0, blue_mapped,4'b0};
 		else
 			pixel <= 0;
@@ -580,3 +600,15 @@ module happymole
 	happy_green_rom gcm_happy (.clka(pixel_clk), .addra(image_bits), .douta(green_mapped));
 	happy_blue_rom bcm_happy (.clka(pixel_clk), .addra(image_bits), .douta(blue_mapped));	
 endmodule
+
+module divider(input clk, output reg mole_popup_clock);
+	reg [26:0] count = 0;
+	always @ (posedge clk) begin
+		mole_popup_clock <= 0;
+		count <= count + 1;
+		if (count == 25'd33750) begin
+			mole_popup_clock <= 1;
+			count <= 0;
+		end
+	end
+endmodule 
