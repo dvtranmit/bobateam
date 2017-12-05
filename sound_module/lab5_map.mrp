@@ -4,35 +4,37 @@ Xilinx Mapping Report File for Design 'lab5'
 Design Information
 ------------------
 Command Line   : map -ise
-"/afs/athena.mit.edu/user/a/d/adhikara/Documents/6.111things/6.111
-project/bobateam/sound_module/sound_module.ise" -intstyle ise -p
-xc2v6000-bf957-4 -cm area -pr off -k 4 -c 100 -tx off -o lab5_map.ncd lab5.ngd
-lab5.pcf 
+/afs/athena.mit.edu/user/d/v/dvtran/Documents/6.111/finalproject/bobateam/sound_
+module/sound_module.ise -intstyle ise -p xc2v6000-bf957-4 -cm area -pr off -k 4
+-c 100 -tx off -o lab5_map.ncd lab5.ngd lab5.pcf 
 Target Device  : xc2v6000
 Target Package : bf957
 Target Speed   : -4
 Mapper Version : virtex2 -- $Revision: 1.46.12.2 $
-Mapped Date    : Sun Dec  3 16:49:06 2017
+Mapped Date    : Mon Dec  4 16:14:30 2017
 
 Design Summary
 --------------
 Number of errors:      0
-Number of warnings:  399
+Number of warnings:  400
 Logic Utilization:
-  Number of Slice Flip Flops:         1,054 out of  67,584    1%
-  Number of 4 input LUTs:             1,577 out of  67,584    2%
+  Total Number Slice Registers:       1,034 out of  67,584    1%
+    Number used as Flip Flops:        1,031
+    Number used as Latches:               3
+  Number of 4 input LUTs:             1,603 out of  67,584    2%
 Logic Distribution:
-  Number of occupied Slices:          1,272 out of  33,792    3%
-    Number of Slices containing only related logic:   1,272 out of   1,272 100%
-    Number of Slices containing unrelated logic:          0 out of   1,272   0%
+  Number of occupied Slices:          1,271 out of  33,792    3%
+    Number of Slices containing only related logic:   1,271 out of   1,271 100%
+    Number of Slices containing unrelated logic:          0 out of   1,271   0%
       *See NOTES below for an explanation of the effects of unrelated logic.
-  Total Number of 4 input LUTs:       1,911 out of  67,584    2%
-    Number used as logic:             1,520
-    Number used as a route-thru:        334
+  Total Number of 4 input LUTs:       1,922 out of  67,584    2%
+    Number used as logic:             1,546
+    Number used as a route-thru:        319
     Number used for Dual Port RAMs:      32
       (Two LUTs used per Dual Port RAM)
     Number used as Shift registers:      25
   Number of bonded IOBs:                576 out of     684   84%
+    IOB Flip Flops:                       3
   Number of RAMB16s:                     49 out of     144   34%
   Number of MULT18X18s:                   2 out of     144    1%
   Number of BUFGMUXs:                     4 out of      16   25%
@@ -83,7 +85,7 @@ Section 1 - Errors
 Section 2 - Warnings
 --------------------
 WARNING:LIT:243 - Logical network user3<28>_IBUF has no load.
-WARNING:LIT:395 - The above warning message base_net_load_rule is repeated 313
+WARNING:LIT:395 - The above warning message base_net_load_rule is repeated 314
    more times for the following (max. 5 shown):
    user3<4>_IBUF,
    user3<29>_IBUF,
@@ -533,6 +535,8 @@ WARNING:PhysDesignRules:367 - The signal <switch<4>_IBUF> is incomplete. The
 WARNING:PhysDesignRules:367 - The signal <switch<5>_IBUF> is incomplete. The
    signal does not drive any load pins in the design.
 WARNING:PhysDesignRules:367 - The signal <switch<6>_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <switch<7>_IBUF> is incomplete. The
    signal does not drive any load pins in the design.
 WARNING:PhysDesignRules:367 - The signal <user1<0>_IBUF> is incomplete. The
    signal does not drive any load pins in the design.
@@ -1226,9 +1230,9 @@ Section 6 - IOB Properties
 | flash_we_b                         | IOB              | OUTPUT    | LVDCI_33             |          |      |              |          |          |
 | keyboard_clock                     | IOB              | INPUT     | LVTTL                |          |      |              |          |          |
 | keyboard_data                      | IOB              | INPUT     | LVTTL                |          |      |              |          |          |
-| led<0>                             | IOB              | OUTPUT    | LVTTL                | 12       | SLOW |              |          |          |
-| led<1>                             | IOB              | OUTPUT    | LVTTL                | 12       | SLOW |              |          |          |
-| led<2>                             | IOB              | OUTPUT    | LVTTL                | 12       | SLOW |              |          |          |
+| led<0>                             | IOB              | OUTPUT    | LVTTL                | 12       | SLOW | OFF1         |          |          |
+| led<1>                             | IOB              | OUTPUT    | LVTTL                | 12       | SLOW | OFF1         |          |          |
+| led<2>                             | IOB              | OUTPUT    | LVTTL                | 12       | SLOW | OFF1         |          |          |
 | led<3>                             | IOB              | OUTPUT    | LVTTL                | 12       | SLOW |              |          |          |
 | led<4>                             | IOB              | OUTPUT    | LVTTL                | 12       | SLOW |              |          |          |
 | led<5>                             | IOB              | OUTPUT    | LVTTL                | 12       | SLOW |              |          |          |

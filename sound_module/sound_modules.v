@@ -1,6 +1,127 @@
 `timescale 1ns / 1ps
 
 
+//to get mole addresses and locations in a one mole diy mode
+module mole_adressss_locations (
+	input wire clock,
+	input wire reset,
+	input wire switch,
+	input wire upleft,
+	input wire up,
+	input wire upright,
+	input wire left,
+	input wire right,
+	input wire downleft,
+	input wire down,
+	input wire downright,
+	input wire enter,
+	input wire diy_mode,
+	//input wire disp_data_in,			 // LED display signal
+   //output wire disp_blank,           // LED display signal
+   //output wire disp_clock,           // LED display signal
+   //output wire disp_rs,              // LED display signal
+   //output wire disp_ce_b,            // LED display signal
+   //output wire disp_reset_b,         // LED display signal
+   //output wire disp_data_out,        // LED display signal
+	input wire [23:0] flash_address,
+	output reg full,
+	output reg [959:0]addresses, //to store 40 24-bit addresses
+	output reg [319:0] locations); //to store 40 8-bit locations
+	
+	reg [5:0] counter;
+	initial counter = 0;
+	wire buttons;
+	assign buttons = {upleft, up, upright, left, right, downleft, down, downright};
+	// timer for delay between button presses
+	wire expired;
+	wire [3:0] displayed_counter;
+	wire button_press;
+	assign button_press = (upleft | up | upright | left | right | downleft| down | downright);
+	reg [3:0] timer_value;
+	initial timer_value = 2; // wait for 2 seconds before recording button presses
+	timer buttons_delay(.clk(clock_27mhz), .start_timer(button_press), .one_hz_enable(one_hz_enable),
+									.timer_value(timer_value), .expired(expired),
+									.displayed_counter(displayed_counter));
+	reg time_long_enough;
+	reg last_expired;
+	always @ (posedge clock) begin
+		if(reset) begin
+			time_long_enough <= reset;
+			addresses <= 0;
+			locations <= 0;
+			counter <= 0;
+			full <= 0;
+		end
+		else begin
+			last_expired <= expired;
+			if (!last_expired & expired) begin //expired went from 0 to 1 then enough time has passed
+				time_long_enough <= 1;
+			end
+			else if (last_expired & !expired) begin //if expired went from 1 to 0 then reset time_long_enough
+				time_long_enough <= 0;
+			end
+			if((counter < 40) & diy_mode) begin
+				if(counter == 0) begin
+					//first button press, record without waiting for timer expired
+					//addresses and locations are shift registers
+					//if any of the 8 buttons are pressed
+					if (button_press) begin
+						addresses <= {addresses[936:0], flash_address};
+						locations <= {locations[311:0],upleft, up, upright, left, right, downleft, down, downright};
+						counter <= counter + 1;
+					end
+				end
+				else if (time_long_enough) begin
+					if(button_press) begin
+						addresses <= {addresses[936:0], flash_address};
+						locations <= {locations[311:0],upleft, up, upright, left, right, downleft, down, downright};
+						counter <= counter + 1;
+					end
+				end
+			end
+			else begin
+				full <= 1;
+			end
+		end
+	end
+	
+	
+
+endmodule
+
+///////////////////////////////////////////////////////////////////////////////
+//
+// Switch Debounce Module
+//
+///////////////////////////////////////////////////////////////////////////////
+
+module debounce_ara (
+  input wire reset, clock, noisy,
+  output reg clean
+);
+  reg [18:0] count;
+  reg new;
+
+  always @(posedge clock)
+    if (reset) begin
+      count <= 0;
+      new <= noisy;
+      clean <= noisy;
+    end
+    else if (noisy != new) begin
+      // noisy input changed, restart the .01 sec clock
+      new <= noisy;
+      count <= 0;
+    end
+    else if (count == 270000)
+      // noisy input stable for .01 secs, pass it along!
+      clean <= new;
+    else
+      // waiting for .01 sec to pass
+      count <= count+1;
+
+endmodule
+
 //sound module for DDR whack-a-mole
 module sound_module(
   input wire clock,	                // 27mhz system clock
@@ -26,6 +147,7 @@ module sound_module(
   output wire [22:0] music_address, //output to davis
   input wire [3:0] game_state,     //input from davis
  // input wire [2:0] mole_loc,
+  input wire diy_mode,
   output reg [7:0] to_ac97_data    // 8-bit PCM data to headphone
 );
 
@@ -48,6 +170,10 @@ module sound_module(
 	parameter LOADING_WHACKED = 3'd5;
 	parameter LOAD_DONE = 3'd6;
 	parameter READY_TO_PLAY = 3'd7;
+	// Placeholder variables for DIY mode
+	parameter RECORD_DIY_BEGIN 	= 4'd11;		// Begin Recording Moles
+	parameter RECORD_DIY_IN_PROGRESS = 4'd11;// Begin Recording Moles
+	parameter RECORD_DIY_END		= 4'd13;		// Recording ended
 	
 	//address for background music and sound effects
 	//make sure the order of things recorded is always background music, pop up sound, missed sound, and whacked sound b/c order
@@ -118,6 +244,8 @@ module sound_module(
 	reg pop_sound_done;
 	reg missed_sound_done;
 	reg whacked_sound_done;
+	reg diy_mode_done;
+	reg diy_playback;
 	reg [LOGSIZE-1:0]bram_pop_start;
 	reg [LOGSIZE-1:0]bram_pop_end;
 	reg [LOGSIZE-1:0]bram_missed_start;
@@ -294,6 +422,42 @@ module sound_module(
 														end
 													end
 												end
+										 end
+					RECORD_DIY_BEGIN: begin
+												flash_raddr <= MUSIC_START;
+												diy_mode_done <= 0;
+												diy_playback <= 0;
+											end
+					RECORD_DIY_IN_PROGRESS: begin
+														if (!diy_mode_done) begin
+															filter_f_input <= flash_data[7:0];
+															if (ready) begin
+																to_ac97_data <= filter_f_output[17:0];
+																if(flash_raddr >= MUSIC_END) begin
+																	diy_mode_done <= 1;
+																end
+																else begin
+																	flash_raddr <= flash_raddr + 1; 
+																end
+															end
+														end
+														else begin
+															to_ac97_data <= 0;
+														end
+													end
+					RECORD_DIY_END: begin
+											if(!diy_playback) begin
+												diy_playback <= 1;
+												flash_raddr <= MUSIC_START;
+											end
+											if (diy_playback) begin
+												//play background music
+												filter_f_input <= flash_data[7:0];
+												if(ready) begin
+													to_ac97_data <= filter_f_output[17:10];
+													flash_raddr <= (flash_raddr >= MUSIC_END) ? MUSIC_START : flash_raddr + 1;
+												end
+											end
 										 end
 					default: begin
 									//play background music

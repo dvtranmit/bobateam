@@ -1,7 +1,7 @@
 Release 10.1.03 - par K.39 (lin64)
 Copyright (c) 1995-2008 Xilinx, Inc.  All rights reserved.
 
-Sun Dec  3 16:49:53 2017
+Mon Dec  4 16:15:22 2017
 
 
 INFO: The IO information is provided in three file formats as part of the Place and Route (PAR) process.  These formats are:
@@ -193,8 +193,8 @@ Pinout by Pin Number:
 |AE18      |audio_reset_b       |IOB      |IO_L92P_5             |OUTPUT   |LVTTL*     |5             |12        |SLOW     |NONE**     |         |       |LOCATED   |         |NO         |NONE            |
 |AE19      |                    |         |GND                   |         |           |              |          |         |           |         |       |          |         |           |                |
 |AE20      |tv_in_ycrcb<15>     |IOB      |IO_L50N_5             |INPUT    |LVTTL*     |5             |          |         |           |NONE     |       |LOCATED   |         |NO         |NONE            |
-|AE21      |led<1>              |IOB      |IO_L50P_5             |OUTPUT   |LVTTL*     |5             |12        |SLOW     |NONE**     |         |       |LOCATED   |         |NO         |NONE            |
-|AE22      |led<0>              |IOB      |IO_L23N_5             |OUTPUT   |LVTTL*     |5             |12        |SLOW     |NONE**     |         |       |LOCATED   |         |NO         |NONE            |
+|AE21      |led<1>              |IOB      |IO_L50P_5             |OUTPUT   |LVTTL*     |5             |12        |SLOW     |NONE**     |         |       |LOCATED   |         |YES        |NONE            |
+|AE22      |led<0>              |IOB      |IO_L23N_5             |OUTPUT   |LVTTL*     |5             |12        |SLOW     |NONE**     |         |       |LOCATED   |         |YES        |NONE            |
 |AE23      |switch<6>           |IOB      |IO_L23P_5             |INPUT    |LVTTL*     |5             |          |         |           |NONE     |       |LOCATED   |         |NO         |NONE            |
 |AE24      |                    |DIFFM    |IO_L05P_5/VRN_5       |UNUSED   |           |5             |          |         |TERMINATION|         |       |          |         |           |                |
 |AE25      |                    |         |GND                   |         |           |              |          |         |           |         |       |          |         |           |                |
@@ -255,7 +255,7 @@ Pinout by Pin Number:
 |AG18      |tv_in_ycrcb<18>     |IOB      |IO_L72N_5             |INPUT    |LVTTL*     |5             |          |         |           |NONE     |       |LOCATED   |         |NO         |NONE            |
 |AG19      |tv_in_ycrcb<17>     |IOB      |IO_L72P_5             |INPUT    |LVTTL*     |5             |          |         |           |NONE     |       |LOCATED   |         |NO         |NONE            |
 |AG20      |tv_in_ycrcb<16>     |IOB      |IO_L54N_5             |INPUT    |LVTTL*     |5             |          |         |           |NONE     |       |LOCATED   |         |NO         |NONE            |
-|AG21      |led<2>              |IOB      |IO_L54P_5             |OUTPUT   |LVTTL*     |5             |12        |SLOW     |NONE**     |         |       |LOCATED   |         |NO         |NONE            |
+|AG21      |led<2>              |IOB      |IO_L54P_5             |OUTPUT   |LVTTL*     |5             |12        |SLOW     |NONE**     |         |       |LOCATED   |         |YES        |NONE            |
 |AG22      |tv_in_fifo_clock    |IOB      |IO_L24N_5             |OUTPUT   |LVDCI_33   |5             |          |NONE*    |NONE**     |         |       |LOCATED   |         |NO         |DRIVER          |
 |AG23      |tv_in_ycrcb<12>     |IOB      |IO_L24P_5             |INPUT    |LVTTL*     |5             |          |         |           |NONE     |       |LOCATED   |         |NO         |NONE            |
 |AG24      |analyzer4_data<9>   |IOB      |IO_L02N_5/D6          |OUTPUT   |LVTTL*     |5             |12        |SLOW     |NONE**     |         |       |LOCATED   |         |NO         |NONE            |

@@ -2,39 +2,6 @@
 
 ///////////////////////////////////////////////////////////////////////////////
 //
-// Switch Debounce Module
-//
-///////////////////////////////////////////////////////////////////////////////
-
-module debounce_ara (
-  input wire reset, clock, noisy,
-  output reg clean
-);
-  reg [18:0] count;
-  reg new;
-
-  always @(posedge clock)
-    if (reset) begin
-      count <= 0;
-      new <= noisy;
-      clean <= noisy;
-    end
-    else if (noisy != new) begin
-      // noisy input changed, restart the .01 sec clock
-      new <= noisy;
-      count <= 0;
-    end
-    else if (count == 270000)
-      // noisy input stable for .01 secs, pass it along!
-      clean <= new;
-    else
-      // waiting for .01 sec to pass
-      count <= count+1;
-
-endmodule
-
-///////////////////////////////////////////////////////////////////////////////
-//
 // bi-directional monaural interface to AC97
 //
 ///////////////////////////////////////////////////////////////////////////////
@@ -664,8 +631,8 @@ module lab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 	debounce db_r(.clk(clock_27mhz), .reset(reset), .noisy(button_right), .clean(right));
 	debounce db_e(.clk(clock_27mhz), .reset(reset), .noisy(button_enter), .clean(enter));
 	
-	wire start;
-	debounce db_st(.clk(clock_27mhz), .reset(reset), .noisy(switch[7]), .clean(start));
+	wire diy_mode;
+	debounce db_diy(.clk(clock_27mhz), .reset(reset), .noisy(switch[7]), .clean(diy_mode));
 
 ///////////////////////////////////////////
 //			INITIALIZE & CONNECT GAME		  //
@@ -694,7 +661,7 @@ module lab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 	timer game_start_delay(.clk(clock_27mhz), .start_timer(start_timer), .one_hz_enable(one_hz_enable),
 									.timer_value(timer_value), .expired(expired),
 									.displayed_counter(displayed_counter));
-	
+
 	// Generate random locations (a number 0-7)
 	wire [2:0] random_mole_location;
 	random moleloc(.clk(one_hz_enable), .reset(enter), .r(random_mole_location));
@@ -715,19 +682,121 @@ module lab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 	wire [22:0] music_address;
 	mole getmole(.clk(clock_27mhz), .reset(enter),
 						.music_address(music_address),
-						.one_hz_enable(one_hz_enable),
 						.request_mole(request_mole));
 
 	wire [3:0] display_state;
 	wire [1:0] lives;
 	wire [7:0] score;
 	gameState game(.clk(clock_27mhz), .misstep(misstep),
-						.whacked(whacked), .start(start),
+						.whacked(whacked), .start(up),
 						.reset(enter), .request_mole(request_mole),
-						.expired(expired), .random_mole_location(random_mole_location),
+						.expired(expired), .diy_mode(diy_mode), .random_mole_location(random_mole_location),
 						.start_timer(start_timer), .timer_value(timer_value),
 						.display_state(display_state), .mole_location(mole_location), 
 						.lives(lives), .score(score));
+	
+	/****Ara's code for sounds things here*/		
+   wire [7:0] from_ac97_data, to_ac97_data;
+   wire ready;
+
+   // allow user to adjust volume
+   reg [4:0] volume = 5'd8;
+	
+   // AC97 driver
+   lab5audio a(clock_27mhz, reset, volume, from_ac97_data, to_ac97_data, ready,
+	       audio_reset_b, ac97_sdata_out, ac97_sdata_in,
+	       ac97_synch, ac97_bit_clock);
+
+   // sound module
+	
+   sound_module s(.clock(clock_27mhz), .reset(reset), .ready(ready),
+              .from_ac97_data(from_ac97_data), .to_ac97_data(to_ac97_data),
+				  //.mole_loc(mole_location),
+				  //.switch(switch),
+				  //.disp_blank(disp_blank),
+				  //.disp_clock(disp_clock),
+				  //.disp_data_out(disp_data_out), 
+				  //.disp_rs(disp_rs), 
+				  //.disp_ce_b(disp_ce_b),
+				  //.disp_reset_b(disp_reset_b),
+				  .flash_data(flash_data),
+				  .flash_address(flash_address),
+				  .flash_ce_b(flash_ce_b),
+				  .flash_oe_b(flash_oe_b),
+				  .flash_we_b(flash_we_b),
+				  .flash_reset_b(flash_reset_b),
+				  .flash_byte_b(flash_byte_b),
+				  .flash_sts(flash_sts),
+				  .music_address(music_address),
+				  .game_state(display_state),
+				  .diy_mode(diy_mode));
+
+   // output useful things to the logic analyzer connectors
+   assign analyzer1_clock = ac97_bit_clock;
+   assign analyzer1_data[0] = audio_reset_b;
+   assign analyzer1_data[1] = ac97_sdata_out;
+   assign analyzer1_data[2] = ac97_sdata_in;
+   assign analyzer1_data[3] = ac97_synch;
+   assign analyzer1_data[15:4] = 0;
+
+   assign analyzer3_clock = ready;
+   assign analyzer3_data = {from_ac97_data, to_ac97_data};
+
+	//diy game module
+	wire full;
+	wire [959:0]diy_addresses;
+	wire [319:0]diy_locations;
+	mole_adressss_locations diy_addr_loc(.clock(clock_27mhz),
+														//.disp_blank(disp_blank),
+														//.disp_clock(disp_clock),
+														//.disp_data_out(disp_data_out), 
+														//.disp_rs(disp_rs), 
+														//.disp_ce_b(disp_ce_b),
+														//.disp_reset_b(disp_reset_b),
+													   .reset(reset),
+														.upleft(upleft),
+														.up(up),
+														.upright(upright),
+														.left(left),
+														.right(right),
+														.downleft(downleft),
+														.down(down),
+														.downright(downright),
+														.enter(enter),
+														.diy_mode(diy_mode),
+														.flash_address(flash_address),
+														.full(full),
+														.addresses(diy_addresses),
+														.locations(diy_locations));
+
+	/*
+	VICTORIA'S CODE
+	*/
+
+   // feed XVGA signals
+   wire [23:0] pixel;
+   wire b,hs,vs;
+	wire [10:0] hcount;
+   wire [9:0] vcount;
+   xvga xvga(.vclock(clock_65mhz),.hcount(hcount),.vcount(vcount),
+              .hsync(hs),.vsync(vs),.blank(b));
+		  
+	displaymole displaymole1(.clk(clock_65mhz), .clk2(clock_27mhz), .reset(reset), .hcount(hcount), .vcount(vcount),
+									.state(display_state), .mole_location(mole_location), .pixel(pixel), .led(led));
+
+   // VGA Output.  In order to meet the setup and hold times of the
+   // AD7125, we send it ~clock_65mhz.
+   assign vga_out_red = pixel[23:16];
+   assign vga_out_green = pixel[15:8];
+   assign vga_out_blue = pixel[7:0];
+   assign vga_out_sync_b = 1'b1;    // not used
+   assign vga_out_blank_b = ~b;
+   assign vga_out_pixel_clock = ~clock_65mhz;
+   assign vga_out_hsync = hs;
+   assign vga_out_vsync = vs;	
+
+/******************************************************************************/
+//DAVIS CODE HERE
 
 ///////////////////////////////////////////
 //						DEBUGGING		  			//
@@ -776,9 +845,7 @@ module lab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 		else
 			lives_display <= "??????";
 	end	
-	
-	
-	
+
 	// Display letter toggler value
 	wire [127:0] string = {displayed_mole_location, 8'h30+display_state, "SCOR:", " ", 8'h30+score, lives_display};
 	display_string debug_display(.reset(reset), .clock_27mhz(clock_27mhz),
@@ -789,441 +856,9 @@ module lab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 											.disp_rs(disp_rs), 
 											.disp_ce_b(disp_ce_b),
 											.disp_reset_b(disp_reset_b));
-	/*
-	wire [63:0] display_data;
-	assign display_data = {mole_location,4'b0,display_state, 4'b0, displayed_counter};
-		display_16hex disp(.reset(switch[0]), .clock_27mhz(clock_27mhz), .data_in(display_data), 
-		                .disp_rs(disp_rs), .disp_ce_b(disp_ce_b), .disp_blank(disp_blank),
-							 .disp_reset_b(disp_reset_b), .disp_data_out(disp_data_out), .disp_clock(disp_clock));
-	*/
-	
-	/****Ara's code for sounds things here*/		
-   wire [7:0] from_ac97_data, to_ac97_data;
-   wire ready;
-
-   // allow user to adjust volume
-   reg [4:0] volume = 5'd8;
-	
-   // AC97 driver
-   lab5audio a(clock_27mhz, reset, volume, from_ac97_data, to_ac97_data, ready,
-	       audio_reset_b, ac97_sdata_out, ac97_sdata_in,
-	       ac97_synch, ac97_bit_clock);
-
-   // sound module
-	
-   sound_module s(.clock(clock_27mhz), .reset(reset), .ready(ready),
-              .from_ac97_data(from_ac97_data), .to_ac97_data(to_ac97_data),
-				  //.mole_loc(mole_location),
-				  //.switch(switch),
-				  //.disp_blank(disp_blank),
-				  //.disp_clock(disp_clock),
-				  //.disp_data_out(disp_data_out), 
-				  //.disp_rs(disp_rs), 
-				  //.disp_ce_b(disp_ce_b),
-				  //.disp_reset_b(disp_reset_b),
-				  .flash_data(flash_data),
-				  .flash_address(flash_address),
-				  .flash_ce_b(flash_ce_b),
-				  .flash_oe_b(flash_oe_b),
-				  .flash_we_b(flash_we_b),
-				  .flash_reset_b(flash_reset_b),
-				  .flash_byte_b(flash_byte_b),
-				  .flash_sts(flash_sts),
-				  .music_address(music_address),
-				  .game_state(display_state));
-
-   // output useful things to the logic analyzer connectors
-   assign analyzer1_clock = ac97_bit_clock;
-   assign analyzer1_data[0] = audio_reset_b;
-   assign analyzer1_data[1] = ac97_sdata_out;
-   assign analyzer1_data[2] = ac97_sdata_in;
-   assign analyzer1_data[3] = ac97_synch;
-   assign analyzer1_data[15:4] = 0;
-
-   assign analyzer3_clock = ready;
-   assign analyzer3_data = {from_ac97_data, to_ac97_data};
-
-
-	/*
-	VICTORIA'S CODE
-	*/
-
-   // feed XVGA signals
-   wire [23:0] pixel;
-   wire b,hs,vs;
-	wire [10:0] hcount;
-   wire [9:0] vcount;
-   xvga xvga(.vclock(clock_65mhz),.hcount(hcount),.vcount(vcount),
-              .hsync(hs),.vsync(vs),.blank(b));
-		  
-	displaymole displaymole1(.clk(clock_65mhz), .clk2(clock_27mhz), .reset(reset), .hcount(hcount), .vcount(vcount),
-									.state(display_state), .mole_location(mole_location), .pixel(pixel), .led(led));
-
-   // VGA Output.  In order to meet the setup and hold times of the
-   // AD7125, we send it ~clock_65mhz.
-   assign vga_out_red = pixel[23:16];
-   assign vga_out_green = pixel[15:8];
-   assign vga_out_blue = pixel[7:0];
-   assign vga_out_sync_b = 1'b1;    // not used
-   assign vga_out_blank_b = ~b;
-   assign vga_out_pixel_clock = ~clock_65mhz;
-   assign vga_out_hsync = hs;
-   assign vga_out_vsync = vs;	
-
 endmodule
 
 
-/******************************************************************************/
-//DAVIS CODE HERE
-
-
-
-//////////////////////////////////////////////////////////////////////////////
-//																									 //
-//										DIVIDER MODULE										 	 //
-//																									 //
-//////////////////////////////////////////////////////////////////////////////
-
-module divider (	input clk, reset,
-						output one_hz_enable );
-
-// Implemented similarly to debounce
-parameter DELAY = 32'd27000000;
-   
-reg [31:0] counter = 32'd0;
-reg enable = 1'b0;
-
-always @(posedge clk) begin
-    if (reset) begin                  		 // divider reset
-        counter <= 32'd0;
-        enable <= 1'b0;
-    end else if (enable) begin              // enable pulse off
-        counter <= counter + 1;
-        enable <= 1'b0;
-    end else if (counter == DELAY) begin    // enable pulse on
-        counter <= 32'd0;
-        enable <= 1'b1;
-    end else                                 // increment counter
-        counter <= counter + 1;
-end
-
-assign one_hz_enable = enable;
-endmodule
-
-//////////////////////////////////////////////////////////////////////////////
-//																									 //
-//										TIMER MODULE											 //
-//																									 //
-//////////////////////////////////////////////////////////////////////////////
-
-module timer( 	input clk, start_timer, one_hz_enable,
-					input [3:0] timer_value,
-					output expired,
-					output [3:0] displayed_counter );
-
-// States
-parameter [1:0] IDLE 		= 2'd0;		// Await start_timer
-parameter [1:0] COUNTING 	= 2'd1;		// Countdown from timer_value (until expired)
-parameter [1:0] EXPIRED 	= 2'd2;		// Expired pulse lasts one clock cycle
-
-// State machine variables
-reg [3:0] state = IDLE;
-reg [3:0] counter = 4'b0;
-
-always @(posedge clk) begin
-    if (state == IDLE) begin                                     
-        state <= (start_timer) ? COUNTING : IDLE;
-        counter <= (start_timer) ? timer_value : 4'b0;
-    end else if (state == COUNTING) begin
-        state <= (counter == 0) ? EXPIRED : COUNTING;
-        counter <= (one_hz_enable) ? counter - 1: 
-							(start_timer) ? timer_value : counter;
-    end else if (state == EXPIRED) begin
-        state <= IDLE;
-        counter <= 4'b0;
-    end
-end
-
-assign expired = (state == EXPIRED);
-assign displayed_counter = counter;
-endmodule
-
-//////////////////////////////////////////////////////////////////////////////
-//																									 //
-//									  SYNCHRONIZE MODULE										 //
-//																									 //
-//////////////////////////////////////////////////////////////////////////////
-
-module synchronize #(parameter NSYNC = 2)  // number of sync flops.  must be >= 2
-                   (input clk,in,
-                    output reg out);
-
-  reg [NSYNC-2:0] sync;
-
-  always @ (posedge clk)
-  begin
-    {out,sync} <= {sync[NSYNC-2:0],in};
-  end
-endmodule
-
-//////////////////////////////////////////////////////////////////////////////
-//																									 //
-//										DEBOUNCE MODULE										 //
-//																									 //
-//////////////////////////////////////////////////////////////////////////////
-
-module debounce #(parameter DELAY=270000)   // .01 sec with a 27Mhz clock
-	        (input clk, reset, noisy,
-	         output clean);
-
-   reg [19:0] count;
-   reg new;
-   wire synced;
-   synchronize sync1(.clk(clk), .in(noisy), .out(synced));
-
-	reg temp_clean = 1'b0;
-   always @(posedge clk) begin
-		if (reset) begin
-			count <= 0;
-			new <= synced;
-			temp_clean <= synced;
-		end else if (synced != new) begin
-			new <= synced;
-			count <= 0;
-		end else if (count == DELAY)
-			temp_clean <= new;
-		else
-			count <= count+1;
-	end
-	
-	assign clean = ~temp_clean;
-endmodule
-
-//////////////////////////////////////////////////////////////////////////////
-//																									 //
-//							  RANDOM NUMBER GENERATOR MODULE								 //
-//																									 //
-//////////////////////////////////////////////////////////////////////////////
-module random(	input clk, reset,
-				output [2:0] r );
-
-reg [3:0] temp_r = 4'b0001;
-
-always @ (posedge clk) begin
-	if (reset)
-		temp_r <= 4'b0001;
-	else
-		temp_r <= {temp_r[2:0], temp_r[3]^temp_r[2]};
-end
-
-assign r = temp_r[2:0];
-endmodule
-
-//////////////////////////////////////////////////////////////////////////////
-//																									 //
-//								  INTERPRET INPUT MODULE									 //
-//																									 //
-//////////////////////////////////////////////////////////////////////////////
-
-module interpret_input(	input clk,
-								input upleft, up, upright, 
-								input left, right, 
-								input downleft, down, downright,
-								input reset,
-								input [2:0] mole_location,
-								output misstep,
-								output whacked);
-
-
-reg [7:0] location = 8'b0;
-
-// Temporary variables for output
-reg temp_whacked = 1'b0;
-reg temp_misstep = 1'b0;
- 
-always@(posedge clk) begin
-	if ({upleft, up, upright, left, right, downleft, down, downright} == location)
-		temp_whacked <= 1'b1;
-	else if ({upleft, up, upright, left, right, downleft, down, downright} !== 8'd0)
-		temp_misstep <= 1'b1;
-	else begin
-		temp_whacked <= 1'b0;
-		temp_misstep <= 1'b0;
-	end
-end
-
-// Convert location to one hot representation
-always@(*) begin
-	case(mole_location)
-		3'd0: location = 8'b10000000;
-		3'd1: location = 8'b01000000;
-		3'd2: location = 8'b00100000;
-		3'd3: location = 8'b00010000;
-		3'd4: location = 8'b00001000;
-		3'd5: location = 8'b00000100;
-		3'd6: location = 8'b00000010;
-		3'd7: location = 8'b00000001;
-		default: location = 8'b0;
-	endcase
-end
-
-assign misstep = temp_misstep;
-assign whacked = temp_whacked;
-endmodule
-
-//////////////////////////////////////////////////////////////////////////////
-//																									 //
-//								    MOLE TIMING MODULE									 	 //
-//																									 //
-//////////////////////////////////////////////////////////////////////////////
-
-//////////////////////////////////////////////////////////////////////////////
-//																									 //
-//								    MOLE TIMING MODULE									 	 //
-//																									 //
-//////////////////////////////////////////////////////////////////////////////
-
-module mole(	input clk, reset,
-					input one_hz_enable, // delete this when we can check address
-					input [22:0] music_address,
-					output request_mole );
-
-// Current implementation is just a really long alternating signal
-// Future implemention should either pop a mole up at specific memory addresses
-// or at pre-programmed times
-
-/* Memory address popup pseudocode
-	
-	initialize array of popup times
-	initialize array index variable
-	always @ posedge clk
-		check time against current array value
-			increment index if match
-		increment time
-*/
- 
-// States
-parameter COUNTING 	= 1'b1;		// Countdown from timer_value (until expired)
-parameter MOLE			= 1'b0;		// mole pulse lasts one clock cycle
-
-// Mole Parameters
-//parameter MOLE_REQUEST_FREQUENCY = 4'd3;
-
-//// State machine variables
-reg state = COUNTING;
-//reg [3:0] counter = MOLE_REQUEST_FREQUENCY;
-
-// Music tracker
-reg [367:0] addresses = {23'h6CDE, 23'h8B00, 23'hE900, 23'h14900,
-										 23'h17B00, 23'h1B100, 23'h21F00, 23'h28000,
-										 23'h2E500, 23'h31A00, 23'h35900, 23'h39500,
-										 23'h3DA00, 23'h41800, 23'h47800, 23'h4FD00};
-
-always @(posedge clk) begin
-	if (reset) begin
-//		state <= COUNTING;
-//		counter <= MOLE_REQUEST_FREQUENCY;
-		addresses[367:0] <= {23'h6CDE, 23'h8B00, 23'hE900, 23'h14900,
-										 23'h17B00, 23'h1B100, 23'h21F00, 23'h28000,
-										 23'h2E500, 23'h31A00, 23'h35900, 23'h39500,
-										 23'h3DA00, 23'h41800, 23'h47800, 23'h4FD00};									 		
-	end else if (state == COUNTING) begin
-		state <= (addresses[367:345] == music_address) ? MOLE : COUNTING;
-		addresses <= (addresses[367:345] == music_address) ? {addresses[344:0], addresses[367:345]} : addresses;
-	end else if (state == MOLE) begin
-		state <= COUNTING;
-	end
-end
-
-assign request_mole = (state == MOLE);
-endmodule
-
-
-//////////////////////////////////////////////////////////////////////////////
-//																									 //
-//									GAME STATE FSM MODULE									 //
-//																									 //
-//////////////////////////////////////////////////////////////////////////////
-
-module gameState(input clk,
-						input misstep, whacked,
-						input start,
-						input reset,
-						input request_mole,
-						input expired,
-						input [2:0] random_mole_location,
-						// Future input: record
-						output start_timer,
-						output [3:0] timer_value,
-						output [3:0] display_state,
-						output [2:0] mole_location,
-						output [1:0] lives,
-						output [7:0] score
-						);
-						
-// States
-reg [3:0] IDLE 					= 4'd0;		// Check if user has pressed start
-reg [3:0] GAME_START_DELAY 	= 4'd1;		// Delay until user stands on center
-reg [3:0] GAME_ONGOING			= 4'd2;		// Check lives & Address from Music
-reg [3:0] REQUEST_MOLE			= 4'd3;		// Request a mole to be displayed (pulse)
-reg [3:0] MOLE_COUNTDOWN		= 4'd4;		// Mole displayed until stomped/expired 
-reg [3:0] MOLE_MISSED			= 4'd5;		// Lives counter decremented (pulse)
-reg [3:0] MOLE_WHACKED			= 4'd6;		// Score counter incremented (pulse)
-reg [3:0] SAFE_STEP_DELAY		= 4'd7;		// Prevent repeated lives decrement
-reg [3:0] GAME_OVER				= 4'd8;		// Display Game Over Screen
-reg [3:0] MOLE_MISSED_SOUND	= 4'd9;		// Extra time for sound
-reg [3:0] MOLE_WHACKED_SOUND	= 4'd10;		// Extra time for sound
-
-// State machine variables
-reg [3:0] state = 4'b0;
-reg [3:0] next_state = 4'b0;
-
-// Counters
-reg [1:0] temp_lives = 2'd3;	// If zero --> Dead --> Game Over
-reg [7:0] temp_score = 8'd0;
-
-// Mole location
-reg [2:0] current_mole_location;
-// Do a thing each relevant state
-always @(posedge clk) begin
-	if (reset) begin
-		state <= 4'b0;
-		temp_lives <= 2'd3;
-		temp_score <= 8'd0;
-	end else if (state == MOLE_MISSED)
-		temp_lives <= temp_lives - 1;
-	else if (state == MOLE_WHACKED)
-		temp_score <= temp_score + 1;
-	else if (state == REQUEST_MOLE)
-		current_mole_location <= random_mole_location;
-	state <= next_state;
-end
-
-// State machine
-always @(*) begin
-	case(state)
-		IDLE : next_state = (start) ? GAME_START_DELAY : IDLE;
-		GAME_START_DELAY: next_state = (expired) ? GAME_ONGOING : GAME_START_DELAY;
-		GAME_ONGOING : next_state = (lives == 0) ? GAME_OVER : (request_mole) ? REQUEST_MOLE : GAME_ONGOING;
-		REQUEST_MOLE : next_state = MOLE_COUNTDOWN;
-		MOLE_COUNTDOWN : next_state = (expired || misstep) ? MOLE_MISSED : (whacked) ? MOLE_WHACKED : MOLE_COUNTDOWN;
-		MOLE_MISSED : next_state = MOLE_MISSED_SOUND;
-		MOLE_WHACKED : next_state = MOLE_WHACKED_SOUND;
-		MOLE_MISSED_SOUND : next_state = (expired) ? GAME_ONGOING : MOLE_MISSED_SOUND;
-		MOLE_WHACKED_SOUND : next_state = (expired) ? GAME_ONGOING : MOLE_WHACKED_SOUND;
-		GAME_OVER : next_state = (expired) ? IDLE : GAME_OVER;
-		default : next_state = IDLE;
-	endcase
-end
-
-assign start_timer = (state !== next_state);
-assign timer_value = 4'd2; 	// Must be less than mole pop up rate
-assign display_state = state;
-assign mole_location = current_mole_location;
-assign lives = temp_lives;
-assign score = temp_score;
-
-endmodule
 
 ///////////////////////////////////////////////////////////////////////////////
 //
