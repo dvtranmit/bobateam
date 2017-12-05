@@ -452,21 +452,18 @@ module lab3   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 	reg [9:0] height = 256;
 	reg [9:0] y_change = 255;
 	wire [10:0] x1 = 65;
-	wire [9:0] y1 = 0;
-	wire clock_10hz;
-	happymole #(.WIDTH(207))
-			mole1(.pixel_clk(clock_65mhz),.height(height),.x(x1),.hcount(hcount1),.y(y_change),.vcount(vcount1),.y_permanent(y1),.pixel(mole1_pixel));
-	divider divider1(.clk(clock_27mhz),.ten_hz_enable(clock_10hz));
-	reg led_status = 0;
-	always @ (posedge clock_10hz) begin
-		//if (height < 256)
-		if (y_change < 256 && y_change > 0)
-			//height <= height + 1;
+	reg [9:0] y1 = 255;
+	wire mole_clock;
+	happymole #(.WIDTH(207),.HEIGHT(256))
+			mole1(.pixel_clk(clock_65mhz),.height(height),.x(x1),.hcount(hcount1),.y(y_change),.vcount(vcount1),.pixel(mole1_pixel));
+	divider divider1(.clk(clock_27mhz),.mole_popup_clock(mole_clock));
+	always @ (posedge mole_clock) begin
+		if (y_change < 256 && y_change > 0) begin
 			y_change <= y_change - 1;
-		else if (y_change == 0)
-			//height <= 1;
+		end
+		else if (y_change == 0) begin
 			y_change <= 255;
-		led_status <= ~led_status;
+		end
 	end
    always @(posedge clock_65mhz) begin
 		hs <= hsync1;
@@ -486,7 +483,7 @@ module lab3   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
    assign vga_out_hsync = hs;
    assign vga_out_vsync = vs;
    
-   assign led = ~{2'b00,up,down,reset,switch[1:0],led_status};
+   assign led = ~{3'b000,up,down,reset,switch[1:0]};
 endmodule
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -582,36 +579,35 @@ module deadmole
 endmodule
 
 module happymole
-	//#(parameter WIDTH = 207, HEIGHT = 256)
-	#(parameter WIDTH = 207)
+	#(parameter WIDTH = 207, HEIGHT = 256)
 	(input pixel_clk,
     input [10:0] x, hcount,
-    input [9:0] y, vcount, y_permanent,
+    input [9:0] y, vcount,
 	 input [9:0] height,
     output reg [23:0] pixel
     );
 	wire [15:0] image_addr;
 	wire [3:0] image_bits, red_mapped, green_mapped, blue_mapped;
 	always @ (posedge pixel_clk) begin
-		if ((hcount >= x && hcount < (x + WIDTH)) && (vcount >= y && vcount < 256))//(y + height)))
+		if ((hcount >= x && hcount < (x + WIDTH)) && (vcount >= y && vcount < HEIGHT))
 			pixel <= {red_mapped,4'b0, green_mapped,4'b0, blue_mapped,4'b0};
 		else
 			pixel <= 0;
 	end
-	assign image_addr = (hcount - x) + (vcount - 0) * WIDTH;
+	assign image_addr = (hcount - x) + (vcount - y) * WIDTH;
 	happy_image_rom rom1_happy(.clka(pixel_clk),.addra(image_addr),.douta(image_bits));
 	happy_red_rom rcm_happy (.clka(pixel_clk), .addra(image_bits), .douta(red_mapped));
 	happy_green_rom gcm_happy (.clka(pixel_clk), .addra(image_bits), .douta(green_mapped));
 	happy_blue_rom bcm_happy (.clka(pixel_clk), .addra(image_bits), .douta(blue_mapped));	
 endmodule
 
-module divider(input clk, output reg ten_hz_enable);
+module divider(input clk, output reg mole_popup_clock);
 	reg [26:0] count = 0;
 	always @ (posedge clk) begin
-		ten_hz_enable <= 0;
+		mole_popup_clock <= 0;
 		count <= count + 1;
-		if (count == 25'd135000) begin
-			ten_hz_enable <= 1;
+		if (count == 25'd33750) begin
+			mole_popup_clock <= 1;
 			count <= 0;
 		end
 	end

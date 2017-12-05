@@ -163,6 +163,7 @@ Analyzing hierarchy for module <deadmole> in library <work> with parameters.
 	WIDTH = "00000000000000000000000010111111"
 
 Analyzing hierarchy for module <happymole> in library <work> with parameters.
+	HEIGHT = "00000000000000000000000100000000"
 	WIDTH = "00000000000000000000000011001111"
 
 Analyzing hierarchy for module <divider> in library <work>.
@@ -212,6 +213,7 @@ Analyzing module <deadmole> in library <work>.
 Module <deadmole> is correct for synthesis.
  
 Analyzing module <happymole> in library <work>.
+	HEIGHT = 32'sb00000000000000000000000100000000
 	WIDTH = 32'sb00000000000000000000000011001111
 Module <happymole> is correct for synthesis.
  
@@ -264,7 +266,7 @@ Unit <xvga> synthesized.
 
 Synthesizing Unit <divider>.
     Related source file is "lab3.v".
-    Found 1-bit register for signal <ten_hz_enable>.
+    Found 1-bit register for signal <mole_popup_clock>.
     Found 27-bit up counter for signal <count>.
     Summary:
 	inferred   1 Counter(s).
@@ -274,18 +276,18 @@ Unit <divider> synthesized.
 
 Synthesizing Unit <normalmole>.
     Related source file is "lab3.v".
-WARNING:Xst:643 - "lab3.v" line 555: The result of a 11x10-bit multiplication is partially used. Only the 16 least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
+WARNING:Xst:643 - "lab3.v" line 552: The result of a 11x10-bit multiplication is partially used. Only the 16 least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
     Found 24-bit register for signal <pixel>.
-    Found 11-bit adder carry out for signal <add0000$addsub0000> created at line 550.
-    Found 10-bit adder carry out for signal <add0001$addsub0000> created at line 550.
+    Found 11-bit adder carry out for signal <add0000$addsub0000> created at line 547.
+    Found 10-bit adder carry out for signal <add0001$addsub0000> created at line 547.
     Found 16-bit adder for signal <image_addr>.
-    Found 11-bit subtractor for signal <image_addr$addsub0000> created at line 555.
-    Found 11x10-bit multiplier for signal <image_addr$mult0001> created at line 555.
-    Found 13-bit subtractor for signal <image_addr$sub0000> created at line 555.
-    Found 11-bit comparator greatequal for signal <pixel$cmp_ge0000> created at line 550.
-    Found 10-bit comparator greatequal for signal <pixel$cmp_ge0001> created at line 550.
-    Found 12-bit comparator less for signal <pixel$cmp_lt0000> created at line 550.
-    Found 11-bit comparator less for signal <pixel$cmp_lt0001> created at line 550.
+    Found 11-bit subtractor for signal <image_addr$addsub0000> created at line 552.
+    Found 11x10-bit multiplier for signal <image_addr$mult0001> created at line 552.
+    Found 13-bit subtractor for signal <image_addr$sub0000> created at line 552.
+    Found 11-bit comparator greatequal for signal <pixel$cmp_ge0000> created at line 547.
+    Found 10-bit comparator greatequal for signal <pixel$cmp_ge0001> created at line 547.
+    Found 12-bit comparator less for signal <pixel$cmp_lt0000> created at line 547.
+    Found 11-bit comparator less for signal <pixel$cmp_lt0001> created at line 547.
     Summary:
 	inferred  24 D-type flip-flop(s).
 	inferred   5 Adder/Subtractor(s).
@@ -296,18 +298,18 @@ Unit <normalmole> synthesized.
 
 Synthesizing Unit <deadmole>.
     Related source file is "lab3.v".
-WARNING:Xst:643 - "lab3.v" line 577: The result of a 11x10-bit multiplication is partially used. Only the 16 least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
+WARNING:Xst:643 - "lab3.v" line 574: The result of a 11x10-bit multiplication is partially used. Only the 16 least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
     Found 24-bit register for signal <pixel>.
-    Found 11-bit adder carry out for signal <add0000$addsub0000> created at line 572.
-    Found 10-bit adder carry out for signal <add0001$addsub0000> created at line 572.
+    Found 11-bit adder carry out for signal <add0000$addsub0000> created at line 569.
+    Found 10-bit adder carry out for signal <add0001$addsub0000> created at line 569.
     Found 16-bit adder for signal <image_addr>.
-    Found 11-bit subtractor for signal <image_addr$addsub0000> created at line 577.
-    Found 11x10-bit multiplier for signal <image_addr$mult0001> created at line 577.
-    Found 13-bit subtractor for signal <image_addr$sub0000> created at line 577.
-    Found 11-bit comparator greatequal for signal <pixel$cmp_ge0000> created at line 572.
-    Found 10-bit comparator greatequal for signal <pixel$cmp_ge0001> created at line 572.
-    Found 12-bit comparator less for signal <pixel$cmp_lt0000> created at line 572.
-    Found 11-bit comparator less for signal <pixel$cmp_lt0001> created at line 572.
+    Found 11-bit subtractor for signal <image_addr$addsub0000> created at line 574.
+    Found 11x10-bit multiplier for signal <image_addr$mult0001> created at line 574.
+    Found 13-bit subtractor for signal <image_addr$sub0000> created at line 574.
+    Found 11-bit comparator greatequal for signal <pixel$cmp_ge0000> created at line 569.
+    Found 10-bit comparator greatequal for signal <pixel$cmp_ge0001> created at line 569.
+    Found 12-bit comparator less for signal <pixel$cmp_lt0000> created at line 569.
+    Found 11-bit comparator less for signal <pixel$cmp_lt0001> created at line 569.
     Summary:
 	inferred  24 D-type flip-flop(s).
 	inferred   5 Adder/Subtractor(s).
@@ -319,19 +321,19 @@ Unit <deadmole> synthesized.
 Synthesizing Unit <happymole>.
     Related source file is "lab3.v".
 WARNING:Xst:647 - Input <height> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:647 - Input <y_permanent> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:643 - "lab3.v" line 601: The result of a 11x9-bit multiplication is partially used. Only the 16 least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
+WARNING:Xst:643 - "lab3.v" line 597: The result of a 11x10-bit multiplication is partially used. Only the 16 least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
     Found 24-bit register for signal <pixel>.
     Found 16-bit adder for signal <image_addr>.
-    Found 11x9-bit multiplier for signal <image_addr$mult0001> created at line 601.
-    Found 13-bit subtractor for signal <image_addr$sub0000> created at line 601.
-    Found 11-bit comparator greatequal for signal <pixel$cmp_ge0000> created at line 596.
-    Found 10-bit comparator greatequal for signal <pixel$cmp_ge0001> created at line 596.
-    Found 12-bit comparator less for signal <pixel$cmp_lt0000> created at line 596.
-    Found 10-bit comparator less for signal <pixel$cmp_lt0001> created at line 596.
+    Found 11-bit subtractor for signal <image_addr$addsub0000> created at line 597.
+    Found 11x10-bit multiplier for signal <image_addr$mult0001> created at line 597.
+    Found 13-bit subtractor for signal <image_addr$sub0000> created at line 597.
+    Found 11-bit comparator greatequal for signal <pixel$cmp_ge0000> created at line 592.
+    Found 10-bit comparator greatequal for signal <pixel$cmp_ge0001> created at line 592.
+    Found 12-bit comparator less for signal <pixel$cmp_lt0000> created at line 592.
+    Found 10-bit comparator less for signal <pixel$cmp_lt0001> created at line 592.
     Summary:
 	inferred  24 D-type flip-flop(s).
-	inferred   2 Adder/Subtractor(s).
+	inferred   3 Adder/Subtractor(s).
 	inferred   1 Multiplier(s).
 	inferred   4 Comparator(s).
 Unit <happymole> synthesized.
@@ -644,6 +646,7 @@ WARNING:Xst:2565 - Inout <user3<2>> is never assigned.
 WARNING:Xst:2565 - Inout <user3<27>> is never assigned.
 WARNING:Xst:2565 - Inout <user3<3>> is never assigned.
 WARNING:Xst:646 - Signal <y7> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <y1> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <x7> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <vsync8> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <vsync7> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
@@ -685,15 +688,14 @@ WARNING:Xst:646 - Signal <blank3> is assigned but never used. This unconnected s
 WARNING:Xst:646 - Signal <blank2> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
     Found 1-bit register for signal <b>.
     Found 1-bit register for signal <hs>.
-    Found 1-bit register for signal <led_status>.
     Found 24-bit register for signal <rgb>.
     Found 1-bit register for signal <vs>.
     Found 10-bit down counter for signal <y_change>.
-    Found 10-bit comparator greater for signal <y_change$cmp_gt0000> created at line 463.
-    Found 10-bit comparator less for signal <y_change$cmp_lt0000> created at line 463.
+    Found 10-bit comparator greater for signal <y_change$cmp_gt0000> created at line 461.
+    Found 10-bit comparator less for signal <y_change$cmp_lt0000> created at line 461.
     Summary:
 	inferred   1 Counter(s).
-	inferred  28 D-type flip-flop(s).
+	inferred  27 D-type flip-flop(s).
 	inferred   2 Comparator(s).
 Unit <lab3> synthesized.
 
@@ -703,12 +705,11 @@ HDL Synthesis Report
 
 Macro Statistics
 # Multipliers                                          : 7
- 11x10-bit multiplier                                  : 6
- 11x9-bit multiplier                                   : 1
-# Adders/Subtractors                                   : 32
+ 11x10-bit multiplier                                  : 7
+# Adders/Subtractors                                   : 33
  10-bit adder carry out                                : 6
  11-bit adder carry out                                : 6
- 11-bit subtractor                                     : 6
+ 11-bit subtractor                                     : 7
  13-bit subtractor                                     : 7
  16-bit adder                                          : 7
 # Counters                                             : 23
@@ -717,8 +718,8 @@ Macro Statistics
  11-bit up counter                                     : 8
  20-bit up counter                                     : 5
  27-bit up counter                                     : 1
-# Registers                                            : 63
- 1-bit register                                        : 55
+# Registers                                            : 62
+ 1-bit register                                        : 54
  24-bit register                                       : 8
 # Comparators                                          : 30
  10-bit comparator greatequal                          : 7
@@ -940,12 +941,11 @@ Advanced HDL Synthesis Report
 
 Macro Statistics
 # Multipliers                                          : 7
- 11x10-bit multiplier                                  : 6
- 11x9-bit multiplier                                   : 1
-# Adders/Subtractors                                   : 32
+ 11x10-bit multiplier                                  : 7
+# Adders/Subtractors                                   : 33
  10-bit adder carry out                                : 6
  11-bit adder carry out                                : 6
- 11-bit subtractor                                     : 6
+ 11-bit subtractor                                     : 7
  13-bit subtractor                                     : 7
  16-bit adder                                          : 7
 # Counters                                             : 23
@@ -954,8 +954,8 @@ Macro Statistics
  11-bit up counter                                     : 8
  20-bit up counter                                     : 5
  27-bit up counter                                     : 1
-# Registers                                            : 163
- Flip-Flops                                            : 163
+# Registers                                            : 162
+ Flip-Flops                                            : 162
 # Comparators                                          : 30
  10-bit comparator greatequal                          : 7
  10-bit comparator greater                             : 1
@@ -1089,8 +1089,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 179
- Flip-Flops                                            : 179
+# Registers                                            : 178
+ Flip-Flops                                            : 178
 
 =========================================================================
 
@@ -1119,24 +1119,21 @@ Design Statistics
 # IOs                              : 576
 
 Cell Usage :
-# BELS                             : 1101
+# BELS                             : 1131
 #      GND                         : 29
-#      INV                         : 34
+#      INV                         : 33
 #      LUT1                        : 124
-#      LUT2                        : 111
-#      LUT2_D                      : 1
-#      LUT2_L                      : 1
+#      LUT2                        : 117
 #      LUT3                        : 66
-#      LUT3_D                      : 3
-#      LUT3_L                      : 1
-#      LUT4                        : 141
+#      LUT3_D                      : 2
+#      LUT4                        : 146
 #      LUT4_D                      : 8
-#      MUXCY                       : 272
-#      MUXF5                       : 30
+#      MUXCY                       : 282
+#      MUXF5                       : 33
 #      VCC                         : 29
-#      XORCY                       : 251
-# FlipFlops/Latches                : 199
-#      FD                          : 18
+#      XORCY                       : 262
+# FlipFlops/Latches                : 198
+#      FD                          : 17
 #      FDE                         : 26
 #      FDR                         : 62
 #      FDRE                        : 84
@@ -1166,10 +1163,10 @@ Device utilization summary:
 
 Selected Device : 2v6000bf957-4 
 
- Number of Slices:                      272  out of  33792     0%  
- Number of Slice Flip Flops:            199  out of  67584     0%  
- Number of 4 input LUTs:                491  out of  67584     0%  
-    Number used as logic:               490
+ Number of Slices:                      277  out of  33792     0%  
+ Number of Slice Flip Flops:            198  out of  67584     0%  
+ Number of 4 input LUTs:                497  out of  67584     0%  
+    Number used as logic:               496
     Number used as Shift registers:       1
  Number of IOs:                         576
  Number of bonded IOBs:                 246  out of    684    35%  
@@ -1199,7 +1196,6 @@ Clock Information:
 -----------------------------------+---------------------------------------------------------------------------------------------------------+-------+
 Clock Signal                       | Clock buffer(FF name)                                                                                   | Load  |
 -----------------------------------+---------------------------------------------------------------------------------------------------------+-------+
-divider1/ten_hz_enable             | NONE(led_status)                                                                                        | 11    |
 clock_27mhz                        | vclk1:CLKFX                                                                                             | 275   |
 clock_27mhz                        | IBUFG+BUFG                                                                                              | 28    |
 mole8/rom1/BU2/dbiterr             | NONE(mole8/rom1/BU2/U0/blk_mem_generator/valid.cstr/ramloop[13].ram.r/v2_init.ram/dpram.dp1x1.ram)      | 14    |
@@ -1208,6 +1204,7 @@ mole5/rom1/BU2/dbiterr             | NONE(mole5/rom1/BU2/U0/blk_mem_generator/va
 mole2/rom1/BU2/dbiterr             | NONE(mole2/rom1/BU2/U0/blk_mem_generator/valid.cstr/ramloop[13].ram.r/v2_init.ram/dpram.dp1x1.ram)      | 14    |
 mole4/rom1_dead/BU2/dbiterr        | NONE(mole4/rom1_dead/BU2/U0/blk_mem_generator/valid.cstr/ramloop[11].ram.r/v2_init.ram/dpram.dp1x1.ram) | 12    |
 mole3/rom1_dead/BU2/dbiterr        | NONE(mole3/rom1_dead/BU2/U0/blk_mem_generator/valid.cstr/ramloop[11].ram.r/v2_init.ram/dpram.dp1x1.ram) | 12    |
+divider1/mole_popup_clock          | NONE(y_change_0)                                                                                        | 10    |
 mole1/rom1_happy/BU2/dbiterr       | NONE(mole1/rom1_happy/BU2/U0/blk_mem_generator/valid.cstr/ramloop[12].ram.r/v2_init.ram/dpram.dp1x1.ram)| 13    |
 -----------------------------------+---------------------------------------------------------------------------------------------------------+-------+
 INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
@@ -1220,7 +1217,7 @@ Timing Summary:
 ---------------
 Speed Grade: -4
 
-   Minimum period: 34.693ns (Maximum Frequency: 28.824MHz)
+   Minimum period: 38.984ns (Maximum Frequency: 25.651MHz)
    Minimum input arrival time before clock: 3.623ns
    Maximum output required time after clock: 9.366ns
    Maximum combinational path delay: 6.660ns
@@ -1230,21 +1227,61 @@ Timing Detail:
 All values displayed in nanoseconds (ns)
 
 =========================================================================
-Timing constraint: Default period analysis for Clock 'divider1/ten_hz_enable'
-  Clock period: 4.405ns (frequency: 226.989MHz)
-  Total number of paths / destination ports: 256 / 31
+Timing constraint: Default period analysis for Clock 'clock_27mhz'
+  Clock period: 38.984ns (frequency: 25.651MHz)
+  Total number of paths / destination ports: 381091 / 1968
 -------------------------------------------------------------------------
-Delay:               4.405ns (Levels of Logic = 11)
+Delay:               16.243ns (Levels of Logic = 18)
+  Source:            xvga1/vcount_0 (FF)
+  Destination:       mole1/rom1_happy/BU2/U0/blk_mem_generator/valid.cstr/ramloop[11].ram.r/v2_init.ram/dpram.dp1x1.ram (RAM)
+  Source Clock:      clock_27mhz rising 2.4X
+  Destination Clock: clock_27mhz rising 2.4X
+
+  Data Path: xvga1/vcount_0 to mole1/rom1_happy/BU2/U0/blk_mem_generator/valid.cstr/ramloop[11].ram.r/v2_init.ram/dpram.dp1x1.ram
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDRE:C->Q             6   0.568   1.002  xvga1/vcount_0 (xvga1/vcount_0)
+     LUT2:I1->O            1   0.439   0.000  mole1/Msub_image_addr_addsub0000_lut<0> (mole1/Msub_image_addr_addsub0000_lut<0>)
+     MUXCY:S->O            1   0.298   0.000  mole1/Msub_image_addr_addsub0000_cy<0> (mole1/Msub_image_addr_addsub0000_cy<0>)
+     MUXCY:CI->O           1   0.053   0.000  mole1/Msub_image_addr_addsub0000_cy<1> (mole1/Msub_image_addr_addsub0000_cy<1>)
+     MUXCY:CI->O           1   0.053   0.000  mole1/Msub_image_addr_addsub0000_cy<2> (mole1/Msub_image_addr_addsub0000_cy<2>)
+     MUXCY:CI->O           1   0.053   0.000  mole1/Msub_image_addr_addsub0000_cy<3> (mole1/Msub_image_addr_addsub0000_cy<3>)
+     MUXCY:CI->O           1   0.053   0.000  mole1/Msub_image_addr_addsub0000_cy<4> (mole1/Msub_image_addr_addsub0000_cy<4>)
+     MUXCY:CI->O           1   0.053   0.000  mole1/Msub_image_addr_addsub0000_cy<5> (mole1/Msub_image_addr_addsub0000_cy<5>)
+     MUXCY:CI->O           1   0.053   0.000  mole1/Msub_image_addr_addsub0000_cy<6> (mole1/Msub_image_addr_addsub0000_cy<6>)
+     MUXCY:CI->O           1   0.053   0.000  mole1/Msub_image_addr_addsub0000_cy<7> (mole1/Msub_image_addr_addsub0000_cy<7>)
+     MUXCY:CI->O           1   0.053   0.000  mole1/Msub_image_addr_addsub0000_cy<8> (mole1/Msub_image_addr_addsub0000_cy<8>)
+     MUXCY:CI->O           0   0.053   0.000  mole1/Msub_image_addr_addsub0000_cy<9> (mole1/Msub_image_addr_addsub0000_cy<9>)
+     XORCY:CI->O           8   1.274   0.840  mole1/Msub_image_addr_addsub0000_xor<10> (mole1/image_addr_addsub0000<10>)
+     MULT18X18:A10->P14    1   6.009   0.726  mole1/Mmult_image_addr_mult0001 (mole1/image_addr_mult0001<14>)
+     LUT2:I1->O            1   0.439   0.000  mole1/Madd_image_addr_lut<14> (mole1/Madd_image_addr_lut<14>)
+     MUXCY:S->O            0   0.298   0.000  mole1/Madd_image_addr_cy<14> (mole1/Madd_image_addr_cy<14>)
+     XORCY:CI->O           5   1.274   1.055  mole1/Madd_image_addr_xor<15> (mole1/image_addr<15>)
+     begin scope: 'mole1/rom1_happy'
+     begin scope: 'BU2'
+     LUT2:I0->O            4   0.439   0.747  U0/blk_mem_generator/valid.cstr/ram_ena01 (U0/blk_mem_generator/valid.cstr/ram_ena0)
+     RAMB16_S1_S1:ENA          0.359          U0/blk_mem_generator/valid.cstr/ramloop[11].ram.r/v2_init.ram/dpram.dp1x1.ram
+    ----------------------------------------
+    Total                     16.243ns (11.874ns logic, 4.370ns route)
+                                       (73.1% logic, 26.9% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'divider1/mole_popup_clock'
+  Clock period: 4.428ns (frequency: 225.810MHz)
+  Total number of paths / destination ports: 255 / 30
+-------------------------------------------------------------------------
+Delay:               4.428ns (Levels of Logic = 11)
   Source:            y_change_0 (FF)
   Destination:       y_change_9 (FF)
-  Source Clock:      divider1/ten_hz_enable rising
-  Destination Clock: divider1/ten_hz_enable rising
+  Source Clock:      divider1/mole_popup_clock rising
+  Destination Clock: divider1/mole_popup_clock rising
 
   Data Path: y_change_0 to y_change_9
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDSE:C->Q             4   0.568   1.032  y_change_0 (y_change_0)
+     FDSE:C->Q             5   0.568   1.056  y_change_0 (y_change_0)
      LUT1:I0->O            1   0.439   0.000  Mcount_y_change_cy<0>_rt (Mcount_y_change_cy<0>_rt)
      MUXCY:S->O            1   0.298   0.000  Mcount_y_change_cy<0> (Mcount_y_change_cy<0>)
      MUXCY:CI->O           1   0.053   0.000  Mcount_y_change_cy<1> (Mcount_y_change_cy<1>)
@@ -1258,37 +1295,8 @@ Delay:               4.405ns (Levels of Logic = 11)
      XORCY:CI->O           1   1.274   0.000  Mcount_y_change_xor<9> (Result<9>)
      FDRE:D                    0.370          y_change_9
     ----------------------------------------
-    Total                      4.405ns (3.373ns logic, 1.032ns route)
-                                       (76.6% logic, 23.4% route)
-
-=========================================================================
-Timing constraint: Default period analysis for Clock 'clock_27mhz'
-  Clock period: 34.693ns (frequency: 28.824MHz)
-  Total number of paths / destination ports: 232565 / 1968
--------------------------------------------------------------------------
-Delay:               14.456ns (Levels of Logic = 7)
-  Source:            xvga2/vcount_9 (FF)
-  Destination:       mole5/rom1/BU2/U0/blk_mem_generator/valid.cstr/ramloop[12].ram.r/v2_init.ram/dpram.dp1x1.ram (RAM)
-  Source Clock:      clock_27mhz rising 2.4X
-  Destination Clock: clock_27mhz rising 2.4X
-
-  Data Path: xvga2/vcount_9 to mole5/rom1/BU2/U0/blk_mem_generator/valid.cstr/ramloop[12].ram.r/v2_init.ram/dpram.dp1x1.ram
-                                Gate     Net
-    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
-    ----------------------------------------  ------------
-     FDRE:C->Q             7   0.568   1.101  xvga2/vcount_9 (xvga2/vcount_9)
-     LUT2:I0->O           16   0.439   1.000  mole4/image_addr_addsub0000<10>1 (mole4/image_addr_addsub0000<10>)
-     MULT18X18:A10->P14    1   6.009   0.726  mole5/Mmult_image_addr_mult0001 (mole5/image_addr_mult0001<14>)
-     LUT2:I1->O            1   0.439   0.000  mole5/Madd_image_addr_lut<14> (mole5/Madd_image_addr_lut<14>)
-     MUXCY:S->O            0   0.298   0.000  mole5/Madd_image_addr_cy<14> (mole5/Madd_image_addr_cy<14>)
-     XORCY:CI->O           5   1.274   1.055  mole5/Madd_image_addr_xor<15> (mole5/image_addr<15>)
-     begin scope: 'mole5/rom1'
-     begin scope: 'BU2'
-     LUT2:I0->O            4   0.439   0.747  U0/blk_mem_generator/valid.cstr/ram_ena01 (U0/blk_mem_generator/valid.cstr/ram_ena0)
-     RAMB16_S1_S1:ENA          0.359          U0/blk_mem_generator/valid.cstr/ramloop[12].ram.r/v2_init.ram/dpram.dp1x1.ram
-    ----------------------------------------
-    Total                     14.456ns (9.825ns logic, 4.630ns route)
-                                       (68.0% logic, 32.0% route)
+    Total                      4.428ns (3.373ns logic, 1.056ns route)
+                                       (76.2% logic, 23.8% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'clock_27mhz'
@@ -1316,39 +1324,19 @@ Timing constraint: Default OFFSET OUT AFTER for Clock 'clock_27mhz'
 -------------------------------------------------------------------------
 Offset:              9.366ns (Levels of Logic = 2)
   Source:            reset_sr (FF)
-  Destination:       led<3> (PAD)
+  Destination:       led<2> (PAD)
   Source Clock:      clock_27mhz rising 2.4X
 
-  Data Path: reset_sr to led<3>
+  Data Path: reset_sr to led<2>
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      SRL16:CLK->Q          9   2.901   1.148  reset_sr (power_on_reset)
-     LUT2:I0->O            1   0.439   0.517  led<3>1 (led_3_OBUF)
-     OBUF:I->O                 4.361          led_3_OBUF (led<3>)
+     LUT2:I0->O            1   0.439   0.517  led<2>1 (led_2_OBUF)
+     OBUF:I->O                 4.361          led_2_OBUF (led<2>)
     ----------------------------------------
     Total                      9.366ns (7.701ns logic, 1.665ns route)
                                        (82.2% logic, 17.8% route)
-
-=========================================================================
-Timing constraint: Default OFFSET OUT AFTER for Clock 'divider1/ten_hz_enable'
-  Total number of paths / destination ports: 1 / 1
--------------------------------------------------------------------------
-Offset:              6.587ns (Levels of Logic = 2)
-  Source:            led_status (FF)
-  Destination:       led<0> (PAD)
-  Source Clock:      divider1/ten_hz_enable rising
-
-  Data Path: led_status to led<0>
-                                Gate     Net
-    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
-    ----------------------------------------  ------------
-     FD:C->Q               1   0.568   0.517  led_status (led_status)
-     INV:I->O              2   0.439   0.701  led<0>1_INV_0 (led_0_OBUF)
-     OBUF:I->O                 4.361          led_0_OBUF (led<0>)
-    ----------------------------------------
-    Total                      6.587ns (5.368ns logic, 1.219ns route)
-                                       (81.5% logic, 18.5% route)
 
 =========================================================================
 Timing constraint: Default path analysis
@@ -1356,15 +1344,15 @@ Timing constraint: Default path analysis
 -------------------------------------------------------------------------
 Delay:               6.660ns (Levels of Logic = 3)
   Source:            switch<1> (PAD)
-  Destination:       led<2> (PAD)
+  Destination:       led<1> (PAD)
 
-  Data Path: switch<1> to led<2>
+  Data Path: switch<1> to led<1>
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      IBUF:I->O             1   0.825   0.517  switch_1_IBUF (switch_1_IBUF)
-     INV:I->O              1   0.439   0.517  led<2>1_INV_0 (led_2_OBUF)
-     OBUF:I->O                 4.361          led_2_OBUF (led<2>)
+     INV:I->O              1   0.439   0.517  led<1>1_INV_0 (led_1_OBUF)
+     OBUF:I->O                 4.361          led_1_OBUF (led<1>)
     ----------------------------------------
     Total                      6.660ns (5.625ns logic, 1.035ns route)
                                        (84.5% logic, 15.5% route)
@@ -1373,12 +1361,12 @@ Delay:               6.660ns (Levels of Logic = 3)
 
 
 Total REAL time to Xst completion: 15.00 secs
-Total CPU time to Xst completion: 14.35 secs
+Total CPU time to Xst completion: 14.25 secs
  
 --> 
 
 
-Total memory usage is 509232 kilobytes
+Total memory usage is 507976 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :  613 (   0 filtered)

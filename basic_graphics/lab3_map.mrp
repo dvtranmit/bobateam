@@ -11,23 +11,23 @@ Target Device  : xc2v6000
 Target Package : bf957
 Target Speed   : -4
 Mapper Version : virtex2 -- $Revision: 1.46.12.2 $
-Mapped Date    : Mon Dec  4 20:31:05 2017
+Mapped Date    : Mon Dec  4 21:10:29 2017
 
 Design Summary
 --------------
 Number of errors:      0
 Number of warnings:  423
 Logic Utilization:
-  Number of Slice Flip Flops:           162 out of  67,584    1%
-  Number of 4 input LUTs:               144 out of  67,584    1%
+  Number of Slice Flip Flops:           161 out of  67,584    1%
+  Number of 4 input LUTs:               154 out of  67,584    1%
 Logic Distribution:
-  Number of occupied Slices:            151 out of  33,792    1%
-    Number of Slices containing only related logic:     151 out of     151 100%
-    Number of Slices containing unrelated logic:          0 out of     151   0%
+  Number of occupied Slices:            156 out of  33,792    1%
+    Number of Slices containing only related logic:     156 out of     156 100%
+    Number of Slices containing unrelated logic:          0 out of     156   0%
       *See NOTES below for an explanation of the effects of unrelated logic.
-  Total Number of 4 input LUTs:         249 out of  67,584    1%
-    Number used as logic:               143
-    Number used as a route-thru:        105
+  Total Number of 4 input LUTs:         260 out of  67,584    1%
+    Number used as logic:               153
+    Number used as a route-thru:        106
     Number used as Shift registers:       1
   Number of bonded IOBs:                576 out of     684   84%
   Number of RAMB16s:                     16 out of     144   11%
@@ -1990,8 +1990,6 @@ The signal "N0" is unused and has been removed.
      Unused block "mole3/image_addr_sub0000<4>11" (ROM) removed.
 The signal "N10" is unused and has been removed.
  Unused block "mole2/Msub_image_addr_sub0000_xor<10>131" (ROM) removed.
-The signal "N19" is unused and has been removed.
- Unused block "mole3/image_addr_sub0000<7>_SW2" (ROM) removed.
 The signal "N2" is unused and has been removed.
  Unused block "mole4/image_addr_sub0000<8>11" (ROM) removed.
   The signal "N4" is unused and has been removed.
@@ -2006,8 +2004,6 @@ The signal "N39" is unused and has been removed.
  Unused block "mole2/Msub_image_addr_sub0000_xor<9>111" (ROM) removed.
   The signal "N6" is unused and has been removed.
    Unused block "mole2/Msub_image_addr_sub0000_xor<10>121" (ROM) removed.
-The signal "N40" is unused and has been removed.
- Unused block "mole2/Msub_image_addr_sub0000_xor<10>151" (ROM) removed.
 The signal "N43" is unused and has been removed.
  Unused block "mole2/Msub_image_addr_sub0000_xor<5>111" (ROM) removed.
 The signal "N7" is unused and has been removed.
@@ -2267,7 +2263,11 @@ The signal "mole3/Madd_image_addr_cy<10>" is unused and has been removed.
         The signal "mole3/Madd_image_addr_lut<7>" is unused and has been removed.
          Unused block "mole3/Madd_image_addr_lut<7>" (ROM) removed.
           The signal "mole3/image_addr_sub0000<7>" is unused and has been removed.
-           Unused block "mole3/image_addr_sub0000<7>" (ROM) removed.
+           Unused block "mole3/image_addr_sub0000<7>_f5" (MUX) removed.
+            The signal "mole3/image_addr_sub0000<7>2" is unused and has been removed.
+             Unused block "mole3/image_addr_sub0000<7>2" (ROM) removed.
+            The signal "mole3/image_addr_sub0000<7>1" is unused and has been removed.
+             Unused block "mole3/image_addr_sub0000<7>1" (ROM) removed.
       The signal "mole3/image_addr_mult0001<8>" is unused and has been removed.
       The signal "mole3/Madd_image_addr_lut<8>" is unused and has been removed.
        Unused block "mole3/Madd_image_addr_lut<8>" (ROM) removed.
