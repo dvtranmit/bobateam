@@ -26,18 +26,14 @@ module mole_adressss_locations #(parameter MAX_ITEM = 4'd5, parameter INDEX_BITS
    output wire disp_data_out,        // LED display signal
 	input wire [23:0] flash_address,
 	input wire [INDEX_BITS-1:0] lookup_index, //default is [3:0] unless the parameter is changed
-	output reg ready_to_use, //once bram full or reached end of music
-	output reg [INDEX_BITS-1:0] items, 		//number of items (address + locations) stored in bram for dyi mode
-	output reg [3:0]index_location,
-	output reg [23:0] index_address,
-	output reg [2:0]state); 			
+	output wire ready_to_use, //once bram full or reached end of music
+	output wire [INDEX_BITS-1:0] items, 		//number of items (address + locations) stored in bram for dyi mode
+	output wire [3:0]index_location,
+	output wire [23:0] index_address,
+	output wire [2:0]state); 			
 	
-	reg [23:0]address_memory[MAX_ITEM-1:0]; // MAX_ITEM number of 24-bit words
-	reg [3:0] location_memory[MAX_ITEM-1:0];// MAX_ITEM number of  4-bit words
-	reg [INDEX_BITS-1:0] counts;
-	reg [3:0] location;
-	reg [23:0] address;
 	parameter MUSIC_END = 23'h6AC00;
+	
 	parameter INITIAL_STATE = 3'd0;
 	parameter DIY_INITIAL = 3'd1;
 	parameter DIY_START = 3'd2;
@@ -45,12 +41,26 @@ module mole_adressss_locations #(parameter MAX_ITEM = 4'd5, parameter INDEX_BITS
 	parameter DIY_BUTTON_WAIT_DONE = 3'd4;
 	parameter DIY_DONE = 3'd5;
 	
-	initial state = 0;
-	reg [2:0] next_state;
 	
+	reg [23:0]address_memory[MAX_ITEM-1:0]; // MAX_ITEM number of 24-bit words
+	reg [3:0] location_memory[MAX_ITEM-1:0];// MAX_ITEM number of  4-bit words
+	reg [INDEX_BITS-1:0] counts;
+	reg [3:0] location;
+	assign index_location = location;
+	reg [23:0] address;
+	assign index_address = address;	
+	reg [2:0] next_state;
+	assign state = next_state;
+	reg internal_ready;
+	assign ready_to_use = internal_ready;
+	reg [INDEX_BITS-1:0]internal_items;
+	assign items = internal_items;
 	wire [7:0] button_bits;
 	assign button_bits = {upleft , up , upright , left , right , downleft , down , downright};
 	reg [7:0] last_button_bits;
+	
+	
+	//timer code
 	reg [3:0] timer_value = 2;
 	reg start_timer;
 	wire timer_expired;
@@ -60,27 +70,30 @@ module mole_adressss_locations #(parameter MAX_ITEM = 4'd5, parameter INDEX_BITS
 						 .start_timer(start_timer),
 						 .one_hz_enable(one_hz_enable),
 						 .timer_value(timer_value),
-						 .expired(expired),
+						 .expired(timer_expired),
 						 .displayed_counter(displayed_counter));
 	
+	//display code
 	wire [63:0] display_data;
-	assign display_data = {index_address,index_location,3'b0, ready_to_use,lookup_index, items, 1'b0, state, displayed_counter};
-	
+	assign display_data = {address,location,3'b0, internal_ready, internal_items, 1'b0, next_state, displayed_counter};
 	display_16hex disp(.reset(switch[2]), .clock_27mhz(clock), .data_in(display_data), 
 		                .disp_rs(disp_rs), .disp_ce_b(disp_ce_b), .disp_blank(disp_blank),
 							 .disp_reset_b(disp_reset_b), .disp_data_out(disp_data_out), .disp_clock(disp_clock));
 	
 	always @(posedge clock) begin
-		state <= next_state;
-		case(state)
+		//internal_state <= next_state;
+		last_button_bits <= button_bits;
+		case(next_state)
 			INITIAL_STATE: begin 
-									next_state <= (!diy_mode) ? INITIAL_STATE : (displayed_counter == 4'b0)? DIY_INITIAL: INITIAL_STATE;
-									items <= 0;
+									next_state <= (!diy_mode) ? INITIAL_STATE : DIY_INITIAL;
+									internal_items <= 0;
 									counts <= 0;
-									ready_to_use <= 0;
+									internal_ready <= 0;
+									start_timer <= 0;
 								end
 			DIY_INITIAL: begin
 									next_state <= (!diy_mode) ? INITIAL_STATE : DIY_START;
+									start_timer <= 0;
 								end
 			DIY_START: begin
 								if(flash_address >= MUSIC_END) begin
@@ -89,96 +102,98 @@ module mole_adressss_locations #(parameter MAX_ITEM = 4'd5, parameter INDEX_BITS
 								else begin
 									case(button_bits)
 										8'b10000000: begin
-																next_state <= (!diy_mode) ? INITIAL_STATE : DIY_BUTTON_WAIT;
-																address_memory[items] <= flash_address;
-																location_memory[items]  <= 4'd0;
-																start_timer <= 1;
-																if (!last_button_bits[7] & button_bits[7])
-																	items <= items + 1;
+																address_memory[internal_items] <= flash_address;
+																location_memory[internal_items]  <= 4'd0;
+																if (!last_button_bits[7]) begin
+																	start_timer <= 1;
+																	internal_items <= internal_items + 1;
+																	next_state <= (!diy_mode) ? INITIAL_STATE : DIY_BUTTON_WAIT;
+																end
+
 														 end
 										8'b01000000: begin
-																next_state <= (!diy_mode) ? INITIAL_STATE : DIY_BUTTON_WAIT;
-																address_memory[items] <= flash_address;
-																location_memory[items]  <= 4'd1;
-																start_timer <= 1;
-																if (!last_button_bits[6] & button_bits[6])
-																	items <= items + 1;
+																address_memory[internal_items] <= flash_address;
+																location_memory[internal_items]  <= 4'd1;
+																if (!last_button_bits[6]) begin
+																	start_timer <= 1;
+																	internal_items <= internal_items + 1;
+																	next_state <= (!diy_mode) ? INITIAL_STATE : DIY_BUTTON_WAIT;
+																end
 														 end
 										8'b00100000: begin
-																next_state <= (!diy_mode) ? INITIAL_STATE : DIY_BUTTON_WAIT;
-																address_memory[items] <= flash_address;
-																location_memory[items]  <= 4'd2;
-																start_timer <= 1;
-																if (!last_button_bits[5] & button_bits[5])
-																	items <= items + 1;
+																address_memory[internal_items] <= flash_address;
+																location_memory[internal_items]  <= 4'd2;
+																if (!last_button_bits[5]) begin
+																	start_timer <= 1;
+																	internal_items <= internal_items + 1;
+																	next_state <= (!diy_mode) ? INITIAL_STATE : DIY_BUTTON_WAIT;
+																end
 														 end
 										8'b00010000: begin
-																next_state <= (!diy_mode) ? INITIAL_STATE : DIY_BUTTON_WAIT;
-																address_memory[items] <= flash_address;
-																location_memory[items]  <= 4'd3;
-																start_timer <= 1;
-																if (!last_button_bits[4] & button_bits[4])
-																	items <= items + 1;
+																address_memory[internal_items] <= flash_address;
+																location_memory[internal_items]  <= 4'd3;
+																if (!last_button_bits[4]) begin
+																	start_timer <= 1;
+																	internal_items <= internal_items + 1;
+																	next_state <= (!diy_mode) ? INITIAL_STATE : DIY_BUTTON_WAIT;
+																end
 														 end
 										8'b00001000: begin
-																next_state <= (!diy_mode) ? INITIAL_STATE : DIY_BUTTON_WAIT;
-																address_memory[items] <= flash_address;
-																location_memory[items]  <= 4'd4;
-																start_timer <= 1;
-																if (!last_button_bits[3] & button_bits[3])
-																	items <= items + 1;
+																address_memory[internal_items] <= flash_address;
+																location_memory[internal_items]  <= 4'd4;
+																if (!last_button_bits[3]) begin
+																	start_timer <= 1;
+																	internal_items <= internal_items + 1;
+																	next_state <= (!diy_mode) ? INITIAL_STATE : DIY_BUTTON_WAIT;
+																end
 														 end
 										8'b00000100: begin
-																next_state <= (!diy_mode) ? INITIAL_STATE : DIY_BUTTON_WAIT;
-																address_memory[items] <= flash_address;
-																location_memory[items]  <= 4'd5;
-																start_timer <= 1;
-																if (!last_button_bits[2] & button_bits[2])
-																	items <= items + 1;
+																address_memory[internal_items] <= flash_address;
+																location_memory[internal_items]  <= 4'd5;
+																if (!last_button_bits[2]) begin
+																	start_timer <= 1;
+																	internal_items <= internal_items + 1;
+																	next_state <= (!diy_mode) ? INITIAL_STATE : DIY_BUTTON_WAIT;
+																end
 														 end
 										8'b00000010: begin
-																next_state <= (!diy_mode) ? INITIAL_STATE : DIY_BUTTON_WAIT;
-																address_memory[items] <= flash_address;
-																location_memory[items]  <= 4'd6;
-																start_timer <= 1;
-																if (!last_button_bits[1] & button_bits[1])
-																	items <= items + 1;
+																address_memory[internal_items] <= flash_address;
+																location_memory[internal_items]  <= 4'd6;
+																if (!last_button_bits[1]) begin
+																	start_timer <= 1;
+																	internal_items <= internal_items + 1;
+																	next_state <= (!diy_mode) ? INITIAL_STATE : DIY_BUTTON_WAIT;
+																end
 														 end
 										8'b00000001: begin
-																next_state <= (!diy_mode) ? INITIAL_STATE : DIY_BUTTON_WAIT;
-																address_memory[items] <= flash_address;
-																location_memory[items]  <= 4'd7;
-																start_timer <= 1;
-																if (!last_button_bits[0] & button_bits[0])
-																	items <= items + 1;
+																address_memory[internal_items] <= flash_address;
+																location_memory[internal_items]  <= 4'd7;
+																if (!last_button_bits[0]) begin
+																	start_timer <= 1;
+																	internal_items <= internal_items + 1;
+																	next_state <= (!diy_mode) ? INITIAL_STATE : DIY_BUTTON_WAIT;
+																end
 														 end
 										default: begin
-														items <= items;
 														start_timer <= 0;
-														next_state <= (!diy_mode) ? INITIAL_STATE : DIY_START;
 													end
 									endcase
 								end
 							end
-			DIY_BUTTON_WAIT: begin
-										next_state <= (!diy_mode) ? INITIAL_STATE : (displayed_counter == 4'b0) ? DIY_BUTTON_WAIT_DONE: DIY_BUTTON_WAIT;
+			DIY_BUTTON_WAIT:begin
+										next_state <= (!diy_mode) ? INITIAL_STATE : (timer_expired) ? DIY_BUTTON_WAIT_DONE: DIY_BUTTON_WAIT;
 										start_timer <= 0;
-										counts <= 0;
 								  end
 								  
 			DIY_BUTTON_WAIT_DONE: begin
-												next_state <= (!diy_mode) ? INITIAL_STATE : (items == MAX_ITEM) ? DIY_DONE : DIY_INITIAL; 
-												counts <= 0;
+												next_state <= (!diy_mode) ? INITIAL_STATE : (internal_items >= MAX_ITEM) ? DIY_DONE : DIY_INITIAL; 
 										  end
 			DIY_DONE: begin
-							ready_to_use <= 1;
+							internal_ready <= 1; //only get here once you reach the end ideally, because max items should be high enough never reached
 							next_state <= (!diy_mode) ? INITIAL_STATE : DIY_DONE;
-							index_address <= address_memory[lookup_index];
-							index_location <= location_memory[lookup_index];
-							/*if(increment & !last_increment) begin
-								counts <= (counts < items-1) ? counts + 1 : 0;
-							end
-							*/
+							address <= address_memory[lookup_index];
+							location <= location_memory[lookup_index];
+
 						 end
 			default: begin
 							next_state <= DIY_INITIAL;
