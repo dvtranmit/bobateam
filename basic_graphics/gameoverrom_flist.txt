@@ -1,0 +1,13 @@
+# Output products list for <gameoverrom>
+gameoverrom.asy
+gameoverrom.mif
+gameoverrom.ngc
+gameoverrom.sym
+gameoverrom.v
+gameoverrom.veo
+gameoverrom.vhd
+gameoverrom.vho
+gameoverrom.xco
+gameoverrom_blk_mem_gen_v2_8_xst_1.ngc_xst.xrpt
+gameoverrom_flist.txt
+gameoverrom_xmdf.tcl

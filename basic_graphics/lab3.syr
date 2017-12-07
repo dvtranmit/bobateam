@@ -5,14 +5,14 @@ Parameter TMPDIR set to /afs/athena.mit.edu/user/v/s/vsouyang/Documents/6.111/bo
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.03 secs
+Total CPU time to Xst completion: 0.02 secs
  
 --> 
 Parameter xsthdpdir set to /afs/athena.mit.edu/user/v/s/vsouyang/Documents/6.111/bobateam/basic_graphics/xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.03 secs
+Total CPU time to Xst completion: 0.02 secs
  
 --> 
 Reading design: lab3.prj
@@ -109,23 +109,47 @@ Slice Utilization Ratio Delta      : 5
 =========================================================================
 *                          HDL Compilation                              *
 =========================================================================
+Compiling verilog file "./whack_red_rom.v" in library work
+Compiling verilog file "whack_green_rom.v" in library work
+Module <whack_red_rom> compiled
+Compiling verilog file "./whack_blue_rom.v" in library work
+Module <whack_green_rom> compiled
+Compiling verilog file "./whackrom.v" in library work
+Module <whack_blue_rom> compiled
 Compiling verilog file "./tiger_red_rom.v" in library work
+Module <whackrom> compiled
 Compiling verilog file "tiger_image_rom.v" in library work
 Module <tiger_red_rom> compiled
 Compiling verilog file "./tiger_green_rom.v" in library work
 Module <tiger_image_rom> compiled
 Compiling verilog file "./tiger_blue_rom.v" in library work
 Module <tiger_green_rom> compiled
-Compiling verilog file "happy_red_rom.v" in library work
+Compiling verilog file "start_red_rom.v" in library work
 Module <tiger_blue_rom> compiled
+Compiling verilog file "./start_green_rom.v" in library work
+Module <start_red_rom> compiled
+Compiling verilog file "./start_blue_rom.v" in library work
+Module <start_green_rom> compiled
+Compiling verilog file "./startrom.v" in library work
+Module <start_blue_rom> compiled
+Compiling verilog file "happy_red_rom.v" in library work
+Module <startrom> compiled
 Compiling verilog file "happy_image_rom.v" in library work
 Module <happy_red_rom> compiled
 Compiling verilog file "happy_green_rom.v" in library work
 Module <happy_image_rom> compiled
 Compiling verilog file "happy_blue_rom.v" in library work
 Module <happy_green_rom> compiled
-Compiling verilog file "dead_red_rom.v" in library work
+Compiling verilog file "./gameover_red_rom.v" in library work
 Module <happy_blue_rom> compiled
+Compiling verilog file "./gameover_green_rom.v" in library work
+Module <gameover_red_rom> compiled
+Compiling verilog file "./gameover_blue_rom.v" in library work
+Module <gameover_green_rom> compiled
+Compiling verilog file "./gameoverrom.v" in library work
+Module <gameover_blue_rom> compiled
+Compiling verilog file "dead_red_rom.v" in library work
+Module <gameoverrom> compiled
 Compiling verilog file "dead_image_rom.v" in library work
 Module <dead_red_rom> compiled
 Compiling verilog file "dead_green_rom.v" in library work
@@ -140,6 +164,9 @@ Module <xvga> compiled
 Module <normalmole> compiled
 Module <deadmole> compiled
 Module <happymole> compiled
+Module <whackamole> compiled
+Module <startscreen> compiled
+Module <gameover> compiled
 Module <divider> compiled
 No errors in compilation
 Analysis of file <"lab3.prj"> succeeded.
@@ -162,11 +189,17 @@ Analyzing hierarchy for module <deadmole> in library <work> with parameters.
 	HEIGHT = "00000000000000000000000100000000"
 	WIDTH = "00000000000000000000000010111111"
 
-Analyzing hierarchy for module <happymole> in library <work> with parameters.
-	HEIGHT = "00000000000000000000000100000000"
-	WIDTH = "00000000000000000000000011001111"
+Analyzing hierarchy for module <whackamole> in library <work> with parameters.
+	HEIGHT = "00000000000000000000000001110111"
+	WIDTH = "00000000000000000000010000000000"
 
-Analyzing hierarchy for module <divider> in library <work>.
+Analyzing hierarchy for module <startscreen> in library <work> with parameters.
+	HEIGHT = "00000000000000000000000001110111"
+	WIDTH = "00000000000000000000010000000000"
+
+Analyzing hierarchy for module <gameover> in library <work> with parameters.
+	HEIGHT = "00000000000000000000000010010000"
+	WIDTH = "00000000000000000000010000000000"
 
 WARNING:Xst:2591 - "lab3.v" line 331: attribute on instance <CLKFX_DIVIDE> overrides generic/parameter on entity. It is possible that simulator will not take this attribute into account.
 WARNING:Xst:2591 - "lab3.v" line 331: attribute on instance <CLKFX_MULTIPLY> overrides generic/parameter on entity. It is possible that simulator will not take this attribute into account.
@@ -212,13 +245,20 @@ Analyzing module <deadmole> in library <work>.
 	WIDTH = 32'sb00000000000000000000000010111111
 Module <deadmole> is correct for synthesis.
  
-Analyzing module <happymole> in library <work>.
-	HEIGHT = 32'sb00000000000000000000000100000000
-	WIDTH = 32'sb00000000000000000000000011001111
-Module <happymole> is correct for synthesis.
+Analyzing module <whackamole> in library <work>.
+	HEIGHT = 32'sb00000000000000000000000001110111
+	WIDTH = 32'sb00000000000000000000010000000000
+Module <whackamole> is correct for synthesis.
  
-Analyzing module <divider> in library <work>.
-Module <divider> is correct for synthesis.
+Analyzing module <startscreen> in library <work>.
+	HEIGHT = 32'sb00000000000000000000000001110111
+	WIDTH = 32'sb00000000000000000000010000000000
+Module <startscreen> is correct for synthesis.
+ 
+Analyzing module <gameover> in library <work>.
+	HEIGHT = 32'sb00000000000000000000000010010000
+	WIDTH = 32'sb00000000000000000000010000000000
+Module <gameover> is correct for synthesis.
  
 
 =========================================================================
@@ -264,30 +304,20 @@ Synthesizing Unit <xvga>.
 Unit <xvga> synthesized.
 
 
-Synthesizing Unit <divider>.
-    Related source file is "lab3.v".
-    Found 1-bit register for signal <mole_popup_clock>.
-    Found 27-bit up counter for signal <count>.
-    Summary:
-	inferred   1 Counter(s).
-	inferred   1 D-type flip-flop(s).
-Unit <divider> synthesized.
-
-
 Synthesizing Unit <normalmole>.
     Related source file is "lab3.v".
-WARNING:Xst:643 - "lab3.v" line 552: The result of a 11x10-bit multiplication is partially used. Only the 16 least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
+WARNING:Xst:643 - "lab3.v" line 566: The result of a 11x10-bit multiplication is partially used. Only the 16 least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
     Found 24-bit register for signal <pixel>.
-    Found 11-bit adder carry out for signal <add0000$addsub0000> created at line 547.
-    Found 10-bit adder carry out for signal <add0001$addsub0000> created at line 547.
+    Found 11-bit adder carry out for signal <add0000$addsub0000> created at line 561.
+    Found 10-bit adder carry out for signal <add0001$addsub0000> created at line 561.
     Found 16-bit adder for signal <image_addr>.
-    Found 11-bit subtractor for signal <image_addr$addsub0000> created at line 552.
-    Found 11x10-bit multiplier for signal <image_addr$mult0001> created at line 552.
-    Found 13-bit subtractor for signal <image_addr$sub0000> created at line 552.
-    Found 11-bit comparator greatequal for signal <pixel$cmp_ge0000> created at line 547.
-    Found 10-bit comparator greatequal for signal <pixel$cmp_ge0001> created at line 547.
-    Found 12-bit comparator less for signal <pixel$cmp_lt0000> created at line 547.
-    Found 11-bit comparator less for signal <pixel$cmp_lt0001> created at line 547.
+    Found 11-bit subtractor for signal <image_addr$addsub0000> created at line 566.
+    Found 11x10-bit multiplier for signal <image_addr$mult0001> created at line 566.
+    Found 13-bit subtractor for signal <image_addr$sub0000> created at line 566.
+    Found 11-bit comparator greatequal for signal <pixel$cmp_ge0000> created at line 561.
+    Found 10-bit comparator greatequal for signal <pixel$cmp_ge0001> created at line 561.
+    Found 12-bit comparator less for signal <pixel$cmp_lt0000> created at line 561.
+    Found 11-bit comparator less for signal <pixel$cmp_lt0001> created at line 561.
     Summary:
 	inferred  24 D-type flip-flop(s).
 	inferred   5 Adder/Subtractor(s).
@@ -298,18 +328,18 @@ Unit <normalmole> synthesized.
 
 Synthesizing Unit <deadmole>.
     Related source file is "lab3.v".
-WARNING:Xst:643 - "lab3.v" line 574: The result of a 11x10-bit multiplication is partially used. Only the 16 least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
+WARNING:Xst:643 - "lab3.v" line 588: The result of a 11x10-bit multiplication is partially used. Only the 16 least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
     Found 24-bit register for signal <pixel>.
-    Found 11-bit adder carry out for signal <add0000$addsub0000> created at line 569.
-    Found 10-bit adder carry out for signal <add0001$addsub0000> created at line 569.
+    Found 11-bit adder carry out for signal <add0000$addsub0000> created at line 583.
+    Found 10-bit adder carry out for signal <add0001$addsub0000> created at line 583.
     Found 16-bit adder for signal <image_addr>.
-    Found 11-bit subtractor for signal <image_addr$addsub0000> created at line 574.
-    Found 11x10-bit multiplier for signal <image_addr$mult0001> created at line 574.
-    Found 13-bit subtractor for signal <image_addr$sub0000> created at line 574.
-    Found 11-bit comparator greatequal for signal <pixel$cmp_ge0000> created at line 569.
-    Found 10-bit comparator greatequal for signal <pixel$cmp_ge0001> created at line 569.
-    Found 12-bit comparator less for signal <pixel$cmp_lt0000> created at line 569.
-    Found 11-bit comparator less for signal <pixel$cmp_lt0001> created at line 569.
+    Found 11-bit subtractor for signal <image_addr$addsub0000> created at line 588.
+    Found 11x10-bit multiplier for signal <image_addr$mult0001> created at line 588.
+    Found 13-bit subtractor for signal <image_addr$sub0000> created at line 588.
+    Found 11-bit comparator greatequal for signal <pixel$cmp_ge0000> created at line 583.
+    Found 10-bit comparator greatequal for signal <pixel$cmp_ge0001> created at line 583.
+    Found 12-bit comparator less for signal <pixel$cmp_lt0000> created at line 583.
+    Found 11-bit comparator less for signal <pixel$cmp_lt0001> created at line 583.
     Summary:
 	inferred  24 D-type flip-flop(s).
 	inferred   5 Adder/Subtractor(s).
@@ -318,25 +348,55 @@ WARNING:Xst:643 - "lab3.v" line 574: The result of a 11x10-bit multiplication is
 Unit <deadmole> synthesized.
 
 
-Synthesizing Unit <happymole>.
+Synthesizing Unit <whackamole>.
     Related source file is "lab3.v".
-WARNING:Xst:647 - Input <height> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:643 - "lab3.v" line 597: The result of a 11x10-bit multiplication is partially used. Only the 16 least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
     Found 24-bit register for signal <pixel>.
-    Found 16-bit adder for signal <image_addr>.
-    Found 11-bit subtractor for signal <image_addr$addsub0000> created at line 597.
-    Found 11x10-bit multiplier for signal <image_addr$mult0001> created at line 597.
-    Found 13-bit subtractor for signal <image_addr$sub0000> created at line 597.
-    Found 11-bit comparator greatequal for signal <pixel$cmp_ge0000> created at line 592.
-    Found 10-bit comparator greatequal for signal <pixel$cmp_ge0001> created at line 592.
-    Found 12-bit comparator less for signal <pixel$cmp_lt0000> created at line 592.
-    Found 10-bit comparator less for signal <pixel$cmp_lt0001> created at line 592.
+    Found 17-bit adder for signal <image_addr>.
+    Found 11-bit subtractor for signal <image_addr$sub0000> created at line 633.
+    Found 13-bit subtractor for signal <image_addr$sub0001> created at line 633.
+    Found 11-bit comparator greatequal for signal <pixel$cmp_ge0000> created at line 628.
+    Found 10-bit comparator greatequal for signal <pixel$cmp_ge0001> created at line 628.
+    Found 12-bit comparator less for signal <pixel$cmp_lt0000> created at line 628.
+    Found 11-bit comparator less for signal <pixel$cmp_lt0001> created at line 628.
     Summary:
 	inferred  24 D-type flip-flop(s).
 	inferred   3 Adder/Subtractor(s).
-	inferred   1 Multiplier(s).
 	inferred   4 Comparator(s).
-Unit <happymole> synthesized.
+Unit <whackamole> synthesized.
+
+
+Synthesizing Unit <startscreen>.
+    Related source file is "lab3.v".
+    Found 24-bit register for signal <pixel>.
+    Found 17-bit adder for signal <image_addr>.
+    Found 11-bit subtractor for signal <image_addr$sub0000> created at line 655.
+    Found 13-bit subtractor for signal <image_addr$sub0001> created at line 655.
+    Found 11-bit comparator greatequal for signal <pixel$cmp_ge0000> created at line 650.
+    Found 10-bit comparator greatequal for signal <pixel$cmp_ge0001> created at line 650.
+    Found 12-bit comparator less for signal <pixel$cmp_lt0000> created at line 650.
+    Found 11-bit comparator less for signal <pixel$cmp_lt0001> created at line 650.
+    Summary:
+	inferred  24 D-type flip-flop(s).
+	inferred   3 Adder/Subtractor(s).
+	inferred   4 Comparator(s).
+Unit <startscreen> synthesized.
+
+
+Synthesizing Unit <gameover>.
+    Related source file is "lab3.v".
+    Found 24-bit register for signal <pixel>.
+    Found 17-bit adder for signal <image_addr>.
+    Found 11-bit subtractor for signal <image_addr$sub0000> created at line 677.
+    Found 13-bit subtractor for signal <image_addr$sub0001> created at line 677.
+    Found 11-bit comparator greatequal for signal <pixel$cmp_ge0000> created at line 672.
+    Found 10-bit comparator greatequal for signal <pixel$cmp_ge0001> created at line 672.
+    Found 12-bit comparator less for signal <pixel$cmp_lt0000> created at line 672.
+    Found 11-bit comparator less for signal <pixel$cmp_lt0001> created at line 672.
+    Summary:
+	inferred  24 D-type flip-flop(s).
+	inferred   3 Adder/Subtractor(s).
+	inferred   4 Comparator(s).
+Unit <gameover> synthesized.
 
 
 Synthesizing Unit <lab3>.
@@ -645,9 +705,12 @@ WARNING:Xst:2565 - Inout <user3<31>> is never assigned.
 WARNING:Xst:2565 - Inout <user3<2>> is never assigned.
 WARNING:Xst:2565 - Inout <user3<27>> is never assigned.
 WARNING:Xst:2565 - Inout <user3<3>> is never assigned.
+WARNING:Xst:646 - Signal <y8> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <y7> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:1780 - Signal <y1> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <x8> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <x7> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <x1> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <vsync8> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <vsync7> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <vsync6> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
@@ -655,19 +718,19 @@ WARNING:Xst:646 - Signal <vsync5> is assigned but never used. This unconnected s
 WARNING:Xst:646 - Signal <vsync4> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <vsync3> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <vsync2> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <vcount7> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <right> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:1780 - Signal <pvsync> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:1780 - Signal <pixel> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:1780 - Signal <phsync> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:1780 - Signal <pblank> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <mole8_pixel> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:653 - Signal <mole_clock> is used but never assigned. This sourceless signal will be automatically connected to value 0.
+WARNING:Xst:1780 - Signal <mole8_pixel> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:1780 - Signal <mole7_pixel> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <mole6_pixel> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <mole5_pixel> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <mole4_pixel> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <mole3_pixel> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <mole2_pixel> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <mole1_pixel> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <left> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <hsync8> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <hsync7> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
@@ -676,8 +739,7 @@ WARNING:Xst:646 - Signal <hsync5> is assigned but never used. This unconnected s
 WARNING:Xst:646 - Signal <hsync4> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <hsync3> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <hsync2> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:653 - Signal <height> is used but never assigned. This sourceless signal will be automatically connected to value 0100000000.
-WARNING:Xst:646 - Signal <hcount7> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <height> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <border> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <blank8> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <blank7> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
@@ -691,8 +753,8 @@ WARNING:Xst:646 - Signal <blank2> is assigned but never used. This unconnected s
     Found 24-bit register for signal <rgb>.
     Found 1-bit register for signal <vs>.
     Found 10-bit down counter for signal <y_change>.
-    Found 10-bit comparator greater for signal <y_change$cmp_gt0000> created at line 461.
-    Found 10-bit comparator less for signal <y_change$cmp_lt0000> created at line 461.
+    Found 10-bit comparator greater for signal <y_change$cmp_gt0000> created at line 474.
+    Found 10-bit comparator less for signal <y_change$cmp_lt0000> created at line 474.
     Summary:
 	inferred   1 Counter(s).
 	inferred  27 D-type flip-flop(s).
@@ -704,30 +766,30 @@ Unit <lab3> synthesized.
 HDL Synthesis Report
 
 Macro Statistics
-# Multipliers                                          : 7
- 11x10-bit multiplier                                  : 7
-# Adders/Subtractors                                   : 33
- 10-bit adder carry out                                : 6
- 11-bit adder carry out                                : 6
- 11-bit subtractor                                     : 7
- 13-bit subtractor                                     : 7
- 16-bit adder                                          : 7
-# Counters                                             : 23
+# Multipliers                                          : 5
+ 11x10-bit multiplier                                  : 5
+# Adders/Subtractors                                   : 34
+ 10-bit adder carry out                                : 5
+ 11-bit adder carry out                                : 5
+ 11-bit subtractor                                     : 8
+ 13-bit subtractor                                     : 8
+ 16-bit adder                                          : 5
+ 17-bit adder                                          : 3
+# Counters                                             : 22
  10-bit down counter                                   : 1
  10-bit up counter                                     : 8
  11-bit up counter                                     : 8
  20-bit up counter                                     : 5
- 27-bit up counter                                     : 1
 # Registers                                            : 62
- 1-bit register                                        : 54
- 24-bit register                                       : 8
-# Comparators                                          : 30
- 10-bit comparator greatequal                          : 7
+ 1-bit register                                        : 53
+ 24-bit register                                       : 9
+# Comparators                                          : 34
+ 10-bit comparator greatequal                          : 8
  10-bit comparator greater                             : 1
- 10-bit comparator less                                : 2
- 11-bit comparator greatequal                          : 7
- 11-bit comparator less                                : 6
- 12-bit comparator less                                : 7
+ 10-bit comparator less                                : 1
+ 11-bit comparator greatequal                          : 8
+ 11-bit comparator less                                : 8
+ 12-bit comparator less                                : 8
 # Xors                                                 : 5
  1-bit xor2                                            : 5
 
@@ -746,10 +808,18 @@ Reading core <dead_image_rom.ngc>.
 Reading core <dead_red_rom.ngc>.
 Reading core <dead_green_rom.ngc>.
 Reading core <dead_blue_rom.ngc>.
-Reading core <happy_image_rom.ngc>.
-Reading core <happy_red_rom.ngc>.
-Reading core <happy_green_rom.ngc>.
-Reading core <happy_blue_rom.ngc>.
+Reading core <whackrom.ngc>.
+Reading core <whack_red_rom.ngc>.
+Reading core <whack_green_rom.ngc>.
+Reading core <whack_blue_rom.ngc>.
+Reading core <startrom.ngc>.
+Reading core <start_red_rom.ngc>.
+Reading core <start_green_rom.ngc>.
+Reading core <start_blue_rom.ngc>.
+Reading core <gameoverrom.ngc>.
+Reading core <gameover_red_rom.ngc>.
+Reading core <gameover_green_rom.ngc>.
+Reading core <gameover_blue_rom.ngc>.
 Loading core <tiger_image_rom> for timing and area information for instance <rom1>.
 Loading core <tiger_red_rom> for timing and area information for instance <rcm>.
 Loading core <tiger_green_rom> for timing and area information for instance <gcm>.
@@ -758,22 +828,25 @@ Loading core <dead_image_rom> for timing and area information for instance <rom1
 Loading core <dead_red_rom> for timing and area information for instance <rcm_dead>.
 Loading core <dead_green_rom> for timing and area information for instance <gcm_dead>.
 Loading core <dead_blue_rom> for timing and area information for instance <bcm_dead>.
-Loading core <happy_image_rom> for timing and area information for instance <rom1_happy>.
-Loading core <happy_red_rom> for timing and area information for instance <rcm_happy>.
-Loading core <happy_green_rom> for timing and area information for instance <gcm_happy>.
-Loading core <happy_blue_rom> for timing and area information for instance <bcm_happy>.
+Loading core <whackrom> for timing and area information for instance <rom1_whack>.
+Loading core <whack_red_rom> for timing and area information for instance <rcm_whack>.
+Loading core <whack_green_rom> for timing and area information for instance <gcm_whack>.
+Loading core <whack_blue_rom> for timing and area information for instance <bcm_whack>.
+Loading core <startrom> for timing and area information for instance <rom1_start>.
+Loading core <start_red_rom> for timing and area information for instance <rcm_start>.
+Loading core <start_green_rom> for timing and area information for instance <gcm_start>.
+Loading core <start_blue_rom> for timing and area information for instance <bcm_start>.
+Loading core <gameoverrom> for timing and area information for instance <rom1_end>.
+Loading core <gameover_red_rom> for timing and area information for instance <rcm_end>.
+Loading core <gameover_green_rom> for timing and area information for instance <gcm_end>.
+Loading core <gameover_blue_rom> for timing and area information for instance <bcm_end>.
 
 Synthesizing (advanced) Unit <deadmole>.
 INFO:Xst:2385 - HDL ADVISOR - You can improve the performance of the multiplier Mmult_image_addr_mult0001 by adding 1 register level(s).
 INFO:Xst:2385 - HDL ADVISOR - You can improve the performance of the multiplier Mmult_image_addr_mult0001 by adding 1 register level(s).
 Unit <deadmole> synthesized (advanced).
 
-Synthesizing (advanced) Unit <happymole>.
-INFO:Xst:2385 - HDL ADVISOR - You can improve the performance of the multiplier Mmult_image_addr_mult0001 by adding 1 register level(s).
-Unit <happymole> synthesized (advanced).
-
 Synthesizing (advanced) Unit <normalmole>.
-INFO:Xst:2385 - HDL ADVISOR - You can improve the performance of the multiplier Mmult_image_addr_mult0001 by adding 1 register level(s).
 INFO:Xst:2385 - HDL ADVISOR - You can improve the performance of the multiplier Mmult_image_addr_mult0001 by adding 1 register level(s).
 INFO:Xst:2385 - HDL ADVISOR - You can improve the performance of the multiplier Mmult_image_addr_mult0001 by adding 1 register level(s).
 INFO:Xst:2385 - HDL ADVISOR - You can improve the performance of the multiplier Mmult_image_addr_mult0001 by adding 1 register level(s).
@@ -802,18 +875,42 @@ WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_16> (without 
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_17> (without init value) has a constant value of 0 in block <deadmole>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_18> (without init value) has a constant value of 0 in block <deadmole>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_19> (without init value) has a constant value of 0 in block <deadmole>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <pixel_0> (without init value) has a constant value of 0 in block <happymole>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_1> (without init value) has a constant value of 0 in block <happymole>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_2> (without init value) has a constant value of 0 in block <happymole>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_3> (without init value) has a constant value of 0 in block <happymole>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_8> (without init value) has a constant value of 0 in block <happymole>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_9> (without init value) has a constant value of 0 in block <happymole>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_10> (without init value) has a constant value of 0 in block <happymole>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_11> (without init value) has a constant value of 0 in block <happymole>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_16> (without init value) has a constant value of 0 in block <happymole>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_17> (without init value) has a constant value of 0 in block <happymole>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_18> (without init value) has a constant value of 0 in block <happymole>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_19> (without init value) has a constant value of 0 in block <happymole>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <pixel_0> (without init value) has a constant value of 0 in block <whackamole>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_1> (without init value) has a constant value of 0 in block <whackamole>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_2> (without init value) has a constant value of 0 in block <whackamole>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_3> (without init value) has a constant value of 0 in block <whackamole>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_8> (without init value) has a constant value of 0 in block <whackamole>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_9> (without init value) has a constant value of 0 in block <whackamole>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_10> (without init value) has a constant value of 0 in block <whackamole>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_11> (without init value) has a constant value of 0 in block <whackamole>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_16> (without init value) has a constant value of 0 in block <whackamole>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_17> (without init value) has a constant value of 0 in block <whackamole>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_18> (without init value) has a constant value of 0 in block <whackamole>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_19> (without init value) has a constant value of 0 in block <whackamole>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <pixel_0> (without init value) has a constant value of 0 in block <startscreen>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_1> (without init value) has a constant value of 0 in block <startscreen>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_2> (without init value) has a constant value of 0 in block <startscreen>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_3> (without init value) has a constant value of 0 in block <startscreen>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_8> (without init value) has a constant value of 0 in block <startscreen>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_9> (without init value) has a constant value of 0 in block <startscreen>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_10> (without init value) has a constant value of 0 in block <startscreen>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_11> (without init value) has a constant value of 0 in block <startscreen>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_16> (without init value) has a constant value of 0 in block <startscreen>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_17> (without init value) has a constant value of 0 in block <startscreen>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_18> (without init value) has a constant value of 0 in block <startscreen>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_19> (without init value) has a constant value of 0 in block <startscreen>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <pixel_0> (without init value) has a constant value of 0 in block <gameover>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_1> (without init value) has a constant value of 0 in block <gameover>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_2> (without init value) has a constant value of 0 in block <gameover>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_3> (without init value) has a constant value of 0 in block <gameover>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_8> (without init value) has a constant value of 0 in block <gameover>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_9> (without init value) has a constant value of 0 in block <gameover>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_10> (without init value) has a constant value of 0 in block <gameover>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_11> (without init value) has a constant value of 0 in block <gameover>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_16> (without init value) has a constant value of 0 in block <gameover>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_17> (without init value) has a constant value of 0 in block <gameover>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_18> (without init value) has a constant value of 0 in block <gameover>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_19> (without init value) has a constant value of 0 in block <gameover>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <rgb_0> (without init value) has a constant value of 0 in block <lab3>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <rgb_1> (without init value) has a constant value of 0 in block <lab3>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <rgb_2> (without init value) has a constant value of 0 in block <lab3>. This FF/Latch will be trimmed during the optimization process.
@@ -923,46 +1020,32 @@ WARNING:Xst:2677 - Node <pixel_20> of sequential type is unconnected in block <m
 WARNING:Xst:2677 - Node <pixel_21> of sequential type is unconnected in block <mole6>.
 WARNING:Xst:2677 - Node <pixel_22> of sequential type is unconnected in block <mole6>.
 WARNING:Xst:2677 - Node <pixel_23> of sequential type is unconnected in block <mole6>.
-WARNING:Xst:2677 - Node <pixel_4> of sequential type is unconnected in block <mole8>.
-WARNING:Xst:2677 - Node <pixel_5> of sequential type is unconnected in block <mole8>.
-WARNING:Xst:2677 - Node <pixel_6> of sequential type is unconnected in block <mole8>.
-WARNING:Xst:2677 - Node <pixel_7> of sequential type is unconnected in block <mole8>.
-WARNING:Xst:2677 - Node <pixel_12> of sequential type is unconnected in block <mole8>.
-WARNING:Xst:2677 - Node <pixel_13> of sequential type is unconnected in block <mole8>.
-WARNING:Xst:2677 - Node <pixel_14> of sequential type is unconnected in block <mole8>.
-WARNING:Xst:2677 - Node <pixel_15> of sequential type is unconnected in block <mole8>.
-WARNING:Xst:2677 - Node <pixel_20> of sequential type is unconnected in block <mole8>.
-WARNING:Xst:2677 - Node <pixel_21> of sequential type is unconnected in block <mole8>.
-WARNING:Xst:2677 - Node <pixel_22> of sequential type is unconnected in block <mole8>.
-WARNING:Xst:2677 - Node <pixel_23> of sequential type is unconnected in block <mole8>.
 
 =========================================================================
 Advanced HDL Synthesis Report
 
 Macro Statistics
-# Multipliers                                          : 7
- 11x10-bit multiplier                                  : 7
-# Adders/Subtractors                                   : 33
- 10-bit adder carry out                                : 6
- 11-bit adder carry out                                : 6
- 11-bit subtractor                                     : 7
- 13-bit subtractor                                     : 7
- 16-bit adder                                          : 7
-# Counters                                             : 23
- 10-bit down counter                                   : 1
+# Multipliers                                          : 5
+ 11x10-bit multiplier                                  : 5
+# Adders/Subtractors                                   : 34
+ 10-bit adder carry out                                : 5
+ 11-bit adder carry out                                : 5
+ 11-bit subtractor                                     : 5
+ 13-bit subtractor                                     : 8
+ 16-bit adder                                          : 5
+ 17-bit adder                                          : 3
+ 7-bit subtractor                                      : 3
+# Counters                                             : 21
  10-bit up counter                                     : 8
  11-bit up counter                                     : 8
  20-bit up counter                                     : 5
- 27-bit up counter                                     : 1
-# Registers                                            : 162
- Flip-Flops                                            : 162
-# Comparators                                          : 30
- 10-bit comparator greatequal                          : 7
- 10-bit comparator greater                             : 1
- 10-bit comparator less                                : 2
- 11-bit comparator greatequal                          : 7
- 11-bit comparator less                                : 6
- 12-bit comparator less                                : 7
+# Registers                                            : 173
+ Flip-Flops                                            : 173
+# Comparators                                          : 32
+ 10-bit comparator greatequal                          : 8
+ 11-bit comparator greatequal                          : 8
+ 11-bit comparator less                                : 8
+ 12-bit comparator less                                : 8
 # Xors                                                 : 5
  1-bit xor2                                            : 5
 
@@ -975,33 +1058,17 @@ WARNING:Xst:1989 - Unit <lab3>: instances <xvga2>, <xvga3> of unit <xvga> are eq
 WARNING:Xst:1989 - Unit <lab3>: instances <xvga2>, <xvga4> of unit <xvga> are equivalent, second instance is removed
 WARNING:Xst:1989 - Unit <lab3>: instances <xvga2>, <xvga5> of unit <xvga> are equivalent, second instance is removed
 WARNING:Xst:1989 - Unit <lab3>: instances <xvga2>, <xvga6> of unit <xvga> are equivalent, second instance is removed
+WARNING:Xst:1989 - Unit <lab3>: instances <xvga2>, <xvga7> of unit <xvga> are equivalent, second instance is removed
 WARNING:Xst:1989 - Unit <lab3>: instances <xvga2>, <xvga8> of unit <xvga> are equivalent, second instance is removed
 WARNING:Xst:2677 - Node <db5/clean> of sequential type is unconnected in block <lab3>.
 WARNING:Xst:2677 - Node <db5/new> of sequential type is unconnected in block <lab3>.
 WARNING:Xst:2677 - Node <db4/clean> of sequential type is unconnected in block <lab3>.
 WARNING:Xst:2677 - Node <db4/new> of sequential type is unconnected in block <lab3>.
-WARNING:Xst:2677 - Node <xvga7/vsync> of sequential type is unconnected in block <lab3>.
-WARNING:Xst:2677 - Node <xvga7/vblank> of sequential type is unconnected in block <lab3>.
-WARNING:Xst:2677 - Node <xvga7/blank> of sequential type is unconnected in block <lab3>.
-WARNING:Xst:2677 - Node <xvga7/hsync> of sequential type is unconnected in block <lab3>.
-WARNING:Xst:2677 - Node <xvga7/hblank> of sequential type is unconnected in block <lab3>.
 WARNING:Xst:2677 - Node <xvga2/vsync> of sequential type is unconnected in block <lab3>.
 WARNING:Xst:2677 - Node <xvga2/vblank> of sequential type is unconnected in block <lab3>.
 WARNING:Xst:2677 - Node <xvga2/blank> of sequential type is unconnected in block <lab3>.
 WARNING:Xst:2677 - Node <xvga2/hsync> of sequential type is unconnected in block <lab3>.
 WARNING:Xst:2677 - Node <xvga2/hblank> of sequential type is unconnected in block <lab3>.
-WARNING:Xst:2677 - Node <mole8/pixel_23> of sequential type is unconnected in block <lab3>.
-WARNING:Xst:2677 - Node <mole8/pixel_22> of sequential type is unconnected in block <lab3>.
-WARNING:Xst:2677 - Node <mole8/pixel_21> of sequential type is unconnected in block <lab3>.
-WARNING:Xst:2677 - Node <mole8/pixel_20> of sequential type is unconnected in block <lab3>.
-WARNING:Xst:2677 - Node <mole8/pixel_15> of sequential type is unconnected in block <lab3>.
-WARNING:Xst:2677 - Node <mole8/pixel_14> of sequential type is unconnected in block <lab3>.
-WARNING:Xst:2677 - Node <mole8/pixel_13> of sequential type is unconnected in block <lab3>.
-WARNING:Xst:2677 - Node <mole8/pixel_12> of sequential type is unconnected in block <lab3>.
-WARNING:Xst:2677 - Node <mole8/pixel_7> of sequential type is unconnected in block <lab3>.
-WARNING:Xst:2677 - Node <mole8/pixel_6> of sequential type is unconnected in block <lab3>.
-WARNING:Xst:2677 - Node <mole8/pixel_5> of sequential type is unconnected in block <lab3>.
-WARNING:Xst:2677 - Node <mole8/pixel_4> of sequential type is unconnected in block <lab3>.
 WARNING:Xst:2677 - Node <mole6/pixel_23> of sequential type is unconnected in block <lab3>.
 WARNING:Xst:2677 - Node <mole6/pixel_22> of sequential type is unconnected in block <lab3>.
 WARNING:Xst:2677 - Node <mole6/pixel_21> of sequential type is unconnected in block <lab3>.
@@ -1065,7 +1132,7 @@ WARNING:Xst:2677 - Node <mole3/pixel_4> of sequential type is unconnected in blo
 
 Optimizing unit <lab3> ...
 
-Optimizing unit <happymole> ...
+Optimizing unit <gameover> ...
 WARNING:Xst:1710 - FF/Latch <rgb_0> (without init value) has a constant value of 0 in block <lab3>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <rgb_1> (without init value) has a constant value of 0 in block <lab3>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <rgb_2> (without init value) has a constant value of 0 in block <lab3>. This FF/Latch will be trimmed during the optimization process.
@@ -1089,8 +1156,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 178
- Flip-Flops                                            : 178
+# Registers                                            : 164
+ Flip-Flops                                            : 164
 
 =========================================================================
 
@@ -1119,43 +1186,44 @@ Design Statistics
 # IOs                              : 576
 
 Cell Usage :
-# BELS                             : 1131
-#      GND                         : 29
-#      INV                         : 33
-#      LUT1                        : 124
-#      LUT2                        : 117
-#      LUT3                        : 66
-#      LUT3_D                      : 2
-#      LUT4                        : 146
-#      LUT4_D                      : 8
-#      MUXCY                       : 282
-#      MUXF5                       : 33
-#      VCC                         : 29
-#      XORCY                       : 262
-# FlipFlops/Latches                : 198
-#      FD                          : 17
-#      FDE                         : 26
-#      FDR                         : 62
-#      FDRE                        : 84
-#      FDS                         : 1
-#      FDSE                        : 8
-# RAMS                             : 114
-#      RAMB16_S1_S1                : 84
-#      RAMB16_S2_S2                : 8
-#      RAMB16_S36_S36              : 21
-#      RAMB16_S4_S4                : 1
+# BELS                             : 1091
+#      GND                         : 33
+#      INV                         : 27
+#      LUT1                        : 106
+#      LUT2                        : 93
+#      LUT2_D                      : 2
+#      LUT3                        : 116
+#      LUT3_D                      : 6
+#      LUT4                        : 171
+#      LUT4_D                      : 5
+#      LUT4_L                      : 1
+#      MUXCY                       : 232
+#      MUXF5                       : 51
+#      MUXF6                       : 12
+#      VCC                         : 33
+#      XORCY                       : 203
+# FlipFlops/Latches                : 189
+#      FD                          : 4
+#      FDE                         : 31
+#      FDR                         : 59
+#      FDRE                        : 82
+#      FDS                         : 13
+# RAMS                             : 186
+#      RAMB16_S1_S1                : 152
+#      RAMB16_S2_S2                : 10
+#      RAMB16_S36_S36              : 24
 # Shift Registers                  : 1
 #      SRL16                       : 1
-# Clock Buffers                    : 2
-#      BUFG                        : 2
+# Clock Buffers                    : 1
+#      BUFG                        : 1
 # IO Buffers                       : 246
 #      IBUF                        : 5
 #      IBUFG                       : 1
 #      OBUF                        : 240
 # DCMs                             : 1
 #      DCM                         : 1
-# MULTs                            : 7
-#      MULT18X18                   : 7
+# MULTs                            : 5
+#      MULT18X18                   : 5
 =========================================================================
 
 Device utilization summary:
@@ -1163,17 +1231,19 @@ Device utilization summary:
 
 Selected Device : 2v6000bf957-4 
 
- Number of Slices:                      277  out of  33792     0%  
- Number of Slice Flip Flops:            198  out of  67584     0%  
- Number of 4 input LUTs:                497  out of  67584     0%  
-    Number used as logic:               496
+ Number of Slices:                      292  out of  33792     0%  
+ Number of Slice Flip Flops:            189  out of  67584     0%  
+ Number of 4 input LUTs:                528  out of  67584     0%  
+    Number used as logic:               527
     Number used as Shift registers:       1
  Number of IOs:                         576
  Number of bonded IOBs:                 246  out of    684    35%  
- Number of BRAMs:                       114  out of    144    79%  
- Number of MULT18X18s:                    7  out of    144     4%  
- Number of GCLKs:                         2  out of     16    12%  
+ Number of BRAMs:                       186  out of    144   129% (*) 
+ Number of MULT18X18s:                    5  out of    144     3%  
+ Number of GCLKs:                         1  out of     16     6%  
  Number of DCMs:                          1  out of     12     8%  
+
+WARNING:Xst:1336 -  (*) More than 100% of Device resources are used
 
 ---------------------------
 Partition Resource Summary:
@@ -1193,20 +1263,19 @@ NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
 
 Clock Information:
 ------------------
------------------------------------+---------------------------------------------------------------------------------------------------------+-------+
-Clock Signal                       | Clock buffer(FF name)                                                                                   | Load  |
------------------------------------+---------------------------------------------------------------------------------------------------------+-------+
-clock_27mhz                        | vclk1:CLKFX                                                                                             | 275   |
-clock_27mhz                        | IBUFG+BUFG                                                                                              | 28    |
-mole8/rom1/BU2/dbiterr             | NONE(mole8/rom1/BU2/U0/blk_mem_generator/valid.cstr/ramloop[13].ram.r/v2_init.ram/dpram.dp1x1.ram)      | 14    |
-mole6/rom1/BU2/dbiterr             | NONE(mole6/rom1/BU2/U0/blk_mem_generator/valid.cstr/ramloop[13].ram.r/v2_init.ram/dpram.dp1x1.ram)      | 14    |
-mole5/rom1/BU2/dbiterr             | NONE(mole5/rom1/BU2/U0/blk_mem_generator/valid.cstr/ramloop[13].ram.r/v2_init.ram/dpram.dp1x1.ram)      | 14    |
-mole2/rom1/BU2/dbiterr             | NONE(mole2/rom1/BU2/U0/blk_mem_generator/valid.cstr/ramloop[13].ram.r/v2_init.ram/dpram.dp1x1.ram)      | 14    |
-mole4/rom1_dead/BU2/dbiterr        | NONE(mole4/rom1_dead/BU2/U0/blk_mem_generator/valid.cstr/ramloop[11].ram.r/v2_init.ram/dpram.dp1x1.ram) | 12    |
-mole3/rom1_dead/BU2/dbiterr        | NONE(mole3/rom1_dead/BU2/U0/blk_mem_generator/valid.cstr/ramloop[11].ram.r/v2_init.ram/dpram.dp1x1.ram) | 12    |
-divider1/mole_popup_clock          | NONE(y_change_0)                                                                                        | 10    |
-mole1/rom1_happy/BU2/dbiterr       | NONE(mole1/rom1_happy/BU2/U0/blk_mem_generator/valid.cstr/ramloop[12].ram.r/v2_init.ram/dpram.dp1x1.ram)| 13    |
------------------------------------+---------------------------------------------------------------------------------------------------------+-------+
+-----------------------------------+----------------------------------------------------------------------------------------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)                                                                                    | Load  |
+-----------------------------------+----------------------------------------------------------------------------------------------------------+-------+
+clock_27mhz                        | vclk1:CLKFX                                                                                              | 376   |
+mole6/rom1/BU2/dbiterr             | NONE(mole6/rom1/BU2/U0/blk_mem_generator/valid.cstr/ramloop[13].ram.r/v2_init.ram/dpram.dp1x1.ram)       | 14    |
+mole5/rom1/BU2/dbiterr             | NONE(mole5/rom1/BU2/U0/blk_mem_generator/valid.cstr/ramloop[13].ram.r/v2_init.ram/dpram.dp1x1.ram)       | 14    |
+mole2/rom1/BU2/dbiterr             | NONE(mole2/rom1/BU2/U0/blk_mem_generator/valid.cstr/ramloop[13].ram.r/v2_init.ram/dpram.dp1x1.ram)       | 14    |
+mole4/rom1_dead/BU2/dbiterr        | NONE(mole4/rom1_dead/BU2/U0/blk_mem_generator/valid.cstr/ramloop[11].ram.r/v2_init.ram/dpram.dp1x1.ram)  | 12    |
+mole3/rom1_dead/BU2/dbiterr        | NONE(mole3/rom1_dead/BU2/U0/blk_mem_generator/valid.cstr/ramloop[11].ram.r/v2_init.ram/dpram.dp1x1.ram)  | 12    |
+whack1/rom1_whack/BU2/dbiterr      | NONE(whack1/rom1_whack/BU2/U0/blk_mem_generator/valid.cstr/ramloop[29].ram.r/v2_init.ram/dpram.dp1x1.ram)| 30    |
+start1/rom1_start/BU2/dbiterr      | NONE(start1/rom1_start/BU2/U0/blk_mem_generator/valid.cstr/ramloop[29].ram.r/v2_init.ram/dpram.dp1x1.ram)| 30    |
+end1/rom1_end/BU2/dbiterr          | NONE(end1/rom1_end/BU2/U0/blk_mem_generator/valid.cstr/ramloop[35].ram.r/v2_init.ram/dpram.dp1x1.ram)    | 36    |
+-----------------------------------+----------------------------------------------------------------------------------------------------------+-------+
 INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
 
 Asynchronous Control Signals Information:
@@ -1217,8 +1286,8 @@ Timing Summary:
 ---------------
 Speed Grade: -4
 
-   Minimum period: 38.984ns (Maximum Frequency: 25.651MHz)
-   Minimum input arrival time before clock: 3.623ns
+   Minimum period: 34.804ns (Maximum Frequency: 28.733MHz)
+   Minimum input arrival time before clock: 3.546ns
    Maximum output required time after clock: 9.366ns
    Maximum combinational path delay: 6.660ns
 
@@ -1228,95 +1297,52 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clock_27mhz'
-  Clock period: 38.984ns (frequency: 25.651MHz)
-  Total number of paths / destination ports: 381091 / 1968
+  Clock period: 34.804ns (frequency: 28.733MHz)
+  Total number of paths / destination ports: 215215 / 3037
 -------------------------------------------------------------------------
-Delay:               16.243ns (Levels of Logic = 18)
-  Source:            xvga1/vcount_0 (FF)
-  Destination:       mole1/rom1_happy/BU2/U0/blk_mem_generator/valid.cstr/ramloop[11].ram.r/v2_init.ram/dpram.dp1x1.ram (RAM)
+Delay:               14.502ns (Levels of Logic = 7)
+  Source:            xvga2/vcount_9 (FF)
+  Destination:       mole5/rom1/BU2/U0/blk_mem_generator/valid.cstr/ramloop[12].ram.r/v2_init.ram/dpram.dp1x1.ram (RAM)
   Source Clock:      clock_27mhz rising 2.4X
   Destination Clock: clock_27mhz rising 2.4X
 
-  Data Path: xvga1/vcount_0 to mole1/rom1_happy/BU2/U0/blk_mem_generator/valid.cstr/ramloop[11].ram.r/v2_init.ram/dpram.dp1x1.ram
+  Data Path: xvga2/vcount_9 to mole5/rom1/BU2/U0/blk_mem_generator/valid.cstr/ramloop[12].ram.r/v2_init.ram/dpram.dp1x1.ram
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDRE:C->Q             6   0.568   1.002  xvga1/vcount_0 (xvga1/vcount_0)
-     LUT2:I1->O            1   0.439   0.000  mole1/Msub_image_addr_addsub0000_lut<0> (mole1/Msub_image_addr_addsub0000_lut<0>)
-     MUXCY:S->O            1   0.298   0.000  mole1/Msub_image_addr_addsub0000_cy<0> (mole1/Msub_image_addr_addsub0000_cy<0>)
-     MUXCY:CI->O           1   0.053   0.000  mole1/Msub_image_addr_addsub0000_cy<1> (mole1/Msub_image_addr_addsub0000_cy<1>)
-     MUXCY:CI->O           1   0.053   0.000  mole1/Msub_image_addr_addsub0000_cy<2> (mole1/Msub_image_addr_addsub0000_cy<2>)
-     MUXCY:CI->O           1   0.053   0.000  mole1/Msub_image_addr_addsub0000_cy<3> (mole1/Msub_image_addr_addsub0000_cy<3>)
-     MUXCY:CI->O           1   0.053   0.000  mole1/Msub_image_addr_addsub0000_cy<4> (mole1/Msub_image_addr_addsub0000_cy<4>)
-     MUXCY:CI->O           1   0.053   0.000  mole1/Msub_image_addr_addsub0000_cy<5> (mole1/Msub_image_addr_addsub0000_cy<5>)
-     MUXCY:CI->O           1   0.053   0.000  mole1/Msub_image_addr_addsub0000_cy<6> (mole1/Msub_image_addr_addsub0000_cy<6>)
-     MUXCY:CI->O           1   0.053   0.000  mole1/Msub_image_addr_addsub0000_cy<7> (mole1/Msub_image_addr_addsub0000_cy<7>)
-     MUXCY:CI->O           1   0.053   0.000  mole1/Msub_image_addr_addsub0000_cy<8> (mole1/Msub_image_addr_addsub0000_cy<8>)
-     MUXCY:CI->O           0   0.053   0.000  mole1/Msub_image_addr_addsub0000_cy<9> (mole1/Msub_image_addr_addsub0000_cy<9>)
-     XORCY:CI->O           8   1.274   0.840  mole1/Msub_image_addr_addsub0000_xor<10> (mole1/image_addr_addsub0000<10>)
-     MULT18X18:A10->P14    1   6.009   0.726  mole1/Mmult_image_addr_mult0001 (mole1/image_addr_mult0001<14>)
-     LUT2:I1->O            1   0.439   0.000  mole1/Madd_image_addr_lut<14> (mole1/Madd_image_addr_lut<14>)
-     MUXCY:S->O            0   0.298   0.000  mole1/Madd_image_addr_cy<14> (mole1/Madd_image_addr_cy<14>)
-     XORCY:CI->O           5   1.274   1.055  mole1/Madd_image_addr_xor<15> (mole1/image_addr<15>)
-     begin scope: 'mole1/rom1_happy'
+     FDRE:C->Q             9   0.568   1.148  xvga2/vcount_9 (xvga2/vcount_9)
+     LUT2:I0->O           16   0.439   1.000  mole4/image_addr_addsub0000<10>1 (mole4/image_addr_addsub0000<10>)
+     MULT18X18:A10->P14    1   6.009   0.726  mole5/Mmult_image_addr_mult0001 (mole5/image_addr_mult0001<14>)
+     LUT2:I1->O            1   0.439   0.000  mole5/Madd_image_addr_lut<14> (mole5/Madd_image_addr_lut<14>)
+     MUXCY:S->O            0   0.298   0.000  mole5/Madd_image_addr_cy<14> (mole5/Madd_image_addr_cy<14>)
+     XORCY:CI->O           5   1.274   1.055  mole5/Madd_image_addr_xor<15> (mole5/image_addr<15>)
+     begin scope: 'mole5/rom1'
      begin scope: 'BU2'
      LUT2:I0->O            4   0.439   0.747  U0/blk_mem_generator/valid.cstr/ram_ena01 (U0/blk_mem_generator/valid.cstr/ram_ena0)
-     RAMB16_S1_S1:ENA          0.359          U0/blk_mem_generator/valid.cstr/ramloop[11].ram.r/v2_init.ram/dpram.dp1x1.ram
+     RAMB16_S1_S1:ENA          0.359          U0/blk_mem_generator/valid.cstr/ramloop[12].ram.r/v2_init.ram/dpram.dp1x1.ram
     ----------------------------------------
-    Total                     16.243ns (11.874ns logic, 4.370ns route)
-                                       (73.1% logic, 26.9% route)
-
-=========================================================================
-Timing constraint: Default period analysis for Clock 'divider1/mole_popup_clock'
-  Clock period: 4.428ns (frequency: 225.810MHz)
-  Total number of paths / destination ports: 255 / 30
--------------------------------------------------------------------------
-Delay:               4.428ns (Levels of Logic = 11)
-  Source:            y_change_0 (FF)
-  Destination:       y_change_9 (FF)
-  Source Clock:      divider1/mole_popup_clock rising
-  Destination Clock: divider1/mole_popup_clock rising
-
-  Data Path: y_change_0 to y_change_9
-                                Gate     Net
-    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
-    ----------------------------------------  ------------
-     FDSE:C->Q             5   0.568   1.056  y_change_0 (y_change_0)
-     LUT1:I0->O            1   0.439   0.000  Mcount_y_change_cy<0>_rt (Mcount_y_change_cy<0>_rt)
-     MUXCY:S->O            1   0.298   0.000  Mcount_y_change_cy<0> (Mcount_y_change_cy<0>)
-     MUXCY:CI->O           1   0.053   0.000  Mcount_y_change_cy<1> (Mcount_y_change_cy<1>)
-     MUXCY:CI->O           1   0.053   0.000  Mcount_y_change_cy<2> (Mcount_y_change_cy<2>)
-     MUXCY:CI->O           1   0.053   0.000  Mcount_y_change_cy<3> (Mcount_y_change_cy<3>)
-     MUXCY:CI->O           1   0.053   0.000  Mcount_y_change_cy<4> (Mcount_y_change_cy<4>)
-     MUXCY:CI->O           1   0.053   0.000  Mcount_y_change_cy<5> (Mcount_y_change_cy<5>)
-     MUXCY:CI->O           1   0.053   0.000  Mcount_y_change_cy<6> (Mcount_y_change_cy<6>)
-     MUXCY:CI->O           1   0.053   0.000  Mcount_y_change_cy<7> (Mcount_y_change_cy<7>)
-     MUXCY:CI->O           0   0.053   0.000  Mcount_y_change_cy<8> (Mcount_y_change_cy<8>)
-     XORCY:CI->O           1   1.274   0.000  Mcount_y_change_xor<9> (Result<9>)
-     FDRE:D                    0.370          y_change_9
-    ----------------------------------------
-    Total                      4.428ns (3.373ns logic, 1.056ns route)
-                                       (76.2% logic, 23.8% route)
+    Total                     14.502ns (9.825ns logic, 4.676ns route)
+                                       (67.8% logic, 32.2% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'clock_27mhz'
   Total number of paths / destination ports: 72 / 72
 -------------------------------------------------------------------------
-Offset:              3.623ns (Levels of Logic = 2)
-  Source:            button_down (PAD)
-  Destination:       db3/count_0 (FF)
+Offset:              3.546ns (Levels of Logic = 2)
+  Source:            button_enter (PAD)
+  Destination:       db1/count_0 (FF)
   Destination Clock: clock_27mhz rising 2.4X
 
-  Data Path: button_down to db3/count_0
+  Data Path: button_enter to db1/count_0
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O             4   0.825   1.032  button_down_IBUF (button_down_IBUF)
-     LUT4:I0->O           21   0.439   1.046  db3/count_or00001 (db3/count_or0000)
-     FDRE:R                    0.280          db3/count_0
+     IBUF:I->O             4   0.825   0.956  button_enter_IBUF (button_enter_IBUF)
+     LUT3:I1->O           21   0.439   1.046  db1/count_or00001 (db1/count_or0000)
+     FDRE:R                    0.280          db1/count_0
     ----------------------------------------
-    Total                      3.623ns (1.544ns logic, 2.079ns route)
-                                       (42.6% logic, 57.4% route)
+    Total                      3.546ns (1.544ns logic, 2.002ns route)
+                                       (43.5% logic, 56.5% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'clock_27mhz'
@@ -1360,15 +1386,15 @@ Delay:               6.660ns (Levels of Logic = 3)
 =========================================================================
 
 
-Total REAL time to Xst completion: 15.00 secs
-Total CPU time to Xst completion: 14.25 secs
+Total REAL time to Xst completion: 20.00 secs
+Total CPU time to Xst completion: 19.36 secs
  
 --> 
 
 
-Total memory usage is 507976 kilobytes
+Total memory usage is 525696 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :  613 (   0 filtered)
-Number of infos    :   18 (   0 filtered)
+Number of infos    :   16 (   0 filtered)
 

@@ -440,27 +440,41 @@ module lab3   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 			mole6(.pixel_clk(clock_65mhz),.x(x6),.hcount(hcount6),.y(y6),.vcount(vcount6),.pixel(mole6_pixel));
 	//happymole #(.WIDTH(207),.HEIGHT(128))
 			//mole7(.pixel_clk(clock_65mhz),.x(x7),.hcount(hcount7),.y(y7),.vcount(vcount7),.pixel(mole7_pixel));
-	normalmole #(.WIDTH(212),.HEIGHT(256))
-			mole8(.pixel_clk(clock_65mhz),.x(x8),.hcount(hcount8),.y(y8),.vcount(vcount8),.pixel(mole8_pixel));
+	//normalmole #(.WIDTH(212),.HEIGHT(256))
+			//mole8(.pixel_clk(clock_65mhz),.x(x8),.hcount(hcount8),.y(y8),.vcount(vcount8),.pixel(mole8_pixel));
 
    reg [23:0] rgb;
    wire border = (hcount1==0 | hcount1==1023 | vcount1==0 | vcount1==767);
-   
+   wire [23:0] whack_pixel;
+	wire [23:0] start_pixel;
+	wire [23:0] gameover_pixel;
+	wire [10:0] x_whack = 1;
+	wire [9:0] y_whack = 156;
+	wire [10:0] x_start = 1;
+	wire [9:0] y_start = 600;
 	//assign pixel = mole1_pixel | mole2_pixel | mole3_pixel | mole4_pixel | mole5_pixel | mole6_pixel | mole7_pixel | mole8_pixel;
 	//assign pixel = mole1_pixel;
+	whackamole #(.WIDTH(1024),.HEIGHT(119))
+			whack1(.pixel_clk(clock_65mhz),.x(x_whack),.hcount(hcount8),.y(y_whack),.vcount(vcount8),.pixel(whack_pixel));
+	startscreen #(.WIDTH(1024),.HEIGHT(119))
+			start1(.pixel_clk(clock_65mhz),.x(x_start),.hcount(hcount7),.y(y_start),.vcount(vcount7),.pixel(start_pixel));
+	gameover #(.WIDTH(1024),.HEIGHT(144))
+			end1(.pixel_clk(clock_65mhz),.x(5),.hcount(hcount1),.y(400),.vcount(vcount1),.pixel(gameover_pixel));
+	assign pixel = whack_pixel | start_pixel | gameover_pixel;
    reg b,hs,vs;
 	reg [9:0] height = 256;
 	reg [9:0] y_change = 255;
 	wire [10:0] x1 = 65;
 	reg [9:0] y1 = 255;
 	wire mole_clock;
-	happymole #(.WIDTH(207),.HEIGHT(256))
-			mole1(.pixel_clk(clock_65mhz),.height(height),.x(x1),.hcount(hcount1),.y(y_change),.vcount(vcount1),.pixel(mole1_pixel));
-	divider divider1(.clk(clock_27mhz),.mole_popup_clock(mole_clock));
+	//happymole #(.WIDTH(207),.HEIGHT(256))
+			//mole1(.pixel_clk(clock_65mhz),.height(height),.x(x1),.hcount(hcount1),.y(y_change),.vcount(vcount1),.pixel(mole1_pixel));
+	//divider divider1(.clk(clock_27mhz),.mole_popup_clock(mole_clock));
 	always @ (posedge mole_clock) begin
 		if (y_change < 256 && y_change > 0) begin
 			y_change <= y_change - 1;
 		end
+
 		else if (y_change == 0) begin
 			y_change <= 255;
 		end
@@ -469,7 +483,7 @@ module lab3   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 		hs <= hsync1;
 		vs <= vsync1;
 		b <= blank1;
-		rgb <= mole1_pixel; 
+		rgb <= pixel; 
    end
 
    // VGA Output.  In order to meet the setup and hold times of the
@@ -599,6 +613,72 @@ module happymole
 	happy_red_rom rcm_happy (.clka(pixel_clk), .addra(image_bits), .douta(red_mapped));
 	happy_green_rom gcm_happy (.clka(pixel_clk), .addra(image_bits), .douta(green_mapped));
 	happy_blue_rom bcm_happy (.clka(pixel_clk), .addra(image_bits), .douta(blue_mapped));	
+endmodule
+
+module whackamole
+	#(parameter WIDTH = 1020, HEIGHT = 119)
+	(input pixel_clk,
+    input [10:0] x, hcount,
+    input [9:0] y, vcount,
+    output reg [23:0] pixel
+    );
+	wire [16:0] image_addr;
+	wire [3:0] image_bits, red_mapped, green_mapped, blue_mapped;
+	always @ (posedge pixel_clk) begin
+		if ((hcount >= x && hcount < (x + WIDTH)) && (vcount >= y && vcount < (y + HEIGHT)))
+			pixel <= {red_mapped,4'b0, green_mapped,4'b0, blue_mapped,4'b0};
+		else
+			pixel <= 0;
+	end
+	assign image_addr = (hcount - x) + (vcount - y) * WIDTH;
+	whackrom rom1_whack(.clka(pixel_clk),.addra(image_addr),.douta(image_bits));
+	whack_red_rom rcm_whack (.clka(pixel_clk), .addra(image_bits), .douta(red_mapped));
+	whack_green_rom gcm_whack (.clka(pixel_clk), .addra(image_bits), .douta(green_mapped));
+	whack_blue_rom bcm_whack (.clka(pixel_clk), .addra(image_bits), .douta(blue_mapped));	
+endmodule
+
+module startscreen
+	#(parameter WIDTH = 1020, HEIGHT = 119)
+	(input pixel_clk,
+    input [10:0] x, hcount,
+    input [9:0] y, vcount,
+    output reg [23:0] pixel
+    );
+	wire [16:0] image_addr;
+	wire [3:0] image_bits, red_mapped, green_mapped, blue_mapped;
+	always @ (posedge pixel_clk) begin
+		if ((hcount >= x && hcount < (x + WIDTH)) && (vcount >= y && vcount < (y + HEIGHT)))
+			pixel <= {red_mapped,4'b0, green_mapped,4'b0, blue_mapped,4'b0};
+		else
+			pixel <= 0;
+	end
+	assign image_addr = (hcount - x) + (vcount - y) * WIDTH;
+	startrom rom1_start(.clka(pixel_clk),.addra(image_addr),.douta(image_bits));
+	start_red_rom rcm_start (.clka(pixel_clk), .addra(image_bits), .douta(red_mapped));
+	start_green_rom gcm_start (.clka(pixel_clk), .addra(image_bits), .douta(green_mapped));
+	start_blue_rom bcm_start (.clka(pixel_clk), .addra(image_bits), .douta(blue_mapped));	
+endmodule
+
+module gameover
+	#(parameter WIDTH = 1020, HEIGHT = 144)
+	(input pixel_clk,
+    input [10:0] x, hcount,
+    input [9:0] y, vcount,
+    output reg [23:0] pixel
+    );
+	wire [16:0] image_addr;
+	wire [3:0] image_bits, red_mapped, green_mapped, blue_mapped;
+	always @ (posedge pixel_clk) begin
+		if ((hcount >= x && hcount < (x + WIDTH)) && (vcount >= y && vcount < (y + HEIGHT)))
+			pixel <= {red_mapped,4'b0, green_mapped,4'b0, blue_mapped,4'b0};
+		else
+			pixel <= 0;
+	end
+	assign image_addr = (hcount - x) + (vcount - y) * WIDTH;
+	gameoverrom rom1_end(.clka(pixel_clk),.addra(image_addr),.douta(image_bits));
+	gameover_red_rom rcm_end (.clka(pixel_clk), .addra(image_bits), .douta(red_mapped));
+	gameover_green_rom gcm_end (.clka(pixel_clk), .addra(image_bits), .douta(green_mapped));
+	gameover_blue_rom bcm_end (.clka(pixel_clk), .addra(image_bits), .douta(blue_mapped));	
 endmodule
 
 module divider(input clk, output reg mole_popup_clock);

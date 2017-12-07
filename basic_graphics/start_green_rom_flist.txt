@@ -1,0 +1,13 @@
+# Output products list for <start_green_rom>
+start_green_rom.asy
+start_green_rom.mif
+start_green_rom.ngc
+start_green_rom.sym
+start_green_rom.v
+start_green_rom.veo
+start_green_rom.vhd
+start_green_rom.vho
+start_green_rom.xco
+start_green_rom_blk_mem_gen_v2_8_xst_1.ngc_xst.xrpt
+start_green_rom_flist.txt
+start_green_rom_xmdf.tcl

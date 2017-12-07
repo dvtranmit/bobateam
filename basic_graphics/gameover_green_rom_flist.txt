@@ -1,0 +1,13 @@
+# Output products list for <gameover_green_rom>
+gameover_green_rom.asy
+gameover_green_rom.mif
+gameover_green_rom.ngc
+gameover_green_rom.sym
+gameover_green_rom.v
+gameover_green_rom.veo
+gameover_green_rom.vhd
+gameover_green_rom.vho
+gameover_green_rom.xco
+gameover_green_rom_blk_mem_gen_v2_8_xst_1.ngc_xst.xrpt
+gameover_green_rom_flist.txt
+gameover_green_rom_xmdf.tcl

@@ -1,0 +1,13 @@
+# Output products list for <gameover_blue_rom>
+gameover_blue_rom.asy
+gameover_blue_rom.mif
+gameover_blue_rom.ngc
+gameover_blue_rom.sym
+gameover_blue_rom.v
+gameover_blue_rom.veo
+gameover_blue_rom.vhd
+gameover_blue_rom.vho
+gameover_blue_rom.xco
+gameover_blue_rom_blk_mem_gen_v2_8_xst_1.ngc_xst.xrpt
+gameover_blue_rom_flist.txt
+gameover_blue_rom_xmdf.tcl

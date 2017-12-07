@@ -1,0 +1,13 @@
+# Output products list for <whack_blue_rom>
+whack_blue_rom.asy
+whack_blue_rom.mif
+whack_blue_rom.ngc
+whack_blue_rom.sym
+whack_blue_rom.v
+whack_blue_rom.veo
+whack_blue_rom.vhd
+whack_blue_rom.vho
+whack_blue_rom.xco
+whack_blue_rom_blk_mem_gen_v2_8_xst_1.ngc_xst.xrpt
+whack_blue_rom_flist.txt
+whack_blue_rom_xmdf.tcl

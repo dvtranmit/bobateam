@@ -1,0 +1,13 @@
+# Output products list for <start_blue_rom>
+start_blue_rom.asy
+start_blue_rom.mif
+start_blue_rom.ngc
+start_blue_rom.sym
+start_blue_rom.v
+start_blue_rom.veo
+start_blue_rom.vhd
+start_blue_rom.vho
+start_blue_rom.xco
+start_blue_rom_blk_mem_gen_v2_8_xst_1.ngc_xst.xrpt
+start_blue_rom_flist.txt
+start_blue_rom_xmdf.tcl

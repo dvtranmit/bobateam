@@ -1,0 +1,13 @@
+# Output products list for <whackrom>
+whackrom.asy
+whackrom.mif
+whackrom.ngc
+whackrom.sym
+whackrom.v
+whackrom.veo
+whackrom.vhd
+whackrom.vho
+whackrom.xco
+whackrom_blk_mem_gen_v2_8_xst_1.ngc_xst.xrpt
+whackrom_flist.txt
+whackrom_xmdf.tcl
