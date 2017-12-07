@@ -4,14 +4,15 @@ Xilinx Map Application Log File for Design 'lab5'
 Design Information
 ------------------
 Command Line   : map -ise
-/afs/athena.mit.edu/user/d/v/dvtran/Documents/6.111/finalproject/bobateam/sound_
-module/sound_module.ise -intstyle ise -p xc2v6000-bf957-4 -cm area -pr off -k 4
--c 100 -tx off -o lab5_map.ncd lab5.ngd lab5.pcf 
+"/afs/athena.mit.edu/user/a/d/adhikara/Documents/6.111things/6.111
+project/bobateam/sound_module/sound_module.ise" -intstyle ise -p
+xc2v6000-bf957-4 -cm area -pr off -k 4 -c 100 -tx off -o lab5_map.ncd lab5.ngd
+lab5.pcf 
 Target Device  : xc2v6000
 Target Package : bf957
 Target Speed   : -4
 Mapper Version : virtex2 -- $Revision: 1.46.12.2 $
-Mapped Date    : Thu Dec  7 11:51:50 2017
+Mapped Date    : Thu Dec  7 12:42:22 2017
 
 Mapping design into LUTs...
 Running directed packing...
@@ -30,9 +31,9 @@ Logic Utilization:
     Number used as Latches:               3
   Number of 4 input LUTs:             1,718 out of  67,584    2%
 Logic Distribution:
-  Number of occupied Slices:          1,436 out of  33,792    4%
-    Number of Slices containing only related logic:   1,436 out of   1,436 100%
-    Number of Slices containing unrelated logic:          0 out of   1,436   0%
+  Number of occupied Slices:          1,435 out of  33,792    4%
+    Number of Slices containing only related logic:   1,435 out of   1,435 100%
+    Number of Slices containing unrelated logic:          0 out of   1,435   0%
       *See NOTES below for an explanation of the effects of unrelated logic.
   Total Number of 4 input LUTs:       2,207 out of  67,584    3%
     Number used as logic:             1,661

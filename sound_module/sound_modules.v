@@ -74,12 +74,12 @@ module mole_adressss_locations #(parameter MAX_ITEM = 4'd5, parameter INDEX_BITS
 						 .displayed_counter(displayed_counter));
 	
 	//display code
-//	wire [63:0] display_data;
-//	assign display_data = {address,location,3'b0, internal_ready, internal_items, 1'b0, next_state, displayed_counter};
-//	display_16hex disp(.reset(switch[2]), .clock_27mhz(clock), .data_in(display_data), 
-//		                .disp_rs(disp_rs), .disp_ce_b(disp_ce_b), .disp_blank(disp_blank),
-//							 .disp_reset_b(disp_reset_b), .disp_data_out(disp_data_out), .disp_clock(disp_clock));
-//
+/*	wire [63:0] display_data;
+	assign display_data = {address,location,3'b0, internal_ready, internal_items, 1'b0, next_state, displayed_counter};
+	display_16hex disp(.reset(switch[2]), .clock_27mhz(clock), .data_in(display_data), 
+		                .disp_rs(disp_rs), .disp_ce_b(disp_ce_b), .disp_blank(disp_blank),
+							 .disp_reset_b(disp_reset_b), .disp_data_out(disp_data_out), .disp_clock(disp_clock));
+*/
 
 	always @(posedge clock) begin
 		//internal_state <= next_state;

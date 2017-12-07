@@ -768,8 +768,8 @@ module lab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
    assign analyzer3_data = {from_ac97_data, to_ac97_data};
 
 	//diy game module
-	parameter MAX_ITEM = 4'd5; 
-	parameter INDEX_BITS = 4'd4; //depends on how many bits you might need to count up to max number of items 
+	parameter MAX_ITEM = 8'd128; 
+	parameter INDEX_BITS = 8'd127; //depends on how many bits you might need to count up to max number of items 
 	wire ready_to_use;
 	wire [23:0]index_address;
 	wire [3:0]index_location;
@@ -780,12 +780,12 @@ module lab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 
  
 	mole_adressss_locations #(.MAX_ITEM(MAX_ITEM), .INDEX_BITS(INDEX_BITS)) diy_addr_loc(.clock(clock_27mhz),
-//														.disp_blank(disp_blank),
-//														.disp_clock(disp_clock),
-//														.disp_data_out(disp_data_out), 
-//														.disp_rs(disp_rs), 
-//														.disp_ce_b(disp_ce_b),
-//														.disp_reset_b(disp_reset_b),
+													//	.disp_blank(disp_blank),
+													//	.disp_clock(disp_clock),
+													//	.disp_data_out(disp_data_out), 
+													//	.disp_rs(disp_rs), 
+													//	.disp_ce_b(disp_ce_b),
+													//	.disp_reset_b(disp_reset_b),
 														.switch(switch),
 													   .reset(reset),
 														.upleft(upleft),
