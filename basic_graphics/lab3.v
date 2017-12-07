@@ -454,36 +454,49 @@ module lab3   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 	wire [9:0] y_start = 600;
 	//assign pixel = mole1_pixel | mole2_pixel | mole3_pixel | mole4_pixel | mole5_pixel | mole6_pixel | mole7_pixel | mole8_pixel;
 	//assign pixel = mole1_pixel;
-	whackamole #(.WIDTH(1024),.HEIGHT(119))
-			whack1(.pixel_clk(clock_65mhz),.x(x_whack),.hcount(hcount8),.y(y_whack),.vcount(vcount8),.pixel(whack_pixel));
-	startscreen #(.WIDTH(1024),.HEIGHT(119))
-			start1(.pixel_clk(clock_65mhz),.x(x_start),.hcount(hcount7),.y(y_start),.vcount(vcount7),.pixel(start_pixel));
-	gameover #(.WIDTH(1024),.HEIGHT(144))
-			end1(.pixel_clk(clock_65mhz),.x(5),.hcount(hcount1),.y(400),.vcount(vcount1),.pixel(gameover_pixel));
-	assign pixel = whack_pixel | start_pixel | gameover_pixel;
+	//whackamole #(.WIDTH(1024),.HEIGHT(119))
+			//whack1(.pixel_clk(clock_65mhz),.x(x_whack),.hcount(hcount8),.y(y_whack),.vcount(vcount8),.pixel(whack_pixel));
+	//startscreen #(.WIDTH(1024),.HEIGHT(119))
+			//start1(.pixel_clk(clock_65mhz),.x(x_start),.hcount(hcount7),.y(y_start),.vcount(vcount7),.pixel(start_pixel));
+	//gameover #(.WIDTH(1024),.HEIGHT(144))
+			//end1(.pixel_clk(clock_65mhz),.x(5),.hcount(hcount1),.y(400),.vcount(vcount1),.pixel(gameover_pixel));
+	//assign pixel = whack_pixel | start_pixel | gameover_pixel;
    reg b,hs,vs;
 	reg [9:0] height = 256;
 	reg [9:0] y_change = 255;
 	wire [10:0] x1 = 65;
 	reg [9:0] y1 = 255;
 	wire mole_clock;
-	//happymole #(.WIDTH(207),.HEIGHT(256))
-			//mole1(.pixel_clk(clock_65mhz),.height(height),.x(x1),.hcount(hcount1),.y(y_change),.vcount(vcount1),.pixel(mole1_pixel));
-	//divider divider1(.clk(clock_27mhz),.mole_popup_clock(mole_clock));
+	reg shrink = 0;
+	happymole #(.WIDTH(207),.HEIGHT(256))
+			mole1(.pixel_clk(clock_65mhz),.height(height),.x(x1),.hcount(hcount1),.y(y_change),.vcount(vcount1),.pixel(mole1_pixel));
+	divider divider1(.clk(clock_27mhz),.mole_popup_clock(mole_clock));
 	always @ (posedge mole_clock) begin
-		if (y_change < 256 && y_change > 0) begin
-			y_change <= y_change - 1;
-		end
+		if (shrink == 0) begin
+			if (y_change < 256 && y_change > 0) begin
+				y_change <= y_change - 1;
+			end
 
-		else if (y_change == 0) begin
-			y_change <= 255;
+			else if (y_change == 0) begin
+				y_change <= y_change + 1;
+				shrink <= 1;
+			end
+		end
+		else if (shrink == 1) begin
+			if (y_change < 256 && y_change > 0) begin
+				y_change <= y_change + 1;
+			end
+			else if (y_change == 256) begin
+				y_change <= y_change - 1;
+				shrink <= 0;
+			end
 		end
 	end
    always @(posedge clock_65mhz) begin
 		hs <= hsync1;
 		vs <= vsync1;
 		b <= blank1;
-		rgb <= pixel; 
+		rgb <= mole1_pixel; 
    end
 
    // VGA Output.  In order to meet the setup and hold times of the
