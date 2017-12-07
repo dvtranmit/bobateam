@@ -701,15 +701,15 @@ module lab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 												.downright(downright), .reset(enter),
 												.mole_location(mole_location),
 												.misstep(misstep), .whacked(whacked));
-
+	wire [3:0] display_state;
 	wire request_mole;
 	wire [22:0] music_address;
 	mole getmole(.clk(clock_27mhz), .reset(enter),
 						.music_address(music_address),
+						.game_state(display_state),
 						.one_hz_enable(one_hz_enable),
 						.request_mole(request_mole));
 
-	wire [3:0] display_state;
 	wire [1:0] lives;
 	wire [7:0] score;
 	gameState game(.clk(clock_27mhz), .misstep(misstep),
@@ -768,21 +768,24 @@ module lab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
    assign analyzer3_data = {from_ac97_data, to_ac97_data};
 
 	//diy game module
+	parameter MAX_ITEM = 4'd5; 
+	parameter INDEX_BITS = 4'd4; //depends on how many bits you might need to count up to max number of items 
 	wire ready_to_use;
 	wire [23:0]index_address;
 	wire [3:0]index_location;
-	wire [3:0] lookup_index;
-	wire [3:0] items; //this is a *count* of the number items stored in bram!!!!
+	wire [MAX_ITEM-1:0] lookup_index;
+	wire [MAX_ITEM-1:0] items; //this is a *count* of the number items stored in bram!!!!
 	wire [2:0] state;
-	assign lookup_index = (switch[6:3] <= items-1) ? switch[6:3] : 0 ; 
-	
-	/*mole_adressss_locations diy_addr_loc(.clock(clock_27mhz),
-														.disp_blank(disp_blank),
-														.disp_clock(disp_clock),
-														.disp_data_out(disp_data_out), 
-														.disp_rs(disp_rs), 
-														.disp_ce_b(disp_ce_b),
-														.disp_reset_b(disp_reset_b),
+	assign lookup_index = (switch[6:3] <= items-1) ? switch[6:3] : 0 ; 	
+
+ 
+	mole_adressss_locations #(.MAX_ITEM(MAX_ITEM), .INDEX_BITS(INDEX_BITS)) diy_addr_loc(.clock(clock_27mhz),
+//														.disp_blank(disp_blank),
+//														.disp_clock(disp_clock),
+//														.disp_data_out(disp_data_out), 
+//														.disp_rs(disp_rs), 
+//														.disp_ce_b(disp_ce_b),
+//														.disp_reset_b(disp_reset_b),
 														.switch(switch),
 													   .reset(reset),
 														.upleft(upleft),
@@ -802,18 +805,9 @@ module lab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 														.flash_address(flash_address),
 														.ready_to_use(ready_to_use),
 														.index_address(index_address),
-														.index_location(index_location));*/
-	/*
-	wire [63:0] display_data;
-	assign display_data = {index_address, index_location, 1'b0,  state, lookup_index, items};
-	
-	display_16hex disp(.reset(switch[2]), .clock_27mhz(clock_27mhz), .data_in(display_data), 
-		                .disp_rs(disp_rs), .disp_ce_b(disp_ce_b), .disp_blank(disp_blank),
-							 .disp_reset_b(disp_reset_b), .disp_data_out(disp_data_out), .disp_clock(disp_clock));
-	*/
-	/*
-	VICTORIA'S CODE
-	*/
+														.index_location(index_location));
+
+	//VICTORIA'S CODE
 
    // feed XVGA signals
    wire [23:0] pixel;

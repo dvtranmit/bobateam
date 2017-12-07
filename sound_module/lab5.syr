@@ -5,14 +5,14 @@ Parameter TMPDIR set to /afs/athena.mit.edu/user/d/v/dvtran/Documents/6.111/fina
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.03 secs
+Total CPU time to Xst completion: 0.02 secs
  
 --> 
 Parameter xsthdpdir set to /afs/athena.mit.edu/user/d/v/dvtran/Documents/6.111/finalproject/bobateam/sound_module/xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.03 secs
+Total CPU time to Xst completion: 0.02 secs
  
 --> 
 Reading design: lab5.prj
@@ -162,7 +162,9 @@ Analysis of file <"lab5.prj"> succeeded.
 =========================================================================
 *                     Design Hierarchy Analysis                         *
 =========================================================================
-Analyzing hierarchy for module <lab5> in library <work>.
+Analyzing hierarchy for module <lab5> in library <work> with parameters.
+	INDEX_BITS = "0100"
+	MAX_ITEM = "0101"
 
 Analyzing hierarchy for module <debounce> in library <work> with parameters.
 	DELAY = "00000000000001000001111010110000"
@@ -239,6 +241,17 @@ Analyzing hierarchy for module <sound_module> in library <work> with parameters.
 	WHACKED_START = "00010010010101000000000"
 	WIDTH = "00000000000000000000000000001000"
 
+Analyzing hierarchy for module <mole_adressss_locations> in library <work> with parameters.
+	DIY_BUTTON_WAIT = "011"
+	DIY_BUTTON_WAIT_DONE = "100"
+	DIY_DONE = "101"
+	DIY_INITIAL = "001"
+	DIY_START = "010"
+	INDEX_BITS = "0100"
+	INITIAL_STATE = "000"
+	MAX_ITEM = "0101"
+	MUSIC_END = "00001101010110000000000"
+
 Analyzing hierarchy for module <xvga> in library <work>.
 
 Analyzing hierarchy for module <displaymole> in library <work> with parameters.
@@ -275,6 +288,11 @@ Analyzing hierarchy for module <mybram> in library <work> with parameters.
 Analyzing hierarchy for module <flash_reader> in library <work>.
 
 Analyzing hierarchy for module <fir31> in library <work>.
+
+Analyzing hierarchy for module <timer> in library <work> with parameters.
+	COUNTING = "01"
+	EXPIRED = "10"
+	IDLE = "00"
 
 Analyzing hierarchy for module <normalmole> in library <work> with parameters.
 	HEIGHT = "00000000000000000000000100000000"
@@ -319,6 +337,8 @@ WARNING:Xst:2591 - "lab5.v" line 611: attribute on instance <CLK_FEEDBACK> overr
 *                            HDL Analysis                               *
 =========================================================================
 Analyzing top module <lab5>.
+	INDEX_BITS = 4'b0100
+	MAX_ITEM = 4'b0101
 WARNING:Xst:852 - "lab5.v" line 737: Unconnected input port 'switch' of instance 's' is tied to GND.
 Module <lab5> is correct for synthesis.
  
@@ -392,7 +412,7 @@ Analyzing module <gameState> in library <work>.
 	RECORD_DIY_IN_PROGRESS = 4'b1100
 	REQUEST_MOLE = 4'b0011
 	SAFE_STEP_DELAY = 4'b0111
-WARNING:Xst:1465 - "game_logic.v" line 394: Exactly not equal expression will be synthesized as a not equal expression, simulation mismatch is possible. 
+WARNING:Xst:1465 - "game_logic.v" line 395: Exactly not equal expression will be synthesized as a not equal expression, simulation mismatch is possible. 
 Module <gameState> is correct for synthesis.
  
 Analyzing module <lab5audio> in library <work>.
@@ -453,13 +473,13 @@ Analyzing module <sound_module> in library <work>.
 	WHACKED_END = 23'b00010010011000000000000
 	WHACKED_START = 23'b00010010010101000000000
 	WIDTH = 32'sb00000000000000000000000000001000
-WARNING:Xst:2725 - "sound_modules.v" line 362: Size mismatch between case item and case selector.
-WARNING:Xst:2725 - "sound_modules.v" line 369: Size mismatch between case item and case selector.
-WARNING:Xst:2725 - "sound_modules.v" line 384: Size mismatch between case item and case selector.
-WARNING:Xst:2725 - "sound_modules.v" line 389: Size mismatch between case item and case selector.
-WARNING:Xst:2725 - "sound_modules.v" line 404: Size mismatch between case item and case selector.
-WARNING:Xst:2725 - "sound_modules.v" line 409: Size mismatch between case item and case selector.
-WARNING:Xst:2725 - "sound_modules.v" line 424: Size mismatch between case item and case selector.
+WARNING:Xst:2725 - "sound_modules.v" line 378: Size mismatch between case item and case selector.
+WARNING:Xst:2725 - "sound_modules.v" line 385: Size mismatch between case item and case selector.
+WARNING:Xst:2725 - "sound_modules.v" line 400: Size mismatch between case item and case selector.
+WARNING:Xst:2725 - "sound_modules.v" line 405: Size mismatch between case item and case selector.
+WARNING:Xst:2725 - "sound_modules.v" line 420: Size mismatch between case item and case selector.
+WARNING:Xst:2725 - "sound_modules.v" line 425: Size mismatch between case item and case selector.
+WARNING:Xst:2725 - "sound_modules.v" line 440: Size mismatch between case item and case selector.
 Module <sound_module> is correct for synthesis.
  
 Analyzing module <mybram> in library <work>.
@@ -469,7 +489,7 @@ Module <mybram> is correct for synthesis.
  
     Set property "ram_style = block" for signal <mem>.
 Analyzing module <flash_reader> in library <work>.
-WARNING:Xst:852 - "sound_modules.v" line 605: Unconnected input port 'wdata' of instance 'flash_flash' is tied to GND.
+WARNING:Xst:852 - "sound_modules.v" line 621: Unconnected input port 'wdata' of instance 'flash_flash' is tied to GND.
 Module <flash_reader> is correct for synthesis.
  
 Analyzing module <flash_manager> in library <work>.
@@ -516,6 +536,18 @@ Module <fir31> is correct for synthesis.
  
 Analyzing module <coeffs31> in library <work>.
 Module <coeffs31> is correct for synthesis.
+ 
+Analyzing module <mole_adressss_locations> in library <work>.
+	DIY_BUTTON_WAIT = 3'b011
+	DIY_BUTTON_WAIT_DONE = 3'b100
+	DIY_DONE = 3'b101
+	DIY_INITIAL = 3'b001
+	DIY_START = 3'b010
+	INDEX_BITS = 4'b0100
+	INITIAL_STATE = 3'b000
+	MAX_ITEM = 4'b0101
+	MUSIC_END = 23'b00001101010110000000000
+Module <mole_adressss_locations> is correct for synthesis.
  
 Analyzing module <xvga> in library <work>.
 Module <xvga> is correct for synthesis.
@@ -568,12 +600,13 @@ INFO:Xst:2561 - Always blocking tristate driving signal <tv_in_i2c_data> in unit
 INFO:Xst:2679 - Register <bram_pop_start> in unit <sound_module> has a constant value of 0000000000000000 during circuit operation. The register is replaced by logic.
 INFO:Xst:2679 - Register <diy_playback> in unit <sound_module> has a constant value of 0 during circuit operation. The register is replaced by logic.
 INFO:Xst:2679 - Register <writemode> in unit <flash_reader> has a constant value of 0 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <counts> in unit <mole_adressss_locations> has a constant value of 0000 during circuit operation. The register is replaced by logic.
 
 Synthesizing Unit <debounce_ara>.
     Related source file is "sound_modules.v".
     Found 1-bit register for signal <clean>.
     Found 19-bit up counter for signal <count>.
-    Found 1-bit xor2 for signal <count$xor0000> created at line 212.
+    Found 1-bit xor2 for signal <count$xor0000> created at line 228.
     Found 1-bit register for signal <new>.
     Summary:
 	inferred   1 Counter(s).
@@ -650,13 +683,16 @@ Unit <interpret_input> synthesized.
 
 Synthesizing Unit <mole>.
     Related source file is "game_logic.v".
-WARNING:Xst:647 - Input <music_address> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:1780 - Signal <addresses> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
-    Found 4-bit up counter for signal <counter>.
+WARNING:Xst:647 - Input <one_hz_enable> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:1780 - Signal <counter> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+    Found 368-bit register for signal <addresses>.
+    Found 23-bit comparator not equal for signal <addresses$cmp_ne0000> created at line 295.
     Found 1-bit register for signal <state>.
+    Found 23-bit comparator equal for signal <state$cmp_eq0000> created at line 293.
+INFO:Xst:738 - HDL ADVISOR - 368 flip-flops were inferred for signal <addresses>. You may be trying to describe a RAM in a way that is incompatible with block and distributed RAM resources available on Xilinx devices, or with a specific template that is not supported. Please review the Xilinx resources documentation and the XST user manual for coding guidelines. Taking advantage of RAM resources will lead to improved device usage and reduced synthesis time.
     Summary:
-	inferred   1 Counter(s).
-	inferred   1 D-type flip-flop(s).
+	inferred 369 D-type flip-flop(s).
+	inferred   2 Comparator(s).
 Unit <mole> synthesized.
 
 
@@ -874,6 +910,35 @@ WARNING:Xst:646 - Signal <left_in_data<11:0>> is assigned but never used. This u
 Unit <lab5audio> synthesized.
 
 
+Synthesizing Unit <mole_adressss_locations>.
+    Related source file is "sound_modules.v".
+WARNING:Xst:647 - Input <enter> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <reset> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <lookup_index<3>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <switch> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:653 - Signal <timer_value> is used but never assigned. This sourceless signal will be automatically connected to value 0010.
+WARNING:Xst:646 - Signal <displayed_counter> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <counts> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+    Found 24-bit register for signal <address>.
+    Found 120-bit register for signal <address_memory>.
+    Found 4-bit register for signal <internal_items>.
+    Found 4-bit adder for signal <internal_items$share0000> created at line 104.
+    Found 1-bit register for signal <internal_ready>.
+    Found 8-bit register for signal <last_button_bits>.
+    Found 4-bit register for signal <location>.
+    Found 20-bit register for signal <location_memory>.
+    Found 3-bit register for signal <next_state>.
+    Found 24-bit comparator greatequal for signal <next_state$cmp_ge0002> created at line 100.
+    Found 4-bit comparator greatequal for signal <next_state$cmp_ge0003> created at line 190.
+    Found 1-bit register for signal <start_timer>.
+    Summary:
+	inferred 185 D-type flip-flop(s).
+	inferred   1 Adder/Subtractor(s).
+	inferred   2 Comparator(s).
+	inferred  28 Multiplexer(s).
+Unit <mole_adressss_locations> synthesized.
+
+
 Synthesizing Unit <display_string>.
     Related source file is "lab5.v".
     Found finite state machine <FSM_2> for signal <state>.
@@ -893,15 +958,15 @@ Synthesizing Unit <display_string>.
     Found 1-bit register for signal <disp_data_out>.
     Found 1-bit register for signal <disp_rs>.
     Found 1-bit register for signal <disp_reset_b>.
-    Found 1-bit 40-to-1 multiplexer for signal <$varindex0000> created at line 1077.
+    Found 1-bit 40-to-1 multiplexer for signal <$varindex0000> created at line 1071.
     Found 8-bit 16-to-1 multiplexer for signal <ascii>.
     Found 4-bit register for signal <char_index>.
-    Found 4-bit subtractor for signal <char_index$addsub0000> created at line 1083.
+    Found 4-bit subtractor for signal <char_index$addsub0000> created at line 1077.
     Found 1-bit register for signal <clock>.
     Found 32-bit register for signal <control>.
     Found 5-bit up counter for signal <count>.
     Found 10-bit register for signal <dot_index>.
-    Found 10-bit addsub for signal <dot_index$share0000> created at line 1010.
+    Found 10-bit addsub for signal <dot_index$share0000> created at line 1004.
     Found 40-bit register for signal <rdots>.
     Found 8-bit down counter for signal <reset_count>.
     Summary:
@@ -921,9 +986,9 @@ WARNING:Xst:647 - Input <reset> is never used. This port will be preserved and l
     Found 5-bit up counter for signal <index_reg>.
     Found 5-bit up counter for signal <offset>.
     Found 18-bit up accumulator for signal <sum>.
-    Found 5-bit comparator lessequal for signal <sum$cmp_le0000> created at line 833.
-    Found 10x8-bit multiplier for signal <sum$mult0001> created at line 835.
-    Found 18-bit adder for signal <y$add0000> created at line 837.
+    Found 5-bit comparator lessequal for signal <sum$cmp_le0000> created at line 849.
+    Found 10x8-bit multiplier for signal <sum$mult0001> created at line 851.
+    Found 18-bit adder for signal <y$add0000> created at line 853.
     Summary:
 	inferred   1 RAM(s).
 	inferred   2 Counter(s).
@@ -965,18 +1030,18 @@ Unit <flash_manager> synthesized.
 
 Synthesizing Unit <normalmole>.
     Related source file is "lab5.v".
-WARNING:Xst:643 - "lab5.v" line 1306: The result of a 11x10-bit multiplication is partially used. Only the 16 least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
+WARNING:Xst:643 - "lab5.v" line 1300: The result of a 11x10-bit multiplication is partially used. Only the 16 least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
     Found 24-bit register for signal <pixel>.
-    Found 11-bit adder carry out for signal <add0000$addsub0000> created at line 1301.
-    Found 10-bit adder carry out for signal <add0001$addsub0000> created at line 1301.
+    Found 11-bit adder carry out for signal <add0000$addsub0000> created at line 1295.
+    Found 10-bit adder carry out for signal <add0001$addsub0000> created at line 1295.
     Found 16-bit adder for signal <image_addr>.
-    Found 11-bit subtractor for signal <image_addr$addsub0000> created at line 1306.
-    Found 11x10-bit multiplier for signal <image_addr$mult0001> created at line 1306.
-    Found 13-bit subtractor for signal <image_addr$sub0000> created at line 1306.
-    Found 11-bit comparator greatequal for signal <pixel$cmp_ge0000> created at line 1301.
-    Found 10-bit comparator greatequal for signal <pixel$cmp_ge0001> created at line 1301.
-    Found 12-bit comparator less for signal <pixel$cmp_lt0000> created at line 1301.
-    Found 11-bit comparator less for signal <pixel$cmp_lt0001> created at line 1301.
+    Found 11-bit subtractor for signal <image_addr$addsub0000> created at line 1300.
+    Found 11x10-bit multiplier for signal <image_addr$mult0001> created at line 1300.
+    Found 13-bit subtractor for signal <image_addr$sub0000> created at line 1300.
+    Found 11-bit comparator greatequal for signal <pixel$cmp_ge0000> created at line 1295.
+    Found 10-bit comparator greatequal for signal <pixel$cmp_ge0001> created at line 1295.
+    Found 12-bit comparator less for signal <pixel$cmp_lt0000> created at line 1295.
+    Found 11-bit comparator less for signal <pixel$cmp_lt0001> created at line 1295.
     Summary:
 	inferred  24 D-type flip-flop(s).
 	inferred   5 Adder/Subtractor(s).
@@ -1043,7 +1108,7 @@ WARNING:Xst:1780 - Signal <bram_max_use> is never used or assigned. This unconne
     -----------------------------------------------------------------------
     Found 8-bit register for signal <to_ac97_data>.
     Found 16-bit register for signal <bram_address>.
-    Found 17-bit comparator less for signal <bram_address$cmp_lt0000> created at line 373.
+    Found 17-bit comparator less for signal <bram_address$cmp_lt0000> created at line 389.
     Found 16-bit adder for signal <bram_address$share0000>.
     Found 8-bit register for signal <bram_in>.
     Found 16-bit register for signal <bram_missed_end>.
@@ -1053,29 +1118,29 @@ WARNING:Xst:1780 - Signal <bram_max_use> is never used or assigned. This unconne
     Found 16-bit register for signal <bram_whacked_end>.
     Found 16-bit register for signal <bram_whacked_start>.
     Found 1-bit register for signal <diy_mode_done>.
-    Found 23-bit comparator less for signal <diy_mode_done$cmp_lt0000> created at line 538.
+    Found 23-bit comparator less for signal <diy_mode_done$cmp_lt0000> created at line 554.
     Found 8-bit register for signal <filter_f_input>.
     Found 23-bit register for signal <flash_raddr>.
-    Found 16-bit comparator greatequal for signal <flash_raddr$cmp_ge0000> created at line 456.
-    Found 23-bit comparator greatequal for signal <flash_raddr$cmp_ge0001> created at line 461.
-    Found 16-bit comparator greatequal for signal <flash_raddr$cmp_ge0002> created at line 483.
-    Found 16-bit comparator greatequal for signal <flash_raddr$cmp_ge0003> created at line 510.
+    Found 16-bit comparator greatequal for signal <flash_raddr$cmp_ge0000> created at line 472.
+    Found 23-bit comparator greatequal for signal <flash_raddr$cmp_ge0001> created at line 477.
+    Found 16-bit comparator greatequal for signal <flash_raddr$cmp_ge0002> created at line 499.
+    Found 16-bit comparator greatequal for signal <flash_raddr$cmp_ge0003> created at line 526.
     Found 23-bit adder for signal <flash_raddr$share0000>.
     Found 5-bit register for signal <flash_read_count>.
     Found 5-bit adder for signal <flash_read_count$addsub0000>.
     Found 4-bit register for signal <last_game_state>.
     Found 1-bit register for signal <loaded_to_bram>.
     Found 1-bit register for signal <missed_sound_done>.
-    Found 16-bit comparator less for signal <missed_sound_done$cmp_lt0000> created at line 483.
+    Found 16-bit comparator less for signal <missed_sound_done$cmp_lt0000> created at line 499.
     Found 1-bit register for signal <pop_sound_done>.
-    Found 16-bit comparator less for signal <pop_sound_done$cmp_lt0000> created at line 456.
+    Found 16-bit comparator less for signal <pop_sound_done$cmp_lt0000> created at line 472.
     Found 1-bit register for signal <reading>.
-    Found 23-bit comparator less for signal <sound_state$cmp_lt0000> created at line 376.
-    Found 23-bit comparator less for signal <sound_state$cmp_lt0001> created at line 396.
-    Found 23-bit comparator less for signal <sound_state$cmp_lt0002> created at line 416.
-    Found 8-bit adder for signal <to_ac97_data$share0000> created at line 445.
+    Found 23-bit comparator less for signal <sound_state$cmp_lt0000> created at line 392.
+    Found 23-bit comparator less for signal <sound_state$cmp_lt0001> created at line 412.
+    Found 23-bit comparator less for signal <sound_state$cmp_lt0002> created at line 432.
+    Found 8-bit adder for signal <to_ac97_data$share0000> created at line 461.
     Found 1-bit register for signal <whacked_sound_done>.
-    Found 16-bit comparator less for signal <whacked_sound_done$cmp_lt0000> created at line 510.
+    Found 16-bit comparator less for signal <whacked_sound_done$cmp_lt0000> created at line 526.
     Summary:
 	inferred   1 Finite State Machine(s).
 	inferred 159 D-type flip-flop(s).
@@ -1189,7 +1254,6 @@ WARNING:Xst:2565 - Inout <user1<9>> is never assigned.
 WARNING:Xst:2565 - Inout <daughtercard<0>> is never assigned.
 WARNING:Xst:2565 - Inout <user4<10>> is never assigned.
 WARNING:Xst:2565 - Inout <daughtercard<1>> is never assigned.
-WARNING:Xst:647 - Input <switch<2:0>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:2565 - Inout <user4<11>> is never assigned.
 WARNING:Xst:2565 - Inout <daughtercard<2>> is never assigned.
 WARNING:Xst:2565 - Inout <user4<12>> is never assigned.
@@ -1369,28 +1433,29 @@ WARNING:Xst:2565 - Inout <user3<27>> is never assigned.
 WARNING:Xst:2565 - Inout <user3<3>> is never assigned.
 WARNING:Xst:653 - Signal <volume> is used but never assigned. This sourceless signal will be automatically connected to value 01000.
 WARNING:Xst:646 - Signal <step_location> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:1780 - Signal <state> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:1780 - Signal <ready_to_use> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <lookup_index> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:653 - Signal <items> is used but never assigned. This sourceless signal will be automatically connected to value 0000.
-WARNING:Xst:1780 - Signal <index_location> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:1780 - Signal <index_address> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <state> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <ready_to_use> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <lookup_index<4>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <index_location> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <index_address> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <feedback> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <displayed_counter> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-    Found 8x16-bit ROM for signal <displayed_mole_location$mux0000> created at line 869.
+    Found 8x16-bit ROM for signal <displayed_mole_location$mux0000> created at line 863.
     Found 16-bit register for signal <displayed_mole_location>.
     Found 48-bit register for signal <lives_display>.
-    Found 6-bit adder for signal <lives_display$add0000> created at line 886.
-    Found 2-bit comparator greater for signal <lives_display$cmp_gt0000> created at line 885.
+    Found 6-bit adder for signal <lives_display$add0000> created at line 880.
+    Found 2-bit comparator greater for signal <lives_display$cmp_gt0000> created at line 879.
     Found 48-bit 4-to-1 multiplexer for signal <lives_display$mux0000>.
-    Found 6-bit adder for signal <string$add0000> created at line 896.
-    Found 8-bit adder for signal <string$add0001> created at line 896.
+    Found 7-bit comparator lessequal for signal <lookup_index$cmp_le0000> created at line 779.
+    Found 7-bit subtractor for signal <lookup_index$sub0000> created at line 779.
+    Found 6-bit adder for signal <string$add0000> created at line 890.
+    Found 8-bit adder for signal <string$add0001> created at line 890.
     Found 1-bit register for signal <toggler>.
     Summary:
 	inferred   1 ROM(s).
 	inferred  65 D-type flip-flop(s).
-	inferred   3 Adder/Subtractor(s).
-	inferred   1 Comparator(s).
+	inferred   4 Adder/Subtractor(s).
+	inferred   2 Comparator(s).
 	inferred  48 Multiplexer(s).
 Unit <lab5> synthesized.
 
@@ -1413,7 +1478,7 @@ Macro Statistics
 # Multipliers                                          : 3
  10x8-bit multiplier                                   : 2
  11x10-bit multiplier                                  : 1
-# Adders/Subtractors                                   : 25
+# Adders/Subtractors                                   : 28
  10-bit adder                                          : 1
  10-bit adder carry out                                : 1
  10-bit addsub                                         : 1
@@ -1423,27 +1488,29 @@ Macro Statistics
  16-bit adder                                          : 2
  18-bit adder                                          : 2
  23-bit adder                                          : 2
- 4-bit subtractor                                      : 2
+ 4-bit adder                                           : 1
+ 4-bit subtractor                                      : 3
  5-bit adder                                           : 2
  5-bit subtractor                                      : 2
  6-bit adder                                           : 2
+ 7-bit subtractor                                      : 1
  8-bit adder                                           : 2
  9-bit adder                                           : 3
-# Counters                                             : 33
+# Counters                                             : 32
  10-bit up counter                                     : 2
  11-bit up counter                                     : 1
  19-bit up counter                                     : 1
  2-bit down counter                                    : 1
  20-bit up counter                                     : 17
  32-bit up counter                                     : 1
- 4-bit up counter                                      : 2
+ 4-bit up counter                                      : 1
  5-bit up counter                                      : 5
  8-bit down counter                                    : 1
  8-bit up counter                                      : 2
 # Accumulators                                         : 2
  18-bit up accumulator                                 : 2
-# Registers                                            : 139
- 1-bit register                                        : 90
+# Registers                                            : 158
+ 1-bit register                                        : 92
  10-bit register                                       : 3
  11-bit register                                       : 1
  13-bit register                                       : 1
@@ -1452,17 +1519,18 @@ Macro Statistics
  2-bit register                                        : 3
  20-bit register                                       : 6
  23-bit register                                       : 3
- 24-bit register                                       : 3
- 3-bit register                                        : 2
+ 24-bit register                                       : 9
+ 3-bit register                                        : 3
  32-bit register                                       : 1
- 4-bit register                                        : 4
+ 368-bit register                                      : 1
+ 4-bit register                                        : 12
  40-bit register                                       : 1
  48-bit register                                       : 1
  5-bit register                                        : 1
- 8-bit register                                        : 6
+ 8-bit register                                        : 7
 # Latches                                              : 1
  3-bit latch                                           : 1
-# Comparators                                          : 40
+# Comparators                                          : 45
  10-bit comparator greatequal                          : 1
  11-bit comparator greatequal                          : 1
  11-bit comparator less                                : 1
@@ -1471,18 +1539,25 @@ Macro Statistics
  16-bit comparator less                                : 3
  17-bit comparator less                                : 1
  2-bit comparator greater                              : 1
+ 23-bit comparator equal                               : 1
  23-bit comparator greatequal                          : 1
  23-bit comparator less                                : 4
+ 23-bit comparator not equal                           : 1
+ 24-bit comparator greatequal                          : 1
+ 4-bit comparator greatequal                           : 1
  4-bit comparator not equal                            : 1
  5-bit comparator lessequal                            : 2
+ 7-bit comparator lessequal                            : 1
  8-bit comparator equal                                : 1
  8-bit comparator greatequal                           : 5
  8-bit comparator greater                              : 4
  8-bit comparator less                                 : 4
  8-bit comparator lessequal                            : 6
-# Multiplexers                                         : 6
+# Multiplexers                                         : 8
  1-bit 20-to-1 multiplexer                             : 3
  1-bit 40-to-1 multiplexer                             : 1
+ 24-bit 5-to-1 multiplexer                             : 1
+ 4-bit 5-to-1 multiplexer                              : 1
  48-bit 4-to-1 multiplexer                             : 1
  8-bit 16-to-1 multiplexer                             : 1
 # Tristates                                            : 1
@@ -1524,6 +1599,7 @@ Optimizing FSM <debug_display/state/FSM> on signal <state[1:3]> with sequential 
  00000110 | 110
 ----------------------
 Analyzing FSM <FSM_0> for best encoding.
+Optimizing FSM <diy_addr_loc/diy_timer/state> on signal <state[1:2]> with gray encoding.
 Optimizing FSM <game_start_delay/state> on signal <state[1:2]> with gray encoding.
 -------------------
  State | Encoding
@@ -1742,6 +1818,11 @@ WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_16> (without 
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_17> (without init value) has a constant value of 0 in block <normalmole>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_18> (without init value) has a constant value of 0 in block <normalmole>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_19> (without init value) has a constant value of 0 in block <normalmole>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <location_memory_0_3> (without init value) has a constant value of 0 in block <mole_adressss_locations>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <location_memory_3_3> (without init value) has a constant value of 0 in block <mole_adressss_locations>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <location_memory_1_3> (without init value) has a constant value of 0 in block <mole_adressss_locations>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <location_memory_2_3> (without init value) has a constant value of 0 in block <mole_adressss_locations>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <location_memory_4_3> (without init value) has a constant value of 0 in block <mole_adressss_locations>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <flash/flash_address_0> (without init value) has a constant value of 0 in block <flash_manager>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <fsm/state_7> (without init value) has a constant value of 0 in block <flash_manager>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <fsm/state_6> (without init value) has a constant value of 0 in block <flash_manager>. This FF/Latch will be trimmed during the optimization process.
@@ -1766,6 +1847,11 @@ WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <flash/flash_wdata_1
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <flash/flash_wdata_15> (without init value) has a constant value of 0 in block <flash_manager>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1426 - The value init of the FF/Latch loaded_to_bram hinder the constant cleaning in the block sound_module.
    You should achieve better results by setting this init to 1.
+WARNING:Xst:1710 - FF/Latch <address_memory_4_0> (without init value) has a constant value of 0 in block <diy_addr_loc>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <address_memory_3_0> (without init value) has a constant value of 0 in block <diy_addr_loc>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <address_memory_1_0> (without init value) has a constant value of 0 in block <diy_addr_loc>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <address_memory_0_0> (without init value) has a constant value of 0 in block <diy_addr_loc>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <address_memory_2_0> (without init value) has a constant value of 0 in block <diy_addr_loc>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <flash/flash_reset_b> has a constant value of 1 in block <flash_flash>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <l_right_data_11> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <l_right_data_10> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
@@ -1835,6 +1921,35 @@ WARNING:Xst:2677 - Node <y_16> of sequential type is unconnected in block <fir31
 WARNING:Xst:2677 - Node <y_17> of sequential type is unconnected in block <fir31_bram>.
 WARNING:Xst:2677 - Node <y_8> of sequential type is unconnected in block <fir31_flash>.
 WARNING:Xst:2677 - Node <y_9> of sequential type is unconnected in block <fir31_flash>.
+WARNING:Xst:2677 - Node <internal_ready> of sequential type is unconnected in block <diy_addr_loc>.
+WARNING:Xst:2677 - Node <location_0> of sequential type is unconnected in block <diy_addr_loc>.
+WARNING:Xst:2677 - Node <location_1> of sequential type is unconnected in block <diy_addr_loc>.
+WARNING:Xst:2677 - Node <location_2> of sequential type is unconnected in block <diy_addr_loc>.
+WARNING:Xst:2677 - Node <location_3> of sequential type is unconnected in block <diy_addr_loc>.
+WARNING:Xst:2677 - Node <address_0> of sequential type is unconnected in block <diy_addr_loc>.
+WARNING:Xst:2677 - Node <address_1> of sequential type is unconnected in block <diy_addr_loc>.
+WARNING:Xst:2677 - Node <address_2> of sequential type is unconnected in block <diy_addr_loc>.
+WARNING:Xst:2677 - Node <address_3> of sequential type is unconnected in block <diy_addr_loc>.
+WARNING:Xst:2677 - Node <address_4> of sequential type is unconnected in block <diy_addr_loc>.
+WARNING:Xst:2677 - Node <address_5> of sequential type is unconnected in block <diy_addr_loc>.
+WARNING:Xst:2677 - Node <address_6> of sequential type is unconnected in block <diy_addr_loc>.
+WARNING:Xst:2677 - Node <address_7> of sequential type is unconnected in block <diy_addr_loc>.
+WARNING:Xst:2677 - Node <address_8> of sequential type is unconnected in block <diy_addr_loc>.
+WARNING:Xst:2677 - Node <address_9> of sequential type is unconnected in block <diy_addr_loc>.
+WARNING:Xst:2677 - Node <address_10> of sequential type is unconnected in block <diy_addr_loc>.
+WARNING:Xst:2677 - Node <address_11> of sequential type is unconnected in block <diy_addr_loc>.
+WARNING:Xst:2677 - Node <address_12> of sequential type is unconnected in block <diy_addr_loc>.
+WARNING:Xst:2677 - Node <address_13> of sequential type is unconnected in block <diy_addr_loc>.
+WARNING:Xst:2677 - Node <address_14> of sequential type is unconnected in block <diy_addr_loc>.
+WARNING:Xst:2677 - Node <address_15> of sequential type is unconnected in block <diy_addr_loc>.
+WARNING:Xst:2677 - Node <address_16> of sequential type is unconnected in block <diy_addr_loc>.
+WARNING:Xst:2677 - Node <address_17> of sequential type is unconnected in block <diy_addr_loc>.
+WARNING:Xst:2677 - Node <address_18> of sequential type is unconnected in block <diy_addr_loc>.
+WARNING:Xst:2677 - Node <address_19> of sequential type is unconnected in block <diy_addr_loc>.
+WARNING:Xst:2677 - Node <address_20> of sequential type is unconnected in block <diy_addr_loc>.
+WARNING:Xst:2677 - Node <address_21> of sequential type is unconnected in block <diy_addr_loc>.
+WARNING:Xst:2677 - Node <address_22> of sequential type is unconnected in block <diy_addr_loc>.
+WARNING:Xst:2677 - Node <address_23> of sequential type is unconnected in block <diy_addr_loc>.
 
 =========================================================================
 Advanced HDL Synthesis Report
@@ -1854,7 +1969,7 @@ Macro Statistics
 # Multipliers                                          : 3
  10x8-bit multiplier                                   : 2
  11x10-bit multiplier                                  : 1
-# Adders/Subtractors                                   : 25
+# Adders/Subtractors                                   : 28
  10-bit adder                                          : 1
  10-bit adder carry out                                : 1
  10-bit addsub                                         : 1
@@ -1864,29 +1979,31 @@ Macro Statistics
  16-bit adder                                          : 2
  18-bit adder                                          : 2
  23-bit adder                                          : 2
- 4-bit subtractor                                      : 2
+ 4-bit adder                                           : 1
+ 4-bit subtractor                                      : 3
  5-bit adder                                           : 5
  5-bit subtractor                                      : 2
  6-bit adder                                           : 2
+ 7-bit subtractor                                      : 1
  8-bit adder                                           : 2
-# Counters                                             : 33
+# Counters                                             : 32
  10-bit up counter                                     : 2
  11-bit up counter                                     : 1
  19-bit up counter                                     : 1
  2-bit down counter                                    : 1
  20-bit up counter                                     : 17
  32-bit up counter                                     : 1
- 4-bit up counter                                      : 2
+ 4-bit up counter                                      : 1
  5-bit up counter                                      : 5
  8-bit down counter                                    : 1
  8-bit up counter                                      : 2
 # Accumulators                                         : 2
  18-bit up accumulator                                 : 2
-# Registers                                            : 757
- Flip-Flops                                            : 757
+# Registers                                            : 1311
+ Flip-Flops                                            : 1311
 # Latches                                              : 1
  3-bit latch                                           : 1
-# Comparators                                          : 40
+# Comparators                                          : 45
  10-bit comparator greatequal                          : 1
  11-bit comparator greatequal                          : 1
  11-bit comparator less                                : 1
@@ -1895,18 +2012,24 @@ Macro Statistics
  16-bit comparator less                                : 3
  17-bit comparator less                                : 1
  2-bit comparator greater                              : 1
+ 23-bit comparator equal                               : 1
  23-bit comparator greatequal                          : 1
  23-bit comparator less                                : 4
+ 23-bit comparator not equal                           : 1
+ 24-bit comparator greatequal                          : 1
+ 4-bit comparator greatequal                           : 1
  4-bit comparator not equal                            : 1
  5-bit comparator lessequal                            : 2
+ 7-bit comparator lessequal                            : 1
  8-bit comparator equal                                : 1
  8-bit comparator greatequal                           : 5
  8-bit comparator greater                              : 4
  8-bit comparator less                                 : 4
  8-bit comparator lessequal                            : 6
-# Multiplexers                                         : 6
+# Multiplexers                                         : 34
  1-bit 20-to-1 multiplexer                             : 3
  1-bit 40-to-1 multiplexer                             : 1
+ 1-bit 5-to-1 multiplexer                              : 28
  48-bit 4-to-1 multiplexer                             : 1
  8-bit 16-to-1 multiplexer                             : 1
 # Xors                                                 : 19
@@ -1936,6 +2059,7 @@ WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <displayed_mole_loca
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <displayed_mole_location_13> (without init value) has a constant value of 0 in block <lab5>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <displayed_mole_location_14> (without init value) has a constant value of 1 in block <lab5>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <displayed_mole_location_15> (without init value) has a constant value of 0 in block <lab5>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <location_3> (without init value) has a constant value of 0 in block <mole_adressss_locations>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <lives_display_7> (without init value) has a constant value of 0 in block <lab5>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <lives_display_15> (without init value) has a constant value of 0 in block <lab5>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <lives_display_16> (without init value) has a constant value of 1 in block <lab5>. This FF/Latch will be trimmed during the optimization process.
@@ -1979,6 +2103,8 @@ WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <lives_display_22> (
 
 Optimizing unit <timer> ...
 
+Optimizing unit <mole> ...
+
 Optimizing unit <xvga> ...
 
 Optimizing unit <ac97> ...
@@ -1990,6 +2116,8 @@ Optimizing unit <ascii2dots> ...
 Optimizing unit <normalmole> ...
 
 Optimizing unit <gameState> ...
+
+Optimizing unit <mole_adressss_locations> ...
 
 Optimizing unit <display_string> ...
 
@@ -2029,6 +2157,191 @@ WARNING:Xst:2677 - Node <a/ac97/right_in_data_3> of sequential type is unconnect
 WARNING:Xst:2677 - Node <a/ac97/right_in_data_2> of sequential type is unconnected in block <lab5>.
 WARNING:Xst:2677 - Node <a/ac97/right_in_data_1> of sequential type is unconnected in block <lab5>.
 WARNING:Xst:2677 - Node <a/ac97/right_in_data_0> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/diy_timer/counter_0> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/diy_timer/counter_1> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/diy_timer/counter_2> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/diy_timer/counter_3> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/diy_timer/state_FFd2> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/diy_timer/state_FFd1> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_23> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_22> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_21> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_20> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_19> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_18> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_17> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_16> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_15> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_14> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_13> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_12> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_11> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_10> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_9> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_8> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_7> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_6> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_5> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_4> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_3> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_2> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_1> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_0> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/location_2> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/location_1> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/location_0> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/location_memory_4_2> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/location_memory_4_1> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/location_memory_4_0> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/location_memory_2_2> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/location_memory_2_1> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/location_memory_2_0> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/location_memory_1_2> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/location_memory_1_1> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/location_memory_1_0> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/location_memory_3_2> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/location_memory_3_1> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/location_memory_3_0> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_4_23> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_4_22> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_4_21> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_4_20> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_4_19> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_4_18> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_4_17> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_4_16> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_4_15> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_4_14> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_4_13> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_4_12> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_4_11> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_4_10> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_4_9> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_4_8> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_4_7> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_4_6> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_4_5> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_4_4> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_4_3> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_4_2> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_4_1> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_4_0> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_3_23> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_3_22> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_3_21> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_3_20> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_3_19> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_3_18> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_3_17> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_3_16> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_3_15> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_3_14> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_3_13> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_3_12> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_3_11> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_3_10> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_3_9> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_3_8> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_3_7> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_3_6> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_3_5> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_3_4> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_3_3> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_3_2> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_3_1> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_3_0> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/location_memory_0_2> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/location_memory_0_1> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/location_memory_0_0> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_1_23> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_1_22> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_1_21> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_1_20> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_1_19> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_1_18> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_1_17> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_1_16> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_1_15> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_1_14> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_1_13> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_1_12> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_1_11> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_1_10> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_1_9> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_1_8> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_1_7> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_1_6> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_1_5> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_1_4> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_1_3> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_1_2> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_1_1> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_1_0> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_0_23> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_0_22> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_0_21> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_0_20> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_0_19> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_0_18> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_0_17> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_0_16> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_0_15> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_0_14> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_0_13> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_0_12> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_0_11> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_0_10> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_0_9> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_0_8> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_0_7> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_0_6> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_0_5> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_0_4> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_0_3> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_0_2> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_0_1> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_0_0> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_2_23> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_2_22> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_2_21> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_2_20> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_2_19> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_2_18> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_2_17> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_2_16> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_2_15> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_2_14> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_2_13> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_2_12> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_2_11> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_2_10> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_2_9> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_2_8> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_2_7> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_2_6> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_2_5> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_2_4> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_2_3> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_2_2> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_2_1> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/address_memory_2_0> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/internal_ready> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/internal_items_3> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/internal_items_2> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/internal_items_1> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/internal_items_0> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/start_timer> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/last_button_bits_7> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/last_button_bits_6> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/last_button_bits_5> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/last_button_bits_4> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/last_button_bits_3> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/last_button_bits_2> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/last_button_bits_1> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/last_button_bits_0> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/next_state_2> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/next_state_1> of sequential type is unconnected in block <lab5>.
+WARNING:Xst:2677 - Node <diy_addr_loc/next_state_0> of sequential type is unconnected in block <lab5>.
 WARNING:Xst:2677 - Node <s/fir31_bram/sum_17> of sequential type is unconnected in block <lab5>.
 WARNING:Xst:2677 - Node <s/fir31_bram/sum_16> of sequential type is unconnected in block <lab5>.
 WARNING:Xst:2677 - Node <s/fir31_bram/sum_15> of sequential type is unconnected in block <lab5>.
@@ -2090,12 +2403,35 @@ Mapping all equations...
 Building and optimizing final netlist ...
 INFO:Xst:2261 - The FF/Latch <a/ac97/l_cmd_data_14> in Unit <lab5> is equivalent to the following 5 FFs/Latches, which will be removed : <a/ac97/l_cmd_data_13> <a/ac97/l_cmd_data_12> <a/ac97/l_cmd_data_6> <a/ac97/l_cmd_data_5> <a/ac97/l_cmd_data_4> 
 INFO:Xst:2261 - The FF/Latch <a/ac97/l_cmd_data_16> in Unit <lab5> is equivalent to the following FF/Latch, which will be removed : <a/ac97/l_cmd_data_8> 
-Found area constraint ratio of 100 (+ 5) on block lab5, actual ratio is 3.
+Found area constraint ratio of 100 (+ 5) on block lab5, actual ratio is 4.
 
 Final Macro Processing ...
 
 Processing Unit <lab5> :
 	Found 2-bit shift register for signal <a/ready_sync_1>.
+	Found 16-bit shift register for signal <getmole/addresses_367>.
+	Found 16-bit shift register for signal <getmole/addresses_366>.
+	Found 16-bit shift register for signal <getmole/addresses_365>.
+	Found 16-bit shift register for signal <getmole/addresses_364>.
+	Found 13-bit shift register for signal <getmole/addresses_363>.
+	Found 6-bit shift register for signal <getmole/addresses_362>.
+	Found 4-bit shift register for signal <getmole/addresses_357>.
+	Found 5-bit shift register for signal <getmole/addresses_356>.
+	Found 16-bit shift register for signal <getmole/addresses_350>.
+	Found 16-bit shift register for signal <getmole/addresses_345>.
+	Found 5-bit shift register for signal <getmole/addresses_332>.
+	Found 6-bit shift register for signal <getmole/addresses_330>.
+	Found 15-bit shift register for signal <getmole/addresses_329>.
+	Found 15-bit shift register for signal <getmole/addresses_328>.
+	Found 15-bit shift register for signal <getmole/addresses_326>.
+	Found 15-bit shift register for signal <getmole/addresses_325>.
+	Found 15-bit shift register for signal <getmole/addresses_324>.
+	Found 15-bit shift register for signal <getmole/addresses_323>.
+	Found 7-bit shift register for signal <getmole/addresses_224>.
+	Found 4-bit shift register for signal <getmole/addresses_154>.
+	Found 5-bit shift register for signal <getmole/addresses_151>.
+	Found 7-bit shift register for signal <getmole/addresses_150>.
+	Found 4-bit shift register for signal <getmole/addresses_80>.
 	Found 13-bit shift register for signal <a/ac97/left_in_data_12>.
 	Found 7-bit shift register for signal <debug_display/control_30>.
 	Found 7-bit shift register for signal <debug_display/control_22>.
@@ -2107,14 +2443,20 @@ Unit <lab5> processed.
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 1056
- Flip-Flops                                            : 1056
-# Shift Registers                                      : 6
- 13-bit shift register                                 : 1
+# Registers                                            : 1168
+ Flip-Flops                                            : 1168
+# Shift Registers                                      : 29
+ 13-bit shift register                                 : 2
+ 15-bit shift register                                 : 6
+ 16-bit shift register                                 : 6
  2-bit shift register                                  : 1
- 7-bit shift register                                  : 4
+ 4-bit shift register                                  : 3
+ 5-bit shift register                                  : 3
+ 6-bit shift register                                  : 2
+ 7-bit shift register                                  : 6
 
 =========================================================================
+INFO:Xst:2146 - In block <lab5>, Shifter <getmole/Mshreg_addresses_344> <getmole/Mshreg_addresses_343> <getmole/Mshreg_addresses_342> <getmole/Mshreg_addresses_341> <getmole/Mshreg_addresses_327> <getmole/Mshreg_addresses_322> are equivalent, XST will keep only <getmole/Mshreg_addresses_344>.
 
 =========================================================================
 *                           Partition Report                             *
@@ -2141,29 +2483,29 @@ Design Statistics
 # IOs                              : 576
 
 Cell Usage :
-# BELS                             : 3731
+# BELS                             : 3771
 #      GND                         : 5
-#      INV                         : 111
+#      INV                         : 110
 #      LUT1                        : 488
-#      LUT2                        : 294
-#      LUT3                        : 349
-#      LUT4                        : 887
-#      MUXCY                       : 793
-#      MUXF5                       : 183
+#      LUT2                        : 314
+#      LUT3                        : 348
+#      LUT4                        : 898
+#      MUXCY                       : 805
+#      MUXF5                       : 182
 #      MUXF6                       : 17
 #      MUXF7                       : 3
 #      MUXF8                       : 1
 #      VCC                         : 5
 #      XORCY                       : 595
-# FlipFlops/Latches                : 1078
+# FlipFlops/Latches                : 1247
 #      FD                          : 68
-#      FDE                         : 405
+#      FDE                         : 423
 #      FDE_1                       : 8
 #      FDR                         : 86
-#      FDRE                        : 466
+#      FDRE                        : 549
 #      FDRS                        : 14
 #      FDS                         : 8
-#      FDSE                        : 20
+#      FDSE                        : 88
 #      LDE_1                       : 3
 # RAMS                             : 57
 #      RAM32X1D                    : 8
@@ -2171,9 +2513,9 @@ Cell Usage :
 #      RAMB16_S1_S1                : 12
 #      RAMB16_S2_S2                : 2
 #      RAMB16_S36_S36              : 3
-# Shift Registers                  : 7
+# Shift Registers                  : 25
 #      SRL16                       : 2
-#      SRL16E                      : 4
+#      SRL16E                      : 22
 #      SRL16E_1                    : 1
 # Clock Buffers                    : 4
 #      BUFG                        : 4
@@ -2193,11 +2535,11 @@ Device utilization summary:
 
 Selected Device : 2v6000bf957-4 
 
- Number of Slices:                     1144  out of  33792     3%  
- Number of Slice Flip Flops:           1078  out of  67584     1%  
- Number of 4 input LUTs:               2168  out of  67584     3%  
-    Number used as logic:              2129
-    Number used as Shift registers:       7
+ Number of Slices:                     1247  out of  33792     3%  
+ Number of Slice Flip Flops:           1247  out of  67584     1%  
+ Number of 4 input LUTs:               2215  out of  67584     3%  
+    Number used as logic:              2158
+    Number used as Shift registers:      25
     Number used as RAMs:                 32
  Number of IOs:                         576
  Number of bonded IOBs:                 270  out of    684    39%  
@@ -2227,7 +2569,7 @@ Clock Information:
 -----------------------------------+----------------------------------------------------------------------------------------------------------------+-------+
 Clock Signal                       | Clock buffer(FF name)                                                                                          | Load  |
 -----------------------------------+----------------------------------------------------------------------------------------------------------------+-------+
-clock_27mhz                        | IBUFG+BUFG                                                                                                     | 907   |
+clock_27mhz                        | IBUFG+BUFG                                                                                                     | 1094  |
 one_hz_div/enable                  | NONE(moleloc/temp_r_3)                                                                                         | 4     |
 clock_27mhz                        | vclk1:CLKFX                                                                                                    | 58    |
 ac97_bit_clock                     | IBUF+BUFG                                                                                                      | 62    |
@@ -2247,7 +2589,7 @@ Speed Grade: -4
 
    Minimum period: 63.186ns (Maximum Frequency: 15.826MHz)
    Minimum input arrival time before clock: 3.804ns
-   Maximum output required time after clock: 10.711ns
+   Maximum output required time after clock: 10.734ns
    Maximum combinational path delay: 5.887ns
 
 Timing Detail:
@@ -2257,7 +2599,7 @@ All values displayed in nanoseconds (ns)
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clock_27mhz'
   Clock period: 63.186ns (frequency: 15.826MHz)
-  Total number of paths / destination ports: 329022 / 2536
+  Total number of paths / destination ports: 341345 / 3059
 -------------------------------------------------------------------------
 Delay:               15.797ns (Levels of Logic = 10)
   Source:            displaymole1/y_8 (FF)
@@ -2408,7 +2750,7 @@ Offset:              2.194ns (Levels of Logic = 1)
 Timing constraint: Default OFFSET OUT AFTER for Clock 'clock_27mhz'
   Total number of paths / destination ports: 315 / 77
 -------------------------------------------------------------------------
-Offset:              10.711ns (Levels of Logic = 5)
+Offset:              10.734ns (Levels of Logic = 5)
   Source:            game/state_FFd1 (FF)
   Destination:       vga_out_red<7> (PAD)
   Source Clock:      clock_27mhz rising
@@ -2419,13 +2761,13 @@ Offset:              10.711ns (Levels of Logic = 5)
     ----------------------------------------  ------------
      FD:C->Q               4   0.568   1.033  game/state_FFd1 (game/state_FFd1)
      LUT4:I0->O            1   0.439   0.000  game/state_or00001 (game/state_or0000)
-     MUXF5:I0->O          14   0.436   1.263  game/state_or0000_f5 (display_state<3>)
+     MUXF5:I0->O          16   0.436   1.286  game/state_or0000_f5 (display_state<3>)
      LUT4:I0->O           12   0.439   1.216  displaymole1/pixel_or00001 (displaymole1/pixel_or0000)
      LUT2:I0->O            1   0.439   0.517  displaymole1/pixel<7>1 (pixel<7>)
      OBUF:I->O                 4.361          vga_out_blue_7_OBUF (vga_out_blue<7>)
     ----------------------------------------
-    Total                     10.711ns (6.682ns logic, 4.029ns route)
-                                       (62.4% logic, 37.6% route)
+    Total                     10.734ns (6.682ns logic, 4.052ns route)
+                                       (62.3% logic, 37.7% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'debug_display/clock1'
@@ -2486,15 +2828,15 @@ Delay:               5.887ns (Levels of Logic = 2)
 =========================================================================
 
 
-Total REAL time to Xst completion: 24.00 secs
-Total CPU time to Xst completion: 22.76 secs
+Total REAL time to Xst completion: 26.00 secs
+Total CPU time to Xst completion: 25.26 secs
  
 --> 
 
 
-Total memory usage is 559948 kilobytes
+Total memory usage is 569852 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :  598 (   0 filtered)
-Number of infos    :   63 (   0 filtered)
+Number of warnings :  830 (   0 filtered)
+Number of infos    :   66 (   0 filtered)
 

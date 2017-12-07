@@ -251,6 +251,7 @@ endmodule
 
 module mole(	input clk, reset,
 					input [22:0] music_address,
+					input [3:0] game_state,
 					input one_hz_enable,
 					output request_mole );
 
@@ -282,19 +283,19 @@ reg [367:0] addresses = {23'h6CDE, 23'h8B00, 23'hE900, 23'h14900,
 										 23'h3DA00, 23'h41800, 23'h47800, 23'h4FD00};
 
 always @(posedge clk) begin
-	if (reset) begin
-		counter <= 4'b0;
-		/*addresses[367:0] <= {23'h6CDE, 23'h8B00, 23'hE900, 23'h14900,
+	if (reset || game_state == 4'b0) begin
+		//counter <= 4'b0;
+		addresses[367:0] <= {23'h6CDE, 23'h8B00, 23'hE900, 23'h14900,
 										 23'h17B00, 23'h1B100, 23'h21F00, 23'h28000,
 										 23'h2E500, 23'h31A00, 23'h35900, 23'h39500,
-										 23'h3DA00, 23'h41800, 23'h47800, 23'h4FD00};*/
+										 23'h3DA00, 23'h41800, 23'h47800, 23'h4FD00};
 	end else if (state == COUNTING) begin
-		state <= (counter == MOLE_PERIOD) ?  MOLE : COUNTING; //(addresses[367:345] == music_address) ? 
-		counter <= (one_hz_enable) ? counter + 1 : counter;
-		//addresses <= (addresses[367:345] == music_address) ? {addresses[344:0], addresses[367:345]} : addresses;
+		state <= (addresses[367:345] == music_address) ?  MOLE : COUNTING; //(addresses[367:345] == music_address) ? 
+		//counter <= (one_hz_enable) ? counter + 1 : counter;
+		addresses <= (addresses[367:345] == music_address) ? {addresses[344:0], addresses[367:345]} : addresses;
 	end else if (state == MOLE) begin
 		state <= COUNTING;
-		counter <= 4'b0;
+		//counter <= 4'b0;
 	end
 end
 

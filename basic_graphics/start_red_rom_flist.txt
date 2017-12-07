@@ -1,0 +1,13 @@
+# Output products list for <start_red_rom>
+start_red_rom.asy
+start_red_rom.mif
+start_red_rom.ngc
+start_red_rom.sym
+start_red_rom.v
+start_red_rom.veo
+start_red_rom.vhd
+start_red_rom.vho
+start_red_rom.xco
+start_red_rom_blk_mem_gen_v2_8_xst_1.ngc_xst.xrpt
+start_red_rom_flist.txt
+start_red_rom_xmdf.tcl
