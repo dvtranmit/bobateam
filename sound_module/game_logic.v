@@ -142,6 +142,37 @@ endmodule
 
 //////////////////////////////////////////////////////////////////////////////
 //																									 //
+//									STATE CHANGE PULSE MODULE								 //
+//																									 //
+//////////////////////////////////////////////////////////////////////////////
+module state_change_indicator(	input clk, reset, changing_thing,
+											output reg state_change_pulse);
+
+parameter [19:0] DELAY = 2700000; // 0.1 seconds for 27MHz clock.
+
+reg current_state = 1'b0;
+reg [19:0] counter;
+always @(posedge clk) begin
+	if (reset) begin
+		counter <= 0;
+	end else if (state_change_pulse) begin
+		state_change_pulse <= 1'b0;
+	end else if (changing_thing == current_state) begin
+		counter <= 0;
+	end else begin
+		if (counter == DELAY) begin
+			state_change_pulse <= 1'b1;
+			current_state <= changing_thing;
+			counter <= 0;
+		end else
+			counter <= counter + 1;
+	end
+end
+		
+endmodule
+
+//////////////////////////////////////////////////////////////////////////////
+//																									 //
 //							  RANDOM NUMBER GENERATOR MODULE								 //
 //																									 //
 //////////////////////////////////////////////////////////////////////////////
@@ -183,10 +214,6 @@ reg temp_whacked = 1'b0;
 reg temp_misstep = 1'b0;
  
 always@(posedge clk) begin
-	// xor up with mole up
-	// if xor == 1 (HIGH) then they don't match and you have missed it
-	// if xor == 0 and mole up is 1 then it's whacked so change mole up to 1
-	// if xor == 0 and mole up is 0 then nothing really happened
 	if ({upleft, up, upright, left, right, downleft, down, downright} == location)
 		temp_whacked <= 1'b1;
 	else if ({upleft, up, upright, left, right, downleft, down, downright} !== 8'd0)
@@ -222,14 +249,9 @@ endmodule
 //																									 //
 //////////////////////////////////////////////////////////////////////////////
 
-//////////////////////////////////////////////////////////////////////////////
-//																									 //
-//								    MOLE TIMING MODULE									 	 //
-//																									 //
-//////////////////////////////////////////////////////////////////////////////
-
 module mole(	input clk, reset,
 					input [22:0] music_address,
+					input one_hz_enable,
 					output request_mole );
 
 /* Memory address popup pseudocode
@@ -241,13 +263,17 @@ module mole(	input clk, reset,
 			increment index if match
 		increment time
 */
- 
+
 // States
 parameter COUNTING 	= 1'b1;		// Countdown from timer_value (until expired)
 parameter MOLE			= 1'b0;		// mole pulse lasts one clock cycle
 
 // State machine variables
 reg state = COUNTING;
+
+// Standard Timed Moles Variables
+parameter [3:0] MOLE_PERIOD = 4'd5;
+reg [3:0] counter = 4'b0;
 
 // Music tracker
 reg [367:0] addresses = {23'h6CDE, 23'h8B00, 23'hE900, 23'h14900,
@@ -257,15 +283,18 @@ reg [367:0] addresses = {23'h6CDE, 23'h8B00, 23'hE900, 23'h14900,
 
 always @(posedge clk) begin
 	if (reset) begin
-		addresses[367:0] <= {23'h6CDE, 23'h8B00, 23'hE900, 23'h14900,
+		counter <= 4'b0;
+		/*addresses[367:0] <= {23'h6CDE, 23'h8B00, 23'hE900, 23'h14900,
 										 23'h17B00, 23'h1B100, 23'h21F00, 23'h28000,
 										 23'h2E500, 23'h31A00, 23'h35900, 23'h39500,
-										 23'h3DA00, 23'h41800, 23'h47800, 23'h4FD00};									 		
+										 23'h3DA00, 23'h41800, 23'h47800, 23'h4FD00};*/
 	end else if (state == COUNTING) begin
-		state <= (addresses[367:345] == music_address) ? MOLE : COUNTING;
-		addresses <= (addresses[367:345] == music_address) ? {addresses[344:0], addresses[367:345]} : addresses;
+		state <= (counter == MOLE_PERIOD) ?  MOLE : COUNTING; //(addresses[367:345] == music_address) ? 
+		counter <= (one_hz_enable) ? counter + 1 : counter;
+		//addresses <= (addresses[367:345] == music_address) ? {addresses[344:0], addresses[367:345]} : addresses;
 	end else if (state == MOLE) begin
 		state <= COUNTING;
+		counter <= 4'b0;
 	end
 end
 

@@ -541,7 +541,6 @@ module lab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
    assign rs232_txd = 1'b1;
    assign rs232_rts = 1'b1;
    // rs232_rxd and rs232_cts are inputs
-
    // PS/2 Ports
    // mouse_clock, mouse_data, keyboard_clock, and keyboard_data are inputs
 
@@ -620,19 +619,44 @@ module lab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 //				  DEBOUNCE INPUTS				  //
 ///////////////////////////////////////////
 
-	wire upleft, up, upright, left, right, downleft, down, downright, enter;
-	debounce db_ul(.clk(clock_27mhz), .reset(reset), .noisy(button3), .clean(upleft));
-	debounce db_ur(.clk(clock_27mhz), .reset(reset), .noisy(button2), .clean(upright));
-	debounce db_dl(.clk(clock_27mhz), .reset(reset), .noisy(button1), .clean(downleft));
-	debounce db_dr(.clk(clock_27mhz), .reset(reset), .noisy(button0), .clean(downright));
-	debounce db_u(.clk(clock_27mhz), .reset(reset), .noisy(button_up), .clean(up));
-	debounce db_d(.clk(clock_27mhz), .reset(reset), .noisy(button_down), .clean(down));
-	debounce db_l(.clk(clock_27mhz), .reset(reset), .noisy(button_left), .clean(left));
-	debounce db_r(.clk(clock_27mhz), .reset(reset), .noisy(button_right), .clean(right));
+	wire upleft0, up0, upright0, left0, right0, downleft0, down0, downright0, enter;
+	debounce db_ul(.clk(clock_27mhz), .reset(reset), .noisy(user1[31]), .clean(upleft0));
+	debounce db_ur(.clk(clock_27mhz), .reset(reset), .noisy(user1[29]), .clean(upright0));
+	debounce db_dl(.clk(clock_27mhz), .reset(reset), .noisy(user1[26]), .clean(downleft0));
+	debounce db_dr(.clk(clock_27mhz), .reset(reset), .noisy(user1[24]), .clean(downright0));
+	debounce db_u(.clk(clock_27mhz), .reset(reset), .noisy(user1[30]), .clean(up0));
+	debounce db_d(.clk(clock_27mhz), .reset(reset), .noisy(user1[25]), .clean(down0));
+	debounce db_l(.clk(clock_27mhz), .reset(reset), .noisy(user1[28]), .clean(left0));
+	debounce db_r(.clk(clock_27mhz), .reset(reset), .noisy(user1[27]), .clean(right0));
 	debounce db_e(.clk(clock_27mhz), .reset(reset), .noisy(button_enter), .clean(enter));
 	
 	wire diy_mode;
 	debounce_ara db_diy(.clock(clock_27mhz), .reset(reset), .noisy(switch[7]), .clean(diy_mode));
+
+///////////////////////////////////////////
+//		CONVERT FLIP-FLOP BUTTON INPUTS	  //
+///////////////////////////////////////////
+
+	wire upleft, up, upright, left, right, downleft, down, downright;
+	state_change_indicator sc_ul( 	.clk(clock_27mhz), .reset(reset),
+														.changing_thing(upleft0), .state_change_pulse(upleft));
+	state_change_indicator sc_ur( 	.clk(clock_27mhz), .reset(reset),
+														.changing_thing(upright0), .state_change_pulse(upright));
+	state_change_indicator sc_dl( 	.clk(clock_27mhz), .reset(reset),
+														.changing_thing(downleft0), .state_change_pulse(downleft));
+	state_change_indicator sc_dr( 	.clk(clock_27mhz), .reset(reset),
+														.changing_thing(downright0), .state_change_pulse(downright));
+	state_change_indicator sc_u( 	.clk(clock_27mhz), .reset(reset),
+														.changing_thing(up0), .state_change_pulse(up));
+	state_change_indicator sc_d( 	.clk(clock_27mhz), .reset(reset),
+														.changing_thing(down0), .state_change_pulse(down));
+	state_change_indicator sc_l( 	.clk(clock_27mhz), .reset(reset),
+														.changing_thing(left0), .state_change_pulse(left));
+	state_change_indicator sc_r( 	.clk(clock_27mhz), .reset(reset),
+														.changing_thing(right0), .state_change_pulse(right));
+	
+
+
 
 ///////////////////////////////////////////
 //			INITIALIZE & CONNECT GAME		  //
@@ -682,6 +706,7 @@ module lab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 	wire [22:0] music_address;
 	mole getmole(.clk(clock_27mhz), .reset(enter),
 						.music_address(music_address),
+						.one_hz_enable(one_hz_enable),
 						.request_mole(request_mole));
 
 	wire [3:0] display_state;
@@ -751,7 +776,7 @@ module lab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 	wire [2:0] state;
 	assign lookup_index = (switch[6:3] <= items-1) ? switch[6:3] : 0 ; 
 	
-	mole_adressss_locations diy_addr_loc(.clock(clock_27mhz),
+	/*mole_adressss_locations diy_addr_loc(.clock(clock_27mhz),
 														.disp_blank(disp_blank),
 														.disp_clock(disp_clock),
 														.disp_data_out(disp_data_out), 
@@ -777,7 +802,7 @@ module lab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 														.flash_address(flash_address),
 														.ready_to_use(ready_to_use),
 														.index_address(index_address),
-														.index_location(index_location));
+														.index_location(index_location));*/
 	/*
 	wire [63:0] display_data;
 	assign display_data = {index_address, index_location, 1'b0,  state, lookup_index, items};
@@ -799,10 +824,10 @@ module lab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
               .hsync(hs),.vsync(vs),.blank(b));
 		  
 	displaymole displaymole1(.clk(clock_65mhz), .clk2(clock_27mhz), .reset(reset), .hcount(hcount), .vcount(vcount),
-									.state(display_state), .mole_location(mole_location), .pixel(pixel), .led(led));
+									.state(display_state), .mole_location(mole_location), .pixel(pixel));
 
    // VGA Output.  In order to meet the setup and hold times of the
-   // AD7125, we send it ~clock_65mhz.
+   // AD7125, we send it ~clock_65mhz.disp_data_out
    assign vga_out_red = pixel[23:16];
    assign vga_out_green = pixel[15:8];
    assign vga_out_blue = pixel[7:0];
@@ -819,6 +844,8 @@ module lab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 //						DEBUGGING		  			//
 ///////////////////////////////////////////
 
+
+
 	// Blink w/ 2s period
 	// Calculate displays
 	reg toggler = 1'b1;
@@ -827,7 +854,7 @@ module lab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 	reg [15:0] displayed_mole_location;
 	reg [47:0] lives_display;
 	always@(posedge clock_27mhz) begin
-		toggler <= (request_mole) ? ~toggler : toggler;
+		toggler <= (down) ? ~toggler : toggler;
 		case({upleft, up, upright, left, right, downleft, down, downright})
 			8'b10000000: step_location <= "UL";
 			8'b01000000: step_location <= "U ";
@@ -863,9 +890,11 @@ module lab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 			lives_display <= "??????";
 	end	
 
+	assign led = ~{upleft0, up0, upright0, left0, right0, downleft0, down0, downright0};
+
 	// Display letter toggler value
 	wire [127:0] string = {displayed_mole_location, 8'h30+display_state, "SCOR:", " ", 8'h30+score, lives_display};
-	/*display_string debug_display(.reset(reset), .clock_27mhz(clock_27mhz),
+	display_string debug_display(.reset(reset), .clock_27mhz(clock_27mhz),
 											.string_data(string),
 											.disp_blank(disp_blank),
 											.disp_clock(disp_clock),
@@ -873,7 +902,7 @@ module lab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 											.disp_rs(disp_rs), 
 											.disp_ce_b(disp_ce_b),
 											.disp_reset_b(disp_reset_b));
-	*/
+	
 endmodule
 
 
@@ -1291,8 +1320,7 @@ module displaymole(	input clk, clk2, reset,
 							input [2:0] mole_location,
 							input [10:0] hcount,
 							input [9:0]  vcount,
-							output [23:0] pixel,
-							output [7:0] led);
+							output [23:0] pixel);
 
 	// States
 	reg [3:0] IDLE 					= 4'd0;		// Check if user has pressed start
@@ -1351,6 +1379,5 @@ module displaymole(	input clk, clk2, reset,
 			mole1(.pixel_clk(clk),.x(x),.hcount(hcount),.y(y),.vcount(vcount),.pixel(temp_pixel));
 
 	assign pixel = (state == REQUEST_MOLE || state == MOLE_COUNTDOWN) ? temp_pixel : 24'h0;
-	assign led = mole_location[2:0];
 endmodule
 		

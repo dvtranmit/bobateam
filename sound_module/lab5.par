@@ -1,7 +1,7 @@
 Release 10.1.03 par K.39 (lin64)
 Copyright (c) 1995-2008 Xilinx, Inc.  All rights reserved.
 
-eecs-digital-33::  Tue Dec 05 18:54:26 2017
+eecs-digital-32::  Wed Dec 06 21:01:43 2017
 
 par -w -intstyle ise -ol std -t 1 lab5_map.ncd lab5.ncd lab5.pcf 
 
@@ -30,14 +30,14 @@ Device speed data version:  "PRODUCTION 1.121 2008-07-25".
 
 Device Utilization Summary:
 
-   Number of BUFGMUXs                        3 out of 16     18%
+   Number of BUFGMUXs                        4 out of 16     25%
    Number of DCMs                            1 out of 12      8%
    Number of External IOBs                 576 out of 684    84%
       Number of LOCed IOBs                 576 out of 576   100%
 
    Number of MULT18X18s                      2 out of 144     1%
    Number of RAMB16s                        49 out of 144    34%
-   Number of SLICEs                       1307 out of 33792   3%
+   Number of SLICEs                       1331 out of 33792   3%
 
 
 Overall effort level (-ol):   Standard 
@@ -122,7 +122,12 @@ WARNING:Par:288 - The signal tv_in_ycrcb<6>_IBUF has no load.  PAR will not atte
 WARNING:Par:288 - The signal tv_in_ycrcb<7>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal tv_in_ycrcb<8>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal tv_in_ycrcb<9>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal button0_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal button1_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal button2_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal button3_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal tv_in_data_valid_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal button_up_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal disp_data_in_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal ram0_data<0>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal ram0_data<1>_IBUF has no load.  PAR will not attempt to route this signal.
@@ -158,26 +163,18 @@ WARNING:Par:288 - The signal user1<20>_IBUF has no load.  PAR will not attempt t
 WARNING:Par:288 - The signal user1<12>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user1<21>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user1<13>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal user1<30>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user1<22>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user1<14>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal user1<31>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user1<23>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user1<15>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal user1<24>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user1<16>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal user1<25>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user1<17>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal user1<26>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user1<18>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user2<10>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal user1<27>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user1<19>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user2<11>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal user1<28>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user2<20>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user2<12>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal user1<29>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user2<21>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user2<13>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user2<30>_IBUF has no load.  PAR will not attempt to route this signal.
@@ -252,6 +249,7 @@ WARNING:Par:288 - The signal tv_in_ycrcb<16>_IBUF has no load.  PAR will not att
 WARNING:Par:288 - The signal tv_in_ycrcb<17>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal tv_in_ycrcb<18>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal tv_in_ycrcb<19>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal button_right_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal clock_feedback_in_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal tv_in_aef_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal tv_in_aff_IBUF has no load.  PAR will not attempt to route this signal.
@@ -260,6 +258,11 @@ WARNING:Par:288 - The signal systemace_irq_IBUF has no load.  PAR will not attem
 WARNING:Par:288 - The signal switch<0>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal tv_in_i2c_data_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal switch<1>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal switch<2>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal switch<3>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal switch<4>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal switch<5>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal switch<6>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user1<0>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user1<1>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user1<2>_IBUF has no load.  PAR will not attempt to route this signal.
@@ -302,6 +305,8 @@ WARNING:Par:288 - The signal user4<8>_IBUF has no load.  PAR will not attempt to
 WARNING:Par:288 - The signal user4<9>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal tv_in_line_clock1_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal tv_in_line_clock2_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal button_left_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal button_down_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal daughtercard<10>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal daughtercard<11>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal daughtercard<20>_IBUF has no load.  PAR will not attempt to route this signal.
@@ -350,53 +355,53 @@ WARNING:Par:288 - The signal daughtercard<9>_IBUF has no load.  PAR will not att
 Starting Placer
 
 Phase 1.1
-Phase 1.1 (Checksum:15ef0aa) REAL time: 3 secs 
+Phase 1.1 (Checksum:15faf18) REAL time: 2 secs 
 
 Phase 2.7
-Phase 2.7 (Checksum:15ef0aa) REAL time: 3 secs 
+Phase 2.7 (Checksum:15faf18) REAL time: 3 secs 
 
 Phase 3.31
-Phase 3.31 (Checksum:15ef0aa) REAL time: 3 secs 
+Phase 3.31 (Checksum:15faf18) REAL time: 3 secs 
 
 Phase 4.2
 
 ......
-.......................
-Phase 4.2 (Checksum:1616951) REAL time: 4 secs 
+....................
+Phase 4.2 (Checksum:1622a04) REAL time: 4 secs 
 
 Phase 5.30
-Phase 5.30 (Checksum:1616951) REAL time: 4 secs 
+Phase 5.30 (Checksum:1622a04) REAL time: 4 secs 
 
 Phase 6.3
-Phase 6.3 (Checksum:1616951) REAL time: 4 secs 
+Phase 6.3 (Checksum:1622a04) REAL time: 4 secs 
 
 Phase 7.5
-Phase 7.5 (Checksum:1616951) REAL time: 5 secs 
+Phase 7.5 (Checksum:1622a04) REAL time: 5 secs 
 
 Phase 8.8
 ........................................
-............................
-....
+.......................
+......
+..
+........
+..
 ...
-........
-........
-........
-Phase 8.8 (Checksum:3c8a0a1) REAL time: 12 secs 
+Phase 8.8 (Checksum:45bd50c) REAL time: 12 secs 
 
 Phase 9.5
-Phase 9.5 (Checksum:3c8a0a1) REAL time: 12 secs 
+Phase 9.5 (Checksum:45bd50c) REAL time: 13 secs 
 
 Phase 10.18
-Phase 10.18 (Checksum:3ca7ab7) REAL time: 18 secs 
+Phase 10.18 (Checksum:45dcece) REAL time: 18 secs 
 
 Phase 11.5
-Phase 11.5 (Checksum:3ca7ab7) REAL time: 18 secs 
+Phase 11.5 (Checksum:45dcece) REAL time: 18 secs 
 
 Phase 12.27
-Phase 12.27 (Checksum:3ca7ab7) REAL time: 18 secs 
+Phase 12.27 (Checksum:45dcece) REAL time: 18 secs 
 
 Phase 13.24
-Phase 13.24 (Checksum:3ca7ab7) REAL time: 18 secs 
+Phase 13.24 (Checksum:45dcece) REAL time: 18 secs 
 
 REAL time consumed by placer: 18 secs 
 CPU  time consumed by placer: 18 secs 
@@ -408,33 +413,29 @@ Total CPU time to Placer completion: 18 secs
 
 Starting Router
 
-Phase 1: 10549 unrouted;       REAL time: 24 secs 
+Phase 1: 10204 unrouted;       REAL time: 24 secs 
 
-Phase 2: 9184 unrouted;       REAL time: 26 secs 
+Phase 2: 8973 unrouted;       REAL time: 25 secs 
 
-Phase 3: 1895 unrouted;       REAL time: 27 secs 
+Phase 3: 1775 unrouted;       REAL time: 25 secs 
 
-Phase 4: 1895 unrouted; (298986)      REAL time: 27 secs 
+Phase 4: 1775 unrouted; (388322)      REAL time: 25 secs 
 
-Phase 5: 1905 unrouted; (0)      REAL time: 27 secs 
+Phase 5: 1779 unrouted; (0)      REAL time: 26 secs 
 
-Phase 6: 0 unrouted; (440)      REAL time: 28 secs 
+Phase 6: 0 unrouted; (0)      REAL time: 26 secs 
 
-Phase 7: 0 unrouted; (440)      REAL time: 29 secs 
+Phase 7: 0 unrouted; (0)      REAL time: 27 secs 
 
-Phase 8: 0 unrouted; (440)      REAL time: 29 secs 
+Phase 8: 0 unrouted; (0)      REAL time: 27 secs 
 
-Phase 9: 0 unrouted; (400)      REAL time: 29 secs 
+Phase 9: 0 unrouted; (0)      REAL time: 27 secs 
 
-Phase 10: 0 unrouted; (400)      REAL time: 30 secs 
-
-Phase 11: 0 unrouted; (400)      REAL time: 30 secs 
-
-Phase 12: 0 unrouted; (348)      REAL time: 31 secs 
+Phase 10: 0 unrouted; (0)      REAL time: 28 secs 
 
 
-Total REAL time to Router completion: 31 secs 
-Total CPU time to Router completion: 31 secs 
+Total REAL time to Router completion: 28 secs 
+Total CPU time to Router completion: 28 secs 
 
 Partition Implementation Status
 -------------------------------
@@ -452,16 +453,18 @@ Generating Clock Report
 +---------------------+--------------+------+------+------------+-------------+
 |        Clock Net    |   Resource   |Locked|Fanout|Net Skew(ns)|Max Delay(ns)|
 +---------------------+--------------+------+------+------------+-------------+
+|         clock_65mhz |     BUFGMUX0S| No   |   45 |  0.383     |  2.262      |
++---------------------+--------------+------+------+------------+-------------+
+|   clock_27mhz_IBUFG |     BUFGMUX3P| No   |  590 |  0.570     |  2.449      |
++---------------------+--------------+------+------+------------+-------------+
+| debug_display/clock |     BUFGMUX4S| No   |   62 |  0.233     |  2.386      |
++---------------------+--------------+------+------+------------+-------------+
 |analyzer1_clock_OBUF |              |      |      |            |             |
-|                     |     BUFGMUX7S| No   |   34 |  0.319     |  2.532      |
+|                     |     BUFGMUX7S| No   |   34 |  0.407     |  2.540      |
 +---------------------+--------------+------+------+------------+-------------+
-|   clock_27mhz_IBUFG |     BUFGMUX3P| No   |  745 |  0.662     |  2.541      |
+|     db_e/temp_clean |         Local|      |   24 |  0.000     |  1.658      |
 +---------------------+--------------+------+------+------------+-------------+
-|         clock_65mhz |     BUFGMUX0S| No   |   45 |  0.295     |  2.188      |
-+---------------------+--------------+------+------+------------+-------------+
-|     db_e/temp_clean |         Local|      |  104 |  0.013     |  2.551      |
-+---------------------+--------------+------+------+------------+-------------+
-|   one_hz_div/enable |         Local|      |   14 |  0.000     |  1.963      |
+|   one_hz_div/enable |         Local|      |   11 |  0.000     |  1.614      |
 +---------------------+--------------+------+------+------------+-------------+
 
 * Net Skew is the difference between the minimum and maximum routing
@@ -480,17 +483,20 @@ Asterisk (*) preceding a constraint indicates it was not met.
   Constraint                                |  Check  | Worst Case |  Best Case | Timing |   Timing   
                                             |         |    Slack   | Achievable | Errors |    Score   
 ------------------------------------------------------------------------------------------------------
-  Autotimespec constraint for clock net ana | SETUP   |         N/A|    22.910ns|     N/A|           0
+  Autotimespec constraint for clock net clo | SETUP   |         N/A|    19.334ns|     N/A|           0
+  ck_65mhz                                  | HOLD    |     1.873ns|            |       0|           0
+------------------------------------------------------------------------------------------------------
+  Autotimespec constraint for clock net clo | SETUP   |         N/A|    15.499ns|     N/A|           0
+  ck_27mhz_IBUFG                            | HOLD    |     0.911ns|            |       0|           0
+------------------------------------------------------------------------------------------------------
+  Autotimespec constraint for clock net deb | SETUP   |         N/A|    11.399ns|     N/A|           0
+  ug_display/clock                          | HOLD    |     1.334ns|            |       0|           0
+------------------------------------------------------------------------------------------------------
+  Autotimespec constraint for clock net ana | SETUP   |         N/A|    28.738ns|     N/A|           0
   lyzer1_clock_OBUF                         | HOLD    |     1.391ns|            |       0|           0
 ------------------------------------------------------------------------------------------------------
-  Autotimespec constraint for clock net clo | SETUP   |         N/A|    15.094ns|     N/A|           0
-  ck_27mhz_IBUFG                            | HOLD    |     0.870ns|            |       0|           0
-------------------------------------------------------------------------------------------------------
-  Autotimespec constraint for clock net one | SETUP   |         N/A|     1.930ns|     N/A|           0
-  _hz_div/enable                            | HOLD    |     1.393ns|            |       0|           0
-------------------------------------------------------------------------------------------------------
-  Autotimespec constraint for clock net clo | SETUP   |         N/A|    20.295ns|     N/A|           0
-  ck_65mhz                                  | HOLD    |     2.002ns|            |       0|           0
+  Autotimespec constraint for clock net one | SETUP   |         N/A|     1.861ns|     N/A|           0
+  _hz_div/enable                            | HOLD    |     1.391ns|            |       0|           0
 ------------------------------------------------------------------------------------------------------
 
 
@@ -503,18 +509,18 @@ Generating Pad Report.
 
 All signals are completely routed.
 
-WARNING:Par:283 - There are 301 loadless signals in this design. This design will cause Bitgen to issue DRC warnings.
+WARNING:Par:283 - There are 306 loadless signals in this design. This design will cause Bitgen to issue DRC warnings.
 
-Total REAL time to PAR completion: 40 secs 
-Total CPU time to PAR completion: 35 secs 
+Total REAL time to PAR completion: 35 secs 
+Total CPU time to PAR completion: 31 secs 
 
-Peak Memory Usage:  778 MB
+Peak Memory Usage:  769 MB
 
 Placement: Completed - No errors found.
 Routing: Completed - No errors found.
 
 Number of error messages: 0
-Number of warning messages: 303
+Number of warning messages: 308
 Number of info messages: 2
 
 Writing design to file lab5.ncd

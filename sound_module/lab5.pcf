@@ -1,5 +1,5 @@
 //! **************************************************************************
-// Written by: Map K.39 on Tue Dec 05 18:54:16 2017
+// Written by: Map K.39 on Wed Dec 06 21:01:34 2017
 //! **************************************************************************
 
 SCHEMATIC START;
@@ -326,29 +326,29 @@ COMP "user1<20>" LOCATE = SITE "E13" LEVEL 1;
 COMP "user1<12>" LOCATE = SITE "C10" LEVEL 1;
 COMP "user1<21>" LOCATE = SITE "F15" LEVEL 1;
 COMP "user1<13>" LOCATE = SITE "C11" LEVEL 1;
-COMP "user1<30>" LOCATE = SITE "J14" LEVEL 1;
 COMP "user1<22>" LOCATE = SITE "B14" LEVEL 1;
 COMP "user1<14>" LOCATE = SITE "C12" LEVEL 1;
-COMP "user1<31>" LOCATE = SITE "J15" LEVEL 1;
+COMP "user1<30>" LOCATE = SITE "J14" LEVEL 1;
 COMP "user1<23>" LOCATE = SITE "B15" LEVEL 1;
 COMP "user1<15>" LOCATE = SITE "C13" LEVEL 1;
+COMP "user1<31>" LOCATE = SITE "J15" LEVEL 1;
 COMP "ram1_cen_b" LOCATE = SITE "V5" LEVEL 1;
-COMP "user1<24>" LOCATE = SITE "H9" LEVEL 1;
 COMP "user1<16>" LOCATE = SITE "F7" LEVEL 1;
-COMP "user1<25>" LOCATE = SITE "G9" LEVEL 1;
+COMP "user1<24>" LOCATE = SITE "H9" LEVEL 1;
 COMP "user1<17>" LOCATE = SITE "F8" LEVEL 1;
-COMP "user1<26>" LOCATE = SITE "H11" LEVEL 1;
+COMP "user1<25>" LOCATE = SITE "G9" LEVEL 1;
 COMP "user1<18>" LOCATE = SITE "E9" LEVEL 1;
 COMP "user2<10>" LOCATE = SITE "E16" LEVEL 1;
-COMP "user1<27>" LOCATE = SITE "F12" LEVEL 1;
+COMP "user1<26>" LOCATE = SITE "H11" LEVEL 1;
 COMP "user1<19>" LOCATE = SITE "E11" LEVEL 1;
 COMP "user2<11>" LOCATE = SITE "E18" LEVEL 1;
-COMP "user1<28>" LOCATE = SITE "F14" LEVEL 1;
+COMP "user1<27>" LOCATE = SITE "F12" LEVEL 1;
 COMP "user2<20>" LOCATE = SITE "D23" LEVEL 1;
 COMP "user2<12>" LOCATE = SITE "E20" LEVEL 1;
-COMP "user1<29>" LOCATE = SITE "G15" LEVEL 1;
+COMP "user1<28>" LOCATE = SITE "F14" LEVEL 1;
 COMP "user2<21>" LOCATE = SITE "C24" LEVEL 1;
 COMP "user2<13>" LOCATE = SITE "E22" LEVEL 1;
+COMP "user1<29>" LOCATE = SITE "G15" LEVEL 1;
 COMP "user2<30>" LOCATE = SITE "B26" LEVEL 1;
 COMP "user2<22>" LOCATE = SITE "D25" LEVEL 1;
 COMP "user2<14>" LOCATE = SITE "F23" LEVEL 1;
