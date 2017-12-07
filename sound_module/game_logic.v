@@ -249,11 +249,15 @@ endmodule
 //																									 //
 //////////////////////////////////////////////////////////////////////////////
 
-module mole(	input clk, reset,
+module mole #(parameter MAX_ITEM = 4'd5) 
+				(	input clk, reset,
 					input [22:0] music_address,
 					input [3:0] game_state,
+					input diy_playback,
+					input total_moles,
 					input one_hz_enable,
-					output request_mole );
+					output request_mole);
+					//output lookup_index);
 
 /* Memory address popup pseudocode
 	
@@ -281,7 +285,7 @@ reg [367:0] addresses = {23'h6CDE, 23'h8B00, 23'hE900, 23'h14900,
 										 23'h17B00, 23'h1B100, 23'h21F00, 23'h28000,
 										 23'h2E500, 23'h31A00, 23'h35900, 23'h39500,
 										 23'h3DA00, 23'h41800, 23'h47800, 23'h4FD00};
-
+reg [23:0] current_address;
 always @(posedge clk) begin
 	if (reset || game_state == 4'b0) begin
 		//counter <= 4'b0;
@@ -316,6 +320,8 @@ module gameState(input clk,
 						input request_mole,
 						input expired,
 						input diy_mode,
+						input ready_to_use,
+						input popup_done,
 						input [2:0] random_mole_location,
 						// Future input: record
 						output start_timer,
@@ -334,7 +340,7 @@ parameter [3:0] REQUEST_MOLE			= 4'd3;		// Request a mole to be displayed (pulse
 parameter [3:0] MOLE_COUNTDOWN		= 4'd4;		// Mole displayed until stomped/expired 
 parameter [3:0] MOLE_MISSED			= 4'd5;		// Lives counter decremented (pulse)
 parameter [3:0] MOLE_WHACKED			= 4'd6;		// Score counter incremented (pulse)
-parameter [3:0] SAFE_STEP_DELAY		= 4'd7;		// Prevent repeated lives decrement
+// Deleted Safe Step Delay in favor of Mole Missed_Sound and Mole_Whacked Sound
 parameter [3:0] GAME_OVER				= 4'd8;		// Display Game Over Screen
 parameter [3:0] MOLE_MISSED_SOUND	= 4'd9;		// Extra time for sound
 parameter [3:0] MOLE_WHACKED_SOUND	= 4'd10;		// Extra time for sound
@@ -342,7 +348,11 @@ parameter [3:0] MOLE_WHACKED_SOUND	= 4'd10;		// Extra time for sound
 // Placeholder variables for DIY mode
 parameter [3:0] RECORD_DIY_BEGIN 	= 4'd11;		// Begin Recording Moles
 parameter [3:0] RECORD_DIY_IN_PROGRESS = 4'd12;// Begin Recording Moles
-parameter [3:0] RECORD_DIY_END		= 4'd13;		// Recording ended
+
+// New Fancy Mole Display States
+parameter [3:0] MOLE_ASCENDING				= 4'd13;
+parameter [3:0] HAPPY_MOLE_DESCENDING		= 4'd14;
+parameter [3:0] DEAD_MOLE_DESCENDING		= 4'd15;
 
 // State machine variables
 reg [3:0] state = 4'b0;
@@ -378,15 +388,18 @@ always @(*) begin
 			IDLE : next_state = (start) ? GAME_START_DELAY : (diy_mode) ? RECORD_DIY_BEGIN : IDLE;
 			GAME_START_DELAY: next_state = (expired) ? GAME_ONGOING : GAME_START_DELAY;
 			GAME_ONGOING : next_state = (lives == 0) ? GAME_OVER : (request_mole) ? REQUEST_MOLE : GAME_ONGOING;
-			REQUEST_MOLE : next_state = MOLE_COUNTDOWN;
+			REQUEST_MOLE : next_state = MOLE_ASCENDING;
 			MOLE_COUNTDOWN : next_state = (expired || misstep) ? MOLE_MISSED : (whacked) ? MOLE_WHACKED : MOLE_COUNTDOWN;
 			MOLE_MISSED : next_state = MOLE_MISSED_SOUND;
 			MOLE_WHACKED : next_state = MOLE_WHACKED_SOUND;
-			MOLE_MISSED_SOUND : next_state = (expired) ? GAME_ONGOING : MOLE_MISSED_SOUND;
-			MOLE_WHACKED_SOUND : next_state = (expired) ? GAME_ONGOING : MOLE_WHACKED_SOUND;
+			MOLE_MISSED_SOUND : next_state = (expired) ? HAPPY_MOLE_DESCENDING : MOLE_MISSED_SOUND;
+			MOLE_WHACKED_SOUND : next_state = (expired) ? DEAD_MOLE_DESCENDING: MOLE_WHACKED_SOUND;
 			GAME_OVER : next_state = (expired) ? IDLE : GAME_OVER;
-			RECORD_DIY_BEGIN: next_state = RECORD_DIY_IN_PROGRESS; //i only made changes so i could test very sketchly, probably want to fix this and use correct signals
-			RECORD_DIY_IN_PROGRESS: next_state = (!diy_mode) ? IDLE : RECORD_DIY_IN_PROGRESS; 
+			RECORD_DIY_BEGIN: next_state = RECORD_DIY_IN_PROGRESS; 
+			RECORD_DIY_IN_PROGRESS: next_state = (!diy_mode || ready_to_use) ? IDLE : RECORD_DIY_IN_PROGRESS; 
+			MOLE_ASCENDING : next_state = (misstep) ? MOLE_MISSED : (whacked) ? MOLE_WHACKED : (popup_done) ? MOLE_COUNTDOWN : MOLE_ASCENDING;
+			HAPPY_MOLE_DESCENDING : next_state = (popup_done) ? GAME_ONGOING : HAPPY_MOLE_DESCENDING;
+			DEAD_MOLE_DESCENDING : next_state = (popup_done) ? GAME_ONGOING : DEAD_MOLE_DESCENDING;
 			default : next_state = IDLE;
 		endcase
 	end

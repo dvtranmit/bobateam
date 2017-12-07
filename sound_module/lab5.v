@@ -632,6 +632,8 @@ module lab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 	
 	wire diy_mode;
 	debounce_ara db_diy(.clock(clock_27mhz), .reset(reset), .noisy(switch[7]), .clean(diy_mode));
+	wire diy_playback;
+	debounce_ara db_diypb(.clock(clock_27mhz), .reset(reset), .noisy(switch[6]), .clean(diy_playback));
 
 ///////////////////////////////////////////
 //		CONVERT FLIP-FLOP BUTTON INPUTS	  //
@@ -704,18 +706,31 @@ module lab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 	wire [3:0] display_state;
 	wire request_mole;
 	wire [22:0] music_address;
-	mole getmole(.clk(clock_27mhz), .reset(enter),
+	parameter MAX_ITEM = 8'd128; 
+	parameter INDEX_BITS = 8'd127; //depends on how many bits you might need to count up to max number of items 
+	wire [MAX_ITEM-1:0] items; //this is a *count* of the number items stored in bram!!!!
+	wire [MAX_ITEM-1:0] lookup_index;
+	mole  #(.MAX_ITEM(MAX_ITEM)) 
+			getmole (.clk(clock_27mhz), .reset(enter),
 						.music_address(music_address),
 						.game_state(display_state),
+						.diy_playback(diy_playback),
+						.total_moles(items),
 						.one_hz_enable(one_hz_enable),
 						.request_mole(request_mole));
+						//.lookup_index(lookup_index));
 
 	wire [1:0] lives;
 	wire [7:0] score;
+	wire ready_to_use;
+	wire [23:0]index_address;
+	wire [3:0]index_location;
 	gameState game(.clk(clock_27mhz), .misstep(misstep),
 						.whacked(whacked), .start(up),
 						.reset(enter), .request_mole(request_mole),
-						.expired(expired), .diy_mode(diy_mode), .random_mole_location(random_mole_location),
+						.expired(expired), .diy_mode(diy_mode),
+						.ready_to_use(ready_to_use),
+						.random_mole_location(random_mole_location),
 						.start_timer(start_timer), .timer_value(timer_value),
 						.display_state(display_state), .mole_location(mole_location), 
 						.lives(lives), .score(score));
@@ -768,13 +783,7 @@ module lab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
    assign analyzer3_data = {from_ac97_data, to_ac97_data};
 
 	//diy game module
-	parameter MAX_ITEM = 8'd128; 
-	parameter INDEX_BITS = 8'd127; //depends on how many bits you might need to count up to max number of items 
-	wire ready_to_use;
-	wire [23:0]index_address;
-	wire [3:0]index_location;
-	wire [MAX_ITEM-1:0] lookup_index;
-	wire [MAX_ITEM-1:0] items; //this is a *count* of the number items stored in bram!!!!
+
 	wire [2:0] state;
 	assign lookup_index = (switch[6:3] <= items-1) ? switch[6:3] : 0 ; 	
 
@@ -830,6 +839,8 @@ module lab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
    assign vga_out_pixel_clock = ~clock_65mhz;
    assign vga_out_hsync = hs;
    assign vga_out_vsync = vs;	
+
+
 
 /******************************************************************************/
 //DAVIS CODE HERE
@@ -1278,7 +1289,7 @@ endmodule
 
 ////////////////////////////////////////////////////////////////////////////////
 //
-// NORMAL MOLE MODULE
+// MOLE MODULES
 //
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -1286,13 +1297,13 @@ module normalmole
 	#(parameter WIDTH = 212, HEIGHT = 256)
 	(input pixel_clk,
     input [10:0] x, hcount,
-    input [9:0] y, vcount,
+    input [9:0] y, y_permanent, vcount, 
     output reg [23:0] pixel
     );
 	wire [15:0] image_addr;
 	wire [3:0] image_bits, red_mapped, green_mapped, blue_mapped;
 	always @ (posedge pixel_clk) begin
-		if ((hcount >= x && hcount < (x + WIDTH)) && (vcount >= y && vcount < (y + HEIGHT)))
+		if ((hcount >= x && hcount < (x + WIDTH)) && (vcount >= y && vcount < (y_permanent + HEIGHT)))
 			pixel <= {red_mapped,4'b0, green_mapped,4'b0, blue_mapped,4'b0};
 		else
 			pixel <= 0;
@@ -1302,6 +1313,123 @@ module normalmole
 	normalmole_red_rom rcm (.clka(pixel_clk), .addra(image_bits), .douta(red_mapped));
 	normalmole_green_rom gcm (.clka(pixel_clk), .addra(image_bits), .douta(green_mapped));
 	normalmole_blue_rom bcm (.clka(pixel_clk), .addra(image_bits), .douta(blue_mapped));	
+endmodule
+
+module deadmole
+	#(parameter WIDTH = 191, HEIGHT = 256)
+	(input pixel_clk,
+    input [10:0] x, hcount,
+    input [9:0] y, y_permanent,vcount,
+    output reg [23:0] pixel
+    );
+	wire [15:0] image_addr;
+	wire [3:0] image_bits, red_mapped, green_mapped, blue_mapped;
+	always @ (posedge pixel_clk) begin
+		if ((hcount >= x && hcount < (x + WIDTH)) && (vcount >= y && vcount < (y_permanent + HEIGHT)))
+			pixel <= {red_mapped,4'b0, green_mapped,4'b0, blue_mapped,4'b0};
+		else
+			pixel <= 0;
+	end
+	assign image_addr = (hcount - x) + (vcount - y) * WIDTH;
+	dead_image_rom rom1_dead(.clka(pixel_clk),.addra(image_addr),.douta(image_bits));
+	dead_red_rom rcm_dead (.clka(pixel_clk), .addra(image_bits), .douta(red_mapped));
+	dead_green_rom gcm_dead (.clka(pixel_clk), .addra(image_bits), .douta(green_mapped));
+	dead_blue_rom bcm_dead (.clka(pixel_clk), .addra(image_bits), .douta(blue_mapped));	
+endmodule
+
+module happymole
+	#(parameter WIDTH = 207, HEIGHT = 256)
+	(input pixel_clk,
+    input [10:0] x, hcount,
+    input [9:0] y, y_permanent, vcount,
+	 input [9:0] height,
+    output reg [23:0] pixel
+    );
+	wire [15:0] image_addr;
+	wire [3:0] image_bits, red_mapped, green_mapped, blue_mapped;
+	always @ (posedge pixel_clk) begin
+		if ((hcount >= x && hcount < (x + WIDTH)) && (vcount >= y && vcount < (y_permanent + HEIGHT)))
+			pixel <= {red_mapped,4'b0, green_mapped,4'b0, blue_mapped,4'b0};
+		else
+			pixel <= 0;
+	end
+	assign image_addr = (hcount - x) + (vcount - y) * WIDTH;
+	happy_image_rom rom1_happy(.clka(pixel_clk),.addra(image_addr),.douta(image_bits));
+	happy_red_rom rcm_happy (.clka(pixel_clk), .addra(image_bits), .douta(red_mapped));
+	happy_green_rom gcm_happy (.clka(pixel_clk), .addra(image_bits), .douta(green_mapped));
+	happy_blue_rom bcm_happy (.clka(pixel_clk), .addra(image_bits), .douta(blue_mapped));	
+endmodule
+
+////////////////////////////////////////////////////////////////////////////////
+//
+// Screens
+//
+////////////////////////////////////////////////////////////////////////////////
+
+module whackamole
+	#(parameter WIDTH = 1020, HEIGHT = 119)
+	(input pixel_clk,
+    input [10:0] x, hcount,
+    input [9:0] y, vcount,
+    output reg [23:0] pixel
+    );
+	wire [16:0] image_addr;
+	wire [3:0] image_bits, red_mapped, green_mapped, blue_mapped;
+	always @ (posedge pixel_clk) begin
+		if ((hcount >= x && hcount < (x + WIDTH)) && (vcount >= y && vcount < (y + HEIGHT)))
+			pixel <= {red_mapped,4'b0, green_mapped,4'b0, blue_mapped,4'b0};
+		else
+			pixel <= 0;
+	end
+	assign image_addr = (hcount - x) + (vcount - y) * WIDTH;
+	whackrom rom1_whack(.clka(pixel_clk),.addra(image_addr),.douta(image_bits));
+	whack_red_rom rcm_whack (.clka(pixel_clk), .addra(image_bits), .douta(red_mapped));
+	whack_green_rom gcm_whack (.clka(pixel_clk), .addra(image_bits), .douta(green_mapped));
+	whack_blue_rom bcm_whack (.clka(pixel_clk), .addra(image_bits), .douta(blue_mapped));	
+endmodule
+
+module startscreen
+	#(parameter WIDTH = 1020, HEIGHT = 119)
+	(input pixel_clk,
+    input [10:0] x, hcount,
+    input [9:0] y, vcount,
+    output reg [23:0] pixel
+    );
+	wire [16:0] image_addr;
+	wire [3:0] image_bits, red_mapped, green_mapped, blue_mapped;
+	always @ (posedge pixel_clk) begin
+		if ((hcount >= x && hcount < (x + WIDTH)) && (vcount >= y && vcount < (y + HEIGHT)))
+			pixel <= {red_mapped,4'b0, green_mapped,4'b0, blue_mapped,4'b0};
+		else
+			pixel <= 0;
+	end
+	assign image_addr = (hcount - x) + (vcount - y) * WIDTH;
+	startrom rom1_start(.clka(pixel_clk),.addra(image_addr),.douta(image_bits));
+	start_red_rom rcm_start (.clka(pixel_clk), .addra(image_bits), .douta(red_mapped));
+	start_green_rom gcm_start (.clka(pixel_clk), .addra(image_bits), .douta(green_mapped));
+	start_blue_rom bcm_start (.clka(pixel_clk), .addra(image_bits), .douta(blue_mapped));	
+endmodule
+
+module gameover
+	#(parameter WIDTH = 1020, HEIGHT = 144)
+	(input pixel_clk,
+    input [10:0] x, hcount,
+    input [9:0] y, vcount,
+    output reg [23:0] pixel
+    );
+	wire [16:0] image_addr;
+	wire [3:0] image_bits, red_mapped, green_mapped, blue_mapped;
+	always @ (posedge pixel_clk) begin
+		if ((hcount >= x && hcount < (x + WIDTH)) && (vcount >= y && vcount < (y + HEIGHT)))
+			pixel <= {red_mapped,4'b0, green_mapped,4'b0, blue_mapped,4'b0};
+		else
+			pixel <= 0;
+	end
+	assign image_addr = (hcount - x) + (vcount - y) * WIDTH;
+	gameoverrom rom1_end(.clka(pixel_clk),.addra(image_addr),.douta(image_bits));
+	gameover_red_rom rcm_end (.clka(pixel_clk), .addra(image_bits), .douta(red_mapped));
+	gameover_green_rom gcm_end (.clka(pixel_clk), .addra(image_bits), .douta(green_mapped));
+	gameover_blue_rom bcm_end (.clka(pixel_clk), .addra(image_bits), .douta(blue_mapped));	
 endmodule
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -1314,7 +1442,8 @@ module displaymole(	input clk, clk2, reset,
 							input [2:0] mole_location,
 							input [10:0] hcount,
 							input [9:0]  vcount,
-							output [23:0] pixel);
+							output [23:0] pixel,
+							output reg popup_done = 0);
 
 	// States
 	reg [3:0] IDLE 					= 4'd0;		// Check if user has pressed start
@@ -1324,54 +1453,97 @@ module displaymole(	input clk, clk2, reset,
 	reg [3:0] MOLE_COUNTDOWN		= 4'd4;		// Mole displayed until stomped/expired 
 	reg [3:0] MOLE_MISSED			= 4'd5;		// Lives counter decremented (pulse)
 	reg [3:0] MOLE_WHACKED			= 4'd6;		// Score counter incremented (pulse)
-	reg [3:0] SAFE_STEP_DELAY		= 4'd7;		// Prevent repeated lives decrement
 	reg [3:0] GAME_OVER				= 4'd8;		// Display Game Over Screen
 	reg [3:0] MOLE_MISSED_SOUND	= 4'd9;		// Extra time for sound
 	reg [3:0] MOLE_WHACKED_SOUND	= 4'd10;		// Extra time for sound
+	// Placeholder variables for DIY mode
+	parameter [3:0] RECORD_DIY_BEGIN 	= 4'd11;		// Begin Recording Moles
+	parameter [3:0] RECORD_DIY_IN_PROGRESS = 4'd12;// Begin Recording Moles
+
+	// New Fancy Mole Display States
+	parameter [3:0] MOLE_ASCENDING				= 4'd13;
+	parameter [3:0] HAPPY_MOLE_DESCENDING		= 4'd14;
+	parameter [3:0] DEAD_MOLE_DESCENDING		= 4'd15;
 
    // TOP LEFT MOLE CORNERS
 	parameter [10:0] x1 = 65;
-	parameter [9:0] y1 = 0;
-	parameter [10:0] x2 = 406;
-	parameter [9:0] y2 = 0;
+	parameter [9:0] y1p = 0;		// The "p" stands for permanent (the non-moving border of a picture)
+	parameter [10:0] x2 = 406;	// It also happens to stand for parameter because these don't change (:
+	parameter [9:0] y2p = 0;
 	parameter [10:0] x3 = 747;
-	parameter [9:0] y3 = 0;
+	parameter [9:0] y3p = 0;
 	parameter [10:0] x4 = 65;
-	parameter [9:0] y4 = 256;
+	parameter [9:0] y4p = 256;
 	parameter [10:0] x5 = 747;
-	parameter [9:0] y5 = 256;
+	parameter [9:0] y5p = 256;
 	parameter [10:0] x6 = 65;
-	parameter [9:0] y6 = 512;
+	parameter [9:0] y6p = 512;
 	parameter [10:0] x7 = 406;
-	parameter [9:0] y7 = 512;
+	parameter [9:0] y7p = 512;
 	parameter [10:0] x8 = 747;
-	parameter [9:0] y8 = 512;
+	parameter [9:0] y8p = 512;
 
+
+	wire mole_enable = 0;
+	wire mole_popup_clock;
+	mole_divider mole_divider1(.clk(clk2), .mole_popup_clock(mole_popup_clock))
+	always @ (posedge mole_clock) begin
+		mole_enable <= ~mole_enable;
+	end
 	// Assign x y location based on input from game state
+	// y_permanent assigns the bottom border and selects from parameters above
 	reg [10:0] x;
-	reg [9:0] y;
+	reg [9:0] y_permanent;
+	reg [9:0] y_change;
 	always@(posedge clk2) begin
 		if (reset) begin
 			x <= x1;
-			y <= y1;
+			y_permanent <= y1p;
 		end else if (state == REQUEST_MOLE) begin
 			case(mole_location)
-				3'd0: begin x <= x1; y <= y1; end
-				3'd1: begin x <= x2; y <= y2; end
-				3'd2: begin x <= x3; y <= y3; end
-				3'd3: begin x <= x4; y <= y4; end
-				3'd4: begin x <= x5; y <= y5; end
-				3'd5: begin x <= x6; y <= y6; end
-				3'd6: begin x <= x7; y <= y7; end
-				3'd7: begin x <= x8; y <= y8; end
+				3'd0: begin x <= x1; y_permanent <= y1p; y_change <= 255 + y1p; end
+				3'd1: begin x <= x2; y_permanent <= y2p; y_change <= 255 + y2p; end
+				3'd2: begin x <= x3; y_permanent <= y3p; y_change <= 255 + y3p; end
+				3'd3: begin x <= x4; y_permanent <= y4p; y_change <= 255 + y4p; end
+				3'd4: begin x <= x5; y_permanent <= y5p; y_change <= 255 + y5p; end
+				3'd5: begin x <= x6; y_permanent <= y6p; y_change <= 255 + y6p; end
+				3'd6: begin x <= x7; y_permanent <= y7p; y_change <= 255 + y7p; end
+				3'd7: begin x <= x8; y_permanent <= y8p; y_change <= 255 + y8p; end
 			endcase
+			popup_done <= 0;
+		end else if (state == MOLE_ASCENDING) begin
+			if (popup_done == 0) begin
+				if (y_change < 256 + y_permanent && y_change > y_permanent)
+					y_change <= (mole_enable) ? y_change - 1 : y_change;
+				else if (y_change == y_permanent)
+					popup_done <= 1;
+			end
 		end
 	end
 	
-	wire [23:0] temp_pixel;
-	normalmole #(.WIDTH(212),.HEIGHT(256))
-			mole1(.pixel_clk(clk),.x(x),.hcount(hcount),.y(y),.vcount(vcount),.pixel(temp_pixel));
 
-	assign pixel = (state == REQUEST_MOLE || state == MOLE_COUNTDOWN) ? temp_pixel : 24'h0;
+	wire [23:0] normal_pixel, ascending_pixel;
+	normalmole #(.WIDTH(212),.HEIGHT(256))
+			normalmole(.pixel_clk(clk),.x(x),.hcount(hcount),.y(y_change),
+							.y_permanent(y_permanent), .vcount(vcount),.pixel(normal_pixel));
+
+	assign pixel = (state == MOLE_ASCENDING || state == MOLE_COUNTDOWN) ? normal_pixel : 24'h0;
 endmodule
-		
+
+////////////////////////////////////////////////////////////////////////////////
+//
+// MOLE DIVIDER
+//
+////////////////////////////////////////////////////////////////////////////////
+
+module mole_divider(input clk, output reg mole_popup_clock);
+	reg [26:0] count = 0;
+	always @ (posedge clk) begin
+		mole_popup_clock <= 0;
+		count <= count + 1;
+		if (count == 25'd33750) begin
+			mole_popup_clock <= 1;
+			count <= 0;
+		end
+	end
+endmodule 
