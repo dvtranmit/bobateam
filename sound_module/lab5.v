@@ -1483,13 +1483,9 @@ module displaymole(	input clk, clk2, reset,
 	parameter [10:0] x8 = 747;
 	parameter [9:0] y8p = 512;
 
+	wire mole_pulse;
+	mole_divider mole_divider1(.clk(clk2), .mole_popup_clock(mole_pulse));
 
-	wire mole_enable = 0;
-	wire mole_popup_clock;
-	mole_divider mole_divider1(.clk(clk2), .mole_popup_clock(mole_popup_clock))
-	always @ (posedge mole_clock) begin
-		mole_enable <= ~mole_enable;
-	end
 	// Assign x y location based on input from game state
 	// y_permanent assigns the bottom border and selects from parameters above
 	reg [10:0] x;
@@ -1513,21 +1509,38 @@ module displaymole(	input clk, clk2, reset,
 			popup_done <= 0;
 		end else if (state == MOLE_ASCENDING) begin
 			if (popup_done == 0) begin
-				if (y_change < 256 + y_permanent && y_change > y_permanent)
-					y_change <= (mole_enable) ? y_change - 1 : y_change;
+				if (y_change <= 256 + y_permanent && y_change > y_permanent)
+					y_change <= (mole_pulse) ? y_change - 1 : y_change;
 				else if (y_change == y_permanent)
 					popup_done <= 1;
 			end
+		end else if (state == HAPPY_MOLE_DESCENDING) begin
+			if (y_change < 256 + y_permanent && y_change >= y_permanent)
+				y_change <= (mole_pulse) ? y_change + 1 : y_change;
+			else if (y_change == 256 + y_permanent)
+				popup_done <= 1;
+		end else if (state == DEAD_MOLE_DESCENDING) begin
+			if (y_change < 256 + y_permanent && y_change >= y_permanent)
+				y_change <= (mole_pulse) ? y_change + 1 : y_change;
+			else if (y_change == 256 + y_permanent)
+				popup_done <= 1;
 		end
 	end
 	
 
-	wire [23:0] normal_pixel, ascending_pixel;
+	wire [23:0] normal_pixel, dead_pixel, happy_pixel;
 	normalmole #(.WIDTH(212),.HEIGHT(256))
-			normalmole(.pixel_clk(clk),.x(x),.hcount(hcount),.y(y_change),
+			normalmole1(.pixel_clk(clk),.x(x),.hcount(hcount),.y(y_change),
 							.y_permanent(y_permanent), .vcount(vcount),.pixel(normal_pixel));
-
-	assign pixel = (state == MOLE_ASCENDING || state == MOLE_COUNTDOWN) ? normal_pixel : 24'h0;
+	deadmole #(.WIDTH(191),.HEIGHT(256))
+			deadmole1(.pixel_clk(clk),.x(x),.hcount(hcount),.y(y_change),
+							.y_permanent(y_permanent), .vcount(vcount),.pixel(dead_pixel));
+	happymole #(.WIDTH(207),.HEIGHT(256))
+			happymole1(.pixel_clk(clk),.x(x),.hcount(hcount),.y(y_change),
+							.y_permanent(y_permanent), .vcount(vcount),.pixel(happy_pixel));
+	assign pixel = (state == MOLE_ASCENDING || state == MOLE_COUNTDOWN) ? normal_pixel 
+							: (state == MOLE_MISSED || state == MOLE_MISSED_SOUND || state == HAPPY_MOLE_DESCENDING) ? happy_pixel
+							: (state == MOLE_WHACKED || state == MOLE_WHACKED_SOUND || state == DEAD_MOLE_DESCENDING) ? dead_pixel : 24'h0;
 endmodule
 
 ////////////////////////////////////////////////////////////////////////////////

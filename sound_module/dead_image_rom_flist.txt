@@ -1,0 +1,13 @@
+# Output products list for <dead_image_rom>
+dead_image_rom.asy
+dead_image_rom.mif
+dead_image_rom.ngc
+dead_image_rom.sym
+dead_image_rom.v
+dead_image_rom.veo
+dead_image_rom.vhd
+dead_image_rom.vho
+dead_image_rom.xco
+dead_image_rom_blk_mem_gen_v2_8_xst_1.ngc_xst.xrpt
+dead_image_rom_flist.txt
+dead_image_rom_xmdf.tcl

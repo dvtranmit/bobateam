@@ -1,0 +1,13 @@
+# Output products list for <whack_green_rom>
+whack_green_rom.asy
+whack_green_rom.mif
+whack_green_rom.ngc
+whack_green_rom.sym
+whack_green_rom.v
+whack_green_rom.veo
+whack_green_rom.vhd
+whack_green_rom.vho
+whack_green_rom.xco
+whack_green_rom_blk_mem_gen_v2_8_xst_1.ngc_xst.xrpt
+whack_green_rom_flist.txt
+whack_green_rom_xmdf.tcl

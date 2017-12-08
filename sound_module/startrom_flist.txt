@@ -1,0 +1,13 @@
+# Output products list for <startrom>
+startrom.asy
+startrom.mif
+startrom.ngc
+startrom.sym
+startrom.v
+startrom.veo
+startrom.vhd
+startrom.vho
+startrom.xco
+startrom_blk_mem_gen_v2_8_xst_1.ngc_xst.xrpt
+startrom_flist.txt
+startrom_xmdf.tcl

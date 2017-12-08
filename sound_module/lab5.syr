@@ -1,14 +1,14 @@
 Release 10.1.03 - xst K.39 (lin64)
 Copyright (c) 1995-2008 Xilinx, Inc.  All rights reserved.
 --> 
-Parameter TMPDIR set to /afs/athena.mit.edu/user/d/v/dvtran/Documents/6.111/finalproject/bobateam/sound_module/xst/projnav.tmp
+Parameter TMPDIR set to /afs/athena.mit.edu/user/v/s/vsouyang/Documents/6.111/bobateam/sound_module/xst/projnav.tmp
 
 
 Total REAL time to Xst completion: 0.00 secs
 Total CPU time to Xst completion: 0.02 secs
  
 --> 
-Parameter xsthdpdir set to /afs/athena.mit.edu/user/d/v/dvtran/Documents/6.111/finalproject/bobateam/sound_module/xst
+Parameter xsthdpdir set to /afs/athena.mit.edu/user/v/s/vsouyang/Documents/6.111/bobateam/sound_module/xst
 
 
 Total REAL time to Xst completion: 0.00 secs
@@ -126,8 +126,24 @@ Compiling verilog file "flash_manager.v" in library work
 Module <gameState> compiled
 Compiling verilog file "display_16hex.v" in library work
 Module <flash_manager> compiled
-Compiling verilog file "sound_modules.v" in library work
+Compiling verilog file "./whack_red_rom.v" in library work
 Module <display_16hex> compiled
+Compiling verilog file "./whack_green_rom.v" in library work
+Module <whack_red_rom> compiled
+Compiling verilog file "./whack_blue_rom.v" in library work
+Module <whack_green_rom> compiled
+Compiling verilog file "./whackrom.v" in library work
+Module <whack_blue_rom> compiled
+Compiling verilog file "./start_red_rom.v" in library work
+Module <whackrom> compiled
+Compiling verilog file "./start_green_rom.v" in library work
+Module <start_red_rom> compiled
+Compiling verilog file "./start_blue_rom.v" in library work
+Module <start_green_rom> compiled
+Compiling verilog file "./startrom.v" in library work
+Module <start_blue_rom> compiled
+Compiling verilog file "sound_modules.v" in library work
+Module <startrom> compiled
 Module <mole_adressss_locations> compiled
 Module <debounce_ara> compiled
 Module <sound_module> compiled
@@ -143,8 +159,32 @@ Compiling verilog file "normalmole_green_rom.v" in library work
 Module <normalmole_image_rom> compiled
 Compiling verilog file "./normalmole_blue_rom.v" in library work
 Module <normalmole_green_rom> compiled
-Compiling verilog file "lab5.v" in library work
+Compiling verilog file "./happy_red_rom.v" in library work
 Module <normalmole_blue_rom> compiled
+Compiling verilog file "happy_image_rom.v" in library work
+Module <happy_red_rom> compiled
+Compiling verilog file "./happy_green_rom.v" in library work
+Module <happy_image_rom> compiled
+Compiling verilog file "./happy_blue_rom.v" in library work
+Module <happy_green_rom> compiled
+Compiling verilog file "./gameover_red_rom.v" in library work
+Module <happy_blue_rom> compiled
+Compiling verilog file "./gameover_green_rom.v" in library work
+Module <gameover_red_rom> compiled
+Compiling verilog file "./gameover_blue_rom.v" in library work
+Module <gameover_green_rom> compiled
+Compiling verilog file "./gameoverrom.v" in library work
+Module <gameover_blue_rom> compiled
+Compiling verilog file "./dead_red_rom.v" in library work
+Module <gameoverrom> compiled
+Compiling verilog file "dead_image_rom.v" in library work
+Module <dead_red_rom> compiled
+Compiling verilog file "./dead_green_rom.v" in library work
+Module <dead_image_rom> compiled
+Compiling verilog file "./dead_blue_rom.v" in library work
+Module <dead_green_rom> compiled
+Compiling verilog file "lab5.v" in library work
+Module <dead_blue_rom> compiled
 Module <lab5audio> compiled
 Module <ac97> compiled
 Module <ac97commands> compiled
@@ -307,9 +347,19 @@ Analyzing hierarchy for module <timer> in library <work> with parameters.
 	EXPIRED = "10"
 	IDLE = "00"
 
+Analyzing hierarchy for module <mole_divider> in library <work>.
+
 Analyzing hierarchy for module <normalmole> in library <work> with parameters.
 	HEIGHT = "00000000000000000000000100000000"
 	WIDTH = "00000000000000000000000011010100"
+
+Analyzing hierarchy for module <deadmole> in library <work> with parameters.
+	HEIGHT = "00000000000000000000000100000000"
+	WIDTH = "00000000000000000000000010111111"
+
+Analyzing hierarchy for module <happymole> in library <work> with parameters.
+	HEIGHT = "00000000000000000000000100000000"
+	WIDTH = "00000000000000000000000011001111"
 
 Analyzing hierarchy for module <ascii2dots> in library <work>.
 
@@ -590,12 +640,26 @@ Analyzing module <displaymole> in library <work>.
 	y6p = 10'b1000000000
 	y7p = 10'b1000000000
 	y8p = 10'b1000000000
+WARNING:Xst:852 - "lab5.v" line 1539: Unconnected input port 'height' of instance 'happymole1' is tied to GND.
 Module <displaymole> is correct for synthesis.
+ 
+Analyzing module <mole_divider> in library <work>.
+Module <mole_divider> is correct for synthesis.
  
 Analyzing module <normalmole> in library <work>.
 	HEIGHT = 32'sb00000000000000000000000100000000
 	WIDTH = 32'sb00000000000000000000000011010100
 Module <normalmole> is correct for synthesis.
+ 
+Analyzing module <deadmole> in library <work>.
+	HEIGHT = 32'sb00000000000000000000000100000000
+	WIDTH = 32'sb00000000000000000000000010111111
+Module <deadmole> is correct for synthesis.
+ 
+Analyzing module <happymole> in library <work>.
+	HEIGHT = 32'sb00000000000000000000000100000000
+	WIDTH = 32'sb00000000000000000000000011001111
+Module <happymole> is correct for synthesis.
  
 Analyzing module <display_string> in library <work>.
 INFO:Xst:1433 - Contents of array <rdots> may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
@@ -901,6 +965,16 @@ Synthesizing Unit <coeffs31>.
 Unit <coeffs31> synthesized.
 
 
+Synthesizing Unit <mole_divider>.
+    Related source file is "lab5.v".
+    Found 1-bit register for signal <mole_popup_clock>.
+    Found 27-bit up counter for signal <count>.
+    Summary:
+	inferred   1 Counter(s).
+	inferred   1 D-type flip-flop(s).
+Unit <mole_divider> synthesized.
+
+
 Synthesizing Unit <ascii2dots>.
     Related source file is "lab5.v".
     Found 128x40-bit ROM for signal <char_dots$mux0000>.
@@ -1077,34 +1151,81 @@ WARNING:Xst:643 - "lab5.v" line 1311: The result of a 11x10-bit multiplication i
 Unit <normalmole> synthesized.
 
 
+Synthesizing Unit <deadmole>.
+    Related source file is "lab5.v".
+WARNING:Xst:643 - "lab5.v" line 1333: The result of a 11x10-bit multiplication is partially used. Only the 16 least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
+    Found 24-bit register for signal <pixel>.
+    Found 11-bit adder carry out for signal <add0000$addsub0000> created at line 1328.
+    Found 10-bit adder carry out for signal <add0001$addsub0000> created at line 1328.
+    Found 16-bit adder for signal <image_addr>.
+    Found 11-bit subtractor for signal <image_addr$addsub0000> created at line 1333.
+    Found 11x10-bit multiplier for signal <image_addr$mult0001> created at line 1333.
+    Found 13-bit subtractor for signal <image_addr$sub0000> created at line 1333.
+    Found 11-bit comparator greatequal for signal <pixel$cmp_ge0000> created at line 1328.
+    Found 10-bit comparator greatequal for signal <pixel$cmp_ge0001> created at line 1328.
+    Found 12-bit comparator less for signal <pixel$cmp_lt0000> created at line 1328.
+    Found 11-bit comparator less for signal <pixel$cmp_lt0001> created at line 1328.
+    Summary:
+	inferred  24 D-type flip-flop(s).
+	inferred   5 Adder/Subtractor(s).
+	inferred   1 Multiplier(s).
+	inferred   4 Comparator(s).
+Unit <deadmole> synthesized.
+
+
+Synthesizing Unit <happymole>.
+    Related source file is "lab5.v".
+WARNING:Xst:647 - Input <height> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:643 - "lab5.v" line 1356: The result of a 11x10-bit multiplication is partially used. Only the 16 least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
+    Found 24-bit register for signal <pixel>.
+    Found 11-bit adder carry out for signal <add0000$addsub0000> created at line 1351.
+    Found 10-bit adder carry out for signal <add0001$addsub0000> created at line 1351.
+    Found 16-bit adder for signal <image_addr>.
+    Found 11-bit subtractor for signal <image_addr$addsub0000> created at line 1356.
+    Found 11x10-bit multiplier for signal <image_addr$mult0001> created at line 1356.
+    Found 13-bit subtractor for signal <image_addr$sub0000> created at line 1356.
+    Found 11-bit comparator greatequal for signal <pixel$cmp_ge0000> created at line 1351.
+    Found 10-bit comparator greatequal for signal <pixel$cmp_ge0001> created at line 1351.
+    Found 12-bit comparator less for signal <pixel$cmp_lt0000> created at line 1351.
+    Found 11-bit comparator less for signal <pixel$cmp_lt0001> created at line 1351.
+    Summary:
+	inferred  24 D-type flip-flop(s).
+	inferred   5 Adder/Subtractor(s).
+	inferred   1 Multiplier(s).
+	inferred   4 Comparator(s).
+Unit <happymole> synthesized.
+
+
 Synthesizing Unit <displaymole>.
     Related source file is "lab5.v".
-WARNING:Xst:1780 - Signal <ascending_pixel> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:653 - Signal <REQUEST_MOLE> is used but never assigned. This sourceless signal will be automatically connected to value 0011.
-WARNING:Xst:1780 - Signal <MOLE_WHACKED_SOUND> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:1780 - Signal <MOLE_WHACKED> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:1780 - Signal <MOLE_MISSED_SOUND> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:1780 - Signal <MOLE_MISSED> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:653 - Signal <MOLE_WHACKED_SOUND> is used but never assigned. This sourceless signal will be automatically connected to value 1010.
+WARNING:Xst:653 - Signal <MOLE_WHACKED> is used but never assigned. This sourceless signal will be automatically connected to value 0110.
+WARNING:Xst:653 - Signal <MOLE_MISSED_SOUND> is used but never assigned. This sourceless signal will be automatically connected to value 1001.
+WARNING:Xst:653 - Signal <MOLE_MISSED> is used but never assigned. This sourceless signal will be automatically connected to value 0101.
 WARNING:Xst:653 - Signal <MOLE_COUNTDOWN> is used but never assigned. This sourceless signal will be automatically connected to value 0100.
 WARNING:Xst:1780 - Signal <IDLE> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:1780 - Signal <GAME_START_DELAY> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:1780 - Signal <GAME_OVER> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:1780 - Signal <GAME_ONGOING> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
-    Found 8x31-bit ROM for signal <mole_location$rom0000>.
+    Found 8x21-bit ROM for signal <mole_location$rom0000>.
     Found 1-bit register for signal <popup_done>.
-    Found 10-bit adder carry out for signal <add0000$addsub0000> created at line 1509.
-    Found 10-bit comparator not equal for signal <popup_done$cmp_ne0000> created at line 1511.
+    Found 10-bit adder carry out for signal <add0000$addsub0000> created at line 1520.
+    Found 10-bit comparator equal for signal <popup_done$cmp_eq0000> created at line 1514.
+    Found 11-bit comparator equal for signal <popup_done$cmp_eq0001> created at line 1525.
     Found 11-bit register for signal <x>.
-    Found 10-bit down counter for signal <y_change>.
-    Found 11-bit comparator greatequal for signal <y_change$cmp_ge0000> created at line 1509.
-    Found 10-bit comparator lessequal for signal <y_change$cmp_le0000> created at line 1509.
+    Found 10-bit register for signal <y_change>.
+    Found 10-bit comparator greatequal for signal <y_change$cmp_ge0000> created at line 1518.
+    Found 10-bit comparator greater for signal <y_change$cmp_gt0000> created at line 1512.
+    Found 11-bit comparator lessequal for signal <y_change$cmp_le0000> created at line 1512.
+    Found 11-bit comparator less for signal <y_change$cmp_lt0000> created at line 1518.
+    Found 10-bit addsub for signal <y_change$share0000>.
     Found 10-bit register for signal <y_permanent>.
     Summary:
 	inferred   1 ROM(s).
-	inferred   1 Counter(s).
-	inferred  22 D-type flip-flop(s).
-	inferred   1 Adder/Subtractor(s).
-	inferred   3 Comparator(s).
+	inferred  32 D-type flip-flop(s).
+	inferred   2 Adder/Subtractor(s).
+	inferred   6 Comparator(s).
 Unit <displaymole> synthesized.
 
 
@@ -1508,21 +1629,21 @@ Macro Statistics
  16x40-bit ROM                                         : 10
  31x10-bit ROM                                         : 2
  8x16-bit ROM                                          : 1
- 8x31-bit ROM                                          : 1
+ 8x21-bit ROM                                          : 1
  8x8-bit ROM                                           : 1
-# Multipliers                                          : 3
+# Multipliers                                          : 5
  10x8-bit multiplier                                   : 2
- 11x10-bit multiplier                                  : 1
-# Adders/Subtractors                                   : 29
+ 11x10-bit multiplier                                  : 3
+# Adders/Subtractors                                   : 40
  10-bit adder                                          : 1
- 10-bit adder carry out                                : 2
- 10-bit addsub                                         : 1
- 11-bit adder carry out                                : 1
- 11-bit subtractor                                     : 1
+ 10-bit adder carry out                                : 4
+ 10-bit addsub                                         : 2
+ 11-bit adder carry out                                : 3
+ 11-bit subtractor                                     : 3
  127-bit adder                                         : 1
  128-bit subtractor                                    : 1
- 13-bit subtractor                                     : 1
- 16-bit adder                                          : 2
+ 13-bit subtractor                                     : 3
+ 16-bit adder                                          : 4
  18-bit adder                                          : 2
  23-bit adder                                          : 2
  4-bit subtractor                                      : 3
@@ -1532,12 +1653,12 @@ Macro Statistics
  8-bit adder                                           : 2
  9-bit adder                                           : 3
 # Counters                                             : 34
- 10-bit down counter                                   : 1
  10-bit up counter                                     : 2
  11-bit up counter                                     : 1
  19-bit up counter                                     : 2
  2-bit down counter                                    : 1
  20-bit up counter                                     : 17
+ 27-bit up counter                                     : 1
  32-bit up counter                                     : 1
  4-bit up counter                                      : 1
  5-bit up counter                                      : 5
@@ -1545,9 +1666,9 @@ Macro Statistics
  8-bit up counter                                      : 2
 # Accumulators                                         : 2
  18-bit up accumulator                                 : 2
-# Registers                                            : 407
- 1-bit register                                        : 95
- 10-bit register                                       : 3
+# Registers                                            : 411
+ 1-bit register                                        : 96
+ 10-bit register                                       : 4
  11-bit register                                       : 1
  127-bit register                                      : 1
  13-bit register                                       : 1
@@ -1556,7 +1677,7 @@ Macro Statistics
  2-bit register                                        : 3
  20-bit register                                       : 6
  23-bit register                                       : 3
- 24-bit register                                       : 132
+ 24-bit register                                       : 134
  3-bit register                                        : 3
  32-bit register                                       : 1
  368-bit register                                      : 1
@@ -1567,13 +1688,15 @@ Macro Statistics
  8-bit register                                        : 7
 # Latches                                              : 1
  3-bit latch                                           : 1
-# Comparators                                          : 48
- 10-bit comparator greatequal                          : 1
- 10-bit comparator lessequal                           : 1
- 10-bit comparator not equal                           : 1
- 11-bit comparator greatequal                          : 2
- 11-bit comparator less                                : 1
- 12-bit comparator less                                : 1
+# Comparators                                          : 59
+ 10-bit comparator equal                               : 1
+ 10-bit comparator greatequal                          : 4
+ 10-bit comparator greater                             : 1
+ 11-bit comparator equal                               : 1
+ 11-bit comparator greatequal                          : 3
+ 11-bit comparator less                                : 4
+ 11-bit comparator lessequal                           : 1
+ 12-bit comparator less                                : 3
  127-bit comparator greatequal                         : 1
  128-bit comparator lessequal                          : 1
  16-bit comparator greatequal                          : 3
@@ -1687,11 +1810,31 @@ Reading core <normalmole_image_rom.ngc>.
 Reading core <normalmole_red_rom.ngc>.
 Reading core <normalmole_green_rom.ngc>.
 Reading core <normalmole_blue_rom.ngc>.
+Reading core <dead_image_rom.ngc>.
+Reading core <dead_red_rom.ngc>.
+Reading core <dead_green_rom.ngc>.
+Reading core <dead_blue_rom.ngc>.
+Reading core <happy_image_rom.ngc>.
+Reading core <happy_red_rom.ngc>.
+Reading core <happy_green_rom.ngc>.
+Reading core <happy_blue_rom.ngc>.
 Loading core <normalmole_image_rom> for timing and area information for instance <rom1>.
 Loading core <normalmole_red_rom> for timing and area information for instance <rcm>.
 Loading core <normalmole_green_rom> for timing and area information for instance <gcm>.
 Loading core <normalmole_blue_rom> for timing and area information for instance <bcm>.
+Loading core <dead_image_rom> for timing and area information for instance <rom1_dead>.
+Loading core <dead_red_rom> for timing and area information for instance <rcm_dead>.
+Loading core <dead_green_rom> for timing and area information for instance <gcm_dead>.
+Loading core <dead_blue_rom> for timing and area information for instance <bcm_dead>.
+Loading core <happy_image_rom> for timing and area information for instance <rom1_happy>.
+Loading core <happy_red_rom> for timing and area information for instance <rcm_happy>.
+Loading core <happy_green_rom> for timing and area information for instance <gcm_happy>.
+Loading core <happy_blue_rom> for timing and area information for instance <bcm_happy>.
 WARNING:Xst:2404 -  FFs/Latches <data_to_store<15:0>> (without init value) have a constant value of 0 in block <test_fsm>.
+
+Synthesizing (advanced) Unit <deadmole>.
+INFO:Xst:2385 - HDL ADVISOR - You can improve the performance of the multiplier Mmult_image_addr_mult0001 by adding 1 register level(s).
+Unit <deadmole> synthesized (advanced).
 
 Synthesizing (advanced) Unit <fir31>.
 INFO:Xst - HDL ADVISOR - The RAM <Mram_sample> will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
@@ -1785,6 +1928,10 @@ INFO:Xst - The RAM <fsm/Mrom_nib2char_1_nib2char> will be implemented as BLOCK R
     -----------------------------------------------------------------------
 Unit <flash_manager> synthesized (advanced).
 
+Synthesizing (advanced) Unit <happymole>.
+INFO:Xst:2385 - HDL ADVISOR - You can improve the performance of the multiplier Mmult_image_addr_mult0001 by adding 1 register level(s).
+Unit <happymole> synthesized (advanced).
+
 Synthesizing (advanced) Unit <lab5>.
 INFO:Xst - In order to maximize performance and save block RAM resources, the small ROM <Mrom_displayed_mole_location_mux0000> will be implemented on LUT. If you want to force its implementation on block, use option/constraint rom_style.
 Unit <lab5> synthesized (advanced).
@@ -1860,6 +2007,30 @@ WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_16> (without 
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_17> (without init value) has a constant value of 0 in block <normalmole>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_18> (without init value) has a constant value of 0 in block <normalmole>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_19> (without init value) has a constant value of 0 in block <normalmole>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <pixel_0> (without init value) has a constant value of 0 in block <deadmole>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_1> (without init value) has a constant value of 0 in block <deadmole>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_2> (without init value) has a constant value of 0 in block <deadmole>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_3> (without init value) has a constant value of 0 in block <deadmole>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_8> (without init value) has a constant value of 0 in block <deadmole>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_9> (without init value) has a constant value of 0 in block <deadmole>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_10> (without init value) has a constant value of 0 in block <deadmole>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_11> (without init value) has a constant value of 0 in block <deadmole>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_16> (without init value) has a constant value of 0 in block <deadmole>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_17> (without init value) has a constant value of 0 in block <deadmole>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_18> (without init value) has a constant value of 0 in block <deadmole>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_19> (without init value) has a constant value of 0 in block <deadmole>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <pixel_0> (without init value) has a constant value of 0 in block <happymole>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_1> (without init value) has a constant value of 0 in block <happymole>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_2> (without init value) has a constant value of 0 in block <happymole>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_3> (without init value) has a constant value of 0 in block <happymole>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_8> (without init value) has a constant value of 0 in block <happymole>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_9> (without init value) has a constant value of 0 in block <happymole>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_10> (without init value) has a constant value of 0 in block <happymole>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_11> (without init value) has a constant value of 0 in block <happymole>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_16> (without init value) has a constant value of 0 in block <happymole>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_17> (without init value) has a constant value of 0 in block <happymole>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_18> (without init value) has a constant value of 0 in block <happymole>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pixel_19> (without init value) has a constant value of 0 in block <happymole>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <location_memory_95_3> (without init value) has a constant value of 0 in block <mole_adressss_locations>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <location_memory_94_3> (without init value) has a constant value of 0 in block <mole_adressss_locations>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <location_memory_93_3> (without init value) has a constant value of 0 in block <mole_adressss_locations>. This FF/Latch will be trimmed during the optimization process.
@@ -2252,21 +2423,21 @@ Macro Statistics
  16x40-bit ROM                                         : 6
  31x10-bit ROM                                         : 2
  8x16-bit ROM                                          : 1
- 8x31-bit ROM                                          : 1
+ 8x21-bit ROM                                          : 1
  8x8-bit ROM                                           : 1
-# Multipliers                                          : 3
+# Multipliers                                          : 5
  10x8-bit multiplier                                   : 2
- 11x10-bit multiplier                                  : 1
-# Adders/Subtractors                                   : 29
+ 11x10-bit multiplier                                  : 3
+# Adders/Subtractors                                   : 40
  10-bit adder                                          : 1
- 10-bit adder carry out                                : 2
- 10-bit addsub                                         : 1
- 11-bit adder carry out                                : 1
- 11-bit subtractor                                     : 1
+ 10-bit adder carry out                                : 4
+ 10-bit addsub                                         : 2
+ 11-bit adder carry out                                : 3
+ 11-bit subtractor                                     : 3
  127-bit adder                                         : 1
  128-bit subtractor                                    : 1
- 13-bit subtractor                                     : 1
- 16-bit adder                                          : 2
+ 13-bit subtractor                                     : 3
+ 16-bit adder                                          : 4
  18-bit adder                                          : 2
  23-bit adder                                          : 2
  4-bit subtractor                                      : 3
@@ -2275,12 +2446,12 @@ Macro Statistics
  6-bit adder                                           : 2
  8-bit adder                                           : 2
 # Counters                                             : 34
- 10-bit down counter                                   : 1
  10-bit up counter                                     : 2
  11-bit up counter                                     : 1
  19-bit up counter                                     : 2
  2-bit down counter                                    : 1
  20-bit up counter                                     : 17
+ 27-bit up counter                                     : 1
  32-bit up counter                                     : 1
  4-bit up counter                                      : 1
  5-bit up counter                                      : 5
@@ -2288,17 +2459,19 @@ Macro Statistics
  8-bit up counter                                      : 2
 # Accumulators                                         : 2
  18-bit up accumulator                                 : 2
-# Registers                                            : 4760
- Flip-Flops                                            : 4760
+# Registers                                            : 4795
+ Flip-Flops                                            : 4795
 # Latches                                              : 1
  3-bit latch                                           : 1
-# Comparators                                          : 48
- 10-bit comparator greatequal                          : 1
- 10-bit comparator lessequal                           : 1
- 10-bit comparator not equal                           : 1
- 11-bit comparator greatequal                          : 2
- 11-bit comparator less                                : 1
- 12-bit comparator less                                : 1
+# Comparators                                          : 59
+ 10-bit comparator equal                               : 1
+ 10-bit comparator greatequal                          : 4
+ 10-bit comparator greater                             : 1
+ 11-bit comparator equal                               : 1
+ 11-bit comparator greatequal                          : 3
+ 11-bit comparator less                                : 4
+ 11-bit comparator lessequal                           : 1
+ 12-bit comparator less                                : 3
  127-bit comparator greatequal                         : 1
  128-bit comparator lessequal                          : 1
  16-bit comparator greatequal                          : 3
@@ -2336,7 +2509,8 @@ WARNING:Xst:1710 - FF/Latch <l_right_data_0> (without init value) has a constant
 WARNING:Xst:1293 - FF/Latch <flash/flash_reset_b> has a constant value of 1 in block <flash_manager>. This FF/Latch will be trimmed during the optimization process.
 INFO:Xst:2697 - Unit <flash_manager> : the RAMs <fsm/Mrom_nib2char_4_nib2char>, <fsm/Mrom_nib2char_1_nib2char> are packed into the single block RAM <fsm/Mrom_nib2char_4_nib2char1>
 INFO:Xst:2697 - Unit <flash_manager> : the RAMs <fsm/Mrom_nib2char_3_nib2char>, <fsm/Mrom_nib2char_2_nib2char> are packed into the single block RAM <fsm/Mrom_nib2char_3_nib2char1>
-WARNING:Xst:1710 - FF/Latch <y_permanent_0> (without init value) has a constant value of 0 in block <displaymole>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <x_10> (without init value) has a constant value of 0 in block <displaymole>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <y_permanent_0> (without init value) has a constant value of 0 in block <displaymole>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <y_permanent_1> (without init value) has a constant value of 0 in block <displaymole>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <y_permanent_2> (without init value) has a constant value of 0 in block <displaymole>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <y_permanent_3> (without init value) has a constant value of 0 in block <displaymole>. This FF/Latch will be trimmed during the optimization process.
@@ -2344,7 +2518,6 @@ WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <y_permanent_4> (wit
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <y_permanent_5> (without init value) has a constant value of 0 in block <displaymole>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <y_permanent_6> (without init value) has a constant value of 0 in block <displaymole>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <y_permanent_7> (without init value) has a constant value of 0 in block <displaymole>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <x_10> (without init value) has a constant value of 0 in block <displaymole>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <displayed_mole_location_0> (without init value) has a constant value of 0 in block <lab5>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <displayed_mole_location_7> (without init value) has a constant value of 0 in block <lab5>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <displayed_mole_location_13> (without init value) has a constant value of 0 in block <lab5>. This FF/Latch will be trimmed during the optimization process.
@@ -5400,10 +5573,10 @@ WARNING:Xst:2677 - Node <s/reader_bramdata/flash_flash/fsm/status_2> of sequenti
 WARNING:Xst:2677 - Node <s/reader_bramdata/flash_flash/fsm/status_1> of sequential type is unconnected in block <lab5>.
 WARNING:Xst:2677 - Node <s/reader_bramdata/flash_flash/fsm/status_0> of sequential type is unconnected in block <lab5>.
 INFO:Xst:2261 - The FF/Latch <command_0> in Unit <ac97commands> is equivalent to the following 2 FFs/Latches, which will be removed : <command_1> <command_2> 
-INFO:Xst:2261 - The FF/Latch <x_0> in Unit <displaymole> is equivalent to the following FF/Latch, which will be removed : <x_6> 
 INFO:Xst:2261 - The FF/Latch <x_3> in Unit <displaymole> is equivalent to the following 2 FFs/Latches, which will be removed : <x_5> <x_9> 
 INFO:Xst:2261 - The FF/Latch <x_2> in Unit <displaymole> is equivalent to the following 2 FFs/Latches, which will be removed : <x_4> <x_8> 
 INFO:Xst:2261 - The FF/Latch <x_1> in Unit <displaymole> is equivalent to the following FF/Latch, which will be removed : <x_7> 
+INFO:Xst:2261 - The FF/Latch <x_0> in Unit <displaymole> is equivalent to the following FF/Latch, which will be removed : <x_6> 
 INFO:Xst:2261 - The FF/Latch <displayed_mole_location_1> in Unit <lab5> is equivalent to the following FF/Latch, which will be removed : <displayed_mole_location_4> 
 INFO:Xst:2261 - The FF/Latch <displayed_mole_location_2> in Unit <lab5> is equivalent to the following FF/Latch, which will be removed : <displayed_mole_location_3> 
 INFO:Xst:2261 - The FF/Latch <lives_display_3> in Unit <lab5> is equivalent to the following 12 FFs/Latches, which will be removed : <lives_display_10> <lives_display_17> <lives_display_19> <lives_display_20> <lives_display_21> <lives_display_24> <lives_display_27> <lives_display_29> <lives_display_34> <lives_display_37> <lives_display_41> <lives_display_45> 
@@ -5427,8 +5600,6 @@ Optimizing unit <ac97> ...
 Optimizing unit <ac97commands> ...
 
 Optimizing unit <ascii2dots> ...
-
-Optimizing unit <normalmole> ...
 
 Optimizing unit <gameState> ...
 
@@ -6013,7 +6184,7 @@ Mapping all equations...
 Building and optimizing final netlist ...
 INFO:Xst:2261 - The FF/Latch <a/ac97/l_cmd_data_14> in Unit <lab5> is equivalent to the following 5 FFs/Latches, which will be removed : <a/ac97/l_cmd_data_13> <a/ac97/l_cmd_data_12> <a/ac97/l_cmd_data_6> <a/ac97/l_cmd_data_5> <a/ac97/l_cmd_data_4> 
 INFO:Xst:2261 - The FF/Latch <a/ac97/l_cmd_data_16> in Unit <lab5> is equivalent to the following FF/Latch, which will be removed : <a/ac97/l_cmd_data_8> 
-Found area constraint ratio of 100 (+ 5) on block lab5, actual ratio is 4.
+Found area constraint ratio of 100 (+ 5) on block lab5, actual ratio is 5.
 
 Final Macro Processing ...
 
@@ -6053,8 +6224,8 @@ Unit <lab5> processed.
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 1327
- Flip-Flops                                            : 1327
+# Registers                                            : 1379
+ Flip-Flops                                            : 1379
 # Shift Registers                                      : 29
  13-bit shift register                                 : 2
  15-bit shift register                                 : 6
@@ -6093,36 +6264,37 @@ Design Statistics
 # IOs                              : 576
 
 Cell Usage :
-# BELS                             : 4505
-#      GND                         : 5
-#      INV                         : 108
-#      LUT1                        : 618
-#      LUT2                        : 351
-#      LUT3                        : 370
-#      LUT4                        : 1125
-#      MUXCY                       : 984
-#      MUXF5                       : 186
+# BELS                             : 5039
+#      GND                         : 13
+#      INV                         : 99
+#      LUT1                        : 643
+#      LUT2                        : 466
+#      LUT3                        : 404
+#      LUT4                        : 1208
+#      MUXCY                       : 1139
+#      MUXF5                       : 204
 #      MUXF6                       : 17
 #      MUXF7                       : 3
 #      MUXF8                       : 1
-#      VCC                         : 5
-#      XORCY                       : 732
-# FlipFlops/Latches                : 1406
+#      VCC                         : 13
+#      XORCY                       : 829
+# FlipFlops/Latches                : 1464
 #      FD                          : 209
-#      FDE                         : 434
+#      FDE                         : 440
 #      FDE_1                       : 8
-#      FDR                         : 88
+#      FDR                         : 140
 #      FDRE                        : 549
 #      FDRS                        : 14
 #      FDS                         : 13
 #      FDSE                        : 88
 #      LDE_1                       : 3
-# RAMS                             : 57
+# RAMS                             : 88
 #      RAM32X1D                    : 8
 #      RAMB16_S1                   : 32
-#      RAMB16_S1_S1                : 12
+#      RAMB16_S1_S1                : 36
 #      RAMB16_S2_S2                : 2
-#      RAMB16_S36_S36              : 3
+#      RAMB16_S36_S36              : 9
+#      RAMB16_S4_S4                : 1
 # Shift Registers                  : 25
 #      SRL16                       : 2
 #      SRL16E                      : 22
@@ -6136,8 +6308,8 @@ Cell Usage :
 #      OBUF                        : 240
 # DCMs                             : 1
 #      DCM                         : 1
-# MULTs                            : 2
-#      MULT18X18                   : 2
+# MULTs                            : 4
+#      MULT18X18                   : 4
 =========================================================================
 
 Device utilization summary:
@@ -6145,16 +6317,16 @@ Device utilization summary:
 
 Selected Device : 2v6000bf957-4 
 
- Number of Slices:                     1465  out of  33792     4%  
- Number of Slice Flip Flops:           1406  out of  67584     2%  
- Number of 4 input LUTs:               2629  out of  67584     3%  
-    Number used as logic:              2572
+ Number of Slices:                     1599  out of  33792     4%  
+ Number of Slice Flip Flops:           1464  out of  67584     2%  
+ Number of 4 input LUTs:               2877  out of  67584     4%  
+    Number used as logic:              2820
     Number used as Shift registers:      25
     Number used as RAMs:                 32
  Number of IOs:                         576
  Number of bonded IOBs:                 270  out of    684    39%  
- Number of BRAMs:                        49  out of    144    34%  
- Number of MULT18X18s:                    2  out of    144     1%  
+ Number of BRAMs:                        80  out of    144    55%  
+ Number of MULT18X18s:                    4  out of    144     2%  
  Number of GCLKs:                         4  out of     16    25%  
  Number of DCMs:                          1  out of     12     8%  
 
@@ -6176,17 +6348,19 @@ NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
 
 Clock Information:
 ------------------
-----------------------------------------+---------------------------------------------------------------------------------------------------------------------+-------+
-Clock Signal                            | Clock buffer(FF name)                                                                                               | Load  |
-----------------------------------------+---------------------------------------------------------------------------------------------------------------------+-------+
-clock_27mhz                             | IBUFG+BUFG                                                                                                          | 1253  |
-one_hz_div/enable                       | NONE(moleloc/temp_r_3)                                                                                              | 4     |
-clock_27mhz                             | vclk1:CLKFX                                                                                                         | 58    |
-ac97_bit_clock                          | IBUF+BUFG                                                                                                           | 62    |
-db_e/temp_clean                         | NONE(game/next_mole_location_2)                                                                                     | 3     |
-debug_display/clock1                    | BUFG                                                                                                                | 76    |
-displaymole1/normalmole/rom1/BU2/dbiterr| NONE(displaymole1/normalmole/rom1/BU2/U0/blk_mem_generator/valid.cstr/ramloop[13].ram.r/v2_init.ram/dpram.dp1x1.ram)| 14    |
-----------------------------------------+---------------------------------------------------------------------------------------------------------------------+-------+
+----------------------------------------------+---------------------------------------------------------------------------------------------------------------------------+-------+
+Clock Signal                                  | Clock buffer(FF name)                                                                                                     | Load  |
+----------------------------------------------+---------------------------------------------------------------------------------------------------------------------------+-------+
+clock_27mhz                                   | IBUFG+BUFG                                                                                                                | 1281  |
+one_hz_div/enable                             | NONE(moleloc/temp_r_3)                                                                                                    | 4     |
+clock_27mhz                                   | vclk1:CLKFX                                                                                                               | 119   |
+ac97_bit_clock                                | IBUF+BUFG                                                                                                                 | 62    |
+db_e/temp_clean                               | NONE(game/next_mole_location_2)                                                                                           | 3     |
+debug_display/clock1                          | BUFG                                                                                                                      | 76    |
+displaymole1/happymole1/rom1_happy/BU2/dbiterr| NONE(displaymole1/happymole1/rom1_happy/BU2/U0/blk_mem_generator/valid.cstr/ramloop[12].ram.r/v2_init.ram/dpram.dp1x1.ram)| 13    |
+displaymole1/deadmole1/rom1_dead/BU2/dbiterr  | NONE(displaymole1/deadmole1/rom1_dead/BU2/U0/blk_mem_generator/valid.cstr/ramloop[11].ram.r/v2_init.ram/dpram.dp1x1.ram)  | 12    |
+displaymole1/normalmole1/rom1/BU2/dbiterr     | NONE(displaymole1/normalmole1/rom1/BU2/U0/blk_mem_generator/valid.cstr/ramloop[13].ram.r/v2_init.ram/dpram.dp1x1.ram)     | 14    |
+----------------------------------------------+---------------------------------------------------------------------------------------------------------------------------+-------+
 INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
 
 Asynchronous Control Signals Information:
@@ -6197,9 +6371,9 @@ Timing Summary:
 ---------------
 Speed Grade: -4
 
-   Minimum period: 64.974ns (Maximum Frequency: 15.391MHz)
+   Minimum period: 65.848ns (Maximum Frequency: 15.186MHz)
    Minimum input arrival time before clock: 3.804ns
-   Maximum output required time after clock: 11.715ns
+   Maximum output required time after clock: 12.775ns
    Maximum combinational path delay: 5.887ns
 
 Timing Detail:
@@ -6208,43 +6382,43 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clock_27mhz'
-  Clock period: 64.974ns (frequency: 15.391MHz)
-  Total number of paths / destination ports: 441136 / 3236
+  Clock period: 65.848ns (frequency: 15.186MHz)
+  Total number of paths / destination ports: 824348 / 3766
 -------------------------------------------------------------------------
-Delay:               16.243ns (Levels of Logic = 18)
+Delay:               16.462ns (Levels of Logic = 18)
   Source:            displaymole1/y_change_0 (FF)
-  Destination:       displaymole1/normalmole/rom1/BU2/U0/blk_mem_generator/valid.cstr/ramloop[12].ram.r/v2_init.ram/dpram.dp1x1.ram (RAM)
+  Destination:       displaymole1/happymole1/rom1_happy/BU2/U0/blk_mem_generator/valid.cstr/ramloop[11].ram.r/v2_init.ram/dpram.dp1x1.ram (RAM)
   Source Clock:      clock_27mhz rising
   Destination Clock: clock_27mhz rising 2.4X
 
-  Data Path: displaymole1/y_change_0 to displaymole1/normalmole/rom1/BU2/U0/blk_mem_generator/valid.cstr/ramloop[12].ram.r/v2_init.ram/dpram.dp1x1.ram
+  Data Path: displaymole1/y_change_0 to displaymole1/happymole1/rom1_happy/BU2/U0/blk_mem_generator/valid.cstr/ramloop[11].ram.r/v2_init.ram/dpram.dp1x1.ram
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDE:C->Q              6   0.568   1.002  displaymole1/y_change_0 (displaymole1/y_change_0)
-     LUT2:I1->O            1   0.439   0.000  displaymole1/normalmole/Msub_image_addr_addsub0000_lut<0> (displaymole1/normalmole/Msub_image_addr_addsub0000_lut<0>)
-     MUXCY:S->O            1   0.298   0.000  displaymole1/normalmole/Msub_image_addr_addsub0000_cy<0> (displaymole1/normalmole/Msub_image_addr_addsub0000_cy<0>)
-     MUXCY:CI->O           1   0.053   0.000  displaymole1/normalmole/Msub_image_addr_addsub0000_cy<1> (displaymole1/normalmole/Msub_image_addr_addsub0000_cy<1>)
-     MUXCY:CI->O           1   0.053   0.000  displaymole1/normalmole/Msub_image_addr_addsub0000_cy<2> (displaymole1/normalmole/Msub_image_addr_addsub0000_cy<2>)
-     MUXCY:CI->O           1   0.053   0.000  displaymole1/normalmole/Msub_image_addr_addsub0000_cy<3> (displaymole1/normalmole/Msub_image_addr_addsub0000_cy<3>)
-     MUXCY:CI->O           1   0.053   0.000  displaymole1/normalmole/Msub_image_addr_addsub0000_cy<4> (displaymole1/normalmole/Msub_image_addr_addsub0000_cy<4>)
-     MUXCY:CI->O           1   0.053   0.000  displaymole1/normalmole/Msub_image_addr_addsub0000_cy<5> (displaymole1/normalmole/Msub_image_addr_addsub0000_cy<5>)
-     MUXCY:CI->O           1   0.053   0.000  displaymole1/normalmole/Msub_image_addr_addsub0000_cy<6> (displaymole1/normalmole/Msub_image_addr_addsub0000_cy<6>)
-     MUXCY:CI->O           1   0.053   0.000  displaymole1/normalmole/Msub_image_addr_addsub0000_cy<7> (displaymole1/normalmole/Msub_image_addr_addsub0000_cy<7>)
-     MUXCY:CI->O           1   0.053   0.000  displaymole1/normalmole/Msub_image_addr_addsub0000_cy<8> (displaymole1/normalmole/Msub_image_addr_addsub0000_cy<8>)
-     MUXCY:CI->O           0   0.053   0.000  displaymole1/normalmole/Msub_image_addr_addsub0000_cy<9> (displaymole1/normalmole/Msub_image_addr_addsub0000_cy<9>)
-     XORCY:CI->O           8   1.274   0.840  displaymole1/normalmole/Msub_image_addr_addsub0000_xor<10> (displaymole1/normalmole/image_addr_addsub0000<10>)
-     MULT18X18:A10->P14    1   6.009   0.726  displaymole1/normalmole/Mmult_image_addr_mult0001 (displaymole1/normalmole/image_addr_mult0001<14>)
-     LUT2:I1->O            1   0.439   0.000  displaymole1/normalmole/Madd_image_addr_lut<14> (displaymole1/normalmole/Madd_image_addr_lut<14>)
-     MUXCY:S->O            0   0.298   0.000  displaymole1/normalmole/Madd_image_addr_cy<14> (displaymole1/normalmole/Madd_image_addr_cy<14>)
-     XORCY:CI->O           5   1.274   1.055  displaymole1/normalmole/Madd_image_addr_xor<15> (displaymole1/normalmole/image_addr<15>)
-     begin scope: 'displaymole1/normalmole/rom1'
+     FDE:C->Q             17   0.568   1.220  displaymole1/y_change_0 (displaymole1/y_change_0)
+     LUT2:I1->O            1   0.439   0.000  displaymole1/normalmole1/Msub_image_addr_addsub0000_lut<0> (displaymole1/normalmole1/Msub_image_addr_addsub0000_lut<0>)
+     MUXCY:S->O            1   0.298   0.000  displaymole1/normalmole1/Msub_image_addr_addsub0000_cy<0> (displaymole1/normalmole1/Msub_image_addr_addsub0000_cy<0>)
+     MUXCY:CI->O           1   0.053   0.000  displaymole1/normalmole1/Msub_image_addr_addsub0000_cy<1> (displaymole1/normalmole1/Msub_image_addr_addsub0000_cy<1>)
+     MUXCY:CI->O           1   0.053   0.000  displaymole1/normalmole1/Msub_image_addr_addsub0000_cy<2> (displaymole1/normalmole1/Msub_image_addr_addsub0000_cy<2>)
+     MUXCY:CI->O           1   0.053   0.000  displaymole1/normalmole1/Msub_image_addr_addsub0000_cy<3> (displaymole1/normalmole1/Msub_image_addr_addsub0000_cy<3>)
+     MUXCY:CI->O           1   0.053   0.000  displaymole1/normalmole1/Msub_image_addr_addsub0000_cy<4> (displaymole1/normalmole1/Msub_image_addr_addsub0000_cy<4>)
+     MUXCY:CI->O           1   0.053   0.000  displaymole1/normalmole1/Msub_image_addr_addsub0000_cy<5> (displaymole1/normalmole1/Msub_image_addr_addsub0000_cy<5>)
+     MUXCY:CI->O           1   0.053   0.000  displaymole1/normalmole1/Msub_image_addr_addsub0000_cy<6> (displaymole1/normalmole1/Msub_image_addr_addsub0000_cy<6>)
+     MUXCY:CI->O           1   0.053   0.000  displaymole1/normalmole1/Msub_image_addr_addsub0000_cy<7> (displaymole1/normalmole1/Msub_image_addr_addsub0000_cy<7>)
+     MUXCY:CI->O           1   0.053   0.000  displaymole1/normalmole1/Msub_image_addr_addsub0000_cy<8> (displaymole1/normalmole1/Msub_image_addr_addsub0000_cy<8>)
+     MUXCY:CI->O           0   0.053   0.000  displaymole1/normalmole1/Msub_image_addr_addsub0000_cy<9> (displaymole1/normalmole1/Msub_image_addr_addsub0000_cy<9>)
+     XORCY:CI->O           8   1.274   0.840  displaymole1/normalmole1/Msub_image_addr_addsub0000_xor<10> (displaymole1/normalmole1/image_addr_addsub0000<10>)
+     MULT18X18:A10->P14    1   6.009   0.726  displaymole1/normalmole1/Mmult_image_addr_mult0001 (displaymole1/normalmole1/image_addr_mult0001<14>)
+     LUT2:I1->O            1   0.439   0.000  displaymole1/normalmole1/Madd_image_addr_lut<14> (displaymole1/normalmole1/Madd_image_addr_lut<14>)
+     MUXCY:S->O            0   0.298   0.000  displaymole1/normalmole1/Madd_image_addr_cy<14> (displaymole1/normalmole1/Madd_image_addr_cy<14>)
+     XORCY:CI->O           5   1.274   1.055  displaymole1/normalmole1/Madd_image_addr_xor<15> (displaymole1/normalmole1/image_addr<15>)
+     begin scope: 'displaymole1/normalmole1/rom1'
      begin scope: 'BU2'
      LUT2:I0->O            4   0.439   0.747  U0/blk_mem_generator/valid.cstr/ram_ena01 (U0/blk_mem_generator/valid.cstr/ram_ena0)
      RAMB16_S1_S1:ENA          0.359          U0/blk_mem_generator/valid.cstr/ramloop[12].ram.r/v2_init.ram/dpram.dp1x1.ram
     ----------------------------------------
-    Total                     16.243ns (11.874ns logic, 4.370ns route)
-                                       (73.1% logic, 26.9% route)
+    Total                     16.462ns (11.874ns logic, 4.588ns route)
+                                       (72.1% logic, 27.9% route)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'one_hz_div/enable'
@@ -6310,10 +6484,10 @@ Delay:               12.967ns (Levels of Logic = 11)
      FDE:C->Q             37   0.568   1.386  debug_display/char_index_0 (debug_display/char_index_0)
      LUT3:I0->O            1   0.439   0.000  debug_display/Mmux_ascii_113 (debug_display/Mmux_ascii_113)
      MUXF5:I1->O           1   0.436   0.552  debug_display/Mmux_ascii_10_f5_0 (debug_display/Mmux_ascii_10_f51)
-     LUT3:I2->O           15   0.439   1.023  debug_display/char_index<3>3_SW0 (N300)
+     LUT3:I2->O           15   0.439   1.023  debug_display/char_index<3>3_SW0 (N348)
      LUT3:I2->O          123   0.439   1.608  debug_display/char_index<3>3 (debug_display/ascii<3>)
-     LUT3:I0->O            2   0.439   0.735  debug_display/a2d/Mrom_char_dots_mux000034_SW2 (N507)
-     LUT4:I2->O            1   0.439   0.000  debug_display/a2d/Mrom_char_dots_mux000034_F (N646)
+     LUT3:I0->O            2   0.439   0.735  debug_display/a2d/Mrom_char_dots_mux000034_SW2 (N559)
+     LUT4:I2->O            1   0.439   0.000  debug_display/a2d/Mrom_char_dots_mux000034_F (N712)
      MUXF5:I0->O           1   0.436   0.552  debug_display/a2d/Mrom_char_dots_mux000034 (debug_display/a2d/Mrom_char_dots_mux000034)
      LUT3:I2->O            1   0.439   0.000  debug_display/a2d/Mrom_char_dots_mux0000341_7 (debug_display/a2d/Mrom_char_dots_mux0000341_7)
      MUXF5:I1->O           1   0.436   0.551  debug_display/a2d/Mrom_char_dots_mux0000341_6_f5 (debug_display/a2d/Mrom_char_dots_mux0000341_6_f5)
@@ -6366,9 +6540,9 @@ Offset:              2.194ns (Levels of Logic = 1)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'clock_27mhz'
-  Total number of paths / destination ports: 423 / 77
+  Total number of paths / destination ports: 1119 / 77
 -------------------------------------------------------------------------
-Offset:              11.715ns (Levels of Logic = 5)
+Offset:              12.775ns (Levels of Logic = 6)
   Source:            game/state_FFd7 (FF)
   Destination:       vga_out_red<7> (PAD)
   Source Clock:      clock_27mhz rising
@@ -6378,14 +6552,15 @@ Offset:              11.715ns (Levels of Logic = 5)
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      FD:C->Q               6   0.568   1.078  game/state_FFd7 (game/state_FFd7)
-     LUT4:I0->O            2   0.439   0.986  game/state_or00004 (game/state_or00004)
-     LUT2:I0->O           18   0.439   1.232  game/state_or000010 (display_state<3>)
-     LUT4:I1->O           12   0.439   1.216  displaymole1/pixel_or00001 (displaymole1/pixel_or0000)
-     LUT2:I0->O            1   0.439   0.517  displaymole1/pixel<7>1 (pixel<7>)
+     LUT4:I0->O            3   0.439   1.010  game/state_or00004 (game/state_or00004)
+     LUT2:I0->O           24   0.439   1.272  game/state_or000010 (display_state<3>)
+     LUT4:I1->O           12   0.439   0.971  displaymole1/pixel<12>51 (displaymole1/N28)
+     LUT4:I3->O            1   0.439   0.802  displaymole1/pixel<7>_SW0 (N301)
+     LUT3:I0->O            1   0.439   0.517  displaymole1/pixel<7> (pixel<7>)
      OBUF:I->O                 4.361          vga_out_blue_7_OBUF (vga_out_blue<7>)
     ----------------------------------------
-    Total                     11.715ns (6.685ns logic, 5.030ns route)
-                                       (57.1% logic, 42.9% route)
+    Total                     12.775ns (7.124ns logic, 5.651ns route)
+                                       (55.8% logic, 44.2% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'debug_display/clock1'
@@ -6446,15 +6621,15 @@ Delay:               5.887ns (Levels of Logic = 2)
 =========================================================================
 
 
-Total REAL time to Xst completion: 43.00 secs
-Total CPU time to Xst completion: 41.68 secs
+Total REAL time to Xst completion: 50.00 secs
+Total CPU time to Xst completion: 47.98 secs
  
 --> 
 
 
-Total memory usage is 670244 kilobytes
+Total memory usage is 677868 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings : 4399 (   0 filtered)
-Number of infos    :   69 (   0 filtered)
+Number of warnings : 4426 (   0 filtered)
+Number of infos    :   71 (   0 filtered)
 

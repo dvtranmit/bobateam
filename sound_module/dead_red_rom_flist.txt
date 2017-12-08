@@ -1,0 +1,13 @@
+# Output products list for <dead_red_rom>
+dead_red_rom.asy
+dead_red_rom.mif
+dead_red_rom.ngc
+dead_red_rom.sym
+dead_red_rom.v
+dead_red_rom.veo
+dead_red_rom.vhd
+dead_red_rom.vho
+dead_red_rom.xco
+dead_red_rom_blk_mem_gen_v2_8_xst_1.ngc_xst.xrpt
+dead_red_rom_flist.txt
+dead_red_rom_xmdf.tcl
