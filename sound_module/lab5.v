@@ -725,12 +725,14 @@ module lab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 	wire ready_to_use;
 	wire [23:0]index_address;
 	wire [3:0]index_location;
+	wire popup_done;
 	gameState game(.clk(clock_27mhz), .misstep(misstep),
 						.whacked(whacked), .start(up),
 						.reset(enter), .request_mole(request_mole),
 						.expired(expired), .diy_mode(diy_mode),
 						.ready_to_use(ready_to_use),
 						.random_mole_location(random_mole_location),
+						.popup_done(popup_done),
 						.start_timer(start_timer), .timer_value(timer_value),
 						.display_state(display_state), .mole_location(mole_location), 
 						.lives(lives), .score(score));
@@ -827,7 +829,7 @@ module lab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
               .hsync(hs),.vsync(vs),.blank(b));
 		  
 	displaymole displaymole1(.clk(clock_65mhz), .clk2(clock_27mhz), .reset(reset), .hcount(hcount), .vcount(vcount),
-									.state(display_state), .mole_location(mole_location), .pixel(pixel));
+									.state(display_state), .mole_location(mole_location), .pixel(pixel), .popup_done(popup_done));
 
    // VGA Output.  In order to meet the setup and hold times of the
    // AD7125, we send it ~clock_65mhz.disp_data_out
@@ -895,7 +897,7 @@ module lab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 			lives_display <= "??????";
 	end	
 
-	assign led = ~{upleft0, up0, upright0, left0, right0, downleft0, down0, downright0};
+	assign led = ~{popup_done, up0, upright0, left0, right0, downleft0, down0, downright0};
 
 	// Display letter toggler value
 	wire [127:0] string = {displayed_mole_location, 8'h30+display_state, "SCOR:", " ", 8'h30+score, lives_display};
@@ -1155,22 +1157,22 @@ output [39:0] char_dots;
 		8'h2D:	char_dots = 40'b00001000_00001000_00001000_00001000_00000000; //  45	 -
 		8'h2E:	char_dots = 40'b00000000_00110000_00110000_00000000_00000000; //  46	 .
 		8'h2F:	char_dots = 40'b00010000_00001000_00000100_00000010_00000000; //  47	 /
-		8'h30:	char_dots = 40'b00000000_00011110_00100001_00011110_00000000; //  48	 0		--> 17
-		8'h31:	char_dots = 40'b00000000_00100010_00111111_00100000_00000000; //  49	 1
-		8'h32:	char_dots = 40'b00100010_00110001_00101001_00100110_00000000; //  50	 2
-		8'h33:	char_dots = 40'b00010001_00100101_00100101_00011011_00000000; //  51	 3
-		8'h34:	char_dots = 40'b00001100_00001010_00111111_00001000_00000000; //  52	 4
-		8'h35:	char_dots = 40'b00010111_00100101_00100101_00011001_00000000; //  53	 5
-		8'h36:	char_dots = 40'b00011110_00100101_00100101_00011000_00000000; //  54	 6
-		8'h37:	char_dots = 40'b00000001_00110001_00001101_00000011_00000000; //  55	 7
-		8'h38:	char_dots = 40'b00011010_00100101_00100101_00011010_00000000; //  56	 8
-		8'h39:	char_dots = 40'b00000110_00101001_00101001_00011110_00000000; //  57	 9
-		8'h3A:	char_dots = 40'b00000000_00110110_00110110_00000000_00000000; //  58	 :		--> 27
-		8'h3B:	char_dots = 40'b01000000_00110110_00010110_00000000_00000000; //  59	 ;
-		8'h3C:	char_dots = 40'b00000000_00001000_00010100_00100010_00000000; //  60	 <
-		8'h3D:	char_dots = 40'b00010100_00010100_00010100_00010100_00000000; //  61	 =
-		8'h3E:	char_dots = 40'b00000000_00100010_00010100_00001000_00000000; //  62	 >
-		8'h3F:	char_dots = 40'b00000000_00000010_00101001_00000110_00000000; //  63	 ?
+		8'h30:	char_dots = 40'b00000000_00011110_00100001_00011110_00000000; //  48	 0		IDLE (START SCREEN)
+		8'h31:	char_dots = 40'b00000000_00100010_00111111_00100000_00000000; //  49	 1		GAME START DELAY
+		8'h32:	char_dots = 40'b00100010_00110001_00101001_00100110_00000000; //  50	 2		GAME ONGOING
+		8'h33:	char_dots = 40'b00010001_00100101_00100101_00011011_00000000; //  51	 3		REQUEST MOLE
+		8'h34:	char_dots = 40'b00001100_00001010_00111111_00001000_00000000; //  52	 4		MOLE COUNTDOWN
+		8'h35:	char_dots = 40'b00010111_00100101_00100101_00011001_00000000; //  53	 5		MOLE MISSED
+		8'h36:	char_dots = 40'b00011110_00100101_00100101_00011000_00000000; //  54	 6		MOLE WHACKED
+		8'h37:	char_dots = 40'b00000001_00110001_00001101_00000011_00000000; //  55	 7		
+		8'h38:	char_dots = 40'b00011010_00100101_00100101_00011010_00000000; //  56	 8		GAME OVER
+		8'h39:	char_dots = 40'b00000110_00101001_00101001_00011110_00000000; //  57	 9		MOLE MISSED SOUND
+		8'h3A:	char_dots = 40'b00000000_00110110_00110110_00000000_00000000; //  58	 :		MOLE WHACKED SOUND
+		8'h3B:	char_dots = 40'b01000000_00110110_00010110_00000000_00000000; //  59	 ;		RECORD DIY BEGIN
+		8'h3C:	char_dots = 40'b00000000_00001000_00010100_00100010_00000000; //  60	 <		RECORD DIY IN PROGRESS
+		8'h3D:	char_dots = 40'b00010100_00010100_00010100_00010100_00000000; //  61	 =		MOLE ASCENDING
+		8'h3E:	char_dots = 40'b00000000_00100010_00010100_00001000_00000000; //  62	 >		HAPPY MOLE DESCENDING
+		8'h3F:	char_dots = 40'b00000000_00000010_00101001_00000110_00000000; //  63	 ?		DEAD MOLE DESCENDING
 		8'h40:	char_dots = 40'b00011110_00100001_00101101_00001110_00000000; //  64	 @
 		8'h41:	char_dots = 40'b00111110_00001001_00001001_00111110_00000000; //  65	 A		--> 34
 		8'h42:	char_dots = 40'b00111111_00100101_00100101_00011010_00000000; //  66	 B
@@ -1522,13 +1524,16 @@ module displaymole(	input clk, clk2, reset,
 		end else if (state == DEAD_MOLE_DESCENDING) begin
 			if (y_change < 256 + y_permanent && y_change >= y_permanent)
 				y_change <= (mole_pulse) ? y_change + 1 : y_change;
-			else if (y_change == 256 + y_permanent)
+			else
 				popup_done <= 1;
-		end
+		end else if (state == MOLE_WHACKED_SOUND || state == MOLE_MISSED_SOUND) begin
+			y_change <= y_permanent;
+		end else
+			popup_done <= 0;
 	end
 	
 
-	wire [23:0] normal_pixel, dead_pixel, happy_pixel;
+	wire [23:0] normal_pixel, dead_pixel, happy_pixel, whack_pixel, start_pixel;
 	normalmole #(.WIDTH(212),.HEIGHT(256))
 			normalmole1(.pixel_clk(clk),.x(x),.hcount(hcount),.y(y_change),
 							.y_permanent(y_permanent), .vcount(vcount),.pixel(normal_pixel));
@@ -1538,9 +1543,17 @@ module displaymole(	input clk, clk2, reset,
 	happymole #(.WIDTH(207),.HEIGHT(256))
 			happymole1(.pixel_clk(clk),.x(x),.hcount(hcount),.y(y_change),
 							.y_permanent(y_permanent), .vcount(vcount),.pixel(happy_pixel));
-	assign pixel = (state == MOLE_ASCENDING || state == MOLE_COUNTDOWN) ? normal_pixel 
+	//whackamole #(.WIDTH(1020),.HEIGHT(119))
+			//whackamole1(.pixel_clk(clk),.x(4),.hcount(hcount),.y(4),
+							//.vcount(vcount),.pixel(whack_pixel));
+	//startscreen #(.WIDTH(1020),.HEIGHT(119))
+			//startscreen1(.pixel_clk(clk),.x(4),.hcount(hcount),.y(600),
+							//.vcount(vcount),.pixel(start_pixel));
+	assign pixel = //(state == IDLE) ? (whack_pixel | start_pixel)
+							 (state == MOLE_ASCENDING || state == MOLE_COUNTDOWN) ? normal_pixel 
 							: (state == MOLE_MISSED || state == MOLE_MISSED_SOUND || state == HAPPY_MOLE_DESCENDING) ? happy_pixel
-							: (state == MOLE_WHACKED || state == MOLE_WHACKED_SOUND || state == DEAD_MOLE_DESCENDING) ? dead_pixel : 24'h0;
+							: (state == MOLE_WHACKED || state == MOLE_WHACKED_SOUND || state == DEAD_MOLE_DESCENDING) ? dead_pixel
+							: 24'h0;
 endmodule
 
 ////////////////////////////////////////////////////////////////////////////////
