@@ -5,14 +5,14 @@ Parameter TMPDIR set to /afs/athena.mit.edu/user/v/s/vsouyang/Documents/6.111/bo
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.02 secs
+Total CPU time to Xst completion: 0.03 secs
  
 --> 
 Parameter xsthdpdir set to /afs/athena.mit.edu/user/v/s/vsouyang/Documents/6.111/bobateam/sound_module/xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.02 secs
+Total CPU time to Xst completion: 0.03 secs
  
 --> 
 Reading design: lab5.prj
@@ -112,22 +112,8 @@ Slice Utilization Ratio Delta      : 5
 Compiling verilog file "test_fsm.v" in library work
 Compiling verilog file "flash_int.v" in library work
 Module <test_fsm> compiled
-Compiling verilog file "game_logic.v" in library work
-Module <flash_int> compiled
-Module <divider> compiled
-Module <timer> compiled
-Module <synchronize> compiled
-Module <debounce> compiled
-Module <state_change_indicator> compiled
-Module <random> compiled
-Module <interpret_input> compiled
-Module <mole> compiled
-Compiling verilog file "flash_manager.v" in library work
-Module <gameState> compiled
-Compiling verilog file "display_16hex.v" in library work
-Module <flash_manager> compiled
 Compiling verilog file "./whack_red_rom.v" in library work
-Module <display_16hex> compiled
+Module <flash_int> compiled
 Compiling verilog file "./whack_green_rom.v" in library work
 Module <whack_red_rom> compiled
 Compiling verilog file "./whack_blue_rom.v" in library work
@@ -142,17 +128,8 @@ Compiling verilog file "./start_blue_rom.v" in library work
 Module <start_green_rom> compiled
 Compiling verilog file "./startrom.v" in library work
 Module <start_blue_rom> compiled
-Compiling verilog file "sound_modules.v" in library work
-Module <startrom> compiled
-Module <mole_adressss_locations> compiled
-Module <debounce_ara> compiled
-Module <sound_module> compiled
-Module <flash_reader> compiled
-Module <recorder> compiled
-Module <mybram> compiled
-Module <fir31> compiled
 Compiling verilog file "./normalmole_red_rom.v" in library work
-Module <coeffs31> compiled
+Module <startrom> compiled
 Compiling verilog file "./normalmole_image_rom.v" in library work
 Module <normalmole_red_rom> compiled
 Compiling verilog file "normalmole_green_rom.v" in library work
@@ -167,31 +144,47 @@ Compiling verilog file "./happy_green_rom.v" in library work
 Module <happy_image_rom> compiled
 Compiling verilog file "./happy_blue_rom.v" in library work
 Module <happy_green_rom> compiled
-Compiling verilog file "./gameover_red_rom.v" in library work
+Compiling verilog file "game_logic.v" in library work
 Module <happy_blue_rom> compiled
+Module <divider> compiled
+Module <timer> compiled
+Module <synchronize> compiled
+Module <debounce> compiled
+Module <state_change_indicator> compiled
+Module <random> compiled
+Module <interpret_input> compiled
+Module <mole> compiled
+Compiling verilog file "./gameover_red_rom.v" in library work
+Module <gameState> compiled
 Compiling verilog file "./gameover_green_rom.v" in library work
 Module <gameover_red_rom> compiled
 Compiling verilog file "./gameover_blue_rom.v" in library work
 Module <gameover_green_rom> compiled
 Compiling verilog file "./gameoverrom.v" in library work
 Module <gameover_blue_rom> compiled
-Compiling verilog file "./dead_red_rom.v" in library work
+Compiling verilog file "flash_manager.v" in library work
 Module <gameoverrom> compiled
+Compiling verilog file "display_16hex.v" in library work
+Module <flash_manager> compiled
+Compiling verilog file "./dead_red_rom.v" in library work
+Module <display_16hex> compiled
 Compiling verilog file "./dead_image_rom.v" in library work
 Module <dead_red_rom> compiled
 Compiling verilog file "./dead_green_rom.v" in library work
 Module <dead_image_rom> compiled
 Compiling verilog file "./dead_blue_rom.v" in library work
 Module <dead_green_rom> compiled
-Compiling verilog file "lab5.v" in library work
+Compiling verilog file "sound_modules.v" in library work
 Module <dead_blue_rom> compiled
-Module <lab5audio> compiled
-Module <ac97> compiled
-Module <ac97commands> compiled
-Module <tone750hz> compiled
-Module <lab5> compiled
-Module <display_string> compiled
-Module <ascii2dots> compiled
+Module <mole_adressss_locations> compiled
+Module <debounce_ara> compiled
+Module <sound_module> compiled
+Module <flash_reader> compiled
+Module <recorder> compiled
+Module <mybram> compiled
+Module <fir31> compiled
+Compiling verilog file "graphics.v" in library work
+Module <coeffs31> compiled
 Module <xvga> compiled
 Module <normalmole> compiled
 Module <deadmole> compiled
@@ -200,7 +193,15 @@ Module <whackamole> compiled
 Module <startscreen> compiled
 Module <gameover> compiled
 Module <displaymole> compiled
+Compiling verilog file "lab5.v" in library work
 Module <mole_divider> compiled
+Module <lab5audio> compiled
+Module <ac97> compiled
+Module <ac97commands> compiled
+Module <tone750hz> compiled
+Module <lab5> compiled
+Module <display_string> compiled
+Module <ascii2dots> compiled
 No errors in compilation
 Analysis of file <"lab5.prj"> succeeded.
  
@@ -639,7 +640,7 @@ Analyzing module <displaymole> in library <work>.
 	y6p = 10'b1000000000
 	y7p = 10'b1000000000
 	y8p = 10'b1000000000
-WARNING:Xst:852 - "lab5.v" line 1544: Unconnected input port 'height' of instance 'happymole1' is tied to GND.
+WARNING:Xst:852 - "graphics.v" line 322: Unconnected input port 'height' of instance 'happymole1' is tied to GND.
 Module <displaymole> is correct for synthesis.
  
 Analyzing module <mole_divider> in library <work>.
@@ -810,7 +811,7 @@ Unit <gameState> synthesized.
 
 
 Synthesizing Unit <xvga>.
-    Related source file is "lab5.v".
+    Related source file is "graphics.v".
     Found 10-bit up counter for signal <vcount>.
     Found 1-bit register for signal <vsync>.
     Found 11-bit up counter for signal <hcount>.
@@ -964,7 +965,7 @@ Unit <coeffs31> synthesized.
 
 
 Synthesizing Unit <mole_divider>.
-    Related source file is "lab5.v".
+    Related source file is "graphics.v".
     Found 1-bit register for signal <mole_popup_clock>.
     Found 27-bit up counter for signal <count>.
     Summary:
@@ -1128,19 +1129,19 @@ Unit <flash_manager> synthesized.
 
 
 Synthesizing Unit <normalmole>.
-    Related source file is "lab5.v".
-WARNING:Xst:643 - "lab5.v" line 1313: The result of a 11x10-bit multiplication is partially used. Only the 16 least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
+    Related source file is "graphics.v".
+WARNING:Xst:643 - "graphics.v" line 91: The result of a 11x10-bit multiplication is partially used. Only the 16 least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
     Found 24-bit register for signal <pixel>.
-    Found 11-bit adder carry out for signal <add0000$addsub0000> created at line 1308.
-    Found 10-bit adder carry out for signal <add0001$addsub0000> created at line 1308.
+    Found 11-bit adder carry out for signal <add0000$addsub0000> created at line 86.
+    Found 10-bit adder carry out for signal <add0001$addsub0000> created at line 86.
     Found 16-bit adder for signal <image_addr>.
-    Found 11-bit subtractor for signal <image_addr$addsub0000> created at line 1313.
-    Found 11x10-bit multiplier for signal <image_addr$mult0001> created at line 1313.
-    Found 13-bit subtractor for signal <image_addr$sub0000> created at line 1313.
-    Found 11-bit comparator greatequal for signal <pixel$cmp_ge0000> created at line 1308.
-    Found 10-bit comparator greatequal for signal <pixel$cmp_ge0001> created at line 1308.
-    Found 12-bit comparator less for signal <pixel$cmp_lt0000> created at line 1308.
-    Found 11-bit comparator less for signal <pixel$cmp_lt0001> created at line 1308.
+    Found 11-bit subtractor for signal <image_addr$addsub0000> created at line 91.
+    Found 11x10-bit multiplier for signal <image_addr$mult0001> created at line 91.
+    Found 13-bit subtractor for signal <image_addr$sub0000> created at line 91.
+    Found 11-bit comparator greatequal for signal <pixel$cmp_ge0000> created at line 86.
+    Found 10-bit comparator greatequal for signal <pixel$cmp_ge0001> created at line 86.
+    Found 12-bit comparator less for signal <pixel$cmp_lt0000> created at line 86.
+    Found 11-bit comparator less for signal <pixel$cmp_lt0001> created at line 86.
     Summary:
 	inferred  24 D-type flip-flop(s).
 	inferred   5 Adder/Subtractor(s).
@@ -1150,19 +1151,19 @@ Unit <normalmole> synthesized.
 
 
 Synthesizing Unit <deadmole>.
-    Related source file is "lab5.v".
-WARNING:Xst:643 - "lab5.v" line 1335: The result of a 11x10-bit multiplication is partially used. Only the 16 least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
+    Related source file is "graphics.v".
+WARNING:Xst:643 - "graphics.v" line 113: The result of a 11x10-bit multiplication is partially used. Only the 16 least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
     Found 24-bit register for signal <pixel>.
-    Found 11-bit adder carry out for signal <add0000$addsub0000> created at line 1330.
-    Found 10-bit adder carry out for signal <add0001$addsub0000> created at line 1330.
+    Found 11-bit adder carry out for signal <add0000$addsub0000> created at line 108.
+    Found 10-bit adder carry out for signal <add0001$addsub0000> created at line 108.
     Found 16-bit adder for signal <image_addr>.
-    Found 11-bit subtractor for signal <image_addr$addsub0000> created at line 1335.
-    Found 11x10-bit multiplier for signal <image_addr$mult0001> created at line 1335.
-    Found 13-bit subtractor for signal <image_addr$sub0000> created at line 1335.
-    Found 11-bit comparator greatequal for signal <pixel$cmp_ge0000> created at line 1330.
-    Found 10-bit comparator greatequal for signal <pixel$cmp_ge0001> created at line 1330.
-    Found 12-bit comparator less for signal <pixel$cmp_lt0000> created at line 1330.
-    Found 11-bit comparator less for signal <pixel$cmp_lt0001> created at line 1330.
+    Found 11-bit subtractor for signal <image_addr$addsub0000> created at line 113.
+    Found 11x10-bit multiplier for signal <image_addr$mult0001> created at line 113.
+    Found 13-bit subtractor for signal <image_addr$sub0000> created at line 113.
+    Found 11-bit comparator greatequal for signal <pixel$cmp_ge0000> created at line 108.
+    Found 10-bit comparator greatequal for signal <pixel$cmp_ge0001> created at line 108.
+    Found 12-bit comparator less for signal <pixel$cmp_lt0000> created at line 108.
+    Found 11-bit comparator less for signal <pixel$cmp_lt0001> created at line 108.
     Summary:
 	inferred  24 D-type flip-flop(s).
 	inferred   5 Adder/Subtractor(s).
@@ -1172,20 +1173,20 @@ Unit <deadmole> synthesized.
 
 
 Synthesizing Unit <happymole>.
-    Related source file is "lab5.v".
+    Related source file is "graphics.v".
 WARNING:Xst:647 - Input <height> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:643 - "lab5.v" line 1358: The result of a 11x10-bit multiplication is partially used. Only the 16 least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
+WARNING:Xst:643 - "graphics.v" line 136: The result of a 11x10-bit multiplication is partially used. Only the 16 least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
     Found 24-bit register for signal <pixel>.
-    Found 11-bit adder carry out for signal <add0000$addsub0000> created at line 1353.
-    Found 10-bit adder carry out for signal <add0001$addsub0000> created at line 1353.
+    Found 11-bit adder carry out for signal <add0000$addsub0000> created at line 131.
+    Found 10-bit adder carry out for signal <add0001$addsub0000> created at line 131.
     Found 16-bit adder for signal <image_addr>.
-    Found 11-bit subtractor for signal <image_addr$addsub0000> created at line 1358.
-    Found 11x10-bit multiplier for signal <image_addr$mult0001> created at line 1358.
-    Found 13-bit subtractor for signal <image_addr$sub0000> created at line 1358.
-    Found 11-bit comparator greatequal for signal <pixel$cmp_ge0000> created at line 1353.
-    Found 10-bit comparator greatequal for signal <pixel$cmp_ge0001> created at line 1353.
-    Found 12-bit comparator less for signal <pixel$cmp_lt0000> created at line 1353.
-    Found 11-bit comparator less for signal <pixel$cmp_lt0001> created at line 1353.
+    Found 11-bit subtractor for signal <image_addr$addsub0000> created at line 136.
+    Found 11x10-bit multiplier for signal <image_addr$mult0001> created at line 136.
+    Found 13-bit subtractor for signal <image_addr$sub0000> created at line 136.
+    Found 11-bit comparator greatequal for signal <pixel$cmp_ge0000> created at line 131.
+    Found 10-bit comparator greatequal for signal <pixel$cmp_ge0001> created at line 131.
+    Found 12-bit comparator less for signal <pixel$cmp_lt0000> created at line 131.
+    Found 11-bit comparator less for signal <pixel$cmp_lt0001> created at line 131.
     Summary:
 	inferred  24 D-type flip-flop(s).
 	inferred   5 Adder/Subtractor(s).
@@ -1195,7 +1196,7 @@ Unit <happymole> synthesized.
 
 
 Synthesizing Unit <displaymole>.
-    Related source file is "lab5.v".
+    Related source file is "graphics.v".
 WARNING:Xst:1780 - Signal <whack_pixel> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:1780 - Signal <start_pixel> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:653 - Signal <REQUEST_MOLE> is used but never assigned. This sourceless signal will be automatically connected to value 0011.
@@ -1210,16 +1211,16 @@ WARNING:Xst:1780 - Signal <GAME_OVER> is never used or assigned. This unconnecte
 WARNING:Xst:1780 - Signal <GAME_ONGOING> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
     Found 8x31-bit ROM for signal <mole_location$rom0000>.
     Found 1-bit register for signal <popup_done>.
-    Found 10-bit adder carry out for signal <add0000$addsub0000> created at line 1522.
-    Found 10-bit comparator equal for signal <popup_done$cmp_eq0000> created at line 1516.
-    Found 11-bit comparator equal for signal <popup_done$cmp_eq0001> created at line 1522.
+    Found 10-bit adder carry out for signal <add0000$addsub0000> created at line 300.
+    Found 10-bit comparator equal for signal <popup_done$cmp_eq0000> created at line 294.
+    Found 11-bit comparator equal for signal <popup_done$cmp_eq0001> created at line 300.
     Found 1-bit 4-to-1 multiplexer for signal <popup_done$mux0001>.
     Found 11-bit register for signal <x>.
     Found 10-bit register for signal <y_change>.
-    Found 10-bit comparator greatequal for signal <y_change$cmp_ge0000> created at line 1520.
-    Found 10-bit comparator greater for signal <y_change$cmp_gt0000> created at line 1514.
-    Found 11-bit comparator lessequal for signal <y_change$cmp_le0000> created at line 1514.
-    Found 11-bit comparator less for signal <y_change$cmp_lt0000> created at line 1520.
+    Found 10-bit comparator greatequal for signal <y_change$cmp_ge0000> created at line 298.
+    Found 10-bit comparator greater for signal <y_change$cmp_gt0000> created at line 292.
+    Found 11-bit comparator lessequal for signal <y_change$cmp_le0000> created at line 292.
+    Found 11-bit comparator less for signal <y_change$cmp_lt0000> created at line 298.
     Found 10-bit 4-to-1 multiplexer for signal <y_change$mux0003>.
     Found 10-bit addsub for signal <y_change$share0000>.
     Found 10-bit register for signal <y_permanent>.
@@ -6624,13 +6625,13 @@ Delay:               5.887ns (Levels of Logic = 2)
 =========================================================================
 
 
-Total REAL time to Xst completion: 51.00 secs
-Total CPU time to Xst completion: 49.80 secs
+Total REAL time to Xst completion: 52.00 secs
+Total CPU time to Xst completion: 50.06 secs
  
 --> 
 
 
-Total memory usage is 678484 kilobytes
+Total memory usage is 678412 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings : 4427 (   0 filtered)
