@@ -343,3 +343,24 @@ module mole_divider(input clk, output reg mole_popup_clock);
 		end
 	end
 endmodule 
+
+//////////////////////////////////////////////////////////////////////////////////
+//
+// BLOB FOR TEXT
+//
+//////////////////////////////////////////////////////////////////////////////////
+
+module blob
+   #(parameter WIDTH = 5,            // default width: 64 pixels
+               HEIGHT = 5,           // default height: 64 pixels
+               COLOR = 24'hFF_FF_FF)  // default color: white
+   (input [10:0] x,hcount,
+    input [9:0] y,vcount,
+    output reg [23:0] pixel);
+
+   always @ * begin
+      if ((hcount >= x && hcount < (x+WIDTH)) && (vcount >= y && vcount < (y+HEIGHT)))
+			pixel = COLOR;
+      else pixel = 0;
+   end
+endmodule

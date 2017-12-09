@@ -5,6 +5,102 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
+<msg type="warning" file="HDLCompilers" num="259" delta="unknown" ><arg fmt="%s" index="1">&quot;lab3.v&quot; line 502 </arg>Connection to input port &apos;<arg fmt="%s" index="2">x</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="unknown" ><arg fmt="%s" index="1">&quot;lab3.v&quot; line 502 </arg>Connection to input port &apos;<arg fmt="%s" index="2">y</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="unknown" ><arg fmt="%s" index="1">&quot;lab3.v&quot; line 503 </arg>Connection to input port &apos;<arg fmt="%s" index="2">x</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="unknown" ><arg fmt="%s" index="1">&quot;lab3.v&quot; line 503 </arg>Connection to input port &apos;<arg fmt="%s" index="2">y</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="unknown" ><arg fmt="%s" index="1">&quot;lab3.v&quot; line 504 </arg>Connection to input port &apos;<arg fmt="%s" index="2">x</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="unknown" ><arg fmt="%s" index="1">&quot;lab3.v&quot; line 504 </arg>Connection to input port &apos;<arg fmt="%s" index="2">y</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="unknown" ><arg fmt="%s" index="1">&quot;lab3.v&quot; line 505 </arg>Connection to input port &apos;<arg fmt="%s" index="2">x</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="unknown" ><arg fmt="%s" index="1">&quot;lab3.v&quot; line 505 </arg>Connection to input port &apos;<arg fmt="%s" index="2">y</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="unknown" ><arg fmt="%s" index="1">&quot;lab3.v&quot; line 506 </arg>Connection to input port &apos;<arg fmt="%s" index="2">x</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="unknown" ><arg fmt="%s" index="1">&quot;lab3.v&quot; line 506 </arg>Connection to input port &apos;<arg fmt="%s" index="2">y</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="unknown" ><arg fmt="%s" index="1">&quot;lab3.v&quot; line 507 </arg>Connection to input port &apos;<arg fmt="%s" index="2">x</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="unknown" ><arg fmt="%s" index="1">&quot;lab3.v&quot; line 507 </arg>Connection to input port &apos;<arg fmt="%s" index="2">y</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="unknown" ><arg fmt="%s" index="1">&quot;lab3.v&quot; line 509 </arg>Connection to input port &apos;<arg fmt="%s" index="2">x</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="unknown" ><arg fmt="%s" index="1">&quot;lab3.v&quot; line 509 </arg>Connection to input port &apos;<arg fmt="%s" index="2">y</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="unknown" ><arg fmt="%s" index="1">&quot;lab3.v&quot; line 510 </arg>Connection to input port &apos;<arg fmt="%s" index="2">x</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="unknown" ><arg fmt="%s" index="1">&quot;lab3.v&quot; line 510 </arg>Connection to input port &apos;<arg fmt="%s" index="2">y</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="unknown" ><arg fmt="%s" index="1">&quot;lab3.v&quot; line 511 </arg>Connection to input port &apos;<arg fmt="%s" index="2">x</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="unknown" ><arg fmt="%s" index="1">&quot;lab3.v&quot; line 511 </arg>Connection to input port &apos;<arg fmt="%s" index="2">y</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="unknown" ><arg fmt="%s" index="1">&quot;lab3.v&quot; line 512 </arg>Connection to input port &apos;<arg fmt="%s" index="2">x</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="unknown" ><arg fmt="%s" index="1">&quot;lab3.v&quot; line 512 </arg>Connection to input port &apos;<arg fmt="%s" index="2">y</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="unknown" ><arg fmt="%s" index="1">&quot;lab3.v&quot; line 513 </arg>Connection to input port &apos;<arg fmt="%s" index="2">x</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="unknown" ><arg fmt="%s" index="1">&quot;lab3.v&quot; line 513 </arg>Connection to input port &apos;<arg fmt="%s" index="2">y</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="unknown" ><arg fmt="%s" index="1">&quot;lab3.v&quot; line 514 </arg>Connection to input port &apos;<arg fmt="%s" index="2">x</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="unknown" ><arg fmt="%s" index="1">&quot;lab3.v&quot; line 514 </arg>Connection to input port &apos;<arg fmt="%s" index="2">y</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="unknown" ><arg fmt="%s" index="1">&quot;lab3.v&quot; line 515 </arg>Connection to input port &apos;<arg fmt="%s" index="2">x</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="unknown" ><arg fmt="%s" index="1">&quot;lab3.v&quot; line 515 </arg>Connection to input port &apos;<arg fmt="%s" index="2">y</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="unknown" ><arg fmt="%s" index="1">&quot;lab3.v&quot; line 516 </arg>Connection to input port &apos;<arg fmt="%s" index="2">x</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="unknown" ><arg fmt="%s" index="1">&quot;lab3.v&quot; line 516 </arg>Connection to input port &apos;<arg fmt="%s" index="2">y</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="unknown" ><arg fmt="%s" index="1">&quot;lab3.v&quot; line 517 </arg>Connection to input port &apos;<arg fmt="%s" index="2">x</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="unknown" ><arg fmt="%s" index="1">&quot;lab3.v&quot; line 517 </arg>Connection to input port &apos;<arg fmt="%s" index="2">y</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="unknown" ><arg fmt="%s" index="1">&quot;lab3.v&quot; line 518 </arg>Connection to input port &apos;<arg fmt="%s" index="2">x</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="unknown" ><arg fmt="%s" index="1">&quot;lab3.v&quot; line 518 </arg>Connection to input port &apos;<arg fmt="%s" index="2">y</arg>&apos; does not match port size
+</msg>
+
 <msg type="warning" file="Xst" num="2591" delta="unknown" ><arg fmt="%s" index="1">&quot;lab3.v&quot; line 331:</arg> <arg fmt="%s" index="2">attribute on instance</arg> &lt;<arg fmt="%s" index="3">CLKFX_DIVIDE</arg>&gt; overrides <arg fmt="%s" index="4">generic/parameter on entity</arg>. It is possible that simulator will not take this attribute into account.
 </msg>
 
@@ -47,16 +143,82 @@
 <msg type="info" file="Xst" num="2561" delta="unknown" >Always blocking tristate driving signal &lt;<arg fmt="%s" index="1">tv_in_i2c_data</arg>&gt; in unit &lt;<arg fmt="%s" index="2">lab3</arg>&gt; is removed.
 </msg>
 
-<msg type="warning" file="Xst" num="643" delta="unknown" >&quot;<arg fmt="%s" index="1">lab3.v</arg>&quot; line <arg fmt="%d" index="2">579</arg>: The result of a <arg fmt="%d" index="3">11</arg>x<arg fmt="%d" index="4">10</arg>-bit multiplication is partially used. Only the <arg fmt="%d" index="5">16</arg> least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
+<msg type="warning" file="Xst" num="646" delta="unknown" >Signal &lt;<arg fmt="%s" index="1">location</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 </msg>
 
-<msg type="warning" file="Xst" num="643" delta="unknown" >&quot;<arg fmt="%s" index="1">lab3.v</arg>&quot; line <arg fmt="%d" index="2">601</arg>: The result of a <arg fmt="%d" index="3">11</arg>x<arg fmt="%d" index="4">10</arg>-bit multiplication is partially used. Only the <arg fmt="%d" index="5">16</arg> least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
+<msg type="warning" file="Xst" num="643" delta="unknown" >&quot;<arg fmt="%s" index="1">lab3.v</arg>&quot; line <arg fmt="%d" index="2">759</arg>: The result of a <arg fmt="%d" index="3">32</arg>x<arg fmt="%d" index="4">7</arg>-bit multiplication is partially used. Only the <arg fmt="%d" index="5">8</arg> least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
+</msg>
+
+<msg type="warning" file="Xst" num="646" delta="unknown" >Signal &lt;<arg fmt="%s" index="1">location</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="643" delta="unknown" >&quot;<arg fmt="%s" index="1">lab3.v</arg>&quot; line <arg fmt="%d" index="2">897</arg>: The result of a <arg fmt="%d" index="3">32</arg>x<arg fmt="%d" index="4">7</arg>-bit multiplication is partially used. Only the <arg fmt="%d" index="5">8</arg> least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
+</msg>
+
+<msg type="warning" file="Xst" num="646" delta="unknown" >Signal &lt;<arg fmt="%s" index="1">location</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="643" delta="unknown" >&quot;<arg fmt="%s" index="1">lab3.v</arg>&quot; line <arg fmt="%d" index="2">1043</arg>: The result of a <arg fmt="%d" index="3">32</arg>x<arg fmt="%d" index="4">9</arg>-bit multiplication is partially used. Only the <arg fmt="%d" index="5">9</arg> least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
+</msg>
+
+<msg type="warning" file="Xst" num="646" delta="unknown" >Signal &lt;<arg fmt="%s" index="1">location</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="643" delta="unknown" >&quot;<arg fmt="%s" index="1">lab3.v</arg>&quot; line <arg fmt="%d" index="2">1979</arg>: The result of a <arg fmt="%d" index="3">32</arg>x<arg fmt="%d" index="4">8</arg>-bit multiplication is partially used. Only the <arg fmt="%d" index="5">9</arg> least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
+</msg>
+
+<msg type="warning" file="Xst" num="646" delta="unknown" >Signal &lt;<arg fmt="%s" index="1">location</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="643" delta="unknown" >&quot;<arg fmt="%s" index="1">lab3.v</arg>&quot; line <arg fmt="%d" index="2">2239</arg>: The result of a <arg fmt="%d" index="3">32</arg>x<arg fmt="%d" index="4">7</arg>-bit multiplication is partially used. Only the <arg fmt="%d" index="5">9</arg> least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
+</msg>
+
+<msg type="warning" file="Xst" num="646" delta="unknown" >Signal &lt;<arg fmt="%s" index="1">location</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="643" delta="unknown" >&quot;<arg fmt="%s" index="1">lab3.v</arg>&quot; line <arg fmt="%d" index="2">2384</arg>: The result of a <arg fmt="%d" index="3">32</arg>x<arg fmt="%d" index="4">7</arg>-bit multiplication is partially used. Only the <arg fmt="%d" index="5">9</arg> least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
+</msg>
+
+<msg type="warning" file="Xst" num="646" delta="unknown" >Signal &lt;<arg fmt="%s" index="1">location</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="646" delta="unknown" >Signal &lt;<arg fmt="%s" index="1">location</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="646" delta="unknown" >Signal &lt;<arg fmt="%s" index="1">location</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="646" delta="unknown" >Signal &lt;<arg fmt="%s" index="1">location</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="646" delta="unknown" >Signal &lt;<arg fmt="%s" index="1">location</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="646" delta="unknown" >Signal &lt;<arg fmt="%s" index="1">location</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="646" delta="unknown" >Signal &lt;<arg fmt="%s" index="1">location</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="646" delta="unknown" >Signal &lt;<arg fmt="%s" index="1">location</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="646" delta="unknown" >Signal &lt;<arg fmt="%s" index="1">location</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="646" delta="unknown" >Signal &lt;<arg fmt="%s" index="1">location</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="643" delta="unknown" >&quot;<arg fmt="%s" index="1">lab3.v</arg>&quot; line <arg fmt="%d" index="2">605</arg>: The result of a <arg fmt="%d" index="3">11</arg>x<arg fmt="%d" index="4">10</arg>-bit multiplication is partially used. Only the <arg fmt="%d" index="5">16</arg> least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
+</msg>
+
+<msg type="warning" file="Xst" num="643" delta="unknown" >&quot;<arg fmt="%s" index="1">lab3.v</arg>&quot; line <arg fmt="%d" index="2">627</arg>: The result of a <arg fmt="%d" index="3">11</arg>x<arg fmt="%d" index="4">10</arg>-bit multiplication is partially used. Only the <arg fmt="%d" index="5">16</arg> least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
 </msg>
 
 <msg type="warning" file="Xst" num="647" delta="unknown" >Input &lt;<arg fmt="%s" index="1">height</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 </msg>
 
-<msg type="warning" file="Xst" num="643" delta="unknown" >&quot;<arg fmt="%s" index="1">lab3.v</arg>&quot; line <arg fmt="%d" index="2">624</arg>: The result of a <arg fmt="%d" index="3">11</arg>x<arg fmt="%d" index="4">10</arg>-bit multiplication is partially used. Only the <arg fmt="%d" index="5">16</arg> least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
+<msg type="warning" file="Xst" num="643" delta="unknown" >&quot;<arg fmt="%s" index="1">lab3.v</arg>&quot; line <arg fmt="%d" index="2">650</arg>: The result of a <arg fmt="%d" index="3">11</arg>x<arg fmt="%d" index="4">10</arg>-bit multiplication is partially used. Only the <arg fmt="%d" index="5">16</arg> least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
 </msg>
 
 <msg type="warning" file="Xst" num="2565" delta="unknown" >Inout &lt;<arg fmt="%s" index="1">user3&lt;28&gt;</arg>&gt; is never assigned.
@@ -1067,6 +1229,9 @@
 <msg type="warning" file="Xst" num="646" delta="unknown" >Signal &lt;<arg fmt="%s" index="1">mole2_pixel</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 </msg>
 
+<msg type="warning" file="Xst" num="646" delta="unknown" >Signal &lt;<arg fmt="%s" index="1">mole1_pixel</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
 <msg type="warning" file="Xst" num="646" delta="unknown" >Signal &lt;<arg fmt="%s" index="1">left</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 </msg>
 
@@ -1130,7 +1295,22 @@
 <msg type="info" file="Xst" num="1767" delta="unknown" >HDL ADVISOR - Resource sharing has identified that some arithmetic operations in this design can share the same physical resources for reduced device utilization. For improved clock frequency you may try to disable resource sharing.
 </msg>
 
+<msg type="info" file="Xst" num="2385" delta="unknown" >HDL ADVISOR - You can improve the performance of the multiplier <arg fmt="%s" index="1">Mmult_location_mult0001</arg> by adding <arg fmt="%d" index="2">2</arg> register level(s).
+</msg>
+
 <msg type="info" file="Xst" num="2385" delta="unknown" >HDL ADVISOR - You can improve the performance of the multiplier <arg fmt="%s" index="1">Mmult_image_addr_mult0001</arg> by adding <arg fmt="%d" index="2">1</arg> register level(s).
+</msg>
+
+<msg type="info" file="Xst" num="2385" delta="unknown" >HDL ADVISOR - You can improve the performance of the multiplier <arg fmt="%s" index="1">Mmult_image_addr_mult0001</arg> by adding <arg fmt="%d" index="2">1</arg> register level(s).
+</msg>
+
+<msg type="info" file="Xst" num="2385" delta="unknown" >HDL ADVISOR - You can improve the performance of the multiplier <arg fmt="%s" index="1">Mmult_location_mult0001</arg> by adding <arg fmt="%d" index="2">2</arg> register level(s).
+</msg>
+
+<msg type="info" file="Xst" num="2385" delta="unknown" >HDL ADVISOR - You can improve the performance of the multiplier <arg fmt="%s" index="1">Mmult_image_addr_mult0001</arg> by adding <arg fmt="%d" index="2">1</arg> register level(s).
+</msg>
+
+<msg type="info" file="Xst" num="2385" delta="unknown" >HDL ADVISOR - You can improve the performance of the multiplier <arg fmt="%s" index="1">Mmult_location_mult0001</arg> by adding <arg fmt="%d" index="2">2</arg> register level(s).
 </msg>
 
 <msg type="info" file="Xst" num="2385" delta="unknown" >HDL ADVISOR - You can improve the performance of the multiplier <arg fmt="%s" index="1">Mmult_image_addr_mult0001</arg> by adding <arg fmt="%d" index="2">1</arg> register level(s).
@@ -1142,10 +1322,13 @@
 <msg type="info" file="Xst" num="2385" delta="unknown" >HDL ADVISOR - You can improve the performance of the multiplier <arg fmt="%s" index="1">Mmult_image_addr_mult0001</arg> by adding <arg fmt="%d" index="2">1</arg> register level(s).
 </msg>
 
-<msg type="info" file="Xst" num="2385" delta="unknown" >HDL ADVISOR - You can improve the performance of the multiplier <arg fmt="%s" index="1">Mmult_image_addr_mult0001</arg> by adding <arg fmt="%d" index="2">1</arg> register level(s).
+<msg type="info" file="Xst" num="2385" delta="unknown" >HDL ADVISOR - You can improve the performance of the multiplier <arg fmt="%s" index="1">Mmult_location_mult0001</arg> by adding <arg fmt="%d" index="2">2</arg> register level(s).
 </msg>
 
-<msg type="info" file="Xst" num="2385" delta="unknown" >HDL ADVISOR - You can improve the performance of the multiplier <arg fmt="%s" index="1">Mmult_image_addr_mult0001</arg> by adding <arg fmt="%d" index="2">1</arg> register level(s).
+<msg type="info" file="Xst" num="2385" delta="unknown" >HDL ADVISOR - You can improve the performance of the multiplier <arg fmt="%s" index="1">Mmult_location_mult0001</arg> by adding <arg fmt="%d" index="2">2</arg> register level(s).
+</msg>
+
+<msg type="info" file="Xst" num="2385" delta="unknown" >HDL ADVISOR - You can improve the performance of the multiplier <arg fmt="%s" index="1">Mmult_location_mult0001</arg> by adding <arg fmt="%d" index="2">2</arg> register level(s).
 </msg>
 
 <msg type="warning" file="Xst" num="1710" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">pixel_0</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">normalmole</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
@@ -1254,42 +1437,6 @@
 </msg>
 
 <msg type="warning" file="Xst" num="1895" delta="unknown" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">pixel_19</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">happymole</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1710" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">rgb_0</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">lab3</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1710" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">rgb_1</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">lab3</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1710" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">rgb_2</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">lab3</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1710" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">rgb_3</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">lab3</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1710" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">rgb_8</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">lab3</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1710" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">rgb_9</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">lab3</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1710" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">rgb_10</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">lab3</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1710" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">rgb_11</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">lab3</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1710" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">rgb_16</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">lab3</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1710" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">rgb_17</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">lab3</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1710" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">rgb_18</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">lab3</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1710" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">rgb_19</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">lab3</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
 </msg>
 
 <msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">clean</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">db4</arg>&gt;.
@@ -1583,6 +1730,42 @@
 <msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_23</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole6</arg>&gt;.
 </msg>
 
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_4</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole1</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_5</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole1</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_6</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole1</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_7</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole1</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_12</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole1</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_13</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole1</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_14</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole1</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_15</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole1</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_20</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole1</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_21</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole1</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_22</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole1</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">pixel_23</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mole1</arg>&gt;.
+</msg>
+
 <msg type="warning" file="Xst" num="1989" delta="unknown" >Unit &lt;<arg fmt="%s" index="1">lab3</arg>&gt;: instances &lt;<arg fmt="%s" index="2">xvga2</arg>&gt;, &lt;<arg fmt="%s" index="3">xvga3</arg>&gt; of unit &lt;<arg fmt="%s" index="4">xvga</arg>&gt; are equivalent, second instance is removed
 </msg>
 
@@ -1820,46 +2003,58 @@
 <msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole3/pixel_4</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
 </msg>
 
-<msg type="warning" file="Xst" num="1293" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">y_change_9</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">lab3</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+<msg type="info" file="Xst" num="2261" delta="unknown" >The FF/Latch &lt;<arg fmt="%s" index="1">rgb_0</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">lab3</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">23 FFs/Latches</arg>, which will be removed : <arg fmt="%s" index="4">&lt;rgb_1&gt; &lt;rgb_2&gt; &lt;rgb_3&gt; &lt;rgb_4&gt; &lt;rgb_5&gt; &lt;rgb_6&gt; &lt;rgb_7&gt; &lt;rgb_8&gt; &lt;rgb_9&gt; &lt;rgb_10&gt; &lt;rgb_11&gt; &lt;rgb_12&gt; &lt;rgb_13&gt; &lt;rgb_14&gt; &lt;rgb_15&gt; &lt;rgb_16&gt; &lt;rgb_17&gt; &lt;rgb_18&gt; &lt;rgb_19&gt; &lt;rgb_20&gt; &lt;rgb_21&gt; &lt;rgb_22&gt; &lt;rgb_23&gt; </arg>
+</msg>
+
+<msg type="info" file="Xst" num="2261" delta="unknown" >The FF/Latch &lt;<arg fmt="%s" index="1">rgb_0</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">lab3</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">23 FFs/Latches</arg>, which will be removed : <arg fmt="%s" index="4">&lt;rgb_1&gt; &lt;rgb_2&gt; &lt;rgb_3&gt; &lt;rgb_4&gt; &lt;rgb_5&gt; &lt;rgb_6&gt; &lt;rgb_7&gt; &lt;rgb_8&gt; &lt;rgb_9&gt; &lt;rgb_10&gt; &lt;rgb_11&gt; &lt;rgb_12&gt; &lt;rgb_13&gt; &lt;rgb_14&gt; &lt;rgb_15&gt; &lt;rgb_16&gt; &lt;rgb_17&gt; &lt;rgb_18&gt; &lt;rgb_19&gt; &lt;rgb_20&gt; &lt;rgb_21&gt; &lt;rgb_22&gt; &lt;rgb_23&gt; </arg>
 </msg>
 
 <msg type="warning" file="Xst" num="1293" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">y_change_9</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">lab3</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
 </msg>
 
-<msg type="warning" file="Xst" num="1710" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">rgb_0</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">lab3</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+<msg type="info" file="Xst" num="2261" delta="unknown" >The FF/Latch &lt;<arg fmt="%s" index="1">rgb_0</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">lab3</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">23 FFs/Latches</arg>, which will be removed : <arg fmt="%s" index="4">&lt;rgb_1&gt; &lt;rgb_2&gt; &lt;rgb_3&gt; &lt;rgb_4&gt; &lt;rgb_5&gt; &lt;rgb_6&gt; &lt;rgb_7&gt; &lt;rgb_8&gt; &lt;rgb_9&gt; &lt;rgb_10&gt; &lt;rgb_11&gt; &lt;rgb_12&gt; &lt;rgb_13&gt; &lt;rgb_14&gt; &lt;rgb_15&gt; &lt;rgb_16&gt; &lt;rgb_17&gt; &lt;rgb_18&gt; &lt;rgb_19&gt; &lt;rgb_20&gt; &lt;rgb_21&gt; &lt;rgb_22&gt; &lt;rgb_23&gt; </arg>
 </msg>
 
-<msg type="warning" file="Xst" num="1710" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">rgb_1</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">lab3</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+<msg type="warning" file="Xst" num="1293" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">y_change_9</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">lab3</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
 </msg>
 
-<msg type="warning" file="Xst" num="1710" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">rgb_2</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">lab3</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+<msg type="info" file="Xst" num="2261" delta="unknown" >The FF/Latch &lt;<arg fmt="%s" index="1">rgb_0</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">lab3</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">23 FFs/Latches</arg>, which will be removed : <arg fmt="%s" index="4">&lt;rgb_1&gt; &lt;rgb_2&gt; &lt;rgb_3&gt; &lt;rgb_4&gt; &lt;rgb_5&gt; &lt;rgb_6&gt; &lt;rgb_7&gt; &lt;rgb_8&gt; &lt;rgb_9&gt; &lt;rgb_10&gt; &lt;rgb_11&gt; &lt;rgb_12&gt; &lt;rgb_13&gt; &lt;rgb_14&gt; &lt;rgb_15&gt; &lt;rgb_16&gt; &lt;rgb_17&gt; &lt;rgb_18&gt; &lt;rgb_19&gt; &lt;rgb_20&gt; &lt;rgb_21&gt; &lt;rgb_22&gt; &lt;rgb_23&gt; </arg>
 </msg>
 
-<msg type="warning" file="Xst" num="1710" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">rgb_3</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">lab3</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole1/pixel_23</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
 </msg>
 
-<msg type="warning" file="Xst" num="1710" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">rgb_8</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">lab3</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole1/pixel_22</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
 </msg>
 
-<msg type="warning" file="Xst" num="1710" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">rgb_9</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">lab3</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole1/pixel_21</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
 </msg>
 
-<msg type="warning" file="Xst" num="1710" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">rgb_10</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">lab3</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole1/pixel_20</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
 </msg>
 
-<msg type="warning" file="Xst" num="1710" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">rgb_11</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">lab3</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole1/pixel_15</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
 </msg>
 
-<msg type="warning" file="Xst" num="1710" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">rgb_16</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">lab3</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole1/pixel_14</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
 </msg>
 
-<msg type="warning" file="Xst" num="1710" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">rgb_17</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">lab3</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole1/pixel_13</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
 </msg>
 
-<msg type="warning" file="Xst" num="1710" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">rgb_18</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">lab3</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole1/pixel_12</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
 </msg>
 
-<msg type="warning" file="Xst" num="1710" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">rgb_19</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">lab3</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole1/pixel_7</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole1/pixel_6</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole1/pixel_5</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">mole1/pixel_4</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab3</arg>&gt;.
 </msg>
 
 <msg type="info" file="Xst" num="2169" delta="unknown" >HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
