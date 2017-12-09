@@ -2,7 +2,7 @@
 
 
 //to get mole addresses and locations in a one mole diy mode
-module mole_adressss_locations #(parameter MAX_ITEM = 4'd5, parameter INDEX_BITS = 4'd4) (
+module mole_adressss_locations #(parameter MAX_ITEM = 8'd127, parameter INDEX_BITS = 8) (
 	input wire clock,
 	input wire reset,
 	input wire [7:0]switch,
@@ -15,22 +15,25 @@ module mole_adressss_locations #(parameter MAX_ITEM = 4'd5, parameter INDEX_BITS
 	input wire down,
 	input wire downright,
 	input wire enter,
+	input wire diy_playback,
 	input wire diy_mode,
+	input wire bram_loaded,
 	input wire one_hz_enable,
-//	input wire disp_data_in,			 // LED display signal
-//   output wire disp_blank,           // LED display signal
-//   output wire disp_clock,           // LED display signal
-//   output wire disp_rs,              // LED display signal
-//   output wire disp_ce_b,            // LED display signal
-//   output wire disp_reset_b,         // LED display signal
-//   output wire disp_data_out,        // LED display signal
-	input wire [23:0] flash_address,
+	input wire disp_data_in,			 // LED display signal
+   output wire disp_blank,           // LED display signal
+   output wire disp_clock,           // LED display signal
+   output wire disp_rs,              // LED display signal
+   output wire disp_ce_b,            // LED display signal
+   output wire disp_reset_b,         // LED display signal
+   output wire disp_data_out,        // LED display signal
+	input wire [22:0] music_address,
+	input wire diy_music_end,
 	input wire [INDEX_BITS-1:0] lookup_index, //default is [3:0] unless the parameter is changed
 	output wire ready_to_use, //once bram full or reached end of music
 	output wire [INDEX_BITS-1:0] items, 		//number of items (address + locations) stored in bram for dyi mode
 	output wire [3:0]index_location,
 	output wire [23:0] index_address,
-	output wire [2:0]state); 			
+	output reg [2:0] state); 			
 	
 	parameter MUSIC_END = 23'h6AC00;
 	
@@ -40,19 +43,20 @@ module mole_adressss_locations #(parameter MAX_ITEM = 4'd5, parameter INDEX_BITS
 	parameter DIY_BUTTON_WAIT = 3'd3;
 	parameter DIY_BUTTON_WAIT_DONE = 3'd4;
 	parameter DIY_DONE = 3'd5;
+	parameter DIY_PLAYBACK = 3'd6;
 	
 	
 	reg [23:0]address_memory[MAX_ITEM-1:0]; // MAX_ITEM number of 24-bit words
 	reg [3:0] location_memory[MAX_ITEM-1:0];// MAX_ITEM number of  4-bit words
-	reg [INDEX_BITS-1:0] counts;
 	reg [3:0] location;
 	assign index_location = location;
 	reg [23:0] address;
 	assign index_address = address;	
+	
 	reg [2:0] next_state;
-	assign state = next_state;
 	reg internal_ready;
 	assign ready_to_use = internal_ready;
+	
 	reg [INDEX_BITS-1:0]internal_items;
 	assign items = internal_items;
 	wire [7:0] button_bits;
@@ -74,134 +78,125 @@ module mole_adressss_locations #(parameter MAX_ITEM = 4'd5, parameter INDEX_BITS
 						 .displayed_counter(displayed_counter));
 	
 	//display code
-/*	wire [63:0] display_data;
-	assign display_data = {address,location,3'b0, internal_ready, internal_items, 1'b0, next_state, displayed_counter};
-	display_16hex disp(.reset(switch[2]), .clock_27mhz(clock), .data_in(display_data), 
+	wire [63:0] display_data;
+	//assign display_data = {MAX_ITEM, 3'b0, internal_ready, internal_items, 1'b0, next_state, displayed_counter};
+	assign display_data = {address,4'b0,location,lookup_index};
+	display_16hex disp(.reset(switch[5]), .clock_27mhz(clock), .data_in(display_data), 
 		                .disp_rs(disp_rs), .disp_ce_b(disp_ce_b), .disp_blank(disp_blank),
 							 .disp_reset_b(disp_reset_b), .disp_data_out(disp_data_out), .disp_clock(disp_clock));
-*/
+
 
 	always @(posedge clock) begin
-		//internal_state <= next_state;
+		state <= next_state;
 		last_button_bits <= button_bits;
-		case(next_state)
-			INITIAL_STATE: begin 
-									next_state <= (!diy_mode) ? INITIAL_STATE : DIY_INITIAL;
+		internal_ready <= (diy_music_end || (internal_items >= MAX_ITEM)) ? 1 : 0;
+		case(state)
+			INITIAL_STATE: begin
 									internal_items <= 0;
-									counts <= 0;
-									internal_ready <= 0;
 									start_timer <= 0;
-								end
-			DIY_INITIAL: begin
-									next_state <= (!diy_mode) ? INITIAL_STATE : DIY_START;
-									start_timer <= 0;
-								end
+							   end
+			DIY_INITIAL: start_timer <= 0;
 			DIY_START: begin
-								if(flash_address >= MUSIC_END) begin
-									next_state <= DIY_DONE;
-								end
-								else begin
-									case(button_bits)
+								case(button_bits)
 										8'b10000000: begin
-																address_memory[internal_items] <= flash_address;
+																address_memory[internal_items] <= music_address;
 																location_memory[internal_items]  <= 4'd0;
 																if (!last_button_bits[7]) begin
 																	start_timer <= 1;
 																	internal_items <= internal_items + 1;
-																	next_state <= (!diy_mode) ? INITIAL_STATE : DIY_BUTTON_WAIT;
 																end
 
 														 end
 										8'b01000000: begin
-																address_memory[internal_items] <= flash_address;
+																address_memory[internal_items] <= music_address;
 																location_memory[internal_items]  <= 4'd1;
 																if (!last_button_bits[6]) begin
 																	start_timer <= 1;
 																	internal_items <= internal_items + 1;
-																	next_state <= (!diy_mode) ? INITIAL_STATE : DIY_BUTTON_WAIT;
 																end
 														 end
 										8'b00100000: begin
-																address_memory[internal_items] <= flash_address;
+																address_memory[internal_items] <= music_address;
 																location_memory[internal_items]  <= 4'd2;
 																if (!last_button_bits[5]) begin
 																	start_timer <= 1;
 																	internal_items <= internal_items + 1;
-																	next_state <= (!diy_mode) ? INITIAL_STATE : DIY_BUTTON_WAIT;
 																end
 														 end
 										8'b00010000: begin
-																address_memory[internal_items] <= flash_address;
+																address_memory[internal_items] <= music_address;
 																location_memory[internal_items]  <= 4'd3;
 																if (!last_button_bits[4]) begin
 																	start_timer <= 1;
 																	internal_items <= internal_items + 1;
-																	next_state <= (!diy_mode) ? INITIAL_STATE : DIY_BUTTON_WAIT;
 																end
 														 end
 										8'b00001000: begin
-																address_memory[internal_items] <= flash_address;
+																address_memory[internal_items] <= music_address;
 																location_memory[internal_items]  <= 4'd4;
 																if (!last_button_bits[3]) begin
 																	start_timer <= 1;
 																	internal_items <= internal_items + 1;
-																	next_state <= (!diy_mode) ? INITIAL_STATE : DIY_BUTTON_WAIT;
 																end
 														 end
 										8'b00000100: begin
-																address_memory[internal_items] <= flash_address;
+																address_memory[internal_items] <= music_address;
 																location_memory[internal_items]  <= 4'd5;
 																if (!last_button_bits[2]) begin
 																	start_timer <= 1;
 																	internal_items <= internal_items + 1;
-																	next_state <= (!diy_mode) ? INITIAL_STATE : DIY_BUTTON_WAIT;
 																end
 														 end
 										8'b00000010: begin
-																address_memory[internal_items] <= flash_address;
+																address_memory[internal_items] <= music_address;
 																location_memory[internal_items]  <= 4'd6;
 																if (!last_button_bits[1]) begin
 																	start_timer <= 1;
 																	internal_items <= internal_items + 1;
-																	next_state <= (!diy_mode) ? INITIAL_STATE : DIY_BUTTON_WAIT;
 																end
 														 end
 										8'b00000001: begin
-																address_memory[internal_items] <= flash_address;
+																address_memory[internal_items] <= music_address;
 																location_memory[internal_items]  <= 4'd7;
 																if (!last_button_bits[0]) begin
 																	start_timer <= 1;
 																	internal_items <= internal_items + 1;
-																	next_state <= (!diy_mode) ? INITIAL_STATE : DIY_BUTTON_WAIT;
 																end
 														 end
 										default: begin
 														start_timer <= 0;
 													end
 									endcase
-								end
-							end
-			DIY_BUTTON_WAIT:begin
-										next_state <= (!diy_mode) ? INITIAL_STATE : (timer_expired) ? DIY_BUTTON_WAIT_DONE: DIY_BUTTON_WAIT;
-										start_timer <= 0;
-								  end
-								  
-			DIY_BUTTON_WAIT_DONE: begin
-												next_state <= (!diy_mode) ? INITIAL_STATE : (internal_items >= MAX_ITEM) ? DIY_DONE : DIY_INITIAL; 
-										  end
+						  end
+			DIY_BUTTON_WAIT: start_timer <= 0;
+			DIY_BUTTON_WAIT_DONE: start_timer <= 0;
 			DIY_DONE: begin
-							internal_ready <= 1; //only get here once you reach the end ideally, because max items should be high enough never reached
-							next_state <= (!diy_mode) ? INITIAL_STATE : DIY_DONE;
-							address <= address_memory[lookup_index];
-							location <= location_memory[lookup_index];
-
+								address <= address_memory[lookup_index];
+								location <= location_memory[lookup_index];
 						 end
-			default: begin
-							next_state <= DIY_INITIAL;
-						end
-			
+			DIY_PLAYBACK: begin
+									address <= address_memory[lookup_index];
+									location <= location_memory[lookup_index];
+								end
+			default: start_timer <= 0;
 		endcase
-
+	end
+	
+	always @(*) begin
+		if(reset)begin
+			next_state = INITIAL_STATE;
+		end
+		else begin
+			case(state)
+				INITIAL_STATE: next_state = (diy_mode & bram_loaded & up) ? DIY_INITIAL : INITIAL_STATE;
+				DIY_INITIAL: next_state = (!diy_mode) ? INITIAL_STATE : (internal_ready) ? DIY_DONE : DIY_START;
+				DIY_START: next_state = (!diy_mode) ? INITIAL_STATE : (internal_ready) ? DIY_DONE : (start_timer) ? DIY_BUTTON_WAIT : DIY_START;
+				DIY_BUTTON_WAIT: next_state = (!diy_mode) ? INITIAL_STATE: (internal_ready) ? DIY_DONE : (timer_expired) ? DIY_BUTTON_WAIT_DONE : DIY_BUTTON_WAIT;
+				DIY_BUTTON_WAIT_DONE: next_state = (!diy_mode) ? INITIAL_STATE: (internal_ready) ? DIY_DONE : DIY_START;
+				DIY_DONE: next_state = (!diy_mode) ? INITIAL_STATE: (diy_playback) ? DIY_PLAYBACK : DIY_DONE; 
+				DIY_PLAYBACK: next_state =  (!diy_mode) ? INITIAL_STATE: (diy_playback) ? DIY_PLAYBACK : DIY_DONE;
+			endcase
+		end
 	end
 
 endmodule
@@ -261,10 +256,14 @@ module sound_module(
   //output wire disp_ce_b,            // LED display signal
   //output wire disp_reset_b,         // LED display signal
   //output wire disp_data_out,        // LED display signal
-  output wire [22:0] music_address, //output to davis
+  output wire [22:0] music_address, //output to davis, and diy
   input wire [3:0] game_state,     //input from davis
  // input wire [2:0] mole_loc,
   input wire diy_mode,
+  output reg diy_record_done,
+  input wire [2:0] diy_state,
+  input wire diy_playback,
+  output reg loaded_to_bram,
   output reg [7:0] to_ac97_data    // 8-bit PCM data to headphone
 );
 
@@ -277,7 +276,17 @@ module sound_module(
 	parameter MOLE_COUNTDOWN = 4'd4;		// Mole displayed until stomped/expired
 	parameter MOLE_MISSED_SOUND	= 4'd9;		// Extra time for sound
 	parameter MOLE_WHACKED_SOUND	= 4'd10;		// Extra time for sound
-	
+	parameter GAME_OVER				= 4'd8;		// Display Game Over Screen
+	parameter RECORD_DIY_PLAYBACK 	= 4'd11;		// Playback of DIY
+	parameter RECORD_DIY_IN_PROGRESS = 4'd12;// Begin Recording Moles for DIY
+	//diy module states
+	parameter INITIAL_STATE = 3'd0;
+	parameter DIY_INITIAL = 3'd1;
+	parameter DIY_START = 3'd2;
+	parameter DIY_BUTTON_WAIT = 3'd3;
+	parameter DIY_BUTTON_WAIT_DONE = 3'd4;
+	parameter DIY_DONE = 3'd5;
+	parameter DIY_PLAYBACK = 3'd6;
 	//sound module states
 	parameter LOAD_POP_START = 3'd0;
 	parameter LOADING_POP = 3'd1;
@@ -287,10 +296,6 @@ module sound_module(
 	parameter LOADING_WHACKED = 3'd5;
 	parameter LOAD_DONE = 3'd6;
 	parameter READY_TO_PLAY = 3'd7;
-	// Placeholder variables for DIY mode
-	parameter RECORD_DIY_BEGIN 	= 4'd11;		// Begin Recording Moles
-	parameter RECORD_DIY_IN_PROGRESS = 4'd11;// Begin Recording Moles
-	parameter RECORD_DIY_END		= 4'd13;		// Recording ended
 	
 	//address for background music and sound effects
 	//make sure the order of things recorded is always background music, pop up sound, missed sound, and whacked sound b/c order
@@ -323,6 +328,7 @@ module sound_module(
 	initial bram_we = 0;
 	//flash reader
 	reg [22:0] flash_raddr;
+	assign flash_read_addr = flash_raddr;
 	reg reading; //controls the doread signal to flash
 	wire busy;
 	mybram #(.LOGSIZE(LOGSIZE), .WIDTH(WIDTH)) soundeffect_memory(.addr(bram_address),.clk(clock),.we(bram_we),.din(bram_in),.dout(bram_out));
@@ -340,10 +346,7 @@ module sound_module(
 	//low pass filter
 	wire signed [17:0] filter_f_output; //filtered flash data
 	reg [7:0] filter_f_input; //input to filter sound data coming from flash
-	wire signed [17:0] filter_b_output; //filtered bram data
-	reg [7:0] filter_b_input; //inpput to filter sound data coming from bram
-								
-	fir31 fir31_bram(.clock(clock), .reset(reset), .ready(ready), .x(filter_b_input), .y(filter_b_output));
+							
 	fir31 fir31_flash(.clock(clock), .reset(reset), .ready(ready), .x(filter_f_input), .y(filter_f_output));
 	/*
 	assign display_data = {mole_loc, game_state};
@@ -356,13 +359,11 @@ module sound_module(
 	
 	reg [4:0] flash_read_count; ///wait 2^5 cycles between every read from memory for now when loading to bram
 	reg [3:0] last_game_state;
-	reg loaded_to_bram;
+	//reg loaded_to_bram;
 	initial loaded_to_bram = 0;
 	reg pop_sound_done;
 	reg missed_sound_done;
 	reg whacked_sound_done;
-	reg diy_mode_done;
-	reg diy_playback;
 	reg [LOGSIZE-1:0]bram_pop_start;
 	reg [LOGSIZE-1:0]bram_pop_end;
 	reg [LOGSIZE-1:0]bram_missed_start;
@@ -459,6 +460,11 @@ module sound_module(
 				reading <= 1;
 				last_game_state <= game_state;
 				case(game_state)
+					GAME_OVER: begin
+										to_ac97_data <= 0;
+										flash_raddr <= MUSIC_START;
+										reading <= 0;
+									end
 					MOLE_COUNTDOWN: begin
 												filter_f_input <= flash_data[7:0];
 
@@ -541,28 +547,27 @@ module sound_module(
 												end
 										 end
 					RECORD_DIY_IN_PROGRESS: begin
-														if(last_game_state != game_state) begin
-															flash_raddr <= MUSIC_START;
-															diy_mode_done <= 0;
-															diy_playback <= 0;
-														end
-														else begin
-															if (!diy_mode_done) begin
-																filter_f_input <= flash_data[7:0];
-																if (ready) begin
-																	to_ac97_data <= filter_f_output[17:0];
-																	if(flash_raddr >= MUSIC_END) begin
-																		diy_mode_done <= 1;
-																	end
-																	else begin
-																		flash_raddr <= flash_raddr + 1; 
-																	end
-																end
-															end
-															else begin
-																to_ac97_data <= 0;
-															end
-														end
+														filter_f_input <= flash_data[7:0];
+														diy_record_done <= (flash_raddr >= MUSIC_END);
+														case(diy_state)
+															INITIAL_STATE: begin 
+																					flash_raddr <= MUSIC_START;
+																					reading <= 1;
+																				end
+															DIY_DONE: begin 
+																				to_ac97_data <= 0;
+																				reading <= 0;
+																				flash_raddr <= MUSIC_START;
+																		 end
+															default: begin
+																			reading <= 1;
+																			if(ready) begin
+																				to_ac97_data <= filter_f_output[17:10];
+																				flash_raddr <= (flash_raddr >= MUSIC_END) ? MUSIC_START : flash_raddr + 1;
+																			end
+																			
+																		end														
+														endcase
 													end
 					default: begin
 									//play background music
@@ -579,7 +584,7 @@ module sound_module(
 									//comment out the code above and play this one instead to loop through whats in bram
 									filter_b_input <= bram_out[7:0];
 									if(ready) begin
-										to_ac97_data <= bram_out[7:0];//filter_b_output[17:10];
+										to_ac97_data <= bram_out[7:0];
 										bram_address <= (bram_address < bram_whacked_end) ? bram_address + 1 : bram_whacked_start;
 									end
 									*/
