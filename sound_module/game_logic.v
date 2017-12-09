@@ -249,7 +249,7 @@ endmodule
 //																									 //
 //////////////////////////////////////////////////////////////////////////////
 
-module mole #(parameter MAX_ITEM = 4'd5) 
+module mole #(parameter MAX_ITEM = 8'd127, parameter INDEX_BITS = 8) 
 				(	input clk, reset,
 					input [22:0] music_address,
 					input [3:0] game_state,
@@ -344,10 +344,8 @@ parameter [3:0] MOLE_WHACKED			= 4'd6;		// Score counter incremented (pulse)
 parameter [3:0] GAME_OVER				= 4'd8;		// Display Game Over Screen
 parameter [3:0] MOLE_MISSED_SOUND	= 4'd9;		// Extra time for sound
 parameter [3:0] MOLE_WHACKED_SOUND	= 4'd10;		// Extra time for sound
-
-// Placeholder variables for DIY mode
-parameter [3:0] RECORD_DIY_BEGIN 	= 4'd11;		// Begin Recording Moles
-parameter [3:0] RECORD_DIY_IN_PROGRESS = 4'd12;// Begin Recording Moles
+// For DIY mode
+parameter [3:0] RECORD_DIY_IN_PROGRESS = 4'd12;// Begin Recording Moles for DIY
 
 // New Fancy Mole Display States
 parameter [3:0] MOLE_ASCENDING				= 4'd13;
@@ -385,7 +383,7 @@ always @(*) begin
 	end else begin
 		next_mole_location = (request_mole) ? random_mole_location : next_mole_location;
 		case(state)
-			IDLE : next_state = (start) ? GAME_START_DELAY : (diy_mode) ? RECORD_DIY_BEGIN : IDLE;
+			IDLE : next_state = (diy_mode) ? RECORD_DIY_IN_PROGRESS  : (start) ? GAME_START_DELAY : IDLE;
 			GAME_START_DELAY: next_state = (expired) ? GAME_ONGOING : GAME_START_DELAY;
 			GAME_ONGOING : next_state = (lives == 0) ? GAME_OVER : (request_mole) ? REQUEST_MOLE : GAME_ONGOING;
 			REQUEST_MOLE : next_state = MOLE_ASCENDING;
@@ -395,8 +393,7 @@ always @(*) begin
 			MOLE_MISSED_SOUND : next_state = (expired) ? HAPPY_MOLE_DESCENDING : MOLE_MISSED_SOUND;
 			MOLE_WHACKED_SOUND : next_state = (expired) ? DEAD_MOLE_DESCENDING: MOLE_WHACKED_SOUND;
 			GAME_OVER : next_state = (expired) ? IDLE : GAME_OVER;
-			RECORD_DIY_BEGIN: next_state = RECORD_DIY_IN_PROGRESS; 
-			RECORD_DIY_IN_PROGRESS: next_state = (!diy_mode || ready_to_use) ? IDLE : RECORD_DIY_IN_PROGRESS; 
+			RECORD_DIY_IN_PROGRESS: next_state = (!diy_mode) ? IDLE : RECORD_DIY_IN_PROGRESS; 
 			MOLE_ASCENDING : next_state = (misstep) ? MOLE_MISSED : (whacked) ? MOLE_WHACKED : (popup_done) ? MOLE_COUNTDOWN : MOLE_ASCENDING;
 			HAPPY_MOLE_DESCENDING : next_state = (popup_done) ? GAME_ONGOING : HAPPY_MOLE_DESCENDING;
 			DEAD_MOLE_DESCENDING : next_state = (popup_done) ? GAME_ONGOING : DEAD_MOLE_DESCENDING;

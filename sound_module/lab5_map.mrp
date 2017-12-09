@@ -4,44 +4,45 @@ Xilinx Mapping Report File for Design 'lab5'
 Design Information
 ------------------
 Command Line   : map -ise
-/afs/athena.mit.edu/user/v/s/vsouyang/Documents/6.111/bobateam/sound_module/soun
-d_module.ise -intstyle ise -p xc2v6000-bf957-4 -cm area -pr off -k 4 -c 100 -tx
-off -o lab5_map.ncd lab5.ngd lab5.pcf 
+"/afs/athena.mit.edu/user/a/d/adhikara/Documents/6.111things/6.111
+project/bobateam/sound_module/sound_module.ise" -intstyle ise -p
+xc2v6000-bf957-4 -cm area -pr off -k 4 -c 100 -tx off -o lab5_map.ncd lab5.ngd
+lab5.pcf 
 Target Device  : xc2v6000
 Target Package : bf957
 Target Speed   : -4
 Mapper Version : virtex2 -- $Revision: 1.46.12.2 $
-Mapped Date    : Fri Dec  8 14:50:02 2017
+Mapped Date    : Sat Dec  9 16:33:03 2017
 
 Design Summary
 --------------
 Number of errors:      0
-Number of warnings:  579
+Number of warnings:  573
 Logic Utilization:
-  Total Number Slice Registers:       1,465 out of  67,584    2%
-    Number used as Flip Flops:        1,462
-    Number used as Latches:               3
-  Number of 4 input LUTs:             2,248 out of  67,584    3%
+  Total Number Slice Registers:       2,213 out of  67,584    3%
+    Number used as Flip Flops:        2,207
+    Number used as Latches:               6
+  Number of 4 input LUTs:             3,364 out of  67,584    4%
 Logic Distribution:
-  Number of occupied Slices:          1,803 out of  33,792    5%
-    Number of Slices containing only related logic:   1,803 out of   1,803 100%
-    Number of Slices containing unrelated logic:          0 out of   1,803   0%
+  Number of occupied Slices:          2,251 out of  33,792    6%
+    Number of Slices containing only related logic:   2,251 out of   2,251 100%
+    Number of Slices containing unrelated logic:          0 out of   2,251   0%
       *See NOTES below for an explanation of the effects of unrelated logic.
-  Total Number of 4 input LUTs:       2,893 out of  67,584    4%
-    Number used as logic:             2,191
-    Number used as a route-thru:        645
+  Total Number of 4 input LUTs:       3,883 out of  67,584    5%
+    Number used as logic:             3,311
+    Number used as a route-thru:        519
     Number used for Dual Port RAMs:      32
       (Two LUTs used per Dual Port RAM)
-    Number used as Shift registers:      25
+    Number used as Shift registers:      21
   Number of bonded IOBs:                576 out of     684   84%
   Number of RAMB16s:                     80 out of     144   55%
   Number of MULT18X18s:                   4 out of     144    2%
-  Number of BUFGMUXs:                     4 out of      16   25%
+  Number of BUFGMUXs:                     3 out of      16   18%
   Number of DCMs:                         1 out of      12    8%
 
-Peak Memory Usage:  536 MB
-Total REAL time to MAP completion:  4 secs 
-Total CPU time to MAP completion:   3 secs 
+Peak Memory Usage:  551 MB
+Total REAL time to MAP completion:  5 secs 
+Total CPU time to MAP completion:   4 secs 
 
 NOTES:
 
@@ -84,7 +85,7 @@ Section 1 - Errors
 Section 2 - Warnings
 --------------------
 WARNING:LIT:243 - Logical network user3<28>_IBUF has no load.
-WARNING:LIT:395 - The above warning message base_net_load_rule is repeated 313
+WARNING:LIT:395 - The above warning message base_net_load_rule is repeated 306
    more times for the following (max. 5 shown):
    user3<4>_IBUF,
    user3<29>_IBUF,
@@ -95,6 +96,10 @@ WARNING:LIT:395 - The above warning message base_net_load_rule is repeated 313
 WARNING:LIT:162 - Only DFS outputs (CLKFX/FX180/CONCUR) of DCM symbol "vclk1"
    are routed, but CLKFB is not routed. Proper phase relationship of output
    clocks to CLKIN cannot be guaranteed.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   diy_addr_loc/next_state_not0001 is sourced by a combinatorial pin. This is
+   not good design practice. Use the CE pin to control the loading of data into
+   the flip-flop.
 WARNING:PhysDesignRules:367 - The signal <ram0_data<10>_IBUF> is incomplete. The
    signal does not drive any load pins in the design.
 WARNING:PhysDesignRules:367 - The signal <ram0_data<11>_IBUF> is incomplete. The
@@ -515,22 +520,8 @@ WARNING:PhysDesignRules:367 - The signal <tv_in_hff_IBUF> is incomplete. The
    signal does not drive any load pins in the design.
 WARNING:PhysDesignRules:367 - The signal <systemace_irq_IBUF> is incomplete. The
    signal does not drive any load pins in the design.
-WARNING:PhysDesignRules:367 - The signal <switch<0>_IBUF> is incomplete. The
-   signal does not drive any load pins in the design.
 WARNING:PhysDesignRules:367 - The signal <tv_in_i2c_data_IBUF> is incomplete.
    The signal does not drive any load pins in the design.
-WARNING:PhysDesignRules:367 - The signal <switch<1>_IBUF> is incomplete. The
-   signal does not drive any load pins in the design.
-WARNING:PhysDesignRules:367 - The signal <switch<2>_IBUF> is incomplete. The
-   signal does not drive any load pins in the design.
-WARNING:PhysDesignRules:367 - The signal <switch<3>_IBUF> is incomplete. The
-   signal does not drive any load pins in the design.
-WARNING:PhysDesignRules:367 - The signal <switch<4>_IBUF> is incomplete. The
-   signal does not drive any load pins in the design.
-WARNING:PhysDesignRules:367 - The signal <switch<5>_IBUF> is incomplete. The
-   signal does not drive any load pins in the design.
-WARNING:PhysDesignRules:367 - The signal <switch<6>_IBUF> is incomplete. The
-   signal does not drive any load pins in the design.
 WARNING:PhysDesignRules:367 - The signal <user1<0>_IBUF> is incomplete. The
    signal does not drive any load pins in the design.
 WARNING:PhysDesignRules:367 - The signal <user1<1>_IBUF> is incomplete. The
