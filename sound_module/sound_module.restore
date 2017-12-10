@@ -866,6 +866,7 @@ proc restore { { project_dir "" } } {
       "start_red_rom.xco" 
       "startrom.xco" 
       "test_fsm.v" 
+      "text_graphics.v" 
       "whack_blue_rom.xco" 
       "whack_green_rom.xco" 
       "whack_red_rom.xco" 

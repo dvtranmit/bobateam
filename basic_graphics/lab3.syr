@@ -5,14 +5,14 @@ Parameter TMPDIR set to /afs/athena.mit.edu/user/v/s/vsouyang/Documents/6.111/bo
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.03 secs
+Total CPU time to Xst completion: 0.02 secs
  
 --> 
 Parameter xsthdpdir set to /afs/athena.mit.edu/user/v/s/vsouyang/Documents/6.111/bobateam/basic_graphics/xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.03 secs
+Total CPU time to Xst completion: 0.02 secs
  
 --> 
 Reading design: lab3.prj
@@ -1946,13 +1946,13 @@ Delay:               6.660ns (Levels of Logic = 3)
 =========================================================================
 
 
-Total REAL time to Xst completion: 31.00 secs
-Total CPU time to Xst completion: 30.41 secs
+Total REAL time to Xst completion: 30.00 secs
+Total CPU time to Xst completion: 29.60 secs
  
 --> 
 
 
-Total memory usage is 548572 kilobytes
+Total memory usage is 548552 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :  657 (   0 filtered)

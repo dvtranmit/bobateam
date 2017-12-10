@@ -1,5 +1,5 @@
-set -tmpdir "/afs/athena.mit.edu/user/a/d/adhikara/Documents/6.111things/6.111 project/bobateam/sound_module/xst/projnav.tmp"
-set -xsthdpdir "/afs/athena.mit.edu/user/a/d/adhikara/Documents/6.111things/6.111 project/bobateam/sound_module/xst"
+set -tmpdir "/afs/athena.mit.edu/user/v/s/vsouyang/Documents/6.111/bobateam/sound_module/xst/projnav.tmp"
+set -xsthdpdir "/afs/athena.mit.edu/user/v/s/vsouyang/Documents/6.111/bobateam/sound_module/xst"
 run
 -ifn lab5.prj
 -ifmt mixed
