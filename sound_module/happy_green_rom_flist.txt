@@ -1,5 +1,6 @@
 # Output products list for <happy_green_rom>
 happy_green_rom.asy
+happy_green_rom.mif
 happy_green_rom.ngc
 happy_green_rom.sym
 happy_green_rom.v
