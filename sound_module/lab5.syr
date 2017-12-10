@@ -1,14 +1,14 @@
 Release 10.1.03 - xst K.39 (lin64)
 Copyright (c) 1995-2008 Xilinx, Inc.  All rights reserved.
 --> 
-Parameter TMPDIR set to /afs/athena.mit.edu/user/a/d/adhikara/Documents/6.111things/6.111 project/bobateam/sound_module/xst/projnav.tmp
+Parameter TMPDIR set to /afs/athena.mit.edu/user/v/s/vsouyang/Documents/6.111/bobateam/sound_module/xst/projnav.tmp
 
 
 Total REAL time to Xst completion: 0.00 secs
 Total CPU time to Xst completion: 0.02 secs
  
 --> 
-Parameter xsthdpdir set to /afs/athena.mit.edu/user/a/d/adhikara/Documents/6.111things/6.111 project/bobateam/sound_module/xst
+Parameter xsthdpdir set to /afs/athena.mit.edu/user/v/s/vsouyang/Documents/6.111/bobateam/sound_module/xst
 
 
 Total REAL time to Xst completion: 0.00 secs
@@ -120,8 +120,25 @@ Compiling verilog file "./whack_blue_rom.v" in library work
 Module <whack_green_rom> compiled
 Compiling verilog file "./whackrom.v" in library work
 Module <whack_blue_rom> compiled
-Compiling verilog file "./start_red_rom.v" in library work
+Compiling verilog file "text_graphics.v" in library work
 Module <whackrom> compiled
+Module <whack_text_display> compiled
+Module <amole_text_display> compiled
+Module <pressuptostart_text_display> compiled
+Module <digit1> compiled
+Module <digit2> compiled
+Module <digit3> compiled
+Module <digit4> compiled
+Module <digit5> compiled
+Module <digit6> compiled
+Module <digit7> compiled
+Module <digit8> compiled
+Module <digit9> compiled
+Module <digit0> compiled
+Module <gameover_text_display> compiled
+Module <lives_text_display> compiled
+Compiling verilog file "./start_red_rom.v" in library work
+Module <score_text_display> compiled
 Compiling verilog file "./start_green_rom.v" in library work
 Module <start_red_rom> compiled
 Compiling verilog file "./start_blue_rom.v" in library work
@@ -362,6 +379,118 @@ Analyzing hierarchy for module <timer> in library <work> with parameters.
 	IDLE = "00"
 
 Analyzing hierarchy for module <mole_divider> in library <work>.
+
+Analyzing hierarchy for module <whack_text_display> in library <work> with parameters.
+	CLEAR = "000000000000000000000000"
+	HEIGHT = "00000000000000000000000000000100"
+	SCALE = "00000000000000000000000000000100"
+	WHITE = "111111111111111111111111"
+	WIDTH = "00000000000000000000000000011010"
+
+Analyzing hierarchy for module <amole_text_display> in library <work> with parameters.
+	CLEAR = "000000000000000000000000"
+	HEIGHT = "00000000000000000000000000000100"
+	SCALE = "00000000000000000000000000000100"
+	WHITE = "111111111111111111111111"
+	WIDTH = "00000000000000000000000000011100"
+
+Analyzing hierarchy for module <pressuptostart_text_display> in library <work> with parameters.
+	CLEAR = "000000000000000000000000"
+	HEIGHT = "00000000000000000000000000000101"
+	SCALE = "00000000000000000000000000000011"
+	WHITE = "111111111111111111111111"
+	WIDTH = "00000000000000000000000001001100"
+
+Analyzing hierarchy for module <gameover_text_display> in library <work> with parameters.
+	CLEAR = "000000000000000000000000"
+	HEIGHT = "00000000000000000000000000000101"
+	SCALE = "00000000000000000000000000000100"
+	WHITE = "111111111111111111111111"
+	WIDTH = "00000000000000000000000000101101"
+
+Analyzing hierarchy for module <lives_text_display> in library <work> with parameters.
+	CLEAR = "000000000000000000000000"
+	HEIGHT = "00000000000000000000000000000101"
+	SCALE = "00000000000000000000000000000011"
+	WHITE = "111111111111111111111111"
+	WIDTH = "00000000000000000000000000010110"
+
+Analyzing hierarchy for module <score_text_display> in library <work> with parameters.
+	CLEAR = "000000000000000000000000"
+	HEIGHT = "00000000000000000000000000000101"
+	SCALE = "00000000000000000000000000000011"
+	WHITE = "111111111111111111111111"
+	WIDTH = "00000000000000000000000000011000"
+
+Analyzing hierarchy for module <digit0> in library <work> with parameters.
+	CLEAR = "000000000000000000000000"
+	HEIGHT = "00000000000000000000000000000101"
+	SCALE = "00000000000000000000000000000011"
+	WHITE = "111111111111111111111111"
+	WIDTH = "00000000000000000000000000000100"
+
+Analyzing hierarchy for module <digit1> in library <work> with parameters.
+	CLEAR = "000000000000000000000000"
+	HEIGHT = "00000000000000000000000000000101"
+	SCALE = "00000000000000000000000000000011"
+	WHITE = "111111111111111111111111"
+	WIDTH = "00000000000000000000000000000100"
+
+Analyzing hierarchy for module <digit2> in library <work> with parameters.
+	CLEAR = "000000000000000000000000"
+	HEIGHT = "00000000000000000000000000000101"
+	SCALE = "00000000000000000000000000000011"
+	WHITE = "111111111111111111111111"
+	WIDTH = "00000000000000000000000000000100"
+
+Analyzing hierarchy for module <digit3> in library <work> with parameters.
+	CLEAR = "000000000000000000000000"
+	HEIGHT = "00000000000000000000000000000101"
+	SCALE = "00000000000000000000000000000011"
+	WHITE = "111111111111111111111111"
+	WIDTH = "00000000000000000000000000000100"
+
+Analyzing hierarchy for module <digit4> in library <work> with parameters.
+	CLEAR = "000000000000000000000000"
+	HEIGHT = "00000000000000000000000000000101"
+	SCALE = "00000000000000000000000000000011"
+	WHITE = "111111111111111111111111"
+	WIDTH = "00000000000000000000000000000100"
+
+Analyzing hierarchy for module <digit5> in library <work> with parameters.
+	CLEAR = "000000000000000000000000"
+	HEIGHT = "00000000000000000000000000000101"
+	SCALE = "00000000000000000000000000000011"
+	WHITE = "111111111111111111111111"
+	WIDTH = "00000000000000000000000000000100"
+
+Analyzing hierarchy for module <digit6> in library <work> with parameters.
+	CLEAR = "000000000000000000000000"
+	HEIGHT = "00000000000000000000000000000101"
+	SCALE = "00000000000000000000000000000011"
+	WHITE = "111111111111111111111111"
+	WIDTH = "00000000000000000000000000000100"
+
+Analyzing hierarchy for module <digit7> in library <work> with parameters.
+	CLEAR = "000000000000000000000000"
+	HEIGHT = "00000000000000000000000000000101"
+	SCALE = "00000000000000000000000000000011"
+	WHITE = "111111111111111111111111"
+	WIDTH = "00000000000000000000000000000100"
+
+Analyzing hierarchy for module <digit8> in library <work> with parameters.
+	CLEAR = "000000000000000000000000"
+	HEIGHT = "00000000000000000000000000000101"
+	SCALE = "00000000000000000000000000000011"
+	WHITE = "111111111111111111111111"
+	WIDTH = "00000000000000000000000000000100"
+
+Analyzing hierarchy for module <digit9> in library <work> with parameters.
+	CLEAR = "000000000000000000000000"
+	HEIGHT = "00000000000000000000000000000101"
+	SCALE = "00000000000000000000000000000011"
+	WHITE = "111111111111111111111111"
+	WIDTH = "00000000000000000000000000000100"
 
 Analyzing hierarchy for module <normalmole> in library <work> with parameters.
 	HEIGHT = "00000000000000000000000100000000"
@@ -665,11 +794,139 @@ Analyzing module <displaymole> in library <work>.
 	y6p = 10'b1000000000
 	y7p = 10'b1000000000
 	y8p = 10'b1000000000
-WARNING:Xst:852 - "graphics.v" line 321: Unconnected input port 'height' of instance 'happymole1' is tied to GND.
+WARNING:Xst:852 - "graphics.v" line 345: Unconnected input port 'height' of instance 'happymole1' is tied to GND.
 Module <displaymole> is correct for synthesis.
  
 Analyzing module <mole_divider> in library <work>.
 Module <mole_divider> is correct for synthesis.
+ 
+Analyzing module <whack_text_display> in library <work>.
+	CLEAR = 24'b000000000000000000000000
+	HEIGHT = 32'sb00000000000000000000000000000100
+	SCALE = 32'sb00000000000000000000000000000100
+	WHITE = 24'b111111111111111111111111
+	WIDTH = 32'sb00000000000000000000000000011010
+Module <whack_text_display> is correct for synthesis.
+ 
+Analyzing module <amole_text_display> in library <work>.
+	CLEAR = 24'b000000000000000000000000
+	HEIGHT = 32'sb00000000000000000000000000000100
+	SCALE = 32'sb00000000000000000000000000000100
+	WHITE = 24'b111111111111111111111111
+	WIDTH = 32'sb00000000000000000000000000011100
+Module <amole_text_display> is correct for synthesis.
+ 
+Analyzing module <pressuptostart_text_display> in library <work>.
+	CLEAR = 24'b000000000000000000000000
+	HEIGHT = 32'sb00000000000000000000000000000101
+	SCALE = 32'sb00000000000000000000000000000011
+	WHITE = 24'b111111111111111111111111
+	WIDTH = 32'sb00000000000000000000000001001100
+Module <pressuptostart_text_display> is correct for synthesis.
+ 
+Analyzing module <gameover_text_display> in library <work>.
+	CLEAR = 24'b000000000000000000000000
+	HEIGHT = 32'sb00000000000000000000000000000101
+	SCALE = 32'sb00000000000000000000000000000100
+	WHITE = 24'b111111111111111111111111
+	WIDTH = 32'sb00000000000000000000000000101101
+Module <gameover_text_display> is correct for synthesis.
+ 
+Analyzing module <lives_text_display> in library <work>.
+	CLEAR = 24'b000000000000000000000000
+	HEIGHT = 32'sb00000000000000000000000000000101
+	SCALE = 32'sb00000000000000000000000000000011
+	WHITE = 24'b111111111111111111111111
+	WIDTH = 32'sb00000000000000000000000000010110
+Module <lives_text_display> is correct for synthesis.
+ 
+Analyzing module <score_text_display> in library <work>.
+	CLEAR = 24'b000000000000000000000000
+	HEIGHT = 32'sb00000000000000000000000000000101
+	SCALE = 32'sb00000000000000000000000000000011
+	WHITE = 24'b111111111111111111111111
+	WIDTH = 32'sb00000000000000000000000000011000
+Module <score_text_display> is correct for synthesis.
+ 
+Analyzing module <digit0> in library <work>.
+	CLEAR = 24'b000000000000000000000000
+	HEIGHT = 32'sb00000000000000000000000000000101
+	SCALE = 32'sb00000000000000000000000000000011
+	WHITE = 24'b111111111111111111111111
+	WIDTH = 32'sb00000000000000000000000000000100
+Module <digit0> is correct for synthesis.
+ 
+Analyzing module <digit1> in library <work>.
+	CLEAR = 24'b000000000000000000000000
+	HEIGHT = 32'sb00000000000000000000000000000101
+	SCALE = 32'sb00000000000000000000000000000011
+	WHITE = 24'b111111111111111111111111
+	WIDTH = 32'sb00000000000000000000000000000100
+Module <digit1> is correct for synthesis.
+ 
+Analyzing module <digit2> in library <work>.
+	CLEAR = 24'b000000000000000000000000
+	HEIGHT = 32'sb00000000000000000000000000000101
+	SCALE = 32'sb00000000000000000000000000000011
+	WHITE = 24'b111111111111111111111111
+	WIDTH = 32'sb00000000000000000000000000000100
+Module <digit2> is correct for synthesis.
+ 
+Analyzing module <digit3> in library <work>.
+	CLEAR = 24'b000000000000000000000000
+	HEIGHT = 32'sb00000000000000000000000000000101
+	SCALE = 32'sb00000000000000000000000000000011
+	WHITE = 24'b111111111111111111111111
+	WIDTH = 32'sb00000000000000000000000000000100
+Module <digit3> is correct for synthesis.
+ 
+Analyzing module <digit4> in library <work>.
+	CLEAR = 24'b000000000000000000000000
+	HEIGHT = 32'sb00000000000000000000000000000101
+	SCALE = 32'sb00000000000000000000000000000011
+	WHITE = 24'b111111111111111111111111
+	WIDTH = 32'sb00000000000000000000000000000100
+Module <digit4> is correct for synthesis.
+ 
+Analyzing module <digit5> in library <work>.
+	CLEAR = 24'b000000000000000000000000
+	HEIGHT = 32'sb00000000000000000000000000000101
+	SCALE = 32'sb00000000000000000000000000000011
+	WHITE = 24'b111111111111111111111111
+	WIDTH = 32'sb00000000000000000000000000000100
+Module <digit5> is correct for synthesis.
+ 
+Analyzing module <digit6> in library <work>.
+	CLEAR = 24'b000000000000000000000000
+	HEIGHT = 32'sb00000000000000000000000000000101
+	SCALE = 32'sb00000000000000000000000000000011
+	WHITE = 24'b111111111111111111111111
+	WIDTH = 32'sb00000000000000000000000000000100
+Module <digit6> is correct for synthesis.
+ 
+Analyzing module <digit7> in library <work>.
+	CLEAR = 24'b000000000000000000000000
+	HEIGHT = 32'sb00000000000000000000000000000101
+	SCALE = 32'sb00000000000000000000000000000011
+	WHITE = 24'b111111111111111111111111
+	WIDTH = 32'sb00000000000000000000000000000100
+Module <digit7> is correct for synthesis.
+ 
+Analyzing module <digit8> in library <work>.
+	CLEAR = 24'b000000000000000000000000
+	HEIGHT = 32'sb00000000000000000000000000000101
+	SCALE = 32'sb00000000000000000000000000000011
+	WHITE = 24'b111111111111111111111111
+	WIDTH = 32'sb00000000000000000000000000000100
+Module <digit8> is correct for synthesis.
+ 
+Analyzing module <digit9> in library <work>.
+	CLEAR = 24'b000000000000000000000000
+	HEIGHT = 32'sb00000000000000000000000000000101
+	SCALE = 32'sb00000000000000000000000000000011
+	WHITE = 24'b111111111111111111111111
+	WIDTH = 32'sb00000000000000000000000000000100
+Module <digit9> is correct for synthesis.
  
 Analyzing module <normalmole> in library <work>.
 	HEIGHT = 32'sb00000000000000000000000100000000
@@ -1041,6 +1298,266 @@ Synthesizing Unit <mole_divider>.
 Unit <mole_divider> synthesized.
 
 
+Synthesizing Unit <whack_text_display>.
+    Related source file is "text_graphics.v".
+WARNING:Xst:646 - Signal <location> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:643 - "text_graphics.v" line 51: The result of a 32x7-bit multiplication is partially used. Only the 8 least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
+    Found 32x7-bit multiplier for signal <location$mult0001> created at line 51.
+    Found 13-bit subtractor for signal <location$sub0000> created at line 51.
+    Found 12-bit subtractor for signal <location$sub0001> created at line 51.
+    Found 11-bit comparator greatequal for signal <p_out$cmp_ge0000> created at line 48.
+    Found 10-bit comparator greatequal for signal <p_out$cmp_ge0001> created at line 48.
+    Found 12-bit comparator less for signal <p_out$cmp_lt0000> created at line 48.
+    Found 11-bit comparator less for signal <p_out$cmp_lt0001> created at line 48.
+    Summary:
+	inferred   3 Adder/Subtractor(s).
+	inferred   1 Multiplier(s).
+	inferred   4 Comparator(s).
+Unit <whack_text_display> synthesized.
+
+
+Synthesizing Unit <amole_text_display>.
+    Related source file is "text_graphics.v".
+WARNING:Xst:646 - Signal <location> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:643 - "text_graphics.v" line 189: The result of a 32x7-bit multiplication is partially used. Only the 8 least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
+    Found 32x7-bit multiplier for signal <location$mult0001> created at line 189.
+    Found 13-bit subtractor for signal <location$sub0000> created at line 189.
+    Found 12-bit subtractor for signal <location$sub0001> created at line 189.
+    Found 11-bit comparator greatequal for signal <p_out$cmp_ge0000> created at line 186.
+    Found 10-bit comparator greatequal for signal <p_out$cmp_ge0001> created at line 186.
+    Found 12-bit comparator less for signal <p_out$cmp_lt0000> created at line 186.
+    Found 11-bit comparator less for signal <p_out$cmp_lt0001> created at line 186.
+    Summary:
+	inferred   3 Adder/Subtractor(s).
+	inferred   1 Multiplier(s).
+	inferred   4 Comparator(s).
+Unit <amole_text_display> synthesized.
+
+
+Synthesizing Unit <pressuptostart_text_display>.
+    Related source file is "text_graphics.v".
+WARNING:Xst:646 - Signal <location> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:643 - "text_graphics.v" line 335: The result of a 32x9-bit multiplication is partially used. Only the 9 least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
+    Found 32x9-bit multiplier for signal <location$mult0001> created at line 335.
+    Found 13-bit subtractor for signal <location$sub0000> created at line 335.
+    Found 12-bit subtractor for signal <location$sub0001> created at line 335.
+    Found 11-bit comparator greatequal for signal <p_out$cmp_ge0000> created at line 332.
+    Found 10-bit comparator greatequal for signal <p_out$cmp_ge0001> created at line 332.
+    Found 12-bit comparator less for signal <p_out$cmp_lt0000> created at line 332.
+    Found 11-bit comparator less for signal <p_out$cmp_lt0001> created at line 332.
+    Summary:
+	inferred   3 Adder/Subtractor(s).
+	inferred   1 Multiplier(s).
+	inferred   4 Comparator(s).
+Unit <pressuptostart_text_display> synthesized.
+
+
+Synthesizing Unit <gameover_text_display>.
+    Related source file is "text_graphics.v".
+WARNING:Xst:646 - Signal <location> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:643 - "text_graphics.v" line 1271: The result of a 32x8-bit multiplication is partially used. Only the 9 least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
+    Found 32x8-bit multiplier for signal <location$mult0001> created at line 1271.
+    Found 13-bit subtractor for signal <location$sub0000> created at line 1271.
+    Found 12-bit subtractor for signal <location$sub0001> created at line 1271.
+    Found 11-bit comparator greatequal for signal <p_out$cmp_ge0000> created at line 1268.
+    Found 10-bit comparator greatequal for signal <p_out$cmp_ge0001> created at line 1268.
+    Found 12-bit comparator less for signal <p_out$cmp_lt0000> created at line 1268.
+    Found 11-bit comparator less for signal <p_out$cmp_lt0001> created at line 1268.
+    Summary:
+	inferred   3 Adder/Subtractor(s).
+	inferred   1 Multiplier(s).
+	inferred   4 Comparator(s).
+Unit <gameover_text_display> synthesized.
+
+
+Synthesizing Unit <lives_text_display>.
+    Related source file is "text_graphics.v".
+WARNING:Xst:646 - Signal <location> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:643 - "text_graphics.v" line 1531: The result of a 32x7-bit multiplication is partially used. Only the 9 least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
+    Found 32x7-bit multiplier for signal <location$mult0001> created at line 1531.
+    Found 13-bit subtractor for signal <location$sub0000> created at line 1531.
+    Found 12-bit subtractor for signal <location$sub0001> created at line 1531.
+    Found 11-bit comparator greatequal for signal <p_out$cmp_ge0000> created at line 1528.
+    Found 10-bit comparator greatequal for signal <p_out$cmp_ge0001> created at line 1528.
+    Found 12-bit comparator less for signal <p_out$cmp_lt0000> created at line 1528.
+    Found 11-bit comparator less for signal <p_out$cmp_lt0001> created at line 1528.
+    Summary:
+	inferred   3 Adder/Subtractor(s).
+	inferred   1 Multiplier(s).
+	inferred   4 Comparator(s).
+Unit <lives_text_display> synthesized.
+
+
+Synthesizing Unit <score_text_display>.
+    Related source file is "text_graphics.v".
+WARNING:Xst:646 - Signal <location> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:643 - "text_graphics.v" line 1676: The result of a 32x7-bit multiplication is partially used. Only the 9 least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
+    Found 32x7-bit multiplier for signal <location$mult0001> created at line 1676.
+    Found 13-bit subtractor for signal <location$sub0000> created at line 1676.
+    Found 12-bit subtractor for signal <location$sub0001> created at line 1676.
+    Found 11-bit comparator greatequal for signal <p_out$cmp_ge0000> created at line 1673.
+    Found 10-bit comparator greatequal for signal <p_out$cmp_ge0001> created at line 1673.
+    Found 12-bit comparator less for signal <p_out$cmp_lt0000> created at line 1673.
+    Found 11-bit comparator less for signal <p_out$cmp_lt0001> created at line 1673.
+    Summary:
+	inferred   3 Adder/Subtractor(s).
+	inferred   1 Multiplier(s).
+	inferred   4 Comparator(s).
+Unit <score_text_display> synthesized.
+
+
+Synthesizing Unit <digit0>.
+    Related source file is "text_graphics.v".
+WARNING:Xst:646 - Signal <location> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+    Found 12-bit subtractor for signal <location$sub0001> created at line 1217.
+    Found 10-bit comparator greatequal for signal <p_out$cmp_ge0001> created at line 1214.
+    Found 12-bit comparator less for signal <p_out$cmp_lt0000> created at line 1214.
+    Found 11-bit comparator less for signal <p_out$cmp_lt0001> created at line 1214.
+    Summary:
+	inferred   2 Adder/Subtractor(s).
+	inferred   3 Comparator(s).
+Unit <digit0> synthesized.
+
+
+Synthesizing Unit <digit1>.
+    Related source file is "text_graphics.v".
+WARNING:Xst:646 - Signal <location> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+    Found 13-bit subtractor for signal <location$sub0000> created at line 750.
+    Found 12-bit subtractor for signal <location$sub0001> created at line 750.
+    Found 11-bit comparator greatequal for signal <p_out$cmp_ge0000> created at line 747.
+    Found 10-bit comparator greatequal for signal <p_out$cmp_ge0001> created at line 747.
+    Found 12-bit comparator less for signal <p_out$cmp_lt0000> created at line 747.
+    Found 11-bit comparator less for signal <p_out$cmp_lt0001> created at line 747.
+    Summary:
+	inferred   3 Adder/Subtractor(s).
+	inferred   4 Comparator(s).
+Unit <digit1> synthesized.
+
+
+Synthesizing Unit <digit2>.
+    Related source file is "text_graphics.v".
+WARNING:Xst:646 - Signal <location> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+    Found 13-bit subtractor for signal <location$sub0000> created at line 785.
+    Found 12-bit subtractor for signal <location$sub0001> created at line 785.
+    Found 11-bit comparator greatequal for signal <p_out$cmp_ge0000> created at line 782.
+    Found 10-bit comparator greatequal for signal <p_out$cmp_ge0001> created at line 782.
+    Found 12-bit comparator less for signal <p_out$cmp_lt0000> created at line 782.
+    Found 11-bit comparator less for signal <p_out$cmp_lt0001> created at line 782.
+    Summary:
+	inferred   3 Adder/Subtractor(s).
+	inferred   4 Comparator(s).
+Unit <digit2> synthesized.
+
+
+Synthesizing Unit <digit3>.
+    Related source file is "text_graphics.v".
+WARNING:Xst:646 - Signal <location> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+    Found 13-bit subtractor for signal <location$sub0000> created at line 839.
+    Found 12-bit subtractor for signal <location$sub0001> created at line 839.
+    Found 11-bit comparator greatequal for signal <p_out$cmp_ge0000> created at line 836.
+    Found 10-bit comparator greatequal for signal <p_out$cmp_ge0001> created at line 836.
+    Found 12-bit comparator less for signal <p_out$cmp_lt0000> created at line 836.
+    Found 11-bit comparator less for signal <p_out$cmp_lt0001> created at line 836.
+    Summary:
+	inferred   3 Adder/Subtractor(s).
+	inferred   4 Comparator(s).
+Unit <digit3> synthesized.
+
+
+Synthesizing Unit <digit4>.
+    Related source file is "text_graphics.v".
+WARNING:Xst:646 - Signal <location> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+    Found 13-bit subtractor for signal <location$sub0000> created at line 893.
+    Found 12-bit subtractor for signal <location$sub0001> created at line 893.
+    Found 11-bit comparator greatequal for signal <p_out$cmp_ge0000> created at line 890.
+    Found 10-bit comparator greatequal for signal <p_out$cmp_ge0001> created at line 890.
+    Found 12-bit comparator less for signal <p_out$cmp_lt0000> created at line 890.
+    Found 11-bit comparator less for signal <p_out$cmp_lt0001> created at line 890.
+    Summary:
+	inferred   3 Adder/Subtractor(s).
+	inferred   4 Comparator(s).
+Unit <digit4> synthesized.
+
+
+Synthesizing Unit <digit5>.
+    Related source file is "text_graphics.v".
+WARNING:Xst:646 - Signal <location> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+    Found 13-bit subtractor for signal <location$sub0000> created at line 947.
+    Found 12-bit subtractor for signal <location$sub0001> created at line 947.
+    Found 11-bit comparator greatequal for signal <p_out$cmp_ge0000> created at line 944.
+    Found 10-bit comparator greatequal for signal <p_out$cmp_ge0001> created at line 944.
+    Found 12-bit comparator less for signal <p_out$cmp_lt0000> created at line 944.
+    Found 11-bit comparator less for signal <p_out$cmp_lt0001> created at line 944.
+    Summary:
+	inferred   3 Adder/Subtractor(s).
+	inferred   4 Comparator(s).
+Unit <digit5> synthesized.
+
+
+Synthesizing Unit <digit6>.
+    Related source file is "text_graphics.v".
+WARNING:Xst:646 - Signal <location> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+    Found 32x24-bit ROM for signal <pixel>.
+    Found 13-bit subtractor for signal <location$sub0000> created at line 1001.
+    Found 12-bit subtractor for signal <location$sub0001> created at line 1001.
+    Found 11-bit comparator greatequal for signal <p_out$cmp_ge0000> created at line 998.
+    Found 10-bit comparator greatequal for signal <p_out$cmp_ge0001> created at line 998.
+    Found 12-bit comparator less for signal <p_out$cmp_lt0000> created at line 998.
+    Found 11-bit comparator less for signal <p_out$cmp_lt0001> created at line 998.
+    Summary:
+	inferred   1 ROM(s).
+	inferred   3 Adder/Subtractor(s).
+	inferred   4 Comparator(s).
+Unit <digit6> synthesized.
+
+
+Synthesizing Unit <digit7>.
+    Related source file is "text_graphics.v".
+WARNING:Xst:646 - Signal <location> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+    Found 13-bit subtractor for signal <location$sub0000> created at line 1055.
+    Found 12-bit subtractor for signal <location$sub0001> created at line 1055.
+    Found 11-bit comparator greatequal for signal <p_out$cmp_ge0000> created at line 1052.
+    Found 10-bit comparator greatequal for signal <p_out$cmp_ge0001> created at line 1052.
+    Found 12-bit comparator less for signal <p_out$cmp_lt0000> created at line 1052.
+    Found 11-bit comparator less for signal <p_out$cmp_lt0001> created at line 1052.
+    Summary:
+	inferred   3 Adder/Subtractor(s).
+	inferred   4 Comparator(s).
+Unit <digit7> synthesized.
+
+
+Synthesizing Unit <digit8>.
+    Related source file is "text_graphics.v".
+WARNING:Xst:646 - Signal <location> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+    Found 32x24-bit ROM for signal <pixel>.
+    Found 13-bit subtractor for signal <location$sub0000> created at line 1109.
+    Found 12-bit subtractor for signal <location$sub0001> created at line 1109.
+    Found 11-bit comparator greatequal for signal <p_out$cmp_ge0000> created at line 1106.
+    Found 10-bit comparator greatequal for signal <p_out$cmp_ge0001> created at line 1106.
+    Found 12-bit comparator less for signal <p_out$cmp_lt0000> created at line 1106.
+    Found 11-bit comparator less for signal <p_out$cmp_lt0001> created at line 1106.
+    Summary:
+	inferred   1 ROM(s).
+	inferred   3 Adder/Subtractor(s).
+	inferred   4 Comparator(s).
+Unit <digit8> synthesized.
+
+
+Synthesizing Unit <digit9>.
+    Related source file is "text_graphics.v".
+WARNING:Xst:646 - Signal <location> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+    Found 13-bit subtractor for signal <location$sub0000> created at line 1163.
+    Found 12-bit subtractor for signal <location$sub0001> created at line 1163.
+    Found 11-bit comparator greatequal for signal <p_out$cmp_ge0000> created at line 1160.
+    Found 10-bit comparator greatequal for signal <p_out$cmp_ge0001> created at line 1160.
+    Found 12-bit comparator less for signal <p_out$cmp_lt0000> created at line 1160.
+    Found 11-bit comparator less for signal <p_out$cmp_lt0001> created at line 1160.
+    Summary:
+	inferred   3 Adder/Subtractor(s).
+	inferred   4 Comparator(s).
+Unit <digit9> synthesized.
+
+
 Synthesizing Unit <debounce>.
     Related source file is "game_logic.v".
     Found 20-bit up counter for signal <count>.
@@ -1218,15 +1735,26 @@ Unit <happymole> synthesized.
 
 Synthesizing Unit <displaymole>.
     Related source file is "graphics.v".
-WARNING:Xst:1780 - Signal <whack_pixel> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:1780 - Signal <start_pixel> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <scoretext> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <livestext> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <gameovertext> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <d9> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <d8> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <d7> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <d6> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <d5> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <d4> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <d3> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <d2> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <d1> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <d0> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:653 - Signal <REQUEST_MOLE> is used but never assigned. This sourceless signal will be automatically connected to value 0011.
 WARNING:Xst:653 - Signal <MOLE_WHACKED_SOUND> is used but never assigned. This sourceless signal will be automatically connected to value 1010.
 WARNING:Xst:653 - Signal <MOLE_WHACKED> is used but never assigned. This sourceless signal will be automatically connected to value 0110.
 WARNING:Xst:653 - Signal <MOLE_MISSED_SOUND> is used but never assigned. This sourceless signal will be automatically connected to value 1001.
 WARNING:Xst:653 - Signal <MOLE_MISSED> is used but never assigned. This sourceless signal will be automatically connected to value 0101.
 WARNING:Xst:653 - Signal <MOLE_COUNTDOWN> is used but never assigned. This sourceless signal will be automatically connected to value 0100.
-WARNING:Xst:1780 - Signal <IDLE> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:653 - Signal <IDLE> is used but never assigned. This sourceless signal will be automatically connected to value 0000.
 WARNING:Xst:1780 - Signal <GAME_START_DELAY> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:1780 - Signal <GAME_OVER> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:1780 - Signal <GAME_ONGOING> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
@@ -1638,30 +2166,35 @@ Macro Statistics
 # RAMs                                                 : 2
  32x8-bit dual-port RAM                                : 1
  65536x8-bit single-port RAM                           : 1
-# ROMs                                                 : 14
+# ROMs                                                 : 16
  16x40-bit ROM                                         : 11
  31x10-bit ROM                                         : 1
+ 32x24-bit ROM                                         : 2
  8x31-bit ROM                                          : 1
  8x8-bit ROM                                           : 1
-# Multipliers                                          : 4
+# Multipliers                                          : 10
  10x8-bit multiplier                                   : 1
  11x10-bit multiplier                                  : 3
-# Adders/Subtractors                                   : 36
+ 32x7-bit multiplier                                   : 4
+ 32x8-bit multiplier                                   : 1
+ 32x9-bit multiplier                                   : 1
+# Adders/Subtractors                                   : 83
  10-bit adder                                          : 1
  10-bit adder carry out                                : 4
  10-bit addsub                                         : 2
  10-bit subtractor                                     : 1
  11-bit adder carry out                                : 3
  11-bit subtractor                                     : 3
- 13-bit subtractor                                     : 3
+ 12-bit subtractor                                     : 16
+ 13-bit subtractor                                     : 18
  16-bit adder                                          : 4
  18-bit adder                                          : 1
  23-bit adder                                          : 2
  4-bit subtractor                                      : 3
- 5-bit adder                                           : 2
+ 5-bit adder                                           : 12
  5-bit subtractor                                      : 1
- 8-bit adder                                           : 3
- 9-bit adder                                           : 3
+ 8-bit adder                                           : 5
+ 9-bit adder                                           : 7
 # Counters                                             : 32
  10-bit up counter                                     : 2
  11-bit up counter                                     : 1
@@ -1698,15 +2231,15 @@ Macro Statistics
  8-bit register                                        : 9
 # Latches                                              : 2
  3-bit latch                                           : 2
-# Comparators                                          : 55
+# Comparators                                          : 118
  10-bit comparator equal                               : 2
- 10-bit comparator greatequal                          : 4
+ 10-bit comparator greatequal                          : 20
  10-bit comparator greater                             : 1
  11-bit comparator equal                               : 1
- 11-bit comparator greatequal                          : 3
- 11-bit comparator less                                : 4
+ 11-bit comparator greatequal                          : 18
+ 11-bit comparator less                                : 20
  11-bit comparator lessequal                           : 1
- 12-bit comparator less                                : 3
+ 12-bit comparator less                                : 19
  16-bit comparator greatequal                          : 3
  16-bit comparator less                                : 3
  17-bit comparator less                                : 1
@@ -1838,6 +2371,10 @@ Loading core <happy_green_rom> for timing and area information for instance <gcm
 Loading core <happy_blue_rom> for timing and area information for instance <bcm_happy>.
 WARNING:Xst:2404 -  FFs/Latches <data_to_store<15:0>> (without init value) have a constant value of 0 in block <test_fsm>.
 
+Synthesizing (advanced) Unit <amole_text_display>.
+INFO:Xst:2385 - HDL ADVISOR - You can improve the performance of the multiplier Mmult_location_mult0001 by adding 2 register level(s).
+Unit <amole_text_display> synthesized (advanced).
+
 Synthesizing (advanced) Unit <deadmole>.
 INFO:Xst:2385 - HDL ADVISOR - You can improve the performance of the multiplier Mmult_image_addr_mult0001 by adding 1 register level(s).
 Unit <deadmole> synthesized (advanced).
@@ -1933,13 +2470,29 @@ INFO:Xst - The RAM <fsm/Mrom_nib2char_1_nib2char> will be implemented as BLOCK R
     -----------------------------------------------------------------------
 Unit <flash_manager> synthesized (advanced).
 
+Synthesizing (advanced) Unit <gameover_text_display>.
+INFO:Xst:2385 - HDL ADVISOR - You can improve the performance of the multiplier Mmult_location_mult0001 by adding 2 register level(s).
+Unit <gameover_text_display> synthesized (advanced).
+
 Synthesizing (advanced) Unit <happymole>.
 INFO:Xst:2385 - HDL ADVISOR - You can improve the performance of the multiplier Mmult_image_addr_mult0001 by adding 1 register level(s).
 Unit <happymole> synthesized (advanced).
 
+Synthesizing (advanced) Unit <lives_text_display>.
+INFO:Xst:2385 - HDL ADVISOR - You can improve the performance of the multiplier Mmult_location_mult0001 by adding 2 register level(s).
+Unit <lives_text_display> synthesized (advanced).
+
 Synthesizing (advanced) Unit <normalmole>.
 INFO:Xst:2385 - HDL ADVISOR - You can improve the performance of the multiplier Mmult_image_addr_mult0001 by adding 1 register level(s).
 Unit <normalmole> synthesized (advanced).
+
+Synthesizing (advanced) Unit <pressuptostart_text_display>.
+INFO:Xst:2385 - HDL ADVISOR - You can improve the performance of the multiplier Mmult_location_mult0001 by adding 2 register level(s).
+Unit <pressuptostart_text_display> synthesized (advanced).
+
+Synthesizing (advanced) Unit <score_text_display>.
+INFO:Xst:2385 - HDL ADVISOR - You can improve the performance of the multiplier Mmult_location_mult0001 by adding 2 register level(s).
+Unit <score_text_display> synthesized (advanced).
 
 Synthesizing (advanced) Unit <sound_module>.
 INFO:Xst - The RAM <soundeffect_memory/Mram_mem> will be implemented as a BLOCK RAM, absorbing the following register(s): <soundeffect_memory/dout>
@@ -1966,6 +2519,10 @@ INFO:Xst - HDL ADVISOR - Asynchronous or synchronous initialization of the regis
 INFO:Xst - HDL ADVISOR - Asynchronous or synchronous initialization of the register <faddress> prevents it from being combined with the ROM <Mrom_nib2char_9_nib2char> for implementation as read-only block RAM.
 INFO:Xst - HDL ADVISOR - Asynchronous or synchronous initialization of the register <faddress> prevents it from being combined with the ROM <Mrom_nib2char_10_nib2char> for implementation as read-only block RAM.
 Unit <test_fsm> synthesized (advanced).
+
+Synthesizing (advanced) Unit <whack_text_display>.
+INFO:Xst:2385 - HDL ADVISOR - You can improve the performance of the multiplier Mmult_location_mult0001 by adding 2 register level(s).
+Unit <whack_text_display> synthesized (advanced).
 WARNING:Xst:1426 - The value init of the FF/Latch l_left_v hinder the constant cleaning in the block ac97.
    You should achieve better results by setting this init to 1.
 WARNING:Xst:1710 - FF/Latch <l_cmd_addr_0> (without init value) has a constant value of 0 in block <ac97>. This FF/Latch will be trimmed during the optimization process.
@@ -2457,29 +3014,37 @@ Macro Statistics
  16x40-bit single-port block RAM                       : 4
  32x8-bit dual-port distributed RAM                    : 1
  65536x8-bit single-port block RAM                     : 1
-# ROMs                                                 : 10
+# ROMs                                                 : 12
  16x40-bit ROM                                         : 7
  31x10-bit ROM                                         : 1
+ 32x24-bit ROM                                         : 2
  8x31-bit ROM                                          : 1
  8x8-bit ROM                                           : 1
-# Multipliers                                          : 4
+# Multipliers                                          : 10
  10x8-bit multiplier                                   : 1
  11x10-bit multiplier                                  : 3
-# Adders/Subtractors                                   : 36
+ 32x7-bit multiplier                                   : 4
+ 32x8-bit multiplier                                   : 1
+ 32x9-bit multiplier                                   : 1
+# Adders/Subtractors                                   : 83
  10-bit adder                                          : 1
  10-bit adder carry out                                : 4
  10-bit addsub                                         : 2
  10-bit subtractor                                     : 1
  11-bit adder carry out                                : 3
  11-bit subtractor                                     : 3
- 13-bit subtractor                                     : 3
+ 12-bit subtractor                                     : 11
+ 13-bit subtractor                                     : 4
  16-bit adder                                          : 4
  18-bit adder                                          : 1
  23-bit adder                                          : 2
  4-bit subtractor                                      : 3
- 5-bit adder                                           : 5
+ 5-bit adder                                           : 15
  5-bit subtractor                                      : 1
- 8-bit adder                                           : 3
+ 6-bit subtractor                                      : 10
+ 8-bit adder                                           : 5
+ 8-bit subtractor                                      : 9
+ 9-bit adder                                           : 4
 # Counters                                             : 32
  10-bit up counter                                     : 2
  11-bit up counter                                     : 1
@@ -2499,15 +3064,15 @@ Macro Statistics
  Flip-Flops                                            : 4502
 # Latches                                              : 2
  3-bit latch                                           : 2
-# Comparators                                          : 55
+# Comparators                                          : 118
  10-bit comparator equal                               : 2
- 10-bit comparator greatequal                          : 4
+ 10-bit comparator greatequal                          : 20
  10-bit comparator greater                             : 1
  11-bit comparator equal                               : 1
- 11-bit comparator greatequal                          : 3
- 11-bit comparator less                                : 4
+ 11-bit comparator greatequal                          : 18
+ 11-bit comparator less                                : 20
  11-bit comparator lessequal                           : 1
- 12-bit comparator less                                : 3
+ 12-bit comparator less                                : 19
  16-bit comparator greatequal                          : 3
  16-bit comparator less                                : 3
  17-bit comparator less                                : 1
@@ -6032,7 +6597,7 @@ Mapping all equations...
 Building and optimizing final netlist ...
 INFO:Xst:2261 - The FF/Latch <a/ac97/l_cmd_data_12> in Unit <lab5> is equivalent to the following FF/Latch, which will be removed : <a/ac97/l_cmd_data_4> 
 INFO:Xst:2261 - The FF/Latch <a/ac97/l_cmd_data_14> in Unit <lab5> is equivalent to the following 3 FFs/Latches, which will be removed : <a/ac97/l_cmd_data_13> <a/ac97/l_cmd_data_6> <a/ac97/l_cmd_data_5> 
-Found area constraint ratio of 100 (+ 5) on block lab5, actual ratio is 4.
+Found area constraint ratio of 100 (+ 5) on block lab5, actual ratio is 5.
 
 Final Macro Processing ...
 
@@ -6078,19 +6643,19 @@ Design Statistics
 # IOs                              : 576
 
 Cell Usage :
-# BELS                             : 4744
+# BELS                             : 4978
 #      GND                         : 13
 #      INV                         : 92
 #      LUT1                        : 519
-#      LUT2                        : 416
-#      LUT3                        : 497
-#      LUT4                        : 1279
-#      MUXCY                       : 989
-#      MUXF5                       : 211
+#      LUT2                        : 432
+#      LUT3                        : 511
+#      LUT4                        : 1414
+#      MUXCY                       : 1011
+#      MUXF5                       : 233
 #      MUXF6                       : 8
 #      MUXF7                       : 2
 #      VCC                         : 13
-#      XORCY                       : 705
+#      XORCY                       : 730
 # FlipFlops/Latches                : 1559
 #      FD                          : 470
 #      FDE                         : 440
@@ -6121,8 +6686,8 @@ Cell Usage :
 #      OBUF                        : 240
 # DCMs                             : 1
 #      DCM                         : 1
-# MULTs                            : 4
-#      MULT18X18                   : 4
+# MULTs                            : 7
+#      MULT18X18                   : 7
 =========================================================================
 
 Device utilization summary:
@@ -6130,16 +6695,16 @@ Device utilization summary:
 
 Selected Device : 2v6000bf957-4 
 
- Number of Slices:                     1544  out of  33792     4%  
+ Number of Slices:                     1587  out of  33792     4%  
  Number of Slice Flip Flops:           1559  out of  67584     2%  
- Number of 4 input LUTs:               2838  out of  67584     4%  
-    Number used as logic:              2803
+ Number of 4 input LUTs:               3003  out of  67584     4%  
+    Number used as logic:              2968
     Number used as Shift registers:       3
     Number used as RAMs:                 32
  Number of IOs:                         576
  Number of bonded IOBs:                 272  out of    684    39%  
  Number of BRAMs:                        80  out of    144    55%  
- Number of MULT18X18s:                    4  out of    144     2%  
+ Number of MULT18X18s:                    7  out of    144     4%  
  Number of GCLKs:                         3  out of     16    18%  
  Number of DCMs:                          1  out of     12     8%  
 
@@ -6189,7 +6754,7 @@ Speed Grade: -4
 
    Minimum period: 65.894ns (Maximum Frequency: 15.176MHz)
    Minimum input arrival time before clock: 3.804ns
-   Maximum output required time after clock: 12.927ns
+   Maximum output required time after clock: 28.371ns
    Maximum combinational path delay: 5.887ns
 
 Timing Detail:
@@ -6199,7 +6764,7 @@ All values displayed in nanoseconds (ns)
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clock_27mhz'
   Clock period: 65.894ns (frequency: 15.176MHz)
-  Total number of paths / destination ports: 808111 / 3648
+  Total number of paths / destination ports: 807994 / 3648
 -------------------------------------------------------------------------
 Delay:               16.473ns (Levels of Logic = 18)
   Source:            displaymole1/y_change_0 (FF)
@@ -6324,27 +6889,38 @@ Offset:              2.194ns (Levels of Logic = 1)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'clock_27mhz'
-  Total number of paths / destination ports: 1164 / 81
+  Total number of paths / destination ports: 824700 / 93
 -------------------------------------------------------------------------
-Offset:              12.927ns (Levels of Logic = 6)
-  Source:            game/state_FFd9 (FF)
+Offset:              28.371ns (Levels of Logic = 17)
+  Source:            xvga/vcount_4 (FF)
   Destination:       vga_out_red<7> (PAD)
-  Source Clock:      clock_27mhz rising
+  Source Clock:      clock_27mhz rising 2.4X
 
-  Data Path: game/state_FFd9 to vga_out_red<7>
+  Data Path: xvga/vcount_4 to vga_out_red<7>
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FD:C->Q               7   0.568   1.101  game/state_FFd9 (game/state_FFd9)
-     LUT4:I0->O            8   0.439   1.125  game/state_or00004 (game/state_or00004)
-     LUT2:I0->O           28   0.439   1.285  game/state_or000010 (display_state<3>)
-     LUT4:I1->O           12   0.439   0.971  displaymole1/pixel<12>51 (displaymole1/N27)
-     LUT4:I3->O            1   0.439   0.802  displaymole1/pixel<7>_SW0 (N441)
-     LUT3:I0->O            1   0.439   0.517  displaymole1/pixel<7> (pixel<7>)
+     FDRE:C->Q            17   0.568   1.297  xvga/vcount_4 (xvga/vcount_4)
+     LUT4:I0->O            6   0.439   1.001  displaymole1/pressup1/Msub_location_sub0001_xor<6>111 (displaymole1/N120)
+     LUT3:I1->O            2   0.439   0.910  displaymole1/pressup1/Msub_location_sub0001_xor<8>121 (displaymole1/N91)
+     LUT2:I1->O            1   0.439   0.000  displaymole1/pressup1/Msub_location_sub0001_xor<9>112 (displaymole1/pressup1/Msub_location_sub0001_xor<9>111)
+     MUXF5:I0->O           1   0.436   0.517  displaymole1/pressup1/Msub_location_sub0001_xor<9>11_f5 (displaymole1/pressup1/location_sub0001<9>)
+     MULT18X18:A6->P6      1   4.353   0.552  displaymole1/pressup1/Mmult_location_mult0001_submult_0 (displaymole1/pressup1/location_mult0001<6>)
+     LUT4:I2->O            1   0.439   0.000  displaymole1/pressup1/Madd__old_location_60_lut<6> (displaymole1/pressup1/Madd__old_location_60_lut<6>)
+     XORCY:LI->O          26   0.684   1.280  displaymole1/pressup1/Madd__old_location_60_xor<6> (displaymole1/pressup1/_old_location_60<6>)
+     LUT2:I1->O            3   0.439   1.010  displaymole1/pressup1/p_out<0>11111 (displaymole1/N54)
+     LUT4:I0->O            1   0.439   0.557  displaymole1/pixel<0>1086 (displaymole1/pixel<0>1086)
+     LUT4:I3->O            1   0.439   0.802  displaymole1/pixel<0>1124 (displaymole1/pixel<0>1124)
+     LUT4:I0->O            1   0.439   0.557  displaymole1/pixel<0>1170 (displaymole1/pixel<0>1170)
+     LUT4:I3->O            1   0.439   0.557  displaymole1/pixel<0>1455_SW0 (N745)
+     LUT4:I3->O            1   0.439   0.552  displaymole1/pixel<0>1455 (displaymole1/pixel<0>1455)
+     LUT4:I2->O            1   0.439   0.802  displaymole1/pixel<0>2157 (displaymole1/pixel<0>2157)
+     LUT4:I0->O           24   0.439   1.349  displaymole1/pixel<0>2345 (pixel<0>)
+     LUT4:I0->O            1   0.439   0.517  displaymole1/pixel<7> (pixel<7>)
      OBUF:I->O                 4.361          vga_out_blue_7_OBUF (vga_out_blue<7>)
     ----------------------------------------
-    Total                     12.927ns (7.124ns logic, 5.803ns route)
-                                       (55.1% logic, 44.9% route)
+    Total                     28.371ns (16.109ns logic, 12.262ns route)
+                                       (56.8% logic, 43.2% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'ac97_bit_clock'
@@ -6386,15 +6962,15 @@ Delay:               5.887ns (Levels of Logic = 2)
 =========================================================================
 
 
-Total REAL time to Xst completion: 50.00 secs
-Total CPU time to Xst completion: 48.88 secs
+Total REAL time to Xst completion: 57.00 secs
+Total CPU time to Xst completion: 54.51 secs
  
 --> 
 
 
-Total memory usage is 666832 kilobytes
+Total memory usage is 684736 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings : 4291 (   0 filtered)
-Number of infos    :   60 (   0 filtered)
+Number of warnings : 4356 (   0 filtered)
+Number of infos    :   66 (   0 filtered)
 

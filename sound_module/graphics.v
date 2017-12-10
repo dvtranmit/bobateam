@@ -317,11 +317,12 @@ module displaymole(	input clk, clk2, reset,
 	whack_text_display whack1(.x(60),.hcount(hcount),.y(100),.vcount(vcount),.p_out(whacktext));
 	amole_text_display amole1(.x(476),.hcount(hcount),.y(100),.vcount(vcount),.p_out(amoletext));
 	pressuptostart_text_display pressup1(.x(200),.hcount(hcount),.y(500),.vcount(vcount),.p_out(pressup));
-	gameover_text_display gameover1(.x(100),.hcount(hcount),.y(300),.vcount(vcount),.p_out(gameovertext));
+	gameover_text_display gameover1(.x(150),.hcount(hcount),.y(200),.vcount(vcount),.p_out(gameovertext));
 	lives_text_display lives1(.x(100),.hcount(hcount),.y(200),.vcount(vcount),.p_out(livestext));
 	score_text_display score1(.x(700),.hcount(hcount),.y(200),.vcount(vcount),.p_out(scoretext));
 	
 	assign startscreen_pixel = whacktext | amoletext| pressup;
+	assign gameoverscreen_pixel = gameovertext | scoretext;
 	// generate digits
 	digit0 n0(.x(0),.hcount(hcount),.y(400),.vcount(vcount),.p_out(d0));
 	digit1 n1(.x(100),.hcount(hcount),.y(400),.vcount(vcount),.p_out(d1));
@@ -348,6 +349,7 @@ module displaymole(	input clk, clk2, reset,
 							: (state == MOLE_ASCENDING || state == MOLE_COUNTDOWN) ? normal_pixel 
 							: (state == MOLE_MISSED || state == MOLE_MISSED_SOUND || state == HAPPY_MOLE_DESCENDING) ? happy_pixel
 							: (state == MOLE_WHACKED || state == MOLE_WHACKED_SOUND || state == DEAD_MOLE_DESCENDING) ? dead_pixel
+							: (state == GAME_OVER) ? gameoverscreen_pixel
 							: 24'h0;
 endmodule
 
