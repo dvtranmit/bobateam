@@ -253,11 +253,12 @@ module mole #(parameter MAX_ITEM = 8'd127, parameter INDEX_BITS = 8)
 				(	input clk, reset,
 					input [22:0] music_address,
 					input [3:0] game_state,
-					input diy_playback,
-					input total_moles,
+					input diy_playback_mode,
+					input [INDEX_BITS-1:0] total_moles,
 					input one_hz_enable,
-					output request_mole);
-					//output lookup_index);
+					input [23:0] index_address,
+					output request_mole,
+					output reg [INDEX_BITS-1:0] lookup_index);
 
 /* Memory address popup pseudocode
 	
@@ -269,37 +270,64 @@ module mole #(parameter MAX_ITEM = 8'd127, parameter INDEX_BITS = 8)
 		increment time
 */
 
-// States
-parameter COUNTING 	= 1'b1;		// Countdown from timer_value (until expired)
-parameter MOLE			= 1'b0;		// mole pulse lasts one clock cycle
+//Modified States
+parameter IDLE = 3'd0;
+parameter CHECKING = 3'd1;
+parameter MOLE = 3'd2;
+parameter DIY_IDLE = 3'd3;
+parameter DIY_CHECKING = 3'd4;
+parameter DIY_WAIT_ADDRESS = 3'd5;
+parameter DIY_LOAD_ADDRESS = 3'd6;
 
 // State machine variables
-reg state = COUNTING;
-
-// Standard Timed Moles Variables
-parameter [3:0] MOLE_PERIOD = 4'd5;
-reg [3:0] counter = 4'b0;
+reg [2:0] state = IDLE;
+reg [2:0] next_state;
 
 // Music tracker
 reg [367:0] addresses = {23'h6CDE, 23'h8B00, 23'hE900, 23'h14900,
 										 23'h17B00, 23'h1B100, 23'h21F00, 23'h28000,
 										 23'h2E500, 23'h31A00, 23'h35900, 23'h39500,
 										 23'h3DA00, 23'h41800, 23'h47800, 23'h4FD00};
-reg [23:0] current_address;
+reg [22:0] current_address;
+
 always @(posedge clk) begin
-	if (reset || game_state == 4'b0) begin
-		//counter <= 4'b0;
+	if (state == IDLE) begin
+		if(diy_playback_mode)
+			current_address <= index_address;
+		else current_address <= 23'h6CDE;
+		
 		addresses[367:0] <= {23'h6CDE, 23'h8B00, 23'hE900, 23'h14900,
 										 23'h17B00, 23'h1B100, 23'h21F00, 23'h28000,
 										 23'h2E500, 23'h31A00, 23'h35900, 23'h39500,
 										 23'h3DA00, 23'h41800, 23'h47800, 23'h4FD00};
-	end else if (state == COUNTING) begin
-		state <= (addresses[367:345] == music_address) ?  MOLE : COUNTING; //(addresses[367:345] == music_address) ? 
-		//counter <= (one_hz_enable) ? counter + 1 : counter;
-		addresses <= (addresses[367:345] == music_address) ? {addresses[344:0], addresses[367:345]} : addresses;
-	end else if (state == MOLE) begin
-		state <= COUNTING;
-		//counter <= 4'b0;
+	end else if (state == CHECKING) begin
+		addresses <= (current_address == music_address) ? {addresses[344:0], addresses[367:345]} : addresses; 
+		current_address <= (current_address == music_address) ? addresses[344:322] : current_address;
+	end else if (state == DIY_IDLE) begin
+		lookup_index <= 0;
+	end else if (state == DIY_LOAD_ADDRESS) begin
+		current_address <= index_address;
+	end else if (state == DIY_CHECKING) begin
+		lookup_index <= (current_address == music_address && lookup_index == total_moles-1) ? 4'd0:
+								(current_address == music_address) ? lookup_index+1: lookup_index;
+	end
+	state <= next_state;
+end
+
+always @(*) begin
+	if(reset || game_state == 4'd0)
+		next_state = (diy_playback_mode) ? DIY_IDLE : IDLE;
+	else begin
+		case(state)
+			IDLE: next_state = CHECKING;
+			CHECKING: next_state = (current_address == music_address) ? MOLE : CHECKING;
+			MOLE: next_state = (diy_playback_mode) ? DIY_WAIT_ADDRESS : CHECKING;
+			DIY_IDLE: next_state = DIY_WAIT_ADDRESS;
+			DIY_WAIT_ADDRESS: next_state = DIY_LOAD_ADDRESS;
+			DIY_LOAD_ADDRESS: next_state = DIY_CHECKING;
+			DIY_CHECKING: next_state = (current_address == music_address) ? MOLE : DIY_CHECKING;
+			default: next_state = IDLE;
+		endcase
 	end
 end
 
@@ -320,6 +348,7 @@ module gameState(input clk,
 						input request_mole,
 						input expired,
 						input diy_mode,
+						input diy_playback_mode,
 						input ready_to_use,
 						input popup_done,
 						input [2:0] random_mole_location,
@@ -345,6 +374,7 @@ parameter [3:0] GAME_OVER				= 4'd8;		// Display Game Over Screen
 parameter [3:0] MOLE_MISSED_SOUND	= 4'd9;		// Extra time for sound
 parameter [3:0] MOLE_WHACKED_SOUND	= 4'd10;		// Extra time for sound
 // For DIY mode
+parameter [3:0] DIY_DONE_RECORD		= 4'd11;    //Done recording and ready for use, but still in diy mode
 parameter [3:0] RECORD_DIY_IN_PROGRESS = 4'd12;// Begin Recording Moles for DIY
 
 // New Fancy Mole Display States
@@ -393,7 +423,8 @@ always @(*) begin
 			MOLE_MISSED_SOUND : next_state = (expired) ? HAPPY_MOLE_DESCENDING : MOLE_MISSED_SOUND;
 			MOLE_WHACKED_SOUND : next_state = (expired) ? DEAD_MOLE_DESCENDING: MOLE_WHACKED_SOUND;
 			GAME_OVER : next_state = (expired) ? IDLE : GAME_OVER;
-			RECORD_DIY_IN_PROGRESS: next_state = (!diy_mode) ? IDLE : RECORD_DIY_IN_PROGRESS; 
+			RECORD_DIY_IN_PROGRESS: next_state = (!diy_mode) ? IDLE : (ready_to_use) ? DIY_DONE_RECORD : RECORD_DIY_IN_PROGRESS; 
+			DIY_DONE_RECORD: next_state = (!diy_mode) ? IDLE : (diy_playback_mode & start) ? GAME_ONGOING : DIY_DONE_RECORD;
 			MOLE_ASCENDING : next_state = (misstep) ? MOLE_MISSED : (whacked) ? MOLE_WHACKED : (popup_done) ? MOLE_COUNTDOWN : MOLE_ASCENDING;
 			HAPPY_MOLE_DESCENDING : next_state = (popup_done) ? GAME_ONGOING : HAPPY_MOLE_DESCENDING;
 			DEAD_MOLE_DESCENDING : next_state = (popup_done) ? GAME_ONGOING : DEAD_MOLE_DESCENDING;

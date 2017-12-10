@@ -12,37 +12,37 @@ Target Device  : xc2v6000
 Target Package : bf957
 Target Speed   : -4
 Mapper Version : virtex2 -- $Revision: 1.46.12.2 $
-Mapped Date    : Sat Dec  9 16:33:03 2017
+Mapped Date    : Sat Dec  9 20:07:02 2017
 
 Design Summary
 --------------
 Number of errors:      0
-Number of warnings:  573
+Number of warnings:  578
 Logic Utilization:
-  Total Number Slice Registers:       2,213 out of  67,584    3%
-    Number used as Flip Flops:        2,207
+  Total Number Slice Registers:       1,559 out of  67,584    2%
+    Number used as Flip Flops:        1,553
     Number used as Latches:               6
-  Number of 4 input LUTs:             3,364 out of  67,584    4%
+  Number of 4 input LUTs:             2,299 out of  67,584    3%
 Logic Distribution:
-  Number of occupied Slices:          2,251 out of  33,792    6%
-    Number of Slices containing only related logic:   2,251 out of   2,251 100%
-    Number of Slices containing unrelated logic:          0 out of   2,251   0%
+  Number of occupied Slices:          1,652 out of  33,792    4%
+    Number of Slices containing only related logic:   1,652 out of   1,652 100%
+    Number of Slices containing unrelated logic:          0 out of   1,652   0%
       *See NOTES below for an explanation of the effects of unrelated logic.
-  Total Number of 4 input LUTs:       3,883 out of  67,584    5%
-    Number used as logic:             3,311
-    Number used as a route-thru:        519
+  Total Number of 4 input LUTs:       2,821 out of  67,584    4%
+    Number used as logic:             2,264
+    Number used as a route-thru:        522
     Number used for Dual Port RAMs:      32
       (Two LUTs used per Dual Port RAM)
-    Number used as Shift registers:      21
+    Number used as Shift registers:       3
   Number of bonded IOBs:                576 out of     684   84%
   Number of RAMB16s:                     80 out of     144   55%
   Number of MULT18X18s:                   4 out of     144    2%
   Number of BUFGMUXs:                     3 out of      16   18%
   Number of DCMs:                         1 out of      12    8%
 
-Peak Memory Usage:  551 MB
-Total REAL time to MAP completion:  5 secs 
-Total CPU time to MAP completion:   4 secs 
+Peak Memory Usage:  534 MB
+Total REAL time to MAP completion:  4 secs 
+Total CPU time to MAP completion:   3 secs 
 
 NOTES:
 
@@ -85,7 +85,7 @@ Section 1 - Errors
 Section 2 - Warnings
 --------------------
 WARNING:LIT:243 - Logical network user3<28>_IBUF has no load.
-WARNING:LIT:395 - The above warning message base_net_load_rule is repeated 306
+WARNING:LIT:395 - The above warning message base_net_load_rule is repeated 311
    more times for the following (max. 5 shown):
    user3<4>_IBUF,
    user3<29>_IBUF,
@@ -96,10 +96,9 @@ WARNING:LIT:395 - The above warning message base_net_load_rule is repeated 306
 WARNING:LIT:162 - Only DFS outputs (CLKFX/FX180/CONCUR) of DCM symbol "vclk1"
    are routed, but CLKFB is not routed. Proper phase relationship of output
    clocks to CLKIN cannot be guaranteed.
-WARNING:PhysDesignRules:372 - Gated clock. Clock net
-   diy_addr_loc/next_state_not0001 is sourced by a combinatorial pin. This is
-   not good design practice. Use the CE pin to control the loading of data into
-   the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net mal/next_state_not0001 is
+   sourced by a combinatorial pin. This is not good design practice. Use the CE
+   pin to control the loading of data into the flip-flop.
 WARNING:PhysDesignRules:367 - The signal <ram0_data<10>_IBUF> is incomplete. The
    signal does not drive any load pins in the design.
 WARNING:PhysDesignRules:367 - The signal <ram0_data<11>_IBUF> is incomplete. The
@@ -520,8 +519,18 @@ WARNING:PhysDesignRules:367 - The signal <tv_in_hff_IBUF> is incomplete. The
    signal does not drive any load pins in the design.
 WARNING:PhysDesignRules:367 - The signal <systemace_irq_IBUF> is incomplete. The
    signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <switch<0>_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
 WARNING:PhysDesignRules:367 - The signal <tv_in_i2c_data_IBUF> is incomplete.
    The signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <switch<1>_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <switch<2>_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <switch<3>_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <switch<4>_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
 WARNING:PhysDesignRules:367 - The signal <user1<0>_IBUF> is incomplete. The
    signal does not drive any load pins in the design.
 WARNING:PhysDesignRules:367 - The signal <user1<1>_IBUF> is incomplete. The
@@ -699,6 +708,96 @@ WARNING:PhysDesignRules:367 - The signal <daughtercard<8>_IBUF> is incomplete.
 WARNING:PhysDesignRules:367 - The signal <daughtercard<9>_IBUF> is incomplete.
    The signal does not drive any load pins in the design.
 WARNING:PhysDesignRules:812 - Dangling pin <DOB1> on
+   block:<displaymole1/happymole1/gcm_happy/BU2/U0/blk_mem_generator/valid.cstr/
+   ramloop[0].ram.r/v2_noinit.ram/spram.ram.B>:<RAMB16_RAMB16B>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOB2> on
+   block:<displaymole1/happymole1/gcm_happy/BU2/U0/blk_mem_generator/valid.cstr/
+   ramloop[0].ram.r/v2_noinit.ram/spram.ram.B>:<RAMB16_RAMB16B>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOB3> on
+   block:<displaymole1/happymole1/gcm_happy/BU2/U0/blk_mem_generator/valid.cstr/
+   ramloop[0].ram.r/v2_noinit.ram/spram.ram.B>:<RAMB16_RAMB16B>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOB4> on
+   block:<displaymole1/happymole1/gcm_happy/BU2/U0/blk_mem_generator/valid.cstr/
+   ramloop[0].ram.r/v2_noinit.ram/spram.ram.B>:<RAMB16_RAMB16B>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOB5> on
+   block:<displaymole1/happymole1/gcm_happy/BU2/U0/blk_mem_generator/valid.cstr/
+   ramloop[0].ram.r/v2_noinit.ram/spram.ram.B>:<RAMB16_RAMB16B>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOB6> on
+   block:<displaymole1/happymole1/gcm_happy/BU2/U0/blk_mem_generator/valid.cstr/
+   ramloop[0].ram.r/v2_noinit.ram/spram.ram.B>:<RAMB16_RAMB16B>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOB7> on
+   block:<displaymole1/happymole1/gcm_happy/BU2/U0/blk_mem_generator/valid.cstr/
+   ramloop[0].ram.r/v2_noinit.ram/spram.ram.B>:<RAMB16_RAMB16B>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOB8> on
+   block:<displaymole1/happymole1/gcm_happy/BU2/U0/blk_mem_generator/valid.cstr/
+   ramloop[0].ram.r/v2_noinit.ram/spram.ram.B>:<RAMB16_RAMB16B>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOB9> on
+   block:<displaymole1/happymole1/gcm_happy/BU2/U0/blk_mem_generator/valid.cstr/
+   ramloop[0].ram.r/v2_noinit.ram/spram.ram.B>:<RAMB16_RAMB16B>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOB10> on
+   block:<displaymole1/happymole1/gcm_happy/BU2/U0/blk_mem_generator/valid.cstr/
+   ramloop[0].ram.r/v2_noinit.ram/spram.ram.B>:<RAMB16_RAMB16B>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOB11> on
+   block:<displaymole1/happymole1/gcm_happy/BU2/U0/blk_mem_generator/valid.cstr/
+   ramloop[0].ram.r/v2_noinit.ram/spram.ram.B>:<RAMB16_RAMB16B>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOB12> on
+   block:<displaymole1/happymole1/gcm_happy/BU2/U0/blk_mem_generator/valid.cstr/
+   ramloop[0].ram.r/v2_noinit.ram/spram.ram.B>:<RAMB16_RAMB16B>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOB13> on
+   block:<displaymole1/happymole1/gcm_happy/BU2/U0/blk_mem_generator/valid.cstr/
+   ramloop[0].ram.r/v2_noinit.ram/spram.ram.B>:<RAMB16_RAMB16B>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOB14> on
+   block:<displaymole1/happymole1/gcm_happy/BU2/U0/blk_mem_generator/valid.cstr/
+   ramloop[0].ram.r/v2_noinit.ram/spram.ram.B>:<RAMB16_RAMB16B>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOB15> on
+   block:<displaymole1/happymole1/gcm_happy/BU2/U0/blk_mem_generator/valid.cstr/
+   ramloop[0].ram.r/v2_noinit.ram/spram.ram.B>:<RAMB16_RAMB16B>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOB17> on
+   block:<displaymole1/happymole1/gcm_happy/BU2/U0/blk_mem_generator/valid.cstr/
+   ramloop[0].ram.r/v2_noinit.ram/spram.ram.B>:<RAMB16_RAMB16B>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOB18> on
+   block:<displaymole1/happymole1/gcm_happy/BU2/U0/blk_mem_generator/valid.cstr/
+   ramloop[0].ram.r/v2_noinit.ram/spram.ram.B>:<RAMB16_RAMB16B>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOB19> on
+   block:<displaymole1/happymole1/gcm_happy/BU2/U0/blk_mem_generator/valid.cstr/
+   ramloop[0].ram.r/v2_noinit.ram/spram.ram.B>:<RAMB16_RAMB16B>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOB20> on
+   block:<displaymole1/happymole1/gcm_happy/BU2/U0/blk_mem_generator/valid.cstr/
+   ramloop[0].ram.r/v2_noinit.ram/spram.ram.B>:<RAMB16_RAMB16B>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOB21> on
+   block:<displaymole1/happymole1/gcm_happy/BU2/U0/blk_mem_generator/valid.cstr/
+   ramloop[0].ram.r/v2_noinit.ram/spram.ram.B>:<RAMB16_RAMB16B>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOB22> on
+   block:<displaymole1/happymole1/gcm_happy/BU2/U0/blk_mem_generator/valid.cstr/
+   ramloop[0].ram.r/v2_noinit.ram/spram.ram.B>:<RAMB16_RAMB16B>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOB23> on
+   block:<displaymole1/happymole1/gcm_happy/BU2/U0/blk_mem_generator/valid.cstr/
+   ramloop[0].ram.r/v2_noinit.ram/spram.ram.B>:<RAMB16_RAMB16B>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOB24> on
+   block:<displaymole1/happymole1/gcm_happy/BU2/U0/blk_mem_generator/valid.cstr/
+   ramloop[0].ram.r/v2_noinit.ram/spram.ram.B>:<RAMB16_RAMB16B>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOB25> on
+   block:<displaymole1/happymole1/gcm_happy/BU2/U0/blk_mem_generator/valid.cstr/
+   ramloop[0].ram.r/v2_noinit.ram/spram.ram.B>:<RAMB16_RAMB16B>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOB26> on
+   block:<displaymole1/happymole1/gcm_happy/BU2/U0/blk_mem_generator/valid.cstr/
+   ramloop[0].ram.r/v2_noinit.ram/spram.ram.B>:<RAMB16_RAMB16B>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOB27> on
+   block:<displaymole1/happymole1/gcm_happy/BU2/U0/blk_mem_generator/valid.cstr/
+   ramloop[0].ram.r/v2_noinit.ram/spram.ram.B>:<RAMB16_RAMB16B>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOB28> on
+   block:<displaymole1/happymole1/gcm_happy/BU2/U0/blk_mem_generator/valid.cstr/
+   ramloop[0].ram.r/v2_noinit.ram/spram.ram.B>:<RAMB16_RAMB16B>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOB29> on
+   block:<displaymole1/happymole1/gcm_happy/BU2/U0/blk_mem_generator/valid.cstr/
+   ramloop[0].ram.r/v2_noinit.ram/spram.ram.B>:<RAMB16_RAMB16B>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOB30> on
+   block:<displaymole1/happymole1/gcm_happy/BU2/U0/blk_mem_generator/valid.cstr/
+   ramloop[0].ram.r/v2_noinit.ram/spram.ram.B>:<RAMB16_RAMB16B>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOB31> on
+   block:<displaymole1/happymole1/gcm_happy/BU2/U0/blk_mem_generator/valid.cstr/
+   ramloop[0].ram.r/v2_noinit.ram/spram.ram.B>:<RAMB16_RAMB16B>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOB1> on
    block:<displaymole1/normalmole1/bcm/BU2/U0/blk_mem_generator/valid.cstr/ramlo
    op[0].ram.r/v2_init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
 WARNING:PhysDesignRules:812 - Dangling pin <DOB2> on
@@ -1418,96 +1517,6 @@ WARNING:PhysDesignRules:812 - Dangling pin <DOB30> on
 WARNING:PhysDesignRules:812 - Dangling pin <DOB31> on
    block:<displaymole1/happymole1/rcm_happy/BU2/U0/blk_mem_generator/valid.cstr/
    ramloop[0].ram.r/v2_init.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB1> on
-   block:<displaymole1/happymole1/gcm_happy/BU2/U0/blk_mem_generator/valid.cstr/
-   ramloop[0].ram.r/v2_noinit.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB2> on
-   block:<displaymole1/happymole1/gcm_happy/BU2/U0/blk_mem_generator/valid.cstr/
-   ramloop[0].ram.r/v2_noinit.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB3> on
-   block:<displaymole1/happymole1/gcm_happy/BU2/U0/blk_mem_generator/valid.cstr/
-   ramloop[0].ram.r/v2_noinit.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB4> on
-   block:<displaymole1/happymole1/gcm_happy/BU2/U0/blk_mem_generator/valid.cstr/
-   ramloop[0].ram.r/v2_noinit.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB5> on
-   block:<displaymole1/happymole1/gcm_happy/BU2/U0/blk_mem_generator/valid.cstr/
-   ramloop[0].ram.r/v2_noinit.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB6> on
-   block:<displaymole1/happymole1/gcm_happy/BU2/U0/blk_mem_generator/valid.cstr/
-   ramloop[0].ram.r/v2_noinit.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB7> on
-   block:<displaymole1/happymole1/gcm_happy/BU2/U0/blk_mem_generator/valid.cstr/
-   ramloop[0].ram.r/v2_noinit.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB8> on
-   block:<displaymole1/happymole1/gcm_happy/BU2/U0/blk_mem_generator/valid.cstr/
-   ramloop[0].ram.r/v2_noinit.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB9> on
-   block:<displaymole1/happymole1/gcm_happy/BU2/U0/blk_mem_generator/valid.cstr/
-   ramloop[0].ram.r/v2_noinit.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB10> on
-   block:<displaymole1/happymole1/gcm_happy/BU2/U0/blk_mem_generator/valid.cstr/
-   ramloop[0].ram.r/v2_noinit.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB11> on
-   block:<displaymole1/happymole1/gcm_happy/BU2/U0/blk_mem_generator/valid.cstr/
-   ramloop[0].ram.r/v2_noinit.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB12> on
-   block:<displaymole1/happymole1/gcm_happy/BU2/U0/blk_mem_generator/valid.cstr/
-   ramloop[0].ram.r/v2_noinit.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB13> on
-   block:<displaymole1/happymole1/gcm_happy/BU2/U0/blk_mem_generator/valid.cstr/
-   ramloop[0].ram.r/v2_noinit.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB14> on
-   block:<displaymole1/happymole1/gcm_happy/BU2/U0/blk_mem_generator/valid.cstr/
-   ramloop[0].ram.r/v2_noinit.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB15> on
-   block:<displaymole1/happymole1/gcm_happy/BU2/U0/blk_mem_generator/valid.cstr/
-   ramloop[0].ram.r/v2_noinit.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB17> on
-   block:<displaymole1/happymole1/gcm_happy/BU2/U0/blk_mem_generator/valid.cstr/
-   ramloop[0].ram.r/v2_noinit.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB18> on
-   block:<displaymole1/happymole1/gcm_happy/BU2/U0/blk_mem_generator/valid.cstr/
-   ramloop[0].ram.r/v2_noinit.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB19> on
-   block:<displaymole1/happymole1/gcm_happy/BU2/U0/blk_mem_generator/valid.cstr/
-   ramloop[0].ram.r/v2_noinit.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB20> on
-   block:<displaymole1/happymole1/gcm_happy/BU2/U0/blk_mem_generator/valid.cstr/
-   ramloop[0].ram.r/v2_noinit.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB21> on
-   block:<displaymole1/happymole1/gcm_happy/BU2/U0/blk_mem_generator/valid.cstr/
-   ramloop[0].ram.r/v2_noinit.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB22> on
-   block:<displaymole1/happymole1/gcm_happy/BU2/U0/blk_mem_generator/valid.cstr/
-   ramloop[0].ram.r/v2_noinit.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB23> on
-   block:<displaymole1/happymole1/gcm_happy/BU2/U0/blk_mem_generator/valid.cstr/
-   ramloop[0].ram.r/v2_noinit.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB24> on
-   block:<displaymole1/happymole1/gcm_happy/BU2/U0/blk_mem_generator/valid.cstr/
-   ramloop[0].ram.r/v2_noinit.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB25> on
-   block:<displaymole1/happymole1/gcm_happy/BU2/U0/blk_mem_generator/valid.cstr/
-   ramloop[0].ram.r/v2_noinit.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB26> on
-   block:<displaymole1/happymole1/gcm_happy/BU2/U0/blk_mem_generator/valid.cstr/
-   ramloop[0].ram.r/v2_noinit.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB27> on
-   block:<displaymole1/happymole1/gcm_happy/BU2/U0/blk_mem_generator/valid.cstr/
-   ramloop[0].ram.r/v2_noinit.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB28> on
-   block:<displaymole1/happymole1/gcm_happy/BU2/U0/blk_mem_generator/valid.cstr/
-   ramloop[0].ram.r/v2_noinit.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB29> on
-   block:<displaymole1/happymole1/gcm_happy/BU2/U0/blk_mem_generator/valid.cstr/
-   ramloop[0].ram.r/v2_noinit.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB30> on
-   block:<displaymole1/happymole1/gcm_happy/BU2/U0/blk_mem_generator/valid.cstr/
-   ramloop[0].ram.r/v2_noinit.ram/spram.ram.B>:<RAMB16_RAMB16B>.
-WARNING:PhysDesignRules:812 - Dangling pin <DOB31> on
-   block:<displaymole1/happymole1/gcm_happy/BU2/U0/blk_mem_generator/valid.cstr/
-   ramloop[0].ram.r/v2_noinit.ram/spram.ram.B>:<RAMB16_RAMB16B>.
 
 Section 3 - Informational
 -------------------------

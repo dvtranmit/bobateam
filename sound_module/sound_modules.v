@@ -19,20 +19,21 @@ module mole_adressss_locations #(parameter MAX_ITEM = 8'd127, parameter INDEX_BI
 	input wire diy_mode,
 	input wire bram_loaded,
 	input wire one_hz_enable,
-	input wire disp_data_in,			 // LED display signal
-   output wire disp_blank,           // LED display signal
-   output wire disp_clock,           // LED display signal
-   output wire disp_rs,              // LED display signal
-   output wire disp_ce_b,            // LED display signal
-   output wire disp_reset_b,         // LED display signal
-   output wire disp_data_out,        // LED display signal
+//	input wire disp_data_in,			 // LED display signal
+//   output wire disp_blank,           // LED display signal
+//   output wire disp_clock,           // LED display signal
+//   output wire disp_rs,              // LED display signal
+//   output wire disp_ce_b,            // LED display signal
+//   output wire disp_reset_b,         // LED display signal
+//   output wire disp_data_out,        // LED display signal
 	input wire [22:0] music_address,
 	input wire diy_music_end,
 	input wire [INDEX_BITS-1:0] lookup_index, //default is [3:0] unless the parameter is changed
 	output wire ready_to_use, //once bram full or reached end of music
 	output wire [INDEX_BITS-1:0] items, 		//number of items (address + locations) stored in bram for dyi mode
-	output wire [3:0]index_location,
-	output wire [23:0] index_address,
+	output reg [3:0]index_location,
+	output reg [23:0] index_address,
+	output reg diy_playback_mode,
 	output reg [2:0] state); 			
 	
 	parameter MUSIC_END = 23'h6AC00;
@@ -45,14 +46,10 @@ module mole_adressss_locations #(parameter MAX_ITEM = 8'd127, parameter INDEX_BI
 	parameter DIY_DONE = 3'd5;
 	parameter DIY_PLAYBACK = 3'd6;
 	
-	
+	//arrays
 	reg [23:0]address_memory[MAX_ITEM-1:0]; // MAX_ITEM number of 24-bit words
 	reg [3:0] location_memory[MAX_ITEM-1:0];// MAX_ITEM number of  4-bit words
-	reg [3:0] location;
-	assign index_location = location;
-	reg [23:0] address;
-	assign index_address = address;	
-	
+
 	reg [2:0] next_state;
 	reg internal_ready;
 	assign ready_to_use = internal_ready;
@@ -78,25 +75,32 @@ module mole_adressss_locations #(parameter MAX_ITEM = 8'd127, parameter INDEX_BI
 						 .displayed_counter(displayed_counter));
 	
 	//display code
-	wire [63:0] display_data;
+/*	wire [63:0] display_data;
 	//assign display_data = {MAX_ITEM, 3'b0, internal_ready, internal_items, 1'b0, next_state, displayed_counter};
-	assign display_data = {address,4'b0,location,lookup_index};
+	assign display_data = {index_address,4'b0,index_location,lookup_index};
 	display_16hex disp(.reset(switch[5]), .clock_27mhz(clock), .data_in(display_data), 
 		                .disp_rs(disp_rs), .disp_ce_b(disp_ce_b), .disp_blank(disp_blank),
 							 .disp_reset_b(disp_reset_b), .disp_data_out(disp_data_out), .disp_clock(disp_clock));
-
+*/
 
 	always @(posedge clock) begin
 		state <= next_state;
 		last_button_bits <= button_bits;
 		internal_ready <= (diy_music_end || (internal_items >= MAX_ITEM)) ? 1 : 0;
+		index_location <= location_memory[lookup_index];
+		index_address <= address_memory[lookup_index];	
 		case(state)
 			INITIAL_STATE: begin
 									internal_items <= 0;
 									start_timer <= 0;
+									diy_playback_mode <= 0;
 							   end
-			DIY_INITIAL: start_timer <= 0;
+			DIY_INITIAL: begin	
+								start_timer <= 0;
+								diy_playback_mode <= 0;
+							 end
 			DIY_START: begin
+								diy_playback_mode <= 0;
 								case(button_bits)
 										8'b10000000: begin
 																address_memory[internal_items] <= music_address;
@@ -171,12 +175,10 @@ module mole_adressss_locations #(parameter MAX_ITEM = 8'd127, parameter INDEX_BI
 			DIY_BUTTON_WAIT: start_timer <= 0;
 			DIY_BUTTON_WAIT_DONE: start_timer <= 0;
 			DIY_DONE: begin
-								address <= address_memory[lookup_index];
-								location <= location_memory[lookup_index];
+								diy_playback_mode <= 0;
 						 end
 			DIY_PLAYBACK: begin
-									address <= address_memory[lookup_index];
-									location <= location_memory[lookup_index];
+									diy_playback_mode <= 1;
 								end
 			default: start_timer <= 0;
 		endcase
@@ -262,7 +264,7 @@ module sound_module(
   input wire diy_mode,
   output reg diy_record_done,
   input wire [2:0] diy_state,
-  input wire diy_playback,
+  input wire diy_playback_mode,
   output reg loaded_to_bram,
   output reg [7:0] to_ac97_data    // 8-bit PCM data to headphone
 );
@@ -277,7 +279,7 @@ module sound_module(
 	parameter MOLE_MISSED_SOUND	= 4'd9;		// Extra time for sound
 	parameter MOLE_WHACKED_SOUND	= 4'd10;		// Extra time for sound
 	parameter GAME_OVER				= 4'd8;		// Display Game Over Screen
-	parameter RECORD_DIY_PLAYBACK 	= 4'd11;		// Playback of DIY
+	parameter DIY_DONE_RECORD		= 4'd11; 
 	parameter RECORD_DIY_IN_PROGRESS = 4'd12;// Begin Recording Moles for DIY
 	//diy module states
 	parameter INITIAL_STATE = 3'd0;
@@ -569,6 +571,11 @@ module sound_module(
 																		end														
 														endcase
 													end
+					DIY_DONE_RECORD: begin
+												reading <= 0;
+												to_ac97_data <= 0;
+												flash_raddr <= MUSIC_START;
+											end
 					default: begin
 									//play background music
 									filter_f_input <= flash_data[7:0];
