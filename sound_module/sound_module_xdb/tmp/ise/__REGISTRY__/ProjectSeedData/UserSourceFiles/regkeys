@@ -1,5 +1,5 @@
 NUM_USER_FILES
-34
+35
 s
 user_file_1
 labkit.ucf
@@ -84,6 +84,9 @@ whack_blue_rom.xco
 s
 user_file_34
 graphics.v
+s
+user_file_35
+text_graphics.v
 s
 user_file_4
 flash_int.v

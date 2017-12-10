@@ -310,7 +310,31 @@ module displaymole(	input clk, clk2, reset,
 			popup_done <= 0;
 	end
 
-	wire [23:0] normal_pixel, dead_pixel, happy_pixel, whack_pixel, start_pixel;
+	wire [23:0] startscreen_pixel;
+	wire [23:0] whacktext, amoletext, pressup, gameovertext, livestext, scoretext;
+	wire [23:0] d0,d1,d2,d3,d4,d5,d6,d7,d8,d9;
+	// generate text
+	whack_text_display whack1(.x(60),.hcount(hcount),.y(100),.vcount(vcount),.p_out(whacktext));
+	amole_text_display amole1(.x(476),.hcount(hcount),.y(100),.vcount(vcount),.p_out(amoletext));
+	pressuptostart_text_display pressup1(.x(200),.hcount(hcount),.y(500),.vcount(vcount),.p_out(pressup));
+	gameover_text_display gameover1(.x(100),.hcount(hcount),.y(300),.vcount(vcount),.p_out(gameovertext));
+	lives_text_display lives1(.x(100),.hcount(hcount),.y(200),.vcount(vcount),.p_out(livestext));
+	score_text_display score1(.x(700),.hcount(hcount),.y(200),.vcount(vcount),.p_out(scoretext));
+	
+	assign startscreen_pixel = whacktext | amoletext| pressup;
+	// generate digits
+	digit0 n0(.x(0),.hcount(hcount),.y(400),.vcount(vcount),.p_out(d0));
+	digit1 n1(.x(100),.hcount(hcount),.y(400),.vcount(vcount),.p_out(d1));
+	digit2 n2(.x(200),.hcount(hcount),.y(400),.vcount(vcount),.p_out(d2));
+	digit3 n3(.x(300),.hcount(hcount),.y(400),.vcount(vcount),.p_out(d3));
+	digit4 n4(.x(400),.hcount(hcount),.y(400),.vcount(vcount),.p_out(d4));
+	digit5 n5(.x(500),.hcount(hcount),.y(400),.vcount(vcount),.p_out(d5));
+	digit6 n6(.x(600),.hcount(hcount),.y(400),.vcount(vcount),.p_out(d6));
+	digit7 n7(.x(700),.hcount(hcount),.y(400),.vcount(vcount),.p_out(d7));
+	digit8 n8(.x(800),.hcount(hcount),.y(400),.vcount(vcount),.p_out(d8));
+	digit9 n9(.x(900),.hcount(hcount),.y(400),.vcount(vcount),.p_out(d9));
+	
+	wire [23:0] normal_pixel, dead_pixel, happy_pixel;
 	normalmole #(.WIDTH(212),.HEIGHT(256))
 			normalmole1(.pixel_clk(clk),.x(x),.hcount(hcount),.y(y_change),
 							.y_permanent(y_permanent), .vcount(vcount),.pixel(normal_pixel));
@@ -320,7 +344,8 @@ module displaymole(	input clk, clk2, reset,
 	happymole #(.WIDTH(207),.HEIGHT(256))
 			happymole1(.pixel_clk(clk),.x(x),.hcount(hcount),.y(y_change),
 							.y_permanent(y_permanent), .vcount(vcount),.pixel(happy_pixel));
-	assign pixel = (state == MOLE_ASCENDING || state == MOLE_COUNTDOWN) ? normal_pixel 
+	assign pixel = state == IDLE ? startscreen_pixel	
+							: (state == MOLE_ASCENDING || state == MOLE_COUNTDOWN) ? normal_pixel 
 							: (state == MOLE_MISSED || state == MOLE_MISSED_SOUND || state == HAPPY_MOLE_DESCENDING) ? happy_pixel
 							: (state == MOLE_WHACKED || state == MOLE_WHACKED_SOUND || state == DEAD_MOLE_DESCENDING) ? dead_pixel
 							: 24'h0;
@@ -343,3 +368,4 @@ module mole_divider(input clk, output reg mole_popup_clock);
 		end
 	end
 endmodule 
+
