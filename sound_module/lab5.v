@@ -719,22 +719,22 @@ module lab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 						.diy_playback_mode(diy_playback_mode),
 						.total_moles(items),
 						.one_hz_enable(one_hz_enable),
-						//.index_address(index_address),
+						.index_address(index_address[22:0]),
 						.request_mole(request_mole),
 						.lookup_index(lookup_index));
 
 	wire [1:0] lives;
 	wire [7:0] score;
 	wire ready_to_use;
-
-	wire [3:0]index_location;
 	wire popup_done;
+	wire [3:0] index_location;
 	gameState game(.clk(clock_27mhz), .misstep(misstep),
 						.whacked(whacked), .start(up),
 						.reset(enter), .request_mole(request_mole),
 						.expired(expired), .diy_mode(diy_mode), .diy_playback_mode(diy_playback_mode),
 						.ready_to_use(ready_to_use),
 						.random_mole_location(random_mole_location),
+						.saved_mole_location(index_location[2:0]),
 						.popup_done(popup_done),
 						.start_timer(start_timer), .timer_value(timer_value),
 						.display_state(display_state), .mole_location(mole_location), 
@@ -794,8 +794,6 @@ module lab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
    assign analyzer3_data = {from_ac97_data, to_ac97_data};
 
 	//diy game module
-	wire [7:0] lookup_index_switches;
-	assign lookup_index_switches = {3'b0,switch[4:0]};	
 	mole_adressss_locations #(.MAX_ITEM(MAX_ITEM), .INDEX_BITS(INDEX_BITS)) mal(.clock(clock_27mhz),
 														//.disp_blank(disp_blank),
 														//.disp_clock(disp_clock),
@@ -820,7 +818,7 @@ module lab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 														.diy_mode(diy_mode),
 														.one_hz_enable(one_hz_enable),
 														.state(diy_state),
-														.lookup_index(lookup_index_switches),
+														.lookup_index(lookup_index),
 														.items(items),
 														.diy_music_end(diy_music_end),
 														.music_address(music_address),
@@ -907,7 +905,7 @@ module lab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 			lives_display <= "??????";
 	end	
 
-	assign led = ~{popup_done, up0, upright0, left0, right0, downleft0, down0, downright0};
+	assign led = ~{lookup_index};
 
 /*	// Display letter toggler value
 	wire [127:0] string = {displayed_mole_location, 8'h30+display_state, "SCOR:", " ", 8'h30+score, lives_display};
@@ -922,15 +920,7 @@ module lab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 */
 	wire [63:0] display_data;
 	//  address ,1 0,1 location,2 lookup index, 2 items in diy bram, 1 diyplaybackmode,1 state
-	reg [23:0] address_display;
-	reg [3:0] location_display;
-	reg [INDEX_BITS-1:0] index_display;
-	always @ (posedge clock_27mhz) begin
-		address_display <= index_address;
-		location_display <= index_location;
-		index_display <= lookup_index_switches;
-	end
-	assign display_data = {address_display,4'b0,location_display,index_display, items, 3'b0,diy_playback_mode, display_state};
+	assign display_data = {lookup_index, items, 3'b0,diy_playback_mode, display_state};
 	display_16hex disp(.reset(switch[5]), .clock_27mhz(clock_27mhz), .data_in(display_data), 
 		                .disp_rs(disp_rs), .disp_ce_b(disp_ce_b), .disp_blank(disp_blank),
 							 .disp_reset_b(disp_reset_b), .disp_data_out(disp_data_out), .disp_clock(disp_clock));

@@ -310,7 +310,7 @@ module displaymole(	input clk, clk2, reset,
 			popup_done <= 0;
 	end
 
-	wire [23:0] startscreen_pixel;
+	wire [23:0] startscreen_pixel, gameoverscreen_pixel;
 	wire [23:0] whacktext, amoletext, pressup, gameovertext, livestext, scoretext;
 	wire [23:0] d0,d1,d2,d3,d4,d5,d6,d7,d8,d9;
 	// generate text
