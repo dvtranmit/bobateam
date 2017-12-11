@@ -5,16 +5,16 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
-<msg type="warning" file="HDLCompilers" num="259" delta="unknown" ><arg fmt="%s" index="1">&quot;lab5.v&quot; line 724 </arg>Connection to input port &apos;<arg fmt="%s" index="2">total_moles</arg>&apos; does not match port size
+<msg type="warning" file="HDLCompilers" num="259" delta="unknown" ><arg fmt="%s" index="1">&quot;lab5.v&quot; line 750 </arg>Connection to input port &apos;<arg fmt="%s" index="2">total_moles</arg>&apos; does not match port size
 </msg>
 
-<msg type="warning" file="HDLCompilers" num="261" delta="unknown" ><arg fmt="%s" index="1">&quot;lab5.v&quot; line 729 </arg>Connection to output port &apos;<arg fmt="%s" index="2">lookup_index</arg>&apos; does not match port size
+<msg type="warning" file="HDLCompilers" num="261" delta="unknown" ><arg fmt="%s" index="1">&quot;lab5.v&quot; line 755 </arg>Connection to output port &apos;<arg fmt="%s" index="2">lookup_index</arg>&apos; does not match port size
 </msg>
 
-<msg type="warning" file="HDLCompilers" num="259" delta="unknown" ><arg fmt="%s" index="1">&quot;lab5.v&quot; line 827 </arg>Connection to input port &apos;<arg fmt="%s" index="2">lookup_index</arg>&apos; does not match port size
+<msg type="warning" file="HDLCompilers" num="259" delta="unknown" ><arg fmt="%s" index="1">&quot;lab5.v&quot; line 853 </arg>Connection to input port &apos;<arg fmt="%s" index="2">lookup_index</arg>&apos; does not match port size
 </msg>
 
-<msg type="warning" file="HDLCompilers" num="261" delta="unknown" ><arg fmt="%s" index="1">&quot;lab5.v&quot; line 828 </arg>Connection to output port &apos;<arg fmt="%s" index="2">items</arg>&apos; does not match port size
+<msg type="warning" file="HDLCompilers" num="261" delta="unknown" ><arg fmt="%s" index="1">&quot;lab5.v&quot; line 854 </arg>Connection to output port &apos;<arg fmt="%s" index="2">items</arg>&apos; does not match port size
 </msg>
 
 <msg type="warning" file="HDLCompilers" num="259" delta="unknown" ><arg fmt="%s" index="1">&quot;graphics.v&quot; line 251 </arg>Connection to input port &apos;<arg fmt="%s" index="2">x</arg>&apos; does not match port size
@@ -209,13 +209,13 @@
 <msg type="warning" file="Xst" num="2591" delta="unknown" ><arg fmt="%s" index="1">&quot;lab5.v&quot; line 611:</arg> <arg fmt="%s" index="2">attribute on instance</arg> &lt;<arg fmt="%s" index="3">CLK_FEEDBACK</arg>&gt; overrides <arg fmt="%s" index="4">generic/parameter on entity</arg>. It is possible that simulator will not take this attribute into account.
 </msg>
 
-<msg type="warning" file="Xst" num="852" delta="unknown" >&quot;<arg fmt="%s" index="1">lab5.v</arg>&quot; line <arg fmt="%d" index="2">765</arg>: Unconnected input port &apos;<arg fmt="%s" index="3">switch</arg>&apos; of instance &apos;<arg fmt="%s" index="4">s</arg>&apos; is tied to GND.
+<msg type="warning" file="Xst" num="852" delta="unknown" >&quot;<arg fmt="%s" index="1">lab5.v</arg>&quot; line <arg fmt="%d" index="2">791</arg>: Unconnected input port &apos;<arg fmt="%s" index="3">switch</arg>&apos; of instance &apos;<arg fmt="%s" index="4">s</arg>&apos; is tied to GND.
 </msg>
 
-<msg type="warning" file="Xst" num="1465" delta="unknown" >&quot;<arg fmt="%s" index="1">game_logic.v</arg>&quot; line <arg fmt="%d" index="2">219</arg>: Exactly not equal expression will be synthesized as a not equal expression, simulation mismatch is possible. 
+<msg type="warning" file="Xst" num="1465" delta="unknown" >&quot;<arg fmt="%s" index="1">game_logic.v</arg>&quot; line <arg fmt="%d" index="2">278</arg>: Exactly not equal expression will be synthesized as a not equal expression, simulation mismatch is possible. 
 </msg>
 
-<msg type="warning" file="Xst" num="1465" delta="unknown" >&quot;<arg fmt="%s" index="1">game_logic.v</arg>&quot; line <arg fmt="%d" index="2">441</arg>: Exactly not equal expression will be synthesized as a not equal expression, simulation mismatch is possible. 
+<msg type="warning" file="Xst" num="1465" delta="unknown" >&quot;<arg fmt="%s" index="1">game_logic.v</arg>&quot; line <arg fmt="%d" index="2">501</arg>: Exactly not equal expression will be synthesized as a not equal expression, simulation mismatch is possible. 
 </msg>
 
 <msg type="info" file="Xst" num="1432" delta="unknown" >Contents of array &lt;<arg fmt="%s" index="1">l_cmd_addr</arg>&gt; may be accessed with a negative index, causing simulation mismatch.
@@ -1355,6 +1355,9 @@
 <msg type="warning" file="Xst" num="646" delta="unknown" >Signal &lt;<arg fmt="%s" index="1">step_location</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 </msg>
 
+<msg type="warning" file="Xst" num="646" delta="unknown" >Signal &lt;<arg fmt="%s" index="1">lookup_index&lt;126:8&gt;</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
 <msg type="warning" file="Xst" num="646" delta="unknown" >Signal &lt;<arg fmt="%s" index="1">items&lt;126:8&gt;</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 </msg>
 
@@ -1365,6 +1368,9 @@
 </msg>
 
 <msg type="warning" file="Xst" num="646" delta="unknown" >Signal &lt;<arg fmt="%s" index="1">feedback</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="646" delta="unknown" >Signal &lt;<arg fmt="%s" index="1">displayed_counter_2</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 </msg>
 
 <msg type="warning" file="Xst" num="646" delta="unknown" >Signal &lt;<arg fmt="%s" index="1">displayed_counter</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
@@ -2756,6 +2762,9 @@ You should achieve better results by setting this init to <arg fmt="%i" index="3
 </msg>
 
 <msg type="warning" file="Xst" num="1895" delta="unknown" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">lives_display_47</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">lab5</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1896" delta="unknown" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">variable_timer_value_0</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">lab5</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
 </msg>
 
 <msg type="warning" file="Xst" num="2677" delta="unknown" >Node &lt;<arg fmt="%s" index="1">s/reader_bramdata/flash_flash/fsm/Mrom_nib2char_3_nib2char11</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab5</arg>&gt;.

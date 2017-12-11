@@ -51,6 +51,33 @@ end
 assign one_hz_enable = enable;
 endmodule
 
+
+module divider_10hz (	input clk, reset,
+						output ten_hz_enable );
+
+// Implemented similarly to debounce
+parameter DELAY = 32'd2700000;
+   
+reg [31:0] counter = 32'd0;
+reg enable = 1'b0;
+
+always @(posedge clk) begin
+    if (reset) begin                  		 // divider reset
+        counter <= 32'd0;
+        enable <= 1'b0;
+    end else if (enable) begin              // enable pulse off
+        counter <= counter + 1;
+        enable <= 1'b0;
+    end else if (counter == DELAY) begin    // enable pulse on
+        counter <= 32'd0;
+        enable <= 1'b1;
+    end else                                 // increment counter
+        counter <= counter + 1;
+end
+
+assign ten_hz_enable = enable;
+endmodule
+
 //////////////////////////////////////////////////////////////////////////////
 //																									 //
 //										TIMER MODULE											 //
@@ -82,6 +109,38 @@ always @(posedge clk) begin
     end else if (state == EXPIRED) begin
         state <= IDLE;
         counter <= 4'b0;
+    end
+end
+
+assign expired = (state == EXPIRED);
+assign displayed_counter = counter;
+endmodule
+
+module timer_faster( 	input clk, start_timer, ten_hz_enable,
+					input [7:0] timer_value,
+					output expired,
+					output [7:0] displayed_counter );
+
+// States
+parameter [1:0] IDLE 		= 2'd0;		// Await start_timer
+parameter [1:0] COUNTING 	= 2'd1;		// Countdown from timer_value (until expired)
+parameter [1:0] EXPIRED 	= 2'd2;		// Expired pulse lasts one clock cycle
+
+// State machine variables
+reg [3:0] state = IDLE;
+reg [7:0] counter = 8'b0;
+
+always @(posedge clk) begin
+    if (state == IDLE) begin                                     
+        state <= (start_timer) ? COUNTING : IDLE;
+        counter <= (start_timer) ? timer_value : 8'b0;
+    end else if (state == COUNTING) begin
+        state <= (counter == 0) ? EXPIRED : COUNTING;
+        counter <= (ten_hz_enable) ? counter - 1: 
+							(start_timer) ? timer_value : counter;
+    end else if (state == EXPIRED) begin
+        state <= IDLE;
+        counter <= 8'b0;
     end
 end
 
@@ -350,6 +409,7 @@ module gameState(input clk,
 						input reset,
 						input request_mole,
 						input expired,
+						input variable_expired,
 						input diy_mode,
 						input diy_playback_mode,
 						input ready_to_use,
@@ -422,11 +482,11 @@ always @(*) begin
 			GAME_START_DELAY: next_state = (expired) ? GAME_ONGOING : GAME_START_DELAY;
 			GAME_ONGOING : next_state = (lives == 0) ? GAME_OVER : (request_mole) ? REQUEST_MOLE : GAME_ONGOING;
 			REQUEST_MOLE : next_state = MOLE_ASCENDING;
-			MOLE_COUNTDOWN : next_state = (expired || misstep) ? MOLE_MISSED : (whacked) ? MOLE_WHACKED : MOLE_COUNTDOWN;
+			MOLE_COUNTDOWN : next_state = (variable_expired || misstep) ? MOLE_MISSED : (whacked) ? MOLE_WHACKED : MOLE_COUNTDOWN;
 			MOLE_MISSED : next_state = MOLE_MISSED_SOUND;
 			MOLE_WHACKED : next_state = MOLE_WHACKED_SOUND;
-			MOLE_MISSED_SOUND : next_state = (expired) ? HAPPY_MOLE_DESCENDING : MOLE_MISSED_SOUND;
-			MOLE_WHACKED_SOUND : next_state = (expired) ? DEAD_MOLE_DESCENDING: MOLE_WHACKED_SOUND;
+			MOLE_MISSED_SOUND : next_state = (variable_expired) ? HAPPY_MOLE_DESCENDING : MOLE_MISSED_SOUND;
+			MOLE_WHACKED_SOUND : next_state = (variable_expired) ? DEAD_MOLE_DESCENDING: MOLE_WHACKED_SOUND;
 			GAME_OVER : next_state = (start) ? IDLE : GAME_OVER;//(expired) ? IDLE : GAME_OVER;
 			RECORD_DIY_IN_PROGRESS: next_state = (!diy_mode) ? IDLE : (ready_to_use) ? DIY_DONE_RECORD : RECORD_DIY_IN_PROGRESS; 
 			DIY_DONE_RECORD: next_state = (!diy_mode) ? IDLE : (diy_playback_mode & start) ? GAME_ONGOING : DIY_DONE_RECORD;

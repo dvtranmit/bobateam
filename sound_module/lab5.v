@@ -678,6 +678,8 @@ module lab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 	// Pulse every hz for human time domain timing
 	wire one_hz_enable;
 	divider one_hz_div(.clk(clock_27mhz), .reset(enter), .one_hz_enable(one_hz_enable));
+	wire ten_hz_enable;
+	divider_10hz ten_hz_div(.clk(clock_27mhz), .reset(enter), .ten_hz_enable(ten_hz_enable));
 
 	// timer for delays
 	wire expired;
@@ -687,6 +689,31 @@ module lab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 	timer game_start_delay(.clk(clock_27mhz), .start_timer(start_timer), .one_hz_enable(one_hz_enable),
 									.timer_value(timer_value), .expired(expired),
 									.displayed_counter(displayed_counter));
+
+
+	//variable timer for implementing difficulty
+	wire [7:0] score; //assigned in game state
+	wire [3:0] display_state; //assigned in game state
+	parameter [3:0] IDLE = 4'd0; //state from game state
+	wire variable_expired;
+	wire [7:0] displayed_counter_2;
+	reg [7:0] variable_timer_value = 8'd20;
+	reg [7:0] last_score;
+	always @ (posedge clock_27mhz) begin
+		last_score <= score;
+		if(display_state == IDLE) begin
+			variable_timer_value <= 8'd20;
+		end
+		else if (last_score != score) begin
+			if ((score != 0) & (variable_timer_value >= 5) & ((score % 4) == 0) ) begin
+				variable_timer_value <= variable_timer_value - 2;
+			end
+		end
+	end
+	timer_faster variable_delay(.clk(clock_27mhz), .start_timer(start_timer), .ten_hz_enable(ten_hz_enable),
+									.timer_value(variable_timer_value), .expired(variable_expired),
+									.displayed_counter(displayed_counter_2));
+
 
 	// Generate random locations (a number 0-7)
 	wire [2:0] random_mole_location;
@@ -705,7 +732,6 @@ module lab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 												.misstep(misstep), .whacked(whacked));
 	
 	// mole control
-	wire [3:0] display_state;
 	wire request_mole;
 	wire [22:0] music_address;
 	wire diy_playback_mode; //coming from diy module, telling you when dyi_playback (switch6) is on and diy module ready for playback
@@ -731,13 +757,13 @@ module lab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 
 	// game state management
 	wire [1:0] lives;
-	wire [7:0] score;
 	wire ready_to_use;
 	wire popup_done;
 	gameState game(.clk(clock_27mhz), .misstep(misstep),
 						.whacked(whacked), .start(up),
 						.reset(enter), .request_mole(request_mole),
-						.expired(expired), .diy_mode(diy_mode), .diy_playback_mode(diy_playback_mode),
+						.expired(expired), .variable_expired(variable_expired),
+						.diy_mode(diy_mode), .diy_playback_mode(diy_playback_mode),
 						.ready_to_use(ready_to_use),
 						.random_mole_location(random_mole_location),
 						.saved_mole_location(current_location),
@@ -912,7 +938,7 @@ module lab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 			lives_display <= "??????";
 	end	
 
-	assign led = ~{lookup_index};
+	assign led = ~{variable_timer_value};
 
 	//Display letter toggler value
 	wire [127:0] string = {displayed_mole_location, 8'h30+display_state, "SCOR:", " ", 8'h30+score, lives_display};
