@@ -257,8 +257,10 @@ module mole #(parameter MAX_ITEM = 8'd127, parameter INDEX_BITS = 8)
 					input [INDEX_BITS-1:0] total_moles,
 					input one_hz_enable,
 					input [22:0] index_address,
+					input [2:0] index_location,
 					output request_mole,
-					output reg [INDEX_BITS-1:0] lookup_index = 0);
+					output reg [INDEX_BITS-1:0] lookup_index = 0,
+					output reg [2:0] current_location);
 
 /* Memory address popup pseudocode
 	
@@ -289,12 +291,12 @@ reg [367:0] addresses = {23'h6CDE, 23'h8B00, 23'hE900, 23'h14900,
 										 23'h2E500, 23'h31A00, 23'h35900, 23'h39500,
 										 23'h3DA00, 23'h41800, 23'h47800, 23'h4FD00};
 reg [22:0] current_address;
-
 always @(posedge clk) begin
 	if (state == IDLE) begin
-		if(diy_playback_mode)
+		if(diy_playback_mode) begin
 			current_address <= index_address;
-		else current_address <= 23'h6CDE;
+			current_location <= index_location;
+		end else current_address <= 23'h6CDE;
 		
 		addresses[367:0] <= {23'h6CDE, 23'h8B00, 23'hE900, 23'h14900,
 										 23'h17B00, 23'h1B100, 23'h21F00, 23'h28000,
@@ -307,6 +309,7 @@ always @(posedge clk) begin
 		lookup_index <= 0;
 	end else if (state == DIY_LOAD_ADDRESS) begin
 		current_address <= index_address;
+		current_location <= index_location;
 	end else if (state == DIY_CHECKING) begin
 		lookup_index <= (current_address == music_address && lookup_index == total_moles-1) ? 4'd0:
 								(current_address == music_address) ? lookup_index+1: lookup_index;

@@ -703,6 +703,8 @@ module lab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 												.downright(downright), .reset(enter),
 												.mole_location(mole_location),
 												.misstep(misstep), .whacked(whacked));
+	
+	// mole control
 	wire [3:0] display_state;
 	wire request_mole;
 	wire [22:0] music_address;
@@ -711,7 +713,9 @@ module lab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 	parameter INDEX_BITS = 8; //depends on how many bits you might need to count up to max number of items 
 	wire [MAX_ITEM-1:0] items; //this is a *count* of the number items stored in bram!!!!
 	wire [MAX_ITEM-1:0] lookup_index;
-	wire [23:0]index_address;
+	wire [23:0] index_address;
+	wire [3:0] index_location;
+	wire [2:0] current_location;
 	mole  #(.MAX_ITEM(MAX_ITEM)) 
 			getmole (.clk(clock_27mhz), .reset(enter),
 						.music_address(music_address),
@@ -720,21 +724,23 @@ module lab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 						.total_moles(items),
 						.one_hz_enable(one_hz_enable),
 						.index_address(index_address[22:0]),
+						.index_location(index_location[2:0]),
 						.request_mole(request_mole),
-						.lookup_index(lookup_index));
+						.lookup_index(lookup_index),
+						.current_location(current_location));
 
+	// game state management
 	wire [1:0] lives;
 	wire [7:0] score;
 	wire ready_to_use;
 	wire popup_done;
-	wire [3:0] index_location;
 	gameState game(.clk(clock_27mhz), .misstep(misstep),
 						.whacked(whacked), .start(up),
 						.reset(enter), .request_mole(request_mole),
 						.expired(expired), .diy_mode(diy_mode), .diy_playback_mode(diy_playback_mode),
 						.ready_to_use(ready_to_use),
 						.random_mole_location(random_mole_location),
-						.saved_mole_location(index_location[2:0]),
+						.saved_mole_location(current_location),
 						.popup_done(popup_done),
 						.start_timer(start_timer), .timer_value(timer_value),
 						.display_state(display_state), .mole_location(mole_location), 
@@ -837,7 +843,8 @@ module lab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
               .hsync(hs),.vsync(vs),.blank(b));
 		  
 	displaymole displaymole1(.clk(clock_65mhz), .clk2(clock_27mhz), .reset(reset), .hcount(hcount), .vcount(vcount),
-									.state(display_state), .mole_location(mole_location), .pixel(pixel), .popup_done(popup_done));
+									.state(display_state), .mole_location(mole_location), .pixel(pixel), .popup_done(popup_done),
+									.lives(lives), .score(score));
 
    // VGA Output.  In order to meet the setup and hold times of the
    // AD7125, we send it ~clock_65mhz.disp_data_out
@@ -907,7 +914,7 @@ module lab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 
 	assign led = ~{lookup_index};
 
-/*	// Display letter toggler value
+	//Display letter toggler value
 	wire [127:0] string = {displayed_mole_location, 8'h30+display_state, "SCOR:", " ", 8'h30+score, lives_display};
 	display_string debug_display(.reset(reset), .clock_27mhz(clock_27mhz),
 											.string_data(string),
@@ -917,13 +924,13 @@ module lab5   (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 											.disp_rs(disp_rs), 
 											.disp_ce_b(disp_ce_b),
 											.disp_reset_b(disp_reset_b));
-*/
-	wire [63:0] display_data;
+											
+/*	wire [63:0] display_data;
 	//  address ,1 0,1 location,2 lookup index, 2 items in diy bram, 1 diyplaybackmode,1 state
 	assign display_data = {lookup_index, items, 3'b0,diy_playback_mode, display_state};
 	display_16hex disp(.reset(switch[5]), .clock_27mhz(clock_27mhz), .data_in(display_data), 
 		                .disp_rs(disp_rs), .disp_ce_b(disp_ce_b), .disp_blank(disp_blank),
-							 .disp_reset_b(disp_reset_b), .disp_data_out(disp_data_out), .disp_clock(disp_clock));
+							 .disp_reset_b(disp_reset_b), .disp_data_out(disp_data_out), .disp_clock(disp_clock));*/
 	
 endmodule
 

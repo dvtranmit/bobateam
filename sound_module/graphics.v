@@ -168,7 +168,7 @@ module displaymole(	input clk, clk2, reset,
 	reg [3:0] MOLE_MISSED_SOUND	= 4'd9;		// Extra time for sound
 	reg [3:0] MOLE_WHACKED_SOUND	= 4'd10;		// Extra time for sound
 	// Placeholder variables for DIY mode
-	parameter [3:0] RECORD_DIY_BEGIN 	= 4'd11;		// Begin Recording Moles
+	parameter [3:0] DIY_DONE_RECORD 	= 4'd11;		// Begin Recording Moles
 	parameter [3:0] RECORD_DIY_IN_PROGRESS = 4'd12;// Begin Recording Moles
 
 	// New Fancy Mole Display States
@@ -241,7 +241,8 @@ module displaymole(	input clk, clk2, reset,
 			popup_done <= 0;
 	end
 
-	wire [23:0] startscreen_pixel, gameoverscreen_pixel, lives_ongoing_pixel, score_ongoing_pixel;
+	wire [23:0] startscreen_pixel, gameoverscreen_pixel;
+	reg [23:0] lives_ongoing_pixel, score_ongoing_pixel;
 	wire [23:0] whacktext, amoletext, pressup, gameovertext, livestext, scoretext;
 	wire [23:0] lives0, lives1, lives2, lives3;
 	wire [23:0] d0,d1,d2,d3,d4,d5,d6,d7,d8,d9;
@@ -251,8 +252,8 @@ module displaymole(	input clk, clk2, reset,
 	amole_text_display amole1(.x(476),.hcount(hcount),.y(100),.vcount(vcount),.p_out(amoletext));
 	pressuptostart_text_display pressup1(.x(200),.hcount(hcount),.y(500),.vcount(vcount),.p_out(pressup));
 	gameover_text_display gameover1(.x(150),.hcount(hcount),.y(200),.vcount(vcount),.p_out(gameovertext));
-	lives_text_display lives1(.x(300),.hcount(hcount),.y(300),.vcount(vcount),.p_out(livestext));
-	score_text_display score1(.x(300),.hcount(hcount),.y(400),.vcount(vcount),.p_out(scoretext));
+	lives_text_display lives_text1(.x(300),.hcount(hcount),.y(300),.vcount(vcount),.p_out(livestext));
+	score_text_display score_text1(.x(300),.hcount(hcount),.y(400),.vcount(vcount),.p_out(scoretext));
 	
 	assign startscreen_pixel = whacktext | amoletext| pressup;
 	// generate digits for lives
@@ -272,17 +273,18 @@ module displaymole(	input clk, clk2, reset,
 	digit8 n8(.x(520),.hcount(hcount),.y(400),.vcount(vcount),.p_out(d8));
 	digit9 n9(.x(520),.hcount(hcount),.y(400),.vcount(vcount),.p_out(d9));
 	// generate 2nd digits for score
-	digit0 n0(.x(560),.hcount(hcount),.y(400),.vcount(vcount),.p_out(d00));
-	digit1 n1(.x(560),.hcount(hcount),.y(400),.vcount(vcount),.p_out(d01));
-	digit2 n2(.x(560),.hcount(hcount),.y(400),.vcount(vcount),.p_out(d02));
-	digit3 n3(.x(560),.hcount(hcount),.y(400),.vcount(vcount),.p_out(d03));
-	digit4 n4(.x(560),.hcount(hcount),.y(400),.vcount(vcount),.p_out(d04));
-	digit5 n5(.x(560),.hcount(hcount),.y(400),.vcount(vcount),.p_out(d05));
-	digit6 n6(.x(560),.hcount(hcount),.y(400),.vcount(vcount),.p_out(d06));
-	digit7 n7(.x(560),.hcount(hcount),.y(400),.vcount(vcount),.p_out(d07));
-	digit8 n8(.x(560),.hcount(hcount),.y(400),.vcount(vcount),.p_out(d08));
-	digit9 n9(.x(560),.hcount(hcount),.y(400),.vcount(vcount),.p_out(d09));
+	digit0 n00(.x(560),.hcount(hcount),.y(400),.vcount(vcount),.p_out(d00));
+	digit1 n01(.x(560),.hcount(hcount),.y(400),.vcount(vcount),.p_out(d01));
+	digit2 n02(.x(560),.hcount(hcount),.y(400),.vcount(vcount),.p_out(d02));
+	digit3 n03(.x(560),.hcount(hcount),.y(400),.vcount(vcount),.p_out(d03));
+	digit4 n04(.x(560),.hcount(hcount),.y(400),.vcount(vcount),.p_out(d04));
+	digit5 n05(.x(560),.hcount(hcount),.y(400),.vcount(vcount),.p_out(d05));
+	digit6 n06(.x(560),.hcount(hcount),.y(400),.vcount(vcount),.p_out(d06));
+	digit7 n07(.x(560),.hcount(hcount),.y(400),.vcount(vcount),.p_out(d07));
+	digit8 n08(.x(560),.hcount(hcount),.y(400),.vcount(vcount),.p_out(d08));
+	digit9 n09(.x(560),.hcount(hcount),.y(400),.vcount(vcount),.p_out(d09));
 	
+	always@(*) begin
 	case(lives)
 		2'd0: lives_ongoing_pixel = livestext | lives0;
 		2'd1: lives_ongoing_pixel = livestext | lives1;
@@ -392,7 +394,7 @@ module displaymole(	input clk, clk2, reset,
 		8'd98: score_ongoing_pixel = scoretext | d9 | d08;
 		8'd99: score_ongoing_pixel = scoretext | d9 | d09;
 	endcase
-	
+	end
 	assign gameoverscreen_pixel = gameovertext | score_ongoing_pixel;
 	wire [23:0] normal_pixel, dead_pixel, happy_pixel;
 	normalmole #(.WIDTH(212),.HEIGHT(256))
@@ -408,6 +410,7 @@ module displaymole(	input clk, clk2, reset,
 							: (state == MOLE_ASCENDING || state == MOLE_COUNTDOWN) ? normal_pixel | lives_ongoing_pixel | score_ongoing_pixel
 							: (state == MOLE_MISSED || state == MOLE_MISSED_SOUND || state == HAPPY_MOLE_DESCENDING) ? happy_pixel | lives_ongoing_pixel | score_ongoing_pixel
 							: (state == MOLE_WHACKED || state == MOLE_WHACKED_SOUND || state == DEAD_MOLE_DESCENDING) ? dead_pixel | lives_ongoing_pixel | score_ongoing_pixel
+							: (state != GAME_OVER && state != IDLE && state != DIY_DONE_RECORD && state != RECORD_DIY_IN_PROGRESS) ? lives_ongoing_pixel | score_ongoing_pixel
 							: (state == GAME_OVER) ? gameoverscreen_pixel | score_ongoing_pixel
 							: 24'h0;
 endmodule
